@@ -1,14 +1,10 @@
-rm CNAME
-git add .
-git commit -m
-git push
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOLDEN DRINKS - Menú</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -17,47 +13,58 @@ git push
         body {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            background: url('https://i.ibb.co/B2Hss9Z/photo-2024-07-21-23-26-36.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
         }
         header {
-            background-color: #FFD700;
-            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #FFD700;
+        }
+        header h1 {
+            color: #FFD700;
+            margin: 0;
         }
         .container {
-            padding: 15px;
-            max-width: 600px;
-            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            backdrop-filter: blur(5px);
         }
         .drink-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
         .drink-card h3 {
+            color: #FFD700;
             margin-top: 0;
-            color: #222;
         }
         .size-options {
             display: flex;
             gap: 10px;
-            margin: 10px 0;
+            margin: 15px 0;
+            flex-wrap: wrap;
         }
         .size-btn {
             flex: 1;
+            min-width: 120px;
             padding: 10px;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            background: rgba(255, 215, 0, 0.1);
             border-radius: 5px;
             text-align: center;
             cursor: pointer;
+            color: white;
         }
         .size-btn.active {
-            background: #FFD700;
+            background: rgba(255, 215, 0, 0.3);
             border-color: #FFD700;
         }
         .toppings {
@@ -66,10 +73,34 @@ git push
         .topping-option {
             display: flex;
             align-items: center;
-            margin: 5px 0;
+            margin: 8px 0;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: #FFD700;
+            border: none;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+            padding: 5px;
+            border: 1px solid #FFD700;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.5);
+            color: white;
         }
         .add-to-cart {
-            background: #FFD700;
+            background: rgba(255, 215, 0, 0.7);
             color: #333;
             border: none;
             padding: 12px;
@@ -79,11 +110,11 @@ git push
             cursor: pointer;
             margin-top: 10px;
         }
-        .cart {
+        #cart {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #333;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             width: 60px;
             height: 60px;
@@ -92,10 +123,10 @@ git push
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             cursor: pointer;
+            border: 2px solid #FFD700;
         }
-        .cart-badge {
+        #cart-count {
             position: absolute;
             top: -5px;
             right: -5px;
@@ -116,60 +147,73 @@ git push
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 100;
-            overflow-y: auto;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
         }
         .modal-content {
-            background: white;
-            margin: 20px auto;
+            background: #1a1a1a;
+            margin: 5% auto;
             padding: 20px;
+            border: 2px solid #FFD700;
             border-radius: 10px;
-            max-width: 500px;
             width: 90%;
+            max-width: 500px;
+            color: white;
         }
-        .close-modal {
+        .close {
+            color: #FFD700;
             float: right;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
         }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .checkout-btn {
-            background: #FFD700;
-            color: #333;
+        .remove-btn {
+            background: transparent;
+            color: red;
             border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 5px;
-            font-weight: bold;
+            margin-left: 10px;
             cursor: pointer;
-            margin-top: 20px;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
             font-weight: bold;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        #map {
-            height: 200px;
-            width: 100%;
-            background: #eee;
+        .payment-info {
+            background: rgba(255,215,0,0.1);
+            padding: 15px;
+            border-radius: 8px;
             margin: 15px 0;
+            border-left: 3px solid #FFD700;
+        }
+        .upload-note {
+            background: rgba(255,0,0,0.1);
+            padding: 10px;
             border-radius: 5px;
+            text-align: center;
+            margin: 15px 0;
+            border: 1px dashed #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            .size-options {
+                flex-direction: column;
+            }
+            .size-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -180,21 +224,24 @@ git push
     </header>
 
     <div class="container">
+        <!-- Ejemplo para Blue Sea (repetir estructura para otras bebidas) -->
         <div class="drink-card">
             <h3>Blue Sea</h3>
             <p>Sabor mora azul</p>
+            
             <div class="size-options">
-                <div class="size-btn" data-size="chico" data-price="59" data-price-alcohol="79">
+                <div class="size-btn" onclick="selectSize(this, 'chico', 59, 79)">
                     Chico (600 ml)<br>
                     $59 sin alcohol<br>
                     $79 con alcohol
                 </div>
-                <div class="size-btn" data-size="grande" data-price="79" data-price-alcohol="99">
+                <div class="size-btn" onclick="selectSize(this, 'grande', 79, 99)">
                     Grande (950 ml)<br>
                     $79 sin alcohol<br>
                     $99 con alcohol
                 </div>
             </div>
+
             <div class="toppings">
                 <h4>Toppings:</h4>
                 <div class="topping-option">
@@ -206,268 +253,179 @@ git push
                     <label for="blue-jelly">Jelly Shots (+$15)</label>
                 </div>
             </div>
-            <button class="add-to-cart" data-drink="Blue Sea">Agregar al carrito</button>
+
+            <div class="quantity-selector">
+                <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                <input type="number" class="quantity-input" value="1" min="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+            </div>
+
+            <button class="add-to-cart" onclick="addToCart('Blue Sea')">Agregar al carrito</button>
         </div>
 
-        <!-- Repetir para otras bebidas -->
-        <div class="drink-card">
-            <h3>Redentor</h3>
-            <p>Sabor frutos rojos</p>
-            <!-- Misma estructura que Blue Sea -->
-        </div>
-
-        <div class="drink-card">
-            <h3>Laser Bean</h3>
-            <p>Sabor manzana verde</p>
-            <!-- Misma estructura que Blue Sea -->
-        </div>
-
-        <div class="drink-card">
-            <h3>DarkSide</h3>
-            <p>Sabor frutos del bosque</p>
-            <!-- Misma estructura que Blue Sea -->
-        </div>
+        <!-- Repetir para otras bebidas (Redentor, Laser Bean, DarkSide) -->
     </div>
 
-    <div class="cart" id="cart-icon">
-        🛒
-        <div class="cart-badge" id="cart-count">0</div>
+    <!-- Icono del carrito -->
+    <div id="cart" onclick="showCart()">
+        🛒 <span id="cart-count">0</span>
     </div>
 
     <!-- Modal del Carrito -->
-    <div class="modal" id="cart-modal">
+    <div id="cart-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close" onclick="hideCart()">&times;</span>
             <h2>Tu Pedido</h2>
-            <div id="cart-items"></div>
-            <div id="cart-total" style="font-weight: bold; text-align: right; margin-top: 15px;"></div>
-            <button class="checkout-btn" id="checkout-btn">Proceder al Pago</button>
-        </div>
-    </div>
-
-    <!-- Modal de Checkout -->
-    <div class="modal" id="checkout-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Completa tu Pedido</h2>
+            <ul id="cart-items"></ul>
+            <div id="cart-total"></div>
             
-            <div class="form-group">
-                <label>Ubicación de recolección:</label>
-                <select id="location">
-                    <option value="Joyas 148, colonia estrella, C.P. 07810, Ciudad de México">Joyas 148</option>
-                    <option value="Calle Coral 120, Colonia Estrella, C.P. 07810, Ciudad de México">Calle Coral 120</option>
-                </select>
-                <div id="map"></div>
+            <div class="payment-info">
+                <h3>Datos para pago:</h3>
+                <p><strong>Banco:</strong> BBVA</p>
+                <p><strong>Cuenta:</strong> 012 261 01584933343 3</p>
+                <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
             </div>
             
-            <div class="form-group">
-                <label>Horario de recolección:</label>
-                <select id="time-slot">
-                    <!-- Horarios se generarán con JS -->
-                </select>
+            <div class="upload-note">
+                <p>⚠ Inserte imagen del comprobante de pago</p>
             </div>
             
-            <div class="form-group">
-                <label>Tu nombre:</label>
-                <input type="text" id="customer-name" required>
-            </div>
-            
-            <div class="form-group">
-                <label>WhatsApp para contacto:</label>
-                <input type="tel" id="customer-phone" required>
-            </div>
-            
-            <div class="form-group">
-                <h3>Método de Pago</h3>
-                <p>Transferencia bancaria a:</p>
-                <p>BBVA: 012 261 01584933343 3</p>
-                <p>A nombre de: Eric Daniel Gutiérrez Arana</p>
-                <p>Concepto: <span id="concept-name"></span></p>
-            </div>
-            
-            <button class="checkout-btn" id="confirm-order">Enviar comprobante por WhatsApp</button>
+            <button class="whatsapp-btn" onclick="sendOrder()">
+                <i class="fab fa-whatsapp"></i> Realizar pedido por WhatsApp
+            </button>
         </div>
     </div>
 
     <script>
         // Variables globales
         let cart = [];
-        
-        // Generar horarios
-        function generateTimeSlots() {
-            const timeSlots = [];
-            const days = [
-                { day: 'Viernes', start: 20, end: 26.5 }, // 20:00 a 02:30 (26.5)
-                { day: 'Sábado', start: 19, end: 27 },    // 19:00 a 03:00 (27)
-                { day: 'Domingo', start: 12, end: 18 }    // 12:00 a 18:00
-            ];
-            
-            days.forEach(day => {
-                for (let h = day.start; h < day.end; h += 0.25) {
-                    const hour = Math.floor(h);
-                    const minutes = (h % 1) * 60;
-                    const timeStr = `${hour}:${minutes === 0 ? '00' : minutes}`;
-                    timeSlots.push(`${day.day} ${timeStr}`);
-                }
-            });
-            
-            return timeSlots;
+        let currentSelection = {
+            size: null,
+            price: null,
+            priceAlcohol: null
+        };
+
+        // Seleccionar tamaño
+        function selectSize(btn, size, price, priceAlcohol) {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSelection.size = size;
+            currentSelection.price = price;
+            currentSelection.priceAlcohol = priceAlcohol;
         }
-        
+
+        // Cambiar cantidad
+        function changeQuantity(btn, change) {
+            const container = btn.closest('.quantity-selector');
+            const input = container.querySelector('.quantity-input');
+            let value = parseInt(input.value) + change;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
+
+        // Agregar al carrito
+        function addToCart(drinkName) {
+            if (!currentSelection.size) {
+                alert("¡Selecciona un tamaño primero!");
+                return;
+            }
+
+            const container = event.target.closest('.drink-card');
+            const quantity = parseInt(container.querySelector('.quantity-input').value);
+            const toppings = [];
+            let toppingsPrice = 0;
+
+            container.querySelectorAll('.topping:checked').forEach(topping => {
+                toppings.push(topping.nextElementSibling.textContent.trim());
+                toppingsPrice += parseInt(topping.getAttribute('data-price'));
+            });
+
+            const withAlcohol = container.querySelector('.topping[data-price="20"]:checked') !== null;
+            const basePrice = withAlcohol ? currentSelection.priceAlcohol : currentSelection.price;
+            const totalPrice = (basePrice + toppingsPrice) * quantity;
+
+            cart.push({
+                name: drinkName,
+                size: currentSelection.size,
+                price: totalPrice,
+                toppings: toppings,
+                quantity: quantity
+            });
+
+            updateCartUI();
+            alert(`${quantity} ${drinkName} agregado(s) al carrito!`);
+        }
+
         // Actualizar carrito
-        function updateCart() {
-            const cartItems = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const cartTotal = document.getElementById('cart-total');
-            
-            cartItems.innerHTML = '';
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'cart-item';
-                
-                let toppingsText = '';
-                if (item.toppings.length > 0) {
-                    toppingsText = ` + ${item.toppings.join(', ')}`;
-                }
-                
-                itemElement.innerHTML = `
-                    <div>
-                        ${item.quantity}x ${item.name} (${item.size})${toppingsText}<br>
-                        <small>${item.withAlcohol ? 'Con alcohol' : 'Sin alcohol'}</small>
-                    </div>
-                    <div>$${item.price * item.quantity}</div>
-                `;
-                
-                cartItems.appendChild(itemElement);
-                total += item.price * item.quantity;
-            });
-            
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartTotal.textContent = `Total: $${total}`;
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
         }
-        
-        // Event Listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tamaños
-            document.querySelectorAll('.size-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+
+        // Mostrar carrito
+        function showCart() {
+            const modal = document.getElementById('cart-modal');
+            const itemsList = document.getElementById('cart-items');
+            const totalElement = document.getElementById('cart-total');
             
-            // Agregar al carrito
-            document.querySelectorAll('.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const drinkCard = this.closest('.drink-card');
-                    const drinkName = this.getAttribute('data-drink');
-                    const sizeBtn = drinkCard.querySelector('.size-btn.active');
-                    const withAlcohol = drinkCard.querySelector('.topping[data-price="20"]:checked') !== null;
-                    
-                    if (!sizeBtn) {
-                        alert('Por favor selecciona un tamaño');
-                        return;
-                    }
-                    
-                    const size = sizeBtn.getAttribute('data-size');
-                    const basePrice = withAlcohol ? 
-                        parseInt(sizeBtn.getAttribute('data-price-alcohol')) : 
-                        parseInt(sizeBtn.getAttribute('data-price'));
-                    
-                    // Calcular toppings
-                    let toppings = [];
-                    let toppingsPrice = 0;
-                    drinkCard.querySelectorAll('.topping:checked').forEach(topping => {
-                        toppings.push(topping.nextElementSibling.textContent.replace(/\(\+\$\d+\)/, '').trim());
-                        toppingsPrice += parseInt(topping.getAttribute('data-price'));
-                    });
-                    
-                    const totalPrice = basePrice + toppingsPrice;
-                    
-                    // Agregar al carrito
-                    cart.push({
-                        name: drinkName,
-                        size: size,
-                        withAlcohol: withAlcohol,
-                        toppings: toppings,
-                        price: totalPrice,
-                        quantity: 1
-                    });
-                    
-                    updateCart();
-                    alert(`${drinkName} agregado al carrito`);
-                });
+            itemsList.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${item.name}</strong> (${item.size}) x${item.quantity} - $${item.price}
+                    ${item.toppings.length > 0 ? `<br><small>Extras: ${item.toppings.join(', ')}</small>` : ''}
+                    <button onclick="removeFromCart(${index})" class="remove-btn">✕</button>
+                `;
+                itemsList.appendChild(li);
+                total += item.price;
             });
+
+            totalElement.innerHTML = `
+                <h3>Total: $${total}</h3>
+            `;
+            modal.style.display = 'block';
+        }
+
+        // Eliminar del carrito
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+            showCart();
+        }
+
+        // Ocultar carrito
+        function hideCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        // Enviar pedido por WhatsApp
+        function sendOrder() {
+            if (cart.length === 0) {
+                alert("¡Tu carrito está vacío!");
+                return;
+            }
+
+            let message = "¡Hola! Quiero realizar este pedido en GOLDEN DRINKS:%0A%0A";
             
-            // Carrito modal
-            document.getElementById('cart-icon').addEventListener('click', function() {
-                document.getElementById('cart-modal').style.display = 'block';
-            });
-            
-            // Checkout
-            document.getElementById('checkout-btn').addEventListener('click', function() {
-                if (cart.length === 0) {
-                    alert('Tu carrito está vacío');
-                    return;
+            cart.forEach(item => {
+                message += `➡ ${item.quantity}x ${item.name} (${item.size}) - $${item.price}%0A`;
+                if (item.toppings.length > 0) {
+                    message += `   Extras: ${item.toppings.join(', ')}%0A`;
                 }
-                
-                document.getElementById('cart-modal').style.display = 'none';
-                document.getElementById('checkout-modal').style.display = 'block';
-                
-                // Generar horarios
-                const timeSlotSelect = document.getElementById('time-slot');
-                timeSlotSelect.innerHTML = '';
-                generateTimeSlots().forEach(time => {
-                    const option = document.createElement('option');
-                    option.value = time;
-                    option.textContent = time;
-                    timeSlotSelect.appendChild(option);
-                });
-                
-                // Inicializar mapa (simulado)
-                document.getElementById('map').innerHTML = '<p style="text-align: center; padding: 80px 0;">Mapa interactivo aquí</p>';
             });
-            
-            // Confirmar pedido
-            document.getElementById('confirm-order').addEventListener('click', function() {
-                const name = document.getElementById('customer-name').value;
-                const phone = document.getElementById('customer-phone').value;
-                const location = document.getElementById('location').value;
-                const timeSlot = document.getElementById('time-slot').value;
-                
-                if (!name || !phone) {
-                    alert('Por favor completa tu nombre y WhatsApp');
-                    return;
-                }
-                
-                document.getElementById('concept-name').textContent = name;
-                
-                // Generar mensaje de WhatsApp
-                let message = `*GOLDEN DRINKS - Comprobante de Pago*%0A%0A`;
-                message += `*Nombre:* ${name}%0A`;
-                message += `*WhatsApp:* ${phone}%0A`;
-                message += `*Ubicación:* ${location}%0A`;
-                message += `*Horario:* ${timeSlot}%0A%0A`;
-                message += `*Pedido:*%0A`;
-                
-                cart.forEach(item => {
-                    message += `- ${item.quantity}x ${item.name} (${item.size}) - $${item.price * item.quantity}%0A`;
-                });
-                
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                message += `%0A*Total:* $${total}`;
-                
-                // Enlace de WhatsApp
-                window.open(`https://wa.me/5215611649344?text=${message}`, '_blank');
-            });
-            
-            // Cerrar modales
-            document.querySelectorAll('.close-modal').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.closest('.modal').style.display = 'none';
-                });
-            });
-            
-            window.addEventListener('click', function(e) 
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            message += `%0A*Total a pagar:* $${total}%0A%0A`;
+            message += "*Datos para transferencia:*%0A";
+            message += "Banco: BBVA%0A";
+            message += "Cuenta: 012 261 01584933343 3%0A";
+            message += "Titular: Eric Daniel Gutiérrez Arana%0A%0A";
+            message += "⚠ *Adjunto comprobante de pago* (ver imagen)";
+
+            window.open(`https://wa.me/5215611649344?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
