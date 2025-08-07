@@ -6,7 +6,8 @@
       "opciones": {
         "alcohol": {
           "sin": 0,
-          "con": 10
+          "con": 10,
+          "advertencia": "Se solicitará INE por WhatsApp"
         },
         "jelly": {
           "no": 0,
@@ -20,7 +21,8 @@
       "opciones": {
         "alcohol": {
           "sin": 0,
-          "con": 10
+          "con": 10,
+          "advertencia": "Se solicitará INE por WhatsApp"
         },
         "jelly": {
           "no": 0,
@@ -34,21 +36,8 @@
       "opciones": {
         "alcohol": {
           "sin": 0,
-          "con": 10
-        },
-        "jelly": {
-          "no": 0,
-          "si": 5
-        }
-      }
-    },
-    "Blue Sea": {
-      "descripcion": "Bebida sabor mora azul 475ml",
-      "base": 35,
-      "opciones": {
-        "alcohol": {
-          "sin": 0,
-          "con": 10
+          "con": 10,
+          "advertencia": "Se solicitará INE por WhatsApp"
         },
         "jelly": {
           "no": 0,

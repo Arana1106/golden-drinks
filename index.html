@@ -1,20 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDEN DRINKS - Premium</title>
+    <title>GOLDEN DRINKS - Menú</title>
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <h1>GOLDEN DRINKS</h1>
-    
-    <div class="productos-container" id="productos-container">
-        <!-- Los productos se cargarán aquí con JavaScript -->
-    </div>
+    <header class="header">
+        <h1>GOLDEN DRINKS</h1>
+        <p class="subtitle">Bebidas premium artesanales</p>
+    </header>
+
+    <main class="main-content">
+        <section class="productos-section">
+            <h2>Bebidas</h2>
+            <div class="productos-container" id="bebidas-container">
+                <!-- Productos se cargarán con JavaScript -->
+            </div>
+        </section>
+
+        <section class="productos-section">
+            <h2>Tés</h2>
+            <div class="productos-container" id="tes-container">
+                <!-- Productos se cargarán con JavaScript -->
+            </div>
+        </section>
+
+        <section class="productos-section">
+            <h2>Cafés</h2>
+            <div class="productos-container" id="cafes-container">
+                <!-- Productos se cargarán con JavaScript -->
+            </div>
+        </section>
+    </main>
 
     <!-- Carrito flotante -->
-    <div class="carrito-flotante" id="carrito-btn">🛒 <span id="contador-carrito">0</span></div>
+    <div class="carrito-flotante" id="carrito-btn">
+        🛒 <span id="contador-carrito">0</span>
+    </div>
+
+    <!-- Modal de opciones -->
+    <div class="modal" id="modal-opciones">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <div id="modal-opciones-body"></div>
+            <button id="btn-confirmar" disabled>Confirmar selección</button>
+        </div>
+    </div>
+
+    <!-- Modal del carrito -->
+    <div class="modal" id="modal-carrito">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Tu Pedido</h2>
+            <div id="items-carrito"></div>
+            <div class="total-container">
+                <h3>Total: $<span id="total-carrito">0.00</span></h3>
+            </div>
+            <button id="whatsapp-btn">Enviar por WhatsApp</button>
+        </div>
+    </div>
 
     <script src="assets/scripts.js"></script>
 </body>
