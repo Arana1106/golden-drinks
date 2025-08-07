@@ -1,1 +1,119 @@
-404: Not Found
+{
+  "bebidas": {
+    "Red Fire": {
+      "descripcion": "Bebida sabor frutos rojos 475ml",
+      "base": 35,
+      "opciones": {
+        "alcohol": {
+          "sin": 0,
+          "con": 10
+        },
+        "jelly": {
+          "no": 0,
+          "si": 5
+        }
+      }
+    },
+    "Green Corp": {
+      "descripcion": "Bebida sabor manzana verde 475ml",
+      "base": 35,
+      "opciones": {
+        "alcohol": {
+          "sin": 0,
+          "con": 10
+        },
+        "jelly": {
+          "no": 0,
+          "si": 5
+        }
+      }
+    },
+    "Dark Side": {
+      "descripcion": "Bebida sabor frutos del bosque 475ml",
+      "base": 35,
+      "opciones": {
+        "alcohol": {
+          "sin": 0,
+          "con": 10
+        },
+        "jelly": {
+          "no": 0,
+          "si": 5
+        }
+      }
+    },
+    "Blue Sea": {
+      "descripcion": "Bebida sabor mora azul 475ml",
+      "base": 35,
+      "opciones": {
+        "alcohol": {
+          "sin": 0,
+          "con": 10
+        },
+        "jelly": {
+          "no": 0,
+          "si": 5
+        }
+      }
+    }
+  },
+  "tes": {
+    "Té del día": {
+      "descripcion": "Clásico té del día frío 475ml",
+      "base": 25,
+      "opciones": {
+        "azucar": {
+          "sin": 0,
+          "con": 0,
+          "sustituto": 0
+        },
+        "jelly": {
+          "no": 0,
+          "si": 5
+        }
+      }
+    }
+  },
+  "cafes": {
+    "Café Remix": {
+      "descripcion": "Café deconstruido frío 475ml",
+      "base": 25,
+      "opciones": {
+        "leche": {
+          "sin": 0,
+          "con": 10,
+          "deslactosada": 10
+        },
+        "azucar": {
+          "sin": 0,
+          "con": 0,
+          "sustituto": 0
+        },
+        "coffee_bubble": {
+          "no": 0,
+          "si": 10
+        }
+      }
+    },
+    "Café Remix Descafeinado": {
+      "descripcion": "Café deconstruido descafeinado frío 475ml",
+      "base": 25,
+      "opciones": {
+        "leche": {
+          "sin": 0,
+          "con": 10,
+          "deslactosada": 10
+        },
+        "azucar": {
+          "sin": 0,
+          "con": 0,
+          "sustituto": 0
+        },
+        "coffee_bubble": {
+          "no": 0,
+          "si": 10
+        }
+      }
+    }
+  }
+}
