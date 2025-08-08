@@ -9,18 +9,49 @@
 <body>
     <h1>GOLDEN DRINKS</h1>
     
-    <div id="bebidas-container" class="productos-container"></div>
-    <div id="tes-container" class="productos-container"></div>
-    <div id="cafes-container" class="productos-container"></div>
+    <section id="bebidas">
+        <h2>Bebidas</h2>
+        <div id="bebidas-container" class="productos-container"></div>
+    </section>
+    
+    <section id="tes">
+        <h2>Tés</h2>
+        <div id="tes-container" class="productos-container"></div>
+    </section>
+    
+    <section id="cafes">
+        <h2>Cafés</h2>
+        <div id="cafes-container" class="productos-container"></div>
+    </section>
 
-    <!-- Carrito -->
+    <!-- Carrito flotante -->
     <div id="carrito-btn" class="carrito-flotante">
         🛒 <span id="contador-carrito">0</span>
     </div>
 
-    <!-- Modales -->
-    <div id="modal-opciones" class="modal"></div>
-    <div id="modal-carrito" class="modal"></div>
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <h2>Tu Pedido <span id="cerrar-modal">×</span></h2>
+            <div id="lista-carrito"></div>
+            <p id="total-carrito">Total: $0 MXN</p>
+            <div id="datos-bancarios">
+                <h3>Datos Bancarios</h3>
+                <p>Titular: Eric Daniel Gutiérrez Arana</p>
+                <p>CLABE: 012 261 01584933343 3 (BBVA)</p>
+            </div>
+            <button id="whatsapp-btn">Solicitar Pedido por WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Punto de recolección -->
+    <footer id="recoleccion">
+        <h3>Punto de recolección</h3>
+        <a href="https://maps.google.com?q=Calle+Coral+120,Estrella,07810,Ciudad+de+México" target="_blank">
+            Calle Coral 120, colonia Estrella, CDMX
+        </a>
+        <p>Horarios: L-J 9:00-22:00 | V-S 10:00-02:00 | D 11:00-19:00</p>
+    </footer>
 
     <script src="assets/scripts.js"></script>
 </body>

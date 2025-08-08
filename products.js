@@ -1,4 +1,20 @@
 {
+  "tes": {
+    "Bebida del día": {
+      "descripcion": "Bebida refrescante del día, pregunta por nuestros sabores especiales",
+      "base": 25,
+      "opciones": {
+        "jelly": { "no": 0, "si": 5 }
+      }
+    },
+    "Té del día": {
+      "descripcion": "Té frío clásico 475ml",
+      "base": 25,
+      "opciones": {
+        "jelly": { "no": 0, "si": 5 }
+      }
+    }
+  },
   "bebidas": {
     "Red Fire": {
       "descripcion": "Bebida sabor frutos rojos 475ml",
@@ -33,32 +49,13 @@
       }
     }
   },
-  "tes": {
-    "Té del día": {
-      "descripcion": "Té frío clásico 475ml",
-      "base": 25,
-      "opciones": {
-        "azucar": { "sin": 0, "con": 0, "sustituto": 0 },
-        "jelly": { "no": 0, "si": 5 }
-      }
-    },
-    "Bebida del día": {
-      "descripcion": "Bebida refrescante del día 475ml",
-      "base": 25,
-      "opciones": {
-        "azucar": { "sin": 0, "con": 0, "sustituto": 0 },
-        "jelly": { "no": 0, "si": 5 }
-      }
-    }
-  },
   "cafes": {
     "Café Remix": {
       "descripcion": "Café deconstruido frío 475ml",
       "base": 25,
       "opciones": {
         "leche": { "sin": 0, "con": 10, "deslactosada": 10 },
-        "azucar": { "sin": 0, "con": 0, "sustituto": 0 },
-        "coffee_bubble": { "no": 0, "si": 10 }
+        "jelly": { "no": 0, "si": 5 }
       }
     },
     "Café Remix Descafeinado": {
@@ -66,8 +63,7 @@
       "base": 25,
       "opciones": {
         "leche": { "sin": 0, "con": 10, "deslactosada": 10 },
-        "azucar": { "sin": 0, "con": 0, "sustituto": 0 },
-        "coffee_bubble": { "no": 0, "si": 10 }
+        "jelly": { "no": 0, "si": 5 }
       }
     }
   }
