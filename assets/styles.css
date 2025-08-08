@@ -1,4 +1,4 @@
-/* Fondo de arena negra */
+/* ===== FONDO Y TIPOGRAFÍA ===== */
 body {
     background-color: #0a0a0a;
     background-image: 
@@ -12,7 +12,7 @@ body {
     min-height: 100vh;
 }
 
-/* Título dorado */
+/* ===== TÍTULO PRINCIPAL ===== */
 h1 {
     color: #FFD700;
     text-shadow: 0 0 10px #FFD700;
@@ -21,7 +21,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Tarjetas de productos */
+/* ===== TARJETAS DE PRODUCTOS ===== */
 .producto-card {
     background: rgba(30,30,30,0.9);
     border-radius: 10px;
@@ -31,31 +31,38 @@ h1 {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Colores neón por categoría */
-#bebidas-container .producto-card h3 { color: #FF073A; }  /* Rojo */
-#tes-container .producto-card h3 { color: #39FF14; }     /* Verde */
-#cafes-container .producto-card h3 { color: #FFA500; }   /* Naranja */
-
-/* Botones */
-.btn-seleccionar {
-    background: #FFD700;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 15px;
-    transition: all 0.3s;
+/* ===== COLORES NEÓN POR PRODUCTO ===== */
+.producto-card[data-producto="Red Fire"] h3 {
+    color: #FF073A;
+    text-shadow: 0 0 10px #FF073A, 0 0 20px #80001D;
 }
 
-.btn-seleccionar:hover {
-    background: #FFA500;
-    box-shadow: 0 0 10px #FFD700;
+.producto-card[data-producto="Green Corp"] h3 {
+    color: #39FF14;
+    text-shadow: 0 0 10px #39FF14, 0 0 20px #00A000;
 }
 
-/* Modales */
+.producto-card[data-producto="Blue Sea"] h3 {
+    color: #00F3FF;
+    text-shadow: 0 0 10px #00F3FF, 0 0 20px #00A2FF;
+}
+
+.producto-card[data-producto="Dark Side"] h3 {
+    color: #9D00FF;
+    text-shadow: 0 0 10px #9D00FF, 0 0 20px #5A007F;
+}
+
+.producto-card[data-producto="Té del día"] h3 {
+    color: #E0E0E0;
+    text-shadow: 0 0 10px #E0E0E0, 0 0 20px #808080;
+}
+
+.producto-card[data-producto="Bebida del día"] h3 {
+    color: #FFFFFF;
+    text-shadow: 0 0 10px #FFFFFF, 0 0 20px #AAAAAA;
+}
+
+/* ===== CARRITO (SIN SCROLL EXTERNO) ===== */
 .modal {
     display: none;
     position: fixed;
@@ -65,6 +72,7 @@ h1 {
     height: 100%;
     background: rgba(0,0,0,0.8);
     z-index: 1000;
+    overflow: hidden; /* Bloquea scroll */
 }
 
 .modal-contenido {
@@ -73,49 +81,15 @@ h1 {
     padding: 20px;
     width: 80%;
     max-width: 500px;
+    max-height: 70vh; /* Altura máxima */
     border-radius: 10px;
     border: 2px solid #FFD700;
+    overflow-y: auto; /* Scroll interno */
 }
 
-/* Carrito flotante */
-.carrito-flotante {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #FFD700;
-    color: black;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 0 15px #FFD700;
-    z-index: 900;
-}
-
-/* Formulario de opciones */
-.opcion-grupo {
-    margin: 15px 0;
-}
-
-.opcion-grupo h3 {
-    color: #FFD700;
-    margin-bottom: 10px;
-}
-
-.opcion-grupo label {
-    display: block;
-    margin: 5px 0;
-    cursor: pointer;
-}
-
-/* Punto de recolección */
-#recoleccion {
-    margin-top: 50px;
-    text-align: center;
-    padding: 20px;
-    background: rgba(20,20,20,0.7);
-    border-top: 1px solid #333;
+/* ===== PUNTO DE RECOLECCIÓN ===== */
+#recoleccion a {
+    color: #FFFFFF !important;
+    text-decoration: none;
+    font-size: 1.1em;
 }

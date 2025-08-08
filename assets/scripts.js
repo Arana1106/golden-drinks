@@ -10,6 +10,7 @@ const cerrarModal = document.getElementById('cerrar-modal');
 const listaCarrito = document.getElementById('lista-carrito');
 const totalCarrito = document.getElementById('total-carrito');
 const whatsappBtn = document.getElementById('whatsapp-btn');
+const confirmarOpcionesBtn = document.getElementById('confirmar-opciones');
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Event listeners
     carritoBtn.addEventListener('click', mostrarCarrito);
-    cerrarModal.addEventListener('click', () => modalCarrito.style.display = 'none');
+    cerrarModal.addEventListener('click', cerrarModalCarrito);
     whatsappBtn.addEventListener('click', enviarWhatsApp);
-    document.getElementById('confirmar-opciones').addEventListener('click', confirmarSeleccion);
+    confirmarOpcionesBtn.addEventListener('click', confirmarSeleccion);
 });
 
 // Cargar productos desde JSON
@@ -47,6 +48,7 @@ function renderizarProductos(data) {
             const producto = data[categoria][nombreProducto];
             const card = document.createElement('div');
             card.className = 'producto-card';
+            card.setAttribute('data-producto', nombreProducto);
             card.innerHTML = `
                 <h3>${nombreProducto}</h3>
                 <p>${producto.descripcion}</p>
@@ -137,6 +139,7 @@ function mostrarOpciones(producto) {
     // Guardar referencia al producto actual
     modal.dataset.producto = JSON.stringify(producto);
     modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
 
 // Confirmar selección de opciones
@@ -146,11 +149,11 @@ function confirmarSeleccion() {
     
     // Obtener selecciones
     const opciones = {
-        alcohol: document.querySelector('input[name="alcohol"]:checked')?.value,
-        jelly: document.querySelector('input[name="jelly"]:checked')?.value,
-        azucar: document.querySelector('input[name="azucar"]:checked')?.value,
-        leche: document.querySelector('input[name="leche"]:checked')?.value,
-        coffee_bubble: document.querySelector('input[name="coffee_bubble"]:checked')?.value
+        alcohol: modal.querySelector('input[name="alcohol"]:checked')?.value,
+        jelly: modal.querySelector('input[name="jelly"]:checked')?.value,
+        azucar: modal.querySelector('input[name="azucar"]:checked')?.value,
+        leche: modal.querySelector('input[name="leche"]:checked')?.value,
+        coffee_bubble: modal.querySelector('input[name="coffee_bubble"]:checked')?.value
     };
 
     // Agregar al carrito
@@ -160,7 +163,18 @@ function confirmarSeleccion() {
         cantidad: 1
     });
 
-    modal.style.display = 'none';
+    cerrarModalOpciones();
+}
+
+// Cerrar modales
+function cerrarModalOpciones() {
+    document.getElementById('modal-opciones').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function cerrarModalCarrito() {
+    modalCarrito.style.display = 'none';
+    document.body.style.overflow = 'auto';
 }
 
 // Agregar producto al carrito
@@ -206,6 +220,7 @@ function mostrarCarrito() {
 
     totalCarrito.textContent = `Total: $${total} MXN`;
     modalCarrito.style.display = 'block';
+    document.body.style.overflow = 'hidden';
 }
 
 // Eliminar producto del carrito
@@ -224,6 +239,12 @@ function actualizarCarritoUI() {
 
 // Enviar pedido por WhatsApp
 function enviarWhatsApp() {
+    const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+    if (totalProductos < MIN_PEDIDO) {
+        alert(`¡Pedido mínimo de ${MIN_PEDIDO} productos! Actual: ${totalProductos}`);
+        return;
+    }
+
     let mensaje = "¡Hola! Quiero hacer este pedido:%0A%0A";
     let total = 0;
 
