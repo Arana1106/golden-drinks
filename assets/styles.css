@@ -63,28 +63,31 @@ h1 {
 }
 
 /* ===== CARRITO (SIN SCROLL EXTERNO) ===== */
-.modal {
-    display: none;
+/* === Botón del Carrito (Nuevo Estilo) === */
+.carrito-flotante {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
+    top: 20px;          /* Posición superior */
+    right: 20px;        /* Posición derecha */
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    color: #000;
+    width: 80px;        /* Más ancho */
+    height: 80px;       /* Más alto */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 20px #FFD700;
     z-index: 1000;
-    overflow: hidden; /* Bloquea scroll */
+    font-size: 1.2em;   /* Texto más grande */
+    border: none;
+    transition: all 0.3s;
 }
 
-.modal-contenido {
-    background: #1a1a1a;
-    margin: 5% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 500px;
-    max-height: 70vh; /* Altura máxima */
-    border-radius: 10px;
-    border: 2px solid #FFD700;
-    overflow-y: auto; /* Scroll interno */
+.carrito-flotante:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #FFD700;
 }
 
 /* ===== PUNTO DE RECOLECCIÓN ===== */
