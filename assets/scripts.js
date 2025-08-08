@@ -76,6 +76,9 @@ function renderizarProductos(data) {
 function crearTarjetaProducto(nombre, producto, categoria) {
     const card = document.createElement('div');
     card.className = 'producto-card';
+    card.setAttribute('data-producto', nombre); // 🔥 Línea nueva
+    // ... (resto del código igual)
+}
     card.innerHTML = `
         <h3>${nombre}</h3>
         <p>${producto.descripcion}</p>
@@ -163,9 +166,24 @@ function mostrarOpciones(producto, categoria) {
         `;
         
         // Mostrar opciones de jelly solo si seleccionan alcohol
-        document.querySelectorAll('[data-tipo="alcohol"]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                productoSeleccionado.opciones.alcohol = btn.dataset.valor;
+        // REEMPLAZAR este bloque:
+document.querySelectorAll('[data-tipo="jelly"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        productoSeleccionado.opciones.jelly = btn.dataset.valor;
+        
+        // Actualizar precio
+        const precioJelly = btn.dataset.valor === 'si' ? producto.opciones.jelly.si : 0;
+        const precioAlcohol = productoSeleccionado.opciones.alcohol === 'con' ? 
+            producto.opciones.alcohol.con : 0;
+        productoSeleccionado.precioUnitario = producto.base + precioAlcohol + precioJelly;
+        
+        // Habilitar confirmar SI ambos están seleccionados
+        if (productoSeleccionado.opciones.alcohol !== undefined && 
+            productoSeleccionado.opciones.jelly !== undefined) {
+            btnConfirmar.disabled = false;
+        }
+    });
+});
                 
                 // Validar INE para alcohol
                 if (btn.dataset.valor === 'con') {
