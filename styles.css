@@ -1,34 +1,61 @@
-/* Título */
-.titulo-tag-dorado {
-  font-family: 'Press Start 2P', cursive;
+/* ESTILO TAG 3D */
+.titulo-tag3d {
+  font-family: 'Arial Black', sans-serif;
   color: #FFD700;
-  text-shadow: 0 0 10px #FFD700;
+  text-shadow: 
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 20px 0;
 }
 
-/* Botón Carrito */
-.cart-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+/* FONDO ARENA NEGRA */
+.arena-negra {
+  background: #1a1a1a;
+  background-image: radial-gradient(#333 1px, transparent 1px);
+  background-size: 15px 15px;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-/* Productos */
+/* PRODUCTOS */
 .producto {
+  display: flex;
+  flex-direction: column;
   background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
   padding: 15px;
-  margin: 10px;
-  border-radius: 5px;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid;
 }
 
-/* Colores por categoría */
-.red-fire { border-left: 5px solid #FF073A; }   /* Rojo */
-.green-corp { border-left: 5px solid #39FF14; } /* Verde */
-.dark-side { border-left: 5px solid #9D00FF; }  /* Morado */
-.blue-sea { border-left: 5px solid #00F3FF; }   /* Azul */
-.cafe-remix { border-left: 5px solid #E2725B; } /* Café */
-.cafe-descafeinado { border-left: 5px solid #FFA500; } /* Naranja */
-.te { border-left: 5px solid #E0E0E0; }         /* Blanco */
+/* Colores de texto y bordes */
+.producto[data-id="1"] h3, .producto[data-id="1"] .borde-color { color: #FF073A; background: #FF073A; }
+.producto[data-id="2"] h3, .producto[data-id="2"] .borde-color { color: #39FF14; background: #39FF14; }
+.producto[data-id="3"] h3, .producto[data-id="3"] .borde-color { color: #9D00FF; background: #9D00FF; }
+.producto[data-id="4"] h3, .producto[data-id="4"] .borde-color { color: #00F3FF; background: #00F3FF; }
+.producto[data-id="5"] h3, .producto[data-id="5"] .borde-color { color: #E2725B; background: #E2725B; }
+.producto[data-id="6"] h3, .producto[data-id="6"] .borde-color { color: #FFA500; background: #FFA500; }
+.producto[data-id="7"] h3, .producto[data-id="7"] .borde-color { color: #E0E0E0; background: #E0E0E0; }
+.producto[data-id="8"] h3, .producto[data-id="8"] .borde-color { color: #FFFFFF; background: #FFFFFF; }
+
+/* CARRITO */
+#carrito {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  background: #1a1a1a;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+.carrito-oculto { transform: translateX(100%); }

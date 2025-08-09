@@ -3,156 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
   <title>Golden Drinks</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- Título -->
-  <h1 class="titulo-dorado">GOLDEN DRINKS</h1>
+<body class="arena-negra">
+  <header>
+    <h1 class="titulo-tag3d">GOLDEN DRINKS</h1>
+    <button id="carrito-btn">🛒<span id="contador">0</span></button>
+  </header>
 
-  <!-- Botón Carrito -->
-  <button class="cart-btn" id="btn-carrito">🛒</button>
-
-  <!-- Contenedor Productos -->
-  <main id="productos-container">
-    <!-- 🍹 BEBIDAS -->
-    <section class="categoria">
-      <h2>BEBIDAS ($35 MXN)</h2>
-      <div class="producto red-fire" id="red-fire-smoke">
-        <h3>Red Fire Smoke</h3>
-        <p>Frutos rojos + smoke</p>
-        <button class="btn-add" data-id="red-fire-smoke">Agregar</button>
-      </div>
-      <div class="producto green-corp" id="green-corp-smoke">
-        <h3>Green Corp Smoke</h3>
-        <p>Manzana verde + smoke</p>
-        <button class="btn-add" data-id="green-corp-smoke">Agregar</button>
-      </div>
-      <div class="producto dark-side" id="dark-side-smoke">
-        <h3>Dark Side Smoke</h3>
-        <p>Frutos del bosque + smoke</p>
-        <button class="btn-add" data-id="dark-side-smoke">Agregar</button>
-      </div>
-      <div class="producto blue-sea" id="blue-sea-smoke">
-        <h3>Blue Sea Smoke</h3>
-        <p>Blueberry + smoke</p>
-        <button class="btn-add" data-id="blue-sea-smoke">Agregar</button>
-      </div>
-    </section>
-
-    <!-- ☕ CAFÉS -->
-    <section class="categoria">
-      <h2>CAFÉS ($25 MXN)</h2>
-      <div class="producto cafe-remix" id="cafe-remix">
-        <h3>Café Remix</h3>
-        <p>Frío</p>
-        <button class="btn-add" data-id="cafe-remix">Agregar</button>
-      </div>
-      <div class="producto cafe-descafeinado" id="cafe-descafeinado">
-        <h3>Café Descafeinado</h3>
-        <p>Frío</p>
-        <button class="btn-add" data-id="cafe-descafeinado">Agregar</button>
-      </div>
-    </section>
-
-    <!-- 🍵 TÉS -->
-    <section class="categoria">
-      <h2>TÉS ($25 MXN)</h2>
-      <div class="producto te" id="te-del-dia">
-        <h3>Té del Día</h3>
-        <p>Frío</p>
-        <button class="btn-add" data-id="te-del-dia">Agregar</button>
-      </div>
-      <div class="producto te" id="bebida-del-dia">
-        <h3>Bebida del Día</h3>
-        <p>Sabor sorpresa</p>
-        <button class="btn-add" data-id="bebida-del-dia">Agregar</button>
-=======
-  <title>GOLDEN DRINKS | SMOKE EFFECT</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <!-- Banner Smoke -->
-  <div class="banner-smoke">
-    ✨ PEDIDO MÍNIMO DE 4 PRODUCTOS PARA EL EFECTO SMOKE ✨
-  </div>
-
-  <!-- Botón Carrito -->
-  <button class="cart-btn">
-    <img src="assets/carrito-icono.png" alt="Carrito" width="40">
-  </button>
-
-  <!-- Productos -->
-  <main id="productos">
-    <!-- 🍹 BEBIDAS SMOKE ($35) -->
-    <section class="categoria">
-      <h2>BEBIDAS SMOKE ($35 MXN)</h2>
-      <div class="product-card red-fire" id="red-fire-smoke">
-        <h3>Red Fire Smoke</h3>
-        <p>Frutos rojos + smoke</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-      <div class="product-card green-corp" id="green-corp-smoke">
-        <h3>Green Corp Smoke</h3>
-        <p>Manzana verde + smoke</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-      <div class="product-card dark-side" id="dark-side-smoke">
-        <h3>Dark Side Smoke</h3>
-        <p>Frutos del bosque + smoke</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-      <div class="product-card blue-sea" id="blue-sea-smoke">
-        <h3>Blue Sea Smoke</h3>
-        <p>Blueberry + smoke</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-    </section>
-
-    <!-- ☕ CAFÉS ($25) -->
-    <section class="categoria">
-      <h2>CAFÉS ($25 MXN)</h2>
-      <div class="product-card cafe-remix" id="cafe-remix">
-        <h3>Café Remix</h3>
-        <p>Frío</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-      <div class="product-card cafe-descafeinado" id="cafe-descafeinado">
-        <h3>Café Descafeinado</h3>
-        <p>Frío</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-    </section>
-
-    <!-- 🍵 TÉS ($25) -->
-    <section class="categoria">
-      <h2>TÉS ($25 MXN)</h2>
-      <div class="product-card te" id="te-del-dia">
-        <h3>Té del Día</h3>
-        <p>Frío</p>
-        <button class="btn-add">Agregar</button>
-      </div>
-      <div class="product-card te" id="bebida-del-dia">
-        <h3>Bebida del Día</h3>
-        <p>Sabor sorpresa</p>
-        <button class="btn-add">Agregar</button>
->>>>>>> 4addb7795351f3a1568d028871b1eba7106274b8
-      </div>
-    </section>
+  <main id="menu">
+    <!-- Productos se generan automáticamente via JavaScript -->
   </main>
 
-  <!-- Datos Bancarios -->
-  <div id="datos-bancarios">
-    <p>Titular: Eric Daniel Gutiérrez Arana</p>
-    <p>CLABE: 012 261 01584933343 3 (BBVA)</p>
-<<<<<<< HEAD
-    <p>📍 <a href="https://maps.google.com/?q=Calle+Coral+120,Estrella,CDMX" target="_blank">Calle Coral 120, CDMX</a></p>
-=======
-    <p>📍 <a href="https://maps.google.com/?q=Calle+Coral+120,Estrella,CDMX" target="_blank" class="link-maps">Calle Coral 120, colonia Estrella, CDMX</a></p>
->>>>>>> 4addb7795351f3a1568d028871b1eba7106274b8
+  <!-- Modal de opciones -->
+  <div id="modal-opciones" class="modal-oculto"></div>
+
+  <!-- Carrito -->
+  <div id="carrito" class="carrito-oculto">
+    <h3>Tu Pedido <span id="cerrar-carrito">✕</span></h3>
+    <ul id="lista-carrito"></ul>
+    <p class="minimo">Mínimo 4 productos para pedir</p>
+    <p class="total">Total: $<span id="total">0</span> MXN</p>
+    <button id="pagar-btn" disabled>Proceder al pago</button>
   </div>
 
-  <script src="js/scripts.js"></script>
+  <!-- Datos bancarios -->
+  <div id="datos-banco" class="oculto">
+    <h3>Datos Bancarios</h3>
+    <p>Titular: <strong>Eric Daniel Gutiérrez Arana</strong></p>
+    <p>CLABE: <strong>012 261 01584933343 3 (BBVA)</strong></p>
+    <button id="whatsapp-btn">Solicitar pedido vía WhatsApp</button>
+    <p class="leyenda">⚠️ Tienes 5 minutos para modificar tu pedido después de pagar.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <h3>Puntos de recolección</h3>
+    <a href="https://maps.google.com/?q=Calle+Coral+120,Ciudad+de+México" target="_blank">
+      Calle Coral 120, CDMX
+    </a>
+    <p id="horarios"></p>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
