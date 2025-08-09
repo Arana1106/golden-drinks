@@ -1,0 +1,34 @@
+/* Título */
+.titulo-tag-dorado {
+  font-family: 'Press Start 2P', cursive;
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700;
+}
+
+/* Botón Carrito */
+.cart-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Productos */
+.producto {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* Colores por categoría */
+.red-fire { border-left: 5px solid #FF073A; }   /* Rojo */
+.green-corp { border-left: 5px solid #39FF14; } /* Verde */
+.dark-side { border-left: 5px solid #9D00FF; }  /* Morado */
+.blue-sea { border-left: 5px solid #00F3FF; }   /* Azul */
+.cafe-remix { border-left: 5px solid #E2725B; } /* Café */
+.cafe-descafeinado { border-left: 5px solid #FFA500; } /* Naranja */
+.te { border-left: 5px solid #E0E0E0; }         /* Blanco */
