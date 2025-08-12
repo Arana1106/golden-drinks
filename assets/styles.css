@@ -33,15 +33,13 @@ body {
     font-size: 3rem;
 }
 
-/* CATEGORÍAS */
-.categoria {
-    margin-bottom: 30px;
-}
-
+/* CATEGORÍAS - TEXTO DORADO */
 .categoria-titulo {
     padding: 10px 15px;
     font-size: 1.8rem;
     margin-bottom: 15px;
+    color: #FFD700; /* Texto dorado */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
 /* PRODUCTOS */
@@ -58,13 +56,22 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* COLORES ESPECÍFICOS POR PRODUCTO */
+.producto-card h3[data-producto="Red Fire"] { color: #FF073A; } /* Rojo */
+.producto-card h3[data-producto="Green Corp"] { color: #39FF14; } /* Verde */
+.producto-card h3[data-producto="Dark Side"] { color: #9D00FF; } /* Morado */
+.producto-card h3[data-producto="Blue Sea"] { color: #00F3FF; } /* Azul */
+.producto-card h3[data-producto="Café Remix"] { color: #E2725B; } /* Café terracota */
+.producto-card h3[data-producto="Café Descafeinado"] { color: #FFA500; } /* Naranja */
+.producto-card h3[data-producto="Té del Día"],
+.producto-card h3[data-producto="Bebida del Día"] { color: #E0E0E0; } /* Blanco */
+
 .producto-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
 .producto-card h3 {
-    color: inherit;
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
@@ -94,7 +101,7 @@ button {
     margin-top: 15px;
 }
 
-#seguir-pidiendo {
+#seguir-pidiendo, .btn-regresar {
     background: #333;
     color: white;
     width: 100%;
@@ -131,85 +138,6 @@ button:active {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
-}
-
-/* OPCIONES DE PRODUCTO */
-.opcion-grupo {
-    margin-bottom: 20px;
-}
-
-.opcion-grupo h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
-.opcion-grupo label {
-    display: block;
-    margin: 8px 0;
-    cursor: pointer;
-}
-
-.opcion-grupo input[type="radio"] {
-    margin-right: 10px;
-}
-
-.advertencia {
-    color: #FF073A;
-    font-size: 0.9rem;
-    margin-top: 5px;
-}
-
-/* CARRITO */
-#lista-carrito {
-    margin: 20px 0;
-}
-
-.item-carrito {
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
-}
-
-.item-carrito h4 {
-    margin: 5px 0;
-    font-size: 1.1rem;
-}
-
-.item-carrito p {
-    margin: 3px 0;
-    font-size: 0.9rem;
-}
-
-.item-carrito button {
-    padding: 8px 15px;
-    font-size: 14px;
-    margin-top: 10px;
-    background: #FF073A;
-    color: white;
-}
-
-.total {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin: 20px 0;
-    text-align: right;
-}
-
-/* FOOTER */
-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-}
-
-.direccion {
-    color: #FFD700;
-    text-decoration: none;
-    display: block;
-    margin: 10px 0;
-}
-
-#horarios p {
-    margin: 5px 0;
 }
 
 /* RESPONSIVE */
