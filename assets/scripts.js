@@ -92,6 +92,7 @@ const confirmarOpcionesBtn = document.getElementById('confirmar-opciones');
 const regresarModalBtn = document.getElementById('regresar-modal');
 const tituloModal = document.getElementById('titulo-modal');
 const formularioOpciones = document.getElementById('formulario-opciones');
+const cerrarModalOpcionesBtn = document.querySelector('#modal-opciones .cerrar-modal');
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappBtn.addEventListener('click', enviarWhatsApp);
     confirmarOpcionesBtn.addEventListener('click', confirmarSeleccion);
     regresarModalBtn.addEventListener('click', cerrarModalOpciones);
+    cerrarModalOpcionesBtn.addEventListener('click', cerrarModalOpciones);
     seguirPidiendoBtn.addEventListener('click', cerrarModalCarrito);
 });
 
@@ -113,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderizarProductos() {
     for (const categoria in productos) {
         const container = document.getElementById(`${categoria}-container`);
-        container.innerHTML = ''; // Limpiar contenedor
+        container.innerHTML = '';
 
         for (const nombreProducto in productos[categoria]) {
             const producto = productos[categoria][nombreProducto];

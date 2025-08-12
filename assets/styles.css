@@ -38,7 +38,7 @@ body {
     padding: 10px 15px;
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #FFD700; /* Texto dorado */
+    color: #FFD700;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
@@ -57,14 +57,14 @@ body {
 }
 
 /* COLORES ESPECÍFICOS POR PRODUCTO */
-.producto-card h3[data-producto="Red Fire"] { color: #FF073A; } /* Rojo */
-.producto-card h3[data-producto="Green Corp"] { color: #39FF14; } /* Verde */
-.producto-card h3[data-producto="Dark Side"] { color: #9D00FF; } /* Morado */
-.producto-card h3[data-producto="Blue Sea"] { color: #00F3FF; } /* Azul */
+.producto-card h3[data-producto="Red Fire"] { color: #FF073A; } /* Rojo neón */
+.producto-card h3[data-producto="Green Corp"] { color: #39FF14; } /* Verde neón */
+.producto-card h3[data-producto="Dark Side"] { color: #9D00FF; } /* Morado neón */
+.producto-card h3[data-producto="Blue Sea"] { color: #00F3FF; } /* Azul neón */
 .producto-card h3[data-producto="Café Remix"] { color: #E2725B; } /* Café terracota */
-.producto-card h3[data-producto="Café Descafeinado"] { color: #FFA500; } /* Naranja */
-.producto-card h3[data-producto="Té del Día"],
-.producto-card h3[data-producto="Bebida del Día"] { color: #E0E0E0; } /* Blanco */
+.producto-card h3[data-producto="Café Descafeinado"] { color: #FFA500; } /* Naranja neón */
+.producto-card h3[data-producto="Té del Día"] { color: #E0E0E0; } /* Gris neón */
+.producto-card h3[data-producto="Bebida del Día"] { color: #E0E0E0; } /* Blanco neón */
 
 .producto-card:hover {
     transform: translateY(-5px);
@@ -138,6 +138,7 @@ button:active {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
+    color: #FFD700;
 }
 
 /* RESPONSIVE */
