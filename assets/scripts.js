@@ -1,311 +1,494 @@
-// assets/scripts.js - CÓDIGO COMPLETO OPTIMIZADO
+// Datos completos de productos
+const productos = {
+    bebidas: {
+        "Red Fire": {
+            descripcion: "Bebida sabor frutos rojos 475ml",
+            base: 35,
+            opciones: {
+                alcohol: {
+                    sin: 0,
+                    con: 10,
+                    advertencia: "🚨 Se solicitará INE para bebidas con alcohol"
+                },
+                jelly: {
+                    no: 0,
+                    si: 5
+                }
+            }
+        },
+        "Green Corp": {
+            descripcion: "Bebida sabor manzana verde 475ml",
+            base: 35,
+            opciones: {
+                alcohol: {
+                    sin: 0,
+                    con: 10,
+                    advertencia: "🚨 Se solicitará INE para bebidas con alcohol"
+                },
+                jelly: {
+                    no: 0,
+                    si: 5
+                }
+            }
+        },
+        "Dark Side": {
+            descripcion: "Bebida sabor frutos del bosque 475ml",
+            base: 35,
+            opciones: {
+                alcohol: {
+                    sin: 0,
+                    con: 10,
+                    advertencia: "🚨 Se solicitará INE para bebidas con alcohol"
+                },
+                jelly: {
+                    no: 0,
+                    si: 5
+                }
+            }
+        },
+        "Blue Sea": {
+            descripcion: "Bebida sabor blueberry 475ml",
+            base: 35,
+            opciones: {
+                alcohol: {
+                    sin: 0,
+                    con: 10,
+                    advertencia: "🚨 Se solicitará INE para bebidas con alcohol"
+                },
+                jelly: {
+                    no: 0,
+                    si: 5
+                }
+            }
+        }
+    },
+    cafes: {
+        "Café Remix": {
+            descripcion: "Café deconstruido frío 475ml",
+            base: 25,
+            opciones: {
+                leche: {
+                    sin: 0,
+                    con: 10,
+                    deslactosada: 10
+                },
+                azucar: {
+                    sin: 0,
+                    con: 0,
+                    sustituto: 0
+                },
+                coffee_bubble: {
+                    no: 0,
+                    si: 10
+                }
+            }
+        },
+        "Café Descafeinado": {
+            descripcion: "Café descafeinado frío 475ml",
+            base: 25,
+            opciones: {
+                leche: {
+                    sin: 0,
+                    con: 10,
+                    deslactosada: 10
+                },
+                azucar: {
+                    sin: 0,
+                    con: 0,
+                    sustituto: 0
+                },
+                coffee_bubble: {
+                    no: 0,
+                    si: 10
+                }
+            }
+        }
+    },
+    tes: {
+        "Té del Día": {
+            descripcion: "Clásico té del día frío 475ml",
+            base: 25,
+            opciones: {
+                azucar: {
+                    sin: 0,
+                    con: 0,
+                    sustituto: 0
+                },
+                jelly: {
+                    no: 0,
+                    si: 5
+                }
+            }
+        },
+        "Bebida del Día": {
+            descripcion: "Pregunta por los sabores 475ml",
+            base: 25,
+            opciones: {
+                azucar: {
+                    sin: 0,
+                    con: 0,
+                    sustituto: 0
+                },
+                jelly: {
+                    no: 0,
+                    si: 5
+                }
+            }
+        }
+    }
+};
 
-// ======================
-// 📦 DATOS DE PRODUCTOS
-// ======================
-const productos = [
-  // -------- BEBIDAS --------
-  {
-    id: 1,
-    nombre: "Red Fire",
-    categoria: "bebidas",
-    precioBase: 35,
-    descripcion: "Bebida sabor frutos rojos 475ml",
-    opciones: {
-      alcohol: [
-        { texto: "Sin alcohol (+$0)", precio: 0 }, 
-        { texto: "Con alcohol (+$10) 🚨 INE requerida", precio: 10 }
-      ],
-      bubbleJelly: [
-        { texto: "Sí (+$5)", precio: 5 }, 
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-  {
-    id: 2,
-    nombre: "Green Corp",
-    categoria: "bebidas",
-    precioBase: 35,
-    descripcion: "Bebida sabor manzana verde 475ml",
-    opciones: {
-      alcohol: [
-        { texto: "Sin alcohol (+$0)", precio: 0 }, 
-        { texto: "Con alcohol (+$10) 🚨 INE requerida", precio: 10 }
-      ],
-      bubbleJelly: [
-        { texto: "Sí (+$5)", precio: 5 }, 
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-  {
-    id: 3,
-    nombre: "Dark Side",
-    categoria: "bebidas",
-    precioBase: 35,
-    descripcion: "Bebida sabor frutos del bosque 475ml",
-    opciones: {
-      alcohol: [
-        { texto: "Sin alcohol (+$0)", precio: 0 }, 
-        { texto: "Con alcohol (+$10) 🚨 INE requerida", precio: 10 }
-      ],
-      bubbleJelly: [
-        { texto: "Sí (+$5)", precio: 5 }, 
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-  {
-    id: 4,
-    nombre: "Blue Sea",
-    categoria: "bebidas",
-    precioBase: 35,
-    descripcion: "Bebida sabor blueberry 475ml",
-    opciones: {
-      alcohol: [
-        { texto: "Sin alcohol (+$0)", precio: 0 }, 
-        { texto: "Con alcohol (+$10) 🚨 INE requerida", precio: 10 }
-      ],
-      bubbleJelly: [
-        { texto: "Sí (+$5)", precio: 5 }, 
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-
-  // -------- CAFÉS --------
-  {
-    id: 5,
-    nombre: "Café Remix",
-    categoria: "cafes",
-    precioBase: 25,
-    descripcion: "Café deconstruido frío 475ml",
-    opciones: {
-      leche: [
-        { texto: "Sin leche (+$0)", precio: 0 },
-        { texto: "Con leche (+$10)", precio: 10 },
-        { texto: "Leche deslactosada (+$10)", precio: 10 }
-      ],
-      azucar: [
-        { texto: "Sin azúcar", precio: 0 },
-        { texto: "Con azúcar", precio: 0 },
-        { texto: "Sustituto de azúcar", precio: 0 }
-      ],
-      coffeeBubble: [
-        { texto: "Sí (+$10)", precio: 10 },
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-  {
-    id: 6,
-    nombre: "Café Descafeinado",
-    categoria: "cafes",
-    precioBase: 25,
-    descripcion: "Café descafeinado frío 475ml",
-    opciones: {
-      leche: [
-        { texto: "Sin leche (+$0)", precio: 0 },
-        { texto: "Con leche (+$10)", precio: 10 },
-        { texto: "Leche deslactosada (+$10)", precio: 10 }
-      ],
-      azucar: [
-        { texto: "Sin azúcar", precio: 0 },
-        { texto: "Con azúcar", precio: 0 },
-        { texto: "Sustituto de azúcar", precio: 0 }
-      ],
-      coffeeBubble: [
-        { texto: "Sí (+$10)", precio: 10 },
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-
-  // -------- TÉS --------
-  {
-    id: 7,
-    nombre: "Té del Día",
-    categoria: "tes",
-    precioBase: 25,
-    descripcion: "Clásico té del día frío 475ml",
-    opciones: {
-      azucar: [
-        { texto: "Sin azúcar", precio: 0 },
-        { texto: "Con azúcar", precio: 0 },
-        { texto: "Sustituto de azúcar", precio: 0 }
-      ],
-      bubbleJelly: [
-        { texto: "Sí (+$5)", precio: 5 },
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  },
-  {
-    id: 8,
-    nombre: "Bebida del Día",
-    categoria: "tes",
-    precioBase: 25,
-    descripcion: "Pregunta por los sabores 475ml",
-    opciones: {
-      azucar: [
-        { texto: "Sin azúcar", precio: 0 },
-        { texto: "Con azúcar", precio: 0 },
-        { texto: "Sustituto de azúcar", precio: 0 }
-      ],
-      bubbleJelly: [
-        { texto: "Sí (+$5)", precio: 5 },
-        { texto: "No (+$0)", precio: 0 }
-      ]
-    }
-  }
-];
-
-// ======================
-// 🛒 CARRITO Y ESTADO
-// ======================
+// Variables globales
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-let productoActual = null;
+const MIN_PEDIDO = 4;
 
-// ======================
-// 🎯 FUNCIONES PRINCIPALES
-// ======================
+// Elementos del DOM
+const carritoBtn = document.getElementById('carrito-btn');
+const contadorCarrito = document.getElementById('contador');
+const modalCarrito = document.getElementById('modal-carrito');
+const modalOpciones = document.getElementById('modal-opciones');
+const cerrarModalCarritoBtn = document.getElementById('cerrar-carrito');
+const listaCarrito = document.getElementById('lista-carrito');
+const totalCarrito = document.getElementById('total-carrito');
+const whatsappBtn = document.getElementById('whatsapp-btn');
+const seguirPidiendoBtn = document.getElementById('seguir-pidiendo');
+const confirmarOpcionesBtn = document.getElementById('confirmar-opciones');
 
-function mostrarModalOpciones(producto) {
-  productoActual = producto;
-  const modal = document.getElementById('modal-opciones');
-  document.getElementById('modal-titulo').textContent = producto.nombre;
-  
-  let opcionesHTML = '';
-  if (producto.categoria === 'bebidas') {
-    opcionesHTML = `
-      <div class="opcion-grupo">
-        <label>Alcohol:</label>
-        <select id="alcohol">
-          ${producto.opciones.alcohol.map(op => `
-            <option value="${op.precio}">${op.texto}</option>
-          `).join('')}
-        </select>
-      </div>
-      <div class="opcion-grupo">
-        <label>Bubble Jelly:</label>
-        <select id="bubbleJelly">
-          ${producto.opciones.bubbleJelly.map(op => `
-            <option value="${op.precio}">${op.texto}</option>
-          `).join('')}
-        </select>
-      </div>
-    `;
-  } 
-  // ... (Agregar lógica similar para cafés y tés)
-
-  document.getElementById('modal-opciones-container').innerHTML = opcionesHTML;
-  modal.classList.remove('modal-oculto');
-}
-
-function agregarAlCarrito() {
-  if (!productoActual) return;
-
-  const producto = productoActual;
-  let precioExtra = 0;
-  let opcionesTexto = [];
-
-  if (producto.categoria === 'bebidas') {
-    const alcohol = document.getElementById('alcohol');
-    const jelly = document.getElementById('bubbleJelly');
-    precioExtra = parseInt(alcohol.value) + parseInt(jelly.value);
-    opcionesTexto = [
-      alcohol.options[alcohol.selectedIndex].text.split('+')[0].trim(),
-      jelly.options[jelly.selectedIndex].text.split('+')[0].trim()
-    ];
-  }
-  // ... (Lógica similar para otras categorías)
-
-  carrito.push({
-    id: producto.id,
-    nombre: producto.nombre,
-    precio: producto.precioBase + precioExtra,
-    cantidad: 1,
-    opciones: opcionesTexto.join(', ')
-  });
-
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  actualizarCarrito();
-  cerrarModal();
-}
-
-function actualizarCarrito() {
-  const lista = document.getElementById('lista-carrito');
-  lista.innerHTML = '';
-  
-  let total = 0;
-  carrito.forEach((item, index) => {
-    total += item.precio * item.cantidad;
-    lista.innerHTML += `
-      <li>
-        ${item.nombre} (${item.opciones}) 
-        <span class="cantidad">
-          <button onclick="cambiarCantidad(${index}, -1)">-</button>
-          ${item.cantidad}
-          <button onclick="cambiarCantidad(${index}, 1)">+</button>
-        </span>
-        <button onclick="eliminarItem(${index})">🗑️</button>
-      </li>
-    `;
-  });
-
-  document.getElementById('total').textContent = total;
-  document.getElementById('contador').textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-  document.getElementById('pagar-btn').disabled = carrito.reduce((sum, item) => sum + item.cantidad, 0) < 4;
-}
-
-// ======================
-// 🏁 INICIALIZACIÓN
-// ======================
+// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
-  // Generar productos
-  const menu = document.getElementById('menu');
-  productos.forEach(producto => {
-    menu.innerHTML += `
-      <div class="producto" data-id="${producto.id}">
-        <h3>${producto.nombre}</h3>
-        <p>${producto.descripcion}</p>
-        <button class="agregar-btn" data-id="${producto.id}">Agregar</button>
-      </div>
-    `;
-  });
-
-  // Eventos
-  document.querySelectorAll('.agregar-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = parseInt(e.target.dataset.id);
-      const producto = productos.find(p => p.id === id);
-      mostrarModalOpciones(producto);
-    });
-  });
-
-  // Cerrar modal
-  document.querySelector('.cerrar-modal').addEventListener('click', cerrarModal);
+    renderizarProductos();
+    actualizarCarritoUI();
+    
+    // Event listeners
+    carritoBtn.addEventListener('click', mostrarCarrito);
+    cerrarModalCarritoBtn.addEventListener('click', cerrarModalCarrito);
+    whatsappBtn.addEventListener('click', enviarWhatsApp);
+    confirmarOpcionesBtn.addEventListener('click', confirmarSeleccion);
+    seguirPidiendoBtn.addEventListener('click', cerrarModalCarrito);
 });
 
-// ======================
-// 🛠️ FUNCIONES AUXILIARES
-// ======================
-function cerrarModal() {
-  document.getElementById('modal-opciones').classList.add('modal-oculto');
+// Mostrar productos en pantalla
+function renderizarProductos() {
+    for (const categoria in productos) {
+        const container = document.getElementById(`${categoria}-container`);
+        
+        for (const nombreProducto in productos[categoria]) {
+            const producto = productos[categoria][nombreProducto];
+            const card = document.createElement('div');
+            card.className = 'producto-card';
+            card.innerHTML = `
+                <h3>${nombreProducto}</h3>
+                <p>${producto.descripcion}</p>
+                <p class="precio">$${producto.base} MXN</p>
+                <button class="btn-seleccionar" 
+                        data-categoria="${categoria}"
+                        data-producto="${nombreProducto}">
+                    Seleccionar
+                </button>
+            `;
+            container.appendChild(card);
+        }
+    }
+
+    // Eventos para botones de selección
+    document.querySelectorAll('.btn-seleccionar').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const categoria = e.target.getAttribute('data-categoria');
+            const nombreProducto = e.target.getAttribute('data-producto');
+            const producto = {
+                nombre: nombreProducto,
+                categoria: categoria,
+                ...productos[categoria][nombreProducto]
+            };
+            mostrarOpciones(producto);
+        });
+    });
 }
 
-function cambiarCantidad(index, delta) {
-  carrito[index].cantidad += delta;
-  if (carrito[index].cantidad <= 0) {
+// Mostrar modal de opciones
+function mostrarOpciones(producto) {
+    const tituloModal = document.getElementById('titulo-modal');
+    const formulario = document.getElementById('formulario-opciones');
+
+    tituloModal.textContent = producto.nombre;
+    formulario.innerHTML = '';
+
+    // Generar opciones según categoría
+    if (producto.categoria === 'bebidas') {
+        formulario.innerHTML = `
+            <div class="opcion-grupo">
+                <h3>Alcohol:</h3>
+                <label><input type="radio" name="alcohol" value="sin" checked> Sin (+$${producto.opciones.alcohol.sin})</label>
+                <label><input type="radio" name="alcohol" value="con"> Con (+$${producto.opciones.alcohol.con})</label>
+                <p class="advertencia">${producto.opciones.alcohol.advertencia}</p>
+            </div>
+            <div class="opcion-grupo">
+                <h3>Bubble Jelly:</h3>
+                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
+                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
+            </div>
+        `;
+    } else if (producto.categoria === 'tes') {
+        formulario.innerHTML = `
+            <div class="opcion-grupo">
+                <h3>Azúcar:</h3>
+                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
+                <label><input type="radio" name="azucar" value="con"> Con</label>
+                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
+            </div>
+            <div class="opcion-grupo">
+                <h3>Bubble Jelly:</h3>
+                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
+                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
+            </div>
+        `;
+    } else if (producto.categoria === 'cafes') {
+        formulario.innerHTML = `
+            <div class="opcion-grupo">
+                <h3>Leche:</h3>
+                <label><input type="radio" name="leche" value="sin" checked> Sin (+$${producto.opciones.leche.sin})</label>
+                <label><input type="radio" name="leche" value="con"> Con (+$${producto.opciones.leche.con})</label>
+                <label><input type="radio" name="leche" value="deslactosada"> Deslactosada (+$${producto.opciones.leche.deslactosada})</label>
+            </div>
+            <div class="opcion-grupo">
+                <h3>Azúcar:</h3>
+                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
+                <label><input type="radio" name="azucar" value="con"> Con</label>
+                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
+            </div>
+            <div class="opcion-grupo">
+                <h3>Coffee Bubble:</h3>
+                <label><input type="radio" name="coffee_bubble" value="no" checked> No (+$${producto.opciones.coffee_bubble.no})</label>
+                <label><input type="radio" name="coffee_bubble" value="si"> Sí (+$${producto.opciones.coffee_bubble.si})</label>
+            </div>
+        `;
+    }
+
+    // Guardar referencia al producto actual
+    modalOpciones.dataset.producto = JSON.stringify(producto);
+    modalOpciones.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+}
+
+// Confirmar selección de opciones
+function confirmarSeleccion() {
+    const producto = JSON.parse(modalOpciones.dataset.producto);
+    const formulario = document.getElementById('formulario-opciones');
+    
+    // Obtener selecciones
+    const opciones = {
+        alcohol: formulario.querySelector('input[name="alcohol"]:checked')?.value,
+        jelly: formulario.querySelector('input[name="jelly"]:checked')?.value,
+        azucar: formulario.querySelector('input[name="azucar"]:checked')?.value,
+        leche: formulario.querySelector('input[name="leche"]:checked')?.value,
+        coffee_bubble: formulario.querySelector('input[name="coffee_bubble"]:checked')?.value
+    };
+
+    // Agregar al carrito
+    agregarAlCarrito({
+        ...producto,
+        seleccion: opciones,
+        cantidad: 1
+    });
+
+    cerrarModalOpciones();
+}
+
+// Cerrar modales
+function cerrarModalOpciones() {
+    modalOpciones.classList.add('modal-oculto');
+    document.body.style.overflow = 'auto';
+}
+
+function cerrarModalCarrito() {
+    modalCarrito.classList.add('modal-oculto');
+    document.body.style.overflow = 'auto';
+}
+
+// Agregar producto al carrito
+function agregarAlCarrito(item) {
+    carrito.push(item);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
+    cerrarModalOpciones();
+}
+
+// Mostrar carrito
+function mostrarCarrito() {
+    listaCarrito.innerHTML = '';
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+        let precioExtra = 0;
+        let extras = [];
+        
+        // Calcular extras según opciones
+        if (item.categoria === 'bebidas') {
+            if (item.seleccion.alcohol === 'con') {
+                precioExtra += item.opciones.alcohol.con;
+                extras.push('Con alcohol');
+            } else {
+                extras.push('Sin alcohol');
+            }
+            
+            if (item.seleccion.jelly === 'si') {
+                precioExtra += item.opciones.jelly.si;
+                extras.push('Con jelly');
+            } else {
+                extras.push('Sin jelly');
+            }
+        } 
+        else if (item.categoria === 'tes') {
+            if (item.seleccion.azucar === 'con') extras.push('Con azúcar');
+            else if (item.seleccion.azucar === 'sustituto') extras.push('Con sustituto');
+            else extras.push('Sin azúcar');
+            
+            if (item.seleccion.jelly === 'si') {
+                precioExtra += item.opciones.jelly.si;
+                extras.push('Con jelly');
+            } else {
+                extras.push('Sin jelly');
+            }
+        } 
+        else if (item.categoria === 'cafes') {
+            if (item.seleccion.leche === 'con') {
+                precioExtra += item.opciones.leche.con;
+                extras.push('Con leche');
+            } 
+            else if (item.seleccion.leche === 'deslactosada') {
+                precioExtra += item.opciones.leche.deslactosada;
+                extras.push('Con leche deslactosada');
+            } 
+            else {
+                extras.push('Sin leche');
+            }
+            
+            if (item.seleccion.azucar === 'con') extras.push('Con azúcar');
+            else if (item.seleccion.azucar === 'sustituto') extras.push('Con sustituto');
+            else extras.push('Sin azúcar');
+            
+            if (item.seleccion.coffee_bubble === 'si') {
+                precioExtra += item.opciones.coffee_bubble.si;
+                extras.push('Con coffee bubble');
+            } else {
+                extras.push('Sin coffee bubble');
+            }
+        }
+
+        const subtotal = (item.base + precioExtra) * item.cantidad;
+        total += subtotal;
+
+        const itemElement = document.createElement('div');
+        itemElement.className = 'item-carrito';
+        itemElement.innerHTML = `
+            <h4>${item.nombre} x${item.cantidad}</h4>
+            <p>${extras.join(', ')}</p>
+            <p>Subtotal: $${subtotal} MXN</p>
+            <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+        `;
+        listaCarrito.appendChild(itemElement);
+    });
+
+    totalCarrito.textContent = `Total: $${total} MXN`;
+    modalCarrito.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+}
+
+// Eliminar producto del carrito
+function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
-  }
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  actualizarCarrito();
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
+    mostrarCarrito();
 }
 
-function eliminarItem(index) {
-  carrito.splice(index, 1);
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  actualizarCarrito();
+// Actualizar interfaz del carrito
+function actualizarCarritoUI() {
+    contadorCarrito.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
 }
+
+// Enviar pedido por WhatsApp
+function enviarWhatsApp() {
+    const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+    if (totalProductos < MIN_PEDIDO) {
+        alert(`¡Pedido mínimo de ${MIN_PEDIDO} productos! Actual: ${totalProductos}`);
+        return;
+    }
+
+    let mensaje = "¡Hola! Quiero hacer este pedido:%0A%0A";
+    let total = 0;
+
+    carrito.forEach(item => {
+        let extras = [];
+        let precioExtra = 0;
+
+        if (item.categoria === 'bebidas') {
+            if (item.seleccion.alcohol === 'con') {
+                extras.push("con alcohol");
+                precioExtra += item.opciones.alcohol.con;
+            } else {
+                extras.push("sin alcohol");
+            }
+            if (item.seleccion.jelly === 'si') {
+                extras.push("con jelly");
+                precioExtra += item.opciones.jelly.si;
+            } else {
+                extras.push("sin jelly");
+            }
+        } 
+        else if (item.categoria === 'tes') {
+            if (item.seleccion.azucar === 'con') extras.push("con azúcar");
+            else if (item.seleccion.azucar === 'sustituto') extras.push("con sustituto");
+            else extras.push("sin azúcar");
+            
+            if (item.seleccion.jelly === 'si') {
+                extras.push("con jelly");
+                precioExtra += item.opciones.jelly.si;
+            } else {
+                extras.push("sin jelly");
+            }
+        } 
+        else if (item.categoria === 'cafes') {
+            if (item.seleccion.leche === 'con') {
+                extras.push("con leche");
+                precioExtra += item.opciones.leche.con;
+            } 
+            else if (item.seleccion.leche === 'deslactosada') {
+                extras.push("con leche deslactosada");
+                precioExtra += item.opciones.leche.deslactosada;
+            } 
+            else {
+                extras.push("sin leche");
+            }
+            
+            if (item.seleccion.azucar === 'con') extras.push("con azúcar");
+            else if (item.seleccion.azucar === 'sustituto') extras.push("con sustituto");
+            else extras.push("sin azúcar");
+            
+            if (item.seleccion.coffee_bubble === 'si') {
+                extras.push("con coffee bubble");
+                precioExtra += item.opciones.coffee_bubble.si;
+            } else {
+                extras.push("sin coffee bubble");
+            }
+        }
+
+        const subtotal = (item.base + precioExtra) * item.cantidad;
+        total += subtotal;
+
+        mensaje += `*${item.nombre}* x${item.cantidad}%0A`;
+        if (extras.length > 0) mensaje += `(${extras.join(", ")})%0A`;
+        mensaje += `$${subtotal} MXN%0A%0A`;
+    });
+
+    mensaje += `*Total: $${total} MXN*%0A%0A`;
+    mensaje += "Datos bancarios:%0A";
+    mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
+    mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
+    mensaje += "Nota: Tienes 5 minutos para modificaciones post-pago.";
+
+    window.open(`https://wa.me/525611649344?text=${mensaje}`, '_blank');
+}
+
+// Hacer funciones accesibles globalmente
+window.eliminarDelCarrito = eliminarDelCarrito;

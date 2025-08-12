@@ -7,44 +7,54 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="arena-negra">
-    <!-- Header con título y carrito -->
     <header>
         <h1 class="titulo-tag3d">GOLDEN DRINKS</h1>
         <button id="carrito-btn">🛒 <span id="contador">0</span></button>
     </header>
 
-    <!-- Menú de productos (se genera dinámicamente via JS) -->
-    <main id="menu"></main>
+    <main id="menu">
+        <!-- Bebidas -->
+        <section class="categoria">
+            <h2 class="categoria-titulo" style="border-left: 5px solid #FF073A;">🍹 Bebidas</h2>
+            <div class="productos-container" id="bebidas-container"></div>
+        </section>
 
-    <!-- Modal de opciones (oculto inicialmente) -->
+        <!-- Cafés -->
+        <section class="categoria">
+            <h2 class="categoria-titulo" style="border-left: 5px solid #E2725B;">☕ Cafés</h2>
+            <div class="productos-container" id="cafes-container"></div>
+        </section>
+
+        <!-- Tés -->
+        <section class="categoria">
+            <h2 class="categoria-titulo" style="border-left: 5px solid #E0E0E0;">🍵 Tés</h2>
+            <div class="productos-container" id="tes-container"></div>
+        </section>
+    </main>
+
+    <!-- Modal de Opciones -->
     <div id="modal-opciones" class="modal-oculto">
         <div class="modal-contenido">
             <span class="cerrar-modal">&times;</span>
-            <h3 id="modal-titulo"></h3>
-            <div id="modal-opciones-container"></div>
-            <button id="confirmar-opciones" style="padding: 12px 24px; font-size: 16px;">Agregar al carrito</button>
+            <h3 id="titulo-modal"></h3>
+            <form id="formulario-opciones"></form>
+            <button id="confirmar-opciones">Agregar al carrito</button>
         </div>
     </div>
 
-    <!-- Carrito de compras (oculto inicialmente) -->
-    <div id="carrito" class="carrito-oculto">
-        <h3>Tu Pedido <span id="cerrar-carrito">✕</span></h3>
-        <ul id="lista-carrito"></ul>
-        <p class="minimo">⚠️ Mínimo 4 productos para pedir</p>
-        <p class="total">Total: $<span id="total">0</span> MXN</p>
-        <button id="pagar-btn" disabled style="padding: 12px 24px; font-size: 16px;">Proceder al pago</button>
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-carrito">&times;</span>
+            <h3>Tu Pedido</h3>
+            <div id="lista-carrito"></div>
+            <p class="total" id="total-carrito">Total: $0 MXN</p>
+            <button id="whatsapp-btn">Hacer Pedido</button>
+            <button id="seguir-pidiendo">Seguir Pidiendo</button>
+        </div>
     </div>
 
-    <!-- Datos bancarios (ocultos inicialmente) -->
-    <div id="datos-banco" class="oculto">
-        <h3>Datos Bancarios</h3>
-        <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
-        <p><strong>CLABE:</strong> 012 261 01584933343 3 (BBVA)</p>
-        <button id="whatsapp-btn" style="padding: 12px 24px; font-size: 16px;">💬 Solicitar pedido vía WhatsApp</button>
-        <p class="leyenda">⏱️ Tienes 5 minutos para modificar tu pedido después de pagar</p>
-    </div>
-
-    <!-- Footer con ubicación y horarios -->
+    <!-- Footer -->
     <footer>
         <h3>📍 Puntos de recolección</h3>
         <a href="https://maps.google.com/?q=Calle+Coral+120,Ciudad+de+México" 
@@ -60,133 +70,6 @@
         </div>
     </footer>
 
-    <script>
-        // Array COMPLETO de productos (8 items)
-        const productos = [
-            // -------- BEBIDAS --------
-            {
-                id: 1,
-                nombre: "Red Fire",
-                categoria: "bebidas",
-                precioBase: 35,
-                descripcion: "Bebida sabor frutos rojos 475ml",
-                opciones: {
-                    alcohol: [
-                        { texto: "Sin alcohol (+$0)", precio: 0 }, 
-                        { texto: "Con alcohol (+$10) 🚨 INE requerida", precio: 10 }
-                    ],
-                    bubbleJelly: [
-                        { texto: "Sí (+$5)", precio: 5 }, 
-                        { texto: "No (+$0)", precio: 0 }
-                    ]
-                }
-            },
-            {
-                id: 2,
-                nombre: "Green Corp",
-                categoria: "bebidas",
-                precioBase: 35,
-                descripcion: "Bebida sabor manzana verde 475ml",
-                opciones: { /* misma estructura que Red Fire */ }
-            },
-            {
-                id: 3,
-                nombre: "Dark Side",
-                categoria: "bebidas",
-                precioBase: 35,
-                descripcion: "Bebida sabor frutos del bosque 475ml",
-                opciones: { /* misma estructura */ }
-            },
-            {
-                id: 4,
-                nombre: "Blue Sea",
-                categoria: "bebidas",
-                precioBase: 35,
-                descripcion: "Bebida sabor blueberry 475ml",
-                opciones: { /* misma estructura */ }
-            },
-
-            // -------- CAFÉS --------
-            {
-                id: 5,
-                nombre: "Café Remix",
-                categoria: "cafes",
-                precioBase: 25,
-                descripcion: "Café deconstruido frío 475ml",
-                opciones: {
-                    leche: [
-                        { texto: "Sin leche (+$0)", precio: 0 },
-                        { texto: "Con leche (+$10)", precio: 10 },
-                        { texto: "Leche deslactosada (+$10)", precio: 10 }
-                    ],
-                    azucar: [
-                        { texto: "Sin azúcar", precio: 0 },
-                        { texto: "Con azúcar", precio: 0 },
-                        { texto: "Sustituto de azúcar", precio: 0 }
-                    ],
-                    coffeeBubble: [
-                        { texto: "Sí (+$10)", precio: 10 },
-                        { texto: "No (+$0)", precio: 0 }
-                    ]
-                }
-            },
-            {
-                id: 6,
-                nombre: "Café Descafeinado",
-                categoria: "cafes",
-                precioBase: 25,
-                descripcion: "Café descafeinado frío 475ml",
-                opciones: { /* misma estructura que Café Remix */ }
-            },
-
-            // -------- TÉS --------
-            {
-                id: 7,
-                nombre: "Té del Día",
-                categoria: "tes",
-                precioBase: 25,
-                descripcion: "Clásico té del día frío 475ml",
-                opciones: {
-                    azucar: [
-                        { texto: "Sin azúcar", precio: 0 },
-                        { texto: "Con azúcar", precio: 0 },
-                        { texto: "Sustituto de azúcar", precio: 0 }
-                    ],
-                    bubbleJelly: [
-                        { texto: "Sí (+$5)", precio: 5 },
-                        { texto: "No (+$0)", precio: 0 }
-                    ]
-                }
-            },
-            {
-                id: 8,
-                nombre: "Bebida del Día",
-                categoria: "tes",
-                precioBase: 25,
-                descripcion: "Pregunta por los sabores 475ml",
-                opciones: { /* misma estructura que Té del Día */ }
-            }
-        ];
-
-        // Generar productos en el DOM
-        document.addEventListener('DOMContentLoaded', () => {
-            const menu = document.getElementById('menu');
-            productos.forEach(producto => {
-                menu.innerHTML += `
-                    <div class="producto" data-id="${producto.id}">
-                        <h3>${producto.nombre}</h3>
-                        <p>${producto.descripcion}</p>
-                        <button class="agregar-btn" data-id="${producto.id}" 
-                                style="padding: 12px 24px; font-size: 16px;">
-                            AGREGAR
-                        </button>
-                    </div>
-                `;
-            });
-        });
-    </script>
-    
-    <!-- El resto de las funciones siguen en scripts.js -->
     <script src="assets/scripts.js"></script>
 </body>
 </html>
