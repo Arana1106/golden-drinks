@@ -1,7 +1,7 @@
 /* FONDO ARENA NEGRA CON TEXTURA */
 .arena-negra {
   background-color: #0a0a0a;
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(87, 87, 87, 0.1) 0%, rgba(87, 87, 87, 0.1) 90%),
     radial-gradient(circle at 90% 80%, rgba(87, 87, 87, 0.1) 0%, rgba(87, 87, 87, 0.1) 90%);
   background-size: 200% 200%;
@@ -15,7 +15,7 @@
 .titulo-tag3d {
   font-family: 'Impact', sans-serif;
   color: #FFD700;
-  text-shadow: 
+  text-shadow:
     3px 3px 0 #000,
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -96,7 +96,11 @@
   border-radius: 10px;
   width: 90%;
   max-width: 500px;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
 }
 
 /* CARRITO FUNCIONAL */
@@ -115,4 +119,39 @@
 
 .carrito-oculto {
   transform: translateX(100%);
+}
+
+/* MEJORAS DE TACTO */
+button, select {
+  min-height: 44px; /* Tamaño mínimo recomendado para touch */
+}
+
+/* OPTIMIZACIÓN MÓVIL */
+@media (max-width: 768px) {
+  .modal-contenido {
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 15px;
+  }
+
+  .producto {
+    padding: 15px 10px;
+  }
+
+  .agregar-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  #carrito {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .titulo-tag3d {
+    font-size: 2.2rem;
+  }
 }

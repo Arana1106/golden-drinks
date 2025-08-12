@@ -22,7 +22,7 @@
             <span class="cerrar-modal">&times;</span>
             <h3 id="modal-titulo"></h3>
             <div id="modal-opciones-container"></div>
-            <button id="confirmar-opciones">Agregar al carrito</button>
+            <button id="confirmar-opciones" style="padding: 12px 24px; font-size: 16px;">Agregar al carrito</button>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
         <ul id="lista-carrito"></ul>
         <p class="minimo">⚠️ Mínimo 4 productos para pedir</p>
         <p class="total">Total: $<span id="total">0</span> MXN</p>
-        <button id="pagar-btn" disabled>Proceder al pago</button>
+        <button id="pagar-btn" disabled style="padding: 12px 24px; font-size: 16px;">Proceder al pago</button>
     </div>
 
     <!-- Datos bancarios (ocultos inicialmente) -->
@@ -40,7 +40,7 @@
         <h3>Datos Bancarios</h3>
         <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
         <p><strong>CLABE:</strong> 012 261 01584933343 3 (BBVA)</p>
-        <button id="whatsapp-btn">💬 Solicitar pedido vía WhatsApp</button>
+        <button id="whatsapp-btn" style="padding: 12px 24px; font-size: 16px;">💬 Solicitar pedido vía WhatsApp</button>
         <p class="leyenda">⏱️ Tienes 5 minutos para modificar tu pedido después de pagar</p>
     </div>
 
@@ -60,6 +60,133 @@
         </div>
     </footer>
 
+    <script>
+        // Array COMPLETO de productos (8 items)
+        const productos = [
+            // -------- BEBIDAS --------
+            {
+                id: 1,
+                nombre: "Red Fire",
+                categoria: "bebidas",
+                precioBase: 35,
+                descripcion: "Bebida sabor frutos rojos 475ml",
+                opciones: {
+                    alcohol: [
+                        { texto: "Sin alcohol (+$0)", precio: 0 }, 
+                        { texto: "Con alcohol (+$10) 🚨 INE requerida", precio: 10 }
+                    ],
+                    bubbleJelly: [
+                        { texto: "Sí (+$5)", precio: 5 }, 
+                        { texto: "No (+$0)", precio: 0 }
+                    ]
+                }
+            },
+            {
+                id: 2,
+                nombre: "Green Corp",
+                categoria: "bebidas",
+                precioBase: 35,
+                descripcion: "Bebida sabor manzana verde 475ml",
+                opciones: { /* misma estructura que Red Fire */ }
+            },
+            {
+                id: 3,
+                nombre: "Dark Side",
+                categoria: "bebidas",
+                precioBase: 35,
+                descripcion: "Bebida sabor frutos del bosque 475ml",
+                opciones: { /* misma estructura */ }
+            },
+            {
+                id: 4,
+                nombre: "Blue Sea",
+                categoria: "bebidas",
+                precioBase: 35,
+                descripcion: "Bebida sabor blueberry 475ml",
+                opciones: { /* misma estructura */ }
+            },
+
+            // -------- CAFÉS --------
+            {
+                id: 5,
+                nombre: "Café Remix",
+                categoria: "cafes",
+                precioBase: 25,
+                descripcion: "Café deconstruido frío 475ml",
+                opciones: {
+                    leche: [
+                        { texto: "Sin leche (+$0)", precio: 0 },
+                        { texto: "Con leche (+$10)", precio: 10 },
+                        { texto: "Leche deslactosada (+$10)", precio: 10 }
+                    ],
+                    azucar: [
+                        { texto: "Sin azúcar", precio: 0 },
+                        { texto: "Con azúcar", precio: 0 },
+                        { texto: "Sustituto de azúcar", precio: 0 }
+                    ],
+                    coffeeBubble: [
+                        { texto: "Sí (+$10)", precio: 10 },
+                        { texto: "No (+$0)", precio: 0 }
+                    ]
+                }
+            },
+            {
+                id: 6,
+                nombre: "Café Descafeinado",
+                categoria: "cafes",
+                precioBase: 25,
+                descripcion: "Café descafeinado frío 475ml",
+                opciones: { /* misma estructura que Café Remix */ }
+            },
+
+            // -------- TÉS --------
+            {
+                id: 7,
+                nombre: "Té del Día",
+                categoria: "tes",
+                precioBase: 25,
+                descripcion: "Clásico té del día frío 475ml",
+                opciones: {
+                    azucar: [
+                        { texto: "Sin azúcar", precio: 0 },
+                        { texto: "Con azúcar", precio: 0 },
+                        { texto: "Sustituto de azúcar", precio: 0 }
+                    ],
+                    bubbleJelly: [
+                        { texto: "Sí (+$5)", precio: 5 },
+                        { texto: "No (+$0)", precio: 0 }
+                    ]
+                }
+            },
+            {
+                id: 8,
+                nombre: "Bebida del Día",
+                categoria: "tes",
+                precioBase: 25,
+                descripcion: "Pregunta por los sabores 475ml",
+                opciones: { /* misma estructura que Té del Día */ }
+            }
+        ];
+
+        // Generar productos en el DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.getElementById('menu');
+            productos.forEach(producto => {
+                menu.innerHTML += `
+                    <div class="producto" data-id="${producto.id}">
+                        <h3>${producto.nombre}</h3>
+                        <p>${producto.descripcion}</p>
+                        <button class="agregar-btn" data-id="${producto.id}" 
+                                style="padding: 12px 24px; font-size: 16px;">
+                            AGREGAR
+                        </button>
+                    </div>
+                `;
+            });
+        });
+    </script>
+    
+    <!-- El resto de las funciones siguen en scripts.js -->
     <script src="assets/scripts.js"></script>
 </body>
 </html>
