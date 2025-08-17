@@ -81,7 +81,7 @@ const ubicaciones = [
         direccion: "Calle Coral 120, colonia Estrella, CDMX",
         horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
         coordenadas: "19.4326,-99.1332",
-        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888348679687!2d-99.1353827!3d19.4326077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92b75aa014d%3A0x9a5f5e5e5e5e5e5e!2sCalle%20Coral%20120!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
+        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDAuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
     }
 ];
 
@@ -322,20 +322,32 @@ function cerrarModalUbicacion() {
 
 // ===== WHATSAPP =====
 function enviarPedidoFinal(ubicacion) {
-    let mensaje = `*PEDIDO GOLDEN DRINKS*%0A%0A` +
-        `*Recoger en:* ${ubicacion.direccion}%0A` +
-        `*Hora:* ${new Date().toLocaleString()}%0A%0A` +
-        `*Pedido:*%0A${carrito.map(item => 
-            `- ${item.nombre} x${item.cantidad || 1} (${obtenerOpcionesTexto(item)}) - $${calcularSubtotal(item)} MXN`
-        ).join('%0A')}%0A%0A` +
-        `*TOTAL: $${calcularTotal()} MXN*%0A%0A` +
-        `*Datos bancarios*%0A` +
-        `Titular: Eric Daniel Gutiérrez Arana%0A` +
-        `CLABE: 012 261 01584933343 3 (BBVA)%0A%0A` +
-        `*INSTRUCCIÓN:*%0A` +
-        `📸 Adjunta el comprobante con TU NOMBRE como concepto`;
+    // Formatear lista de productos
+    const listaProductos = carrito.map(item => 
+        `▪ ${item.nombre} x${item.cantidad || 1}\n` +
+        `  - ${obtenerOpcionesTexto(item)}\n` +
+        `  - $${calcularSubtotal(item)} MXN`
+    ).join('\n\n');
 
-    window.open(`https://wa.me/525611649344?text=${encodeURIComponent(mensaje)}`, '_blank');
+    const mensaje = `*PEDIDO GOLDEN DRINKS*\n\n` +
+        `📍 *Recoger en:* ${ubicacion.direccion}\n` +
+        `🕒 *Hora:* ${new Date().toLocaleString()}\n\n` +
+        `📋 *Pedido:*\n${listaProductos}\n\n` +
+        `💰 *TOTAL: $${calcularTotal()} MXN*\n\n` +
+        `🏦 *Datos bancarios*\n` +
+        `Titular: Eric Daniel Gutiérrez Arana\n` +
+        `CLABE: 012 261 01584933343 3 (BBVA)\n\n` +
+        `📸 *INSTRUCCIÓN:*\n` +
+        `Adjunta el comprobante con TU NOMBRE como concepto`;
+
+    // Codificar correctamente para WhatsApp
+    const mensajeCodificado = encodeURIComponent(mensaje)
+        .replace(/\n/g, '%0A')  // Saltos de línea
+        .replace(/\*/g, '%2A'); // Asteriscos para negritas
+
+    window.open(`https://wa.me/525611649344?text=${mensajeCodificado}`, '_blank');
+    
+    // Limpiar carrito después del pedido
     carrito = [];
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarritoUI();
@@ -407,4 +419,3 @@ function cerrarModalCarrito() {
 
 // Hacer funciones accesibles globalmente
 window.eliminarDelCarrito = eliminarDelCarrito;
-
