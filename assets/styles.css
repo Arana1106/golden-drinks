@@ -128,8 +128,9 @@ button:active {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
+    padding-bottom: 80px; /* Espacio para botones fijos */
 }
 
 .cerrar-modal {
@@ -151,25 +152,31 @@ button:active {
     font-size: 0.9rem;
 }
 
-/* === TARJETAS DE UBICACIÓN === */
-.ubicacion-card {
-    background: rgba(30, 30, 30, 0.7);
-    border-left: 4px solid #FFD700;
+/* === MODAL DE UBICACIÓN === */
+.ubicacion-info {
+    margin: 20px 0;
     padding: 15px;
-    margin-bottom: 15px;
+    background: rgba(40, 40, 40, 0.6);
+    border-radius: 10px;
+}
+
+.direccion-clickeable {
     cursor: pointer;
-    transition: transform 0.3s;
+    padding: 10px;
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+    transition: all 0.3s;
 }
 
-.ubicacion-card:hover {
-    transform: scale(1.02);
+.direccion-clickeable:hover {
+    background: rgba(255, 215, 0, 0.2);
 }
 
-/* === BOTONES DORADOS === */
-.btn-dorado {
-    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
-    color: #000 !important;
-    font-weight: bold;
+.mapa-container {
+    margin-top: 15px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 /* === CONTENEDOR DE UBICACIONES === */
@@ -177,6 +184,37 @@ button:active {
     max-height: 60vh;
     overflow-y: auto;
     margin: 15px 0;
+}
+
+/* === BOTONES DE UBICACIÓN === */
+.botones-ubicacion {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    position: sticky;
+    bottom: 0;
+    background: #1a1a1a;
+    padding: 15px 0;
+    border-top: 1px solid #FFD700;
+}
+
+#confirmar-ubicacion {
+    flex: 2;
+}
+
+#regresar-carrito {
+    flex: 1;
+    background: #333;
+    color: white;
+}
+
+/* === CARRITO TRANSPARENTE === */
+.carrito-contenido {
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    padding: 25px;
+    border-radius: 15px;
 }
 
 /* === TEXTO DE DESLIZAR === */
@@ -213,7 +251,11 @@ button:active {
         padding: 14px 20px;
     }
     
-    .confirmar-botones {
+    .confirmar-botones, .botones-ubicacion {
         flex-direction: column;
+    }
+    
+    #confirmar-ubicacion, #regresar-carrito {
+        width: 100%;
     }
 }

@@ -38,38 +38,44 @@
             <span class="cerrar-modal">&times;</span>
             <h3 id="titulo-modal"></h3>
             <form id="formulario-opciones"></form>
-            <button id="confirmar-opciones" class="gold-btn">AGREGAR AL CARRITO</button>
-            <button id="regresar-modal" class="btn-regresar">REGRESAR</button>
+            <div class="botones-opciones">
+                <button id="confirmar-opciones" class="btn-dorado">AGREGAR AL CARRITO</button>
+                <button id="regresar-modal">REGRESAR</button>
+            </div>
         </div>
     </div>
 
     <!-- Modal del Carrito -->
     <div id="modal-carrito" class="modal-oculto">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" id="cerrar-carrito">&times;</span>
+        <div class="modal-contenido carrito-contenido">
+            <span class="cerrar-modal">&times;</span>
             <h3>Tu Pedido</h3>
-            <div id="lista-carrito"></div>
+            <div id="lista-carrito" class="items-carrito"></div>
             <p class="total" id="total-carrito">Total: $0 MXN</p>
-            <button id="whatsapp-btn">Hacer Pedido</button>
-            <button id="seguir-pidiendo">Seguir Pidiendo</button>
+            <div class="botones-carrito">
+                <button id="whatsapp-btn" class="btn-dorado">CONFIRMAR UBICACIÓN</button>
+                <button id="seguir-pidiendo">SEGUIR PIDIENDO</button>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <h3>📍 Puntos de recolección</h3>
-        <a href="https://maps.google.com/?q=Calle+Coral+120,Ciudad+de+México" 
-           target="_blank" 
-           class="direccion">
-            Calle Coral 120, colonia Estrella, C.P 07810, CDMX
-        </a>
-        <div id="horarios">
-            <p><strong>Horarios:</strong></p>
-            <p>Lunes a Jueves: 9:00 - 22:00 hrs</p>
-            <p>Viernes a Sábado: 10:00 - 02:00 hrs</p>
-            <p>Domingo: 11:00 - 19:00 hrs</p>
+    <!-- Modal de Ubicación -->
+    <div id="modal-ubicacion" class="modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h3>📍 Punto de Recolección</h3>
+            <div class="ubicacion-info">
+                <p class="direccion-clickeable">Calle Coral 120, colonia Estrella, CDMX</p>
+                <div class="mapa-container" id="mapa-container" style="display:none;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888348679687!2d-99.1353827!3d19.4326077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92b75aa014d%3A0x9a5f5e5e5e5e5e5e!2sCalle%20Coral%20120!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="botones-ubicacion">
+                <button id="confirmar-ubicacion" class="btn-dorado">CONFIRMAR PEDIDO</button>
+                <button id="regresar-carrito">REGRESAR AL CARRITO</button>
+            </div>
         </div>
-    </footer>
+    </div>
 
     <script src="assets/scripts.js"></script>
 </body>

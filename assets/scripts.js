@@ -81,7 +81,7 @@ const ubicaciones = [
         direccion: "Calle Coral 120, colonia Estrella, CDMX",
         horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
         coordenadas: "19.4326,-99.1332",
-        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888348679687!2d-99.1353827!3d19.4326077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92b75aa014d%3A0x9a5f5e5e5e5e5e5e!2sCalle%20Coral%20120!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="200" style="border:0;" allowfullscreen loading="lazy"></iframe>`
+        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888348679687!2d-99.1353827!3d19.4326077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92b75aa014d%3A0x9a5f5e5e5e5e5e5e!2sCalle%20Coral%20120!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
     }
 ];
 
@@ -94,6 +94,7 @@ const carritoBtn = document.getElementById('carrito-btn');
 const contadorCarrito = document.getElementById('contador');
 const modalCarrito = document.getElementById('modal-carrito');
 const modalOpciones = document.getElementById('modal-opciones');
+const modalUbicacion = document.getElementById('modal-ubicacion');
 const cerrarModalCarritoBtn = document.getElementById('cerrar-carrito');
 const listaCarrito = document.getElementById('lista-carrito');
 const totalCarrito = document.getElementById('total-carrito');
@@ -103,7 +104,8 @@ const confirmarOpcionesBtn = document.getElementById('confirmar-opciones');
 const regresarModalBtn = document.getElementById('regresar-modal');
 const tituloModal = document.getElementById('titulo-modal');
 const formularioOpciones = document.getElementById('formulario-opciones');
-const cerrarModalOpcionesBtn = document.querySelector('#modal-opciones .cerrar-modal');
+const confirmarUbicacionBtn = document.getElementById('confirmar-ubicacion');
+const regresarCarritoBtn = document.getElementById('regresar-carrito');
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -112,12 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Event listeners
     carritoBtn.addEventListener('click', mostrarCarrito);
-    cerrarModalCarritoBtn.addEventListener('click', cerrarModalCarrito);
-    whatsappBtn.addEventListener('click', enviarWhatsApp);
+    whatsappBtn.addEventListener('click', mostrarSeleccionUbicacion);
     confirmarOpcionesBtn.addEventListener('click', confirmarSeleccion);
     regresarModalBtn.addEventListener('click', cerrarModalOpciones);
-    cerrarModalOpcionesBtn.addEventListener('click', cerrarModalOpciones);
     seguirPidiendoBtn.addEventListener('click', cerrarModalCarrito);
+    confirmarUbicacionBtn?.addEventListener('click', () => enviarPedidoFinal(ubicaciones[0]));
+    regresarCarritoBtn?.addEventListener('click', () => {
+        cerrarModalUbicacion();
+        mostrarCarrito();
+    });
+    
+    // Cerrar modales al hacer clic en la X
+    document.querySelectorAll('.cerrar-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const modal = this.closest('.modal-contenido').parentElement;
+            modal.classList.add('modal-oculto');
+            document.body.style.overflow = 'auto';
+        });
+    });
 });
 
 // ===== FUNCIONES PRINCIPALES =====
@@ -278,96 +292,35 @@ function actualizarCarritoUI() {
     whatsappBtn.disabled = totalItems < MIN_PEDIDO;
 }
 
-// ===== WHATSAPP =====
-function enviarWhatsApp() {
-    const totalItems = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
-    if (totalItems < MIN_PEDIDO) {
-        alert(`¡Pedido mínimo de ${MIN_PEDIDO} productos! Actual: ${totalItems}`);
-        return;
-    }
-
-    const modalComprobante = crearModalPersonalizado(`
-        <h3>⏰ ¡Adjunta tu comprobante! ⏰</h3>
-        <p class="instruccion-transferencia">⚠️ <strong>INSTRUCCIÓN:</strong> Al transferir, usa <u>TU NOMBRE</u> como concepto.</p>
-        <button id="continuar-comprobante">CONTINUAR</button>
-    `);
-
-    document.getElementById('continuar-comprobante').addEventListener('click', () => {
-        modalComprobante.remove();
-        mostrarSeleccionUbicacion();
-    });
-}
-
+// ===== UBICACIÓN =====
 function mostrarSeleccionUbicacion() {
-    let opcionesUbicacion = ubicaciones.map(ubicacion => `
-        <div class="ubicacion-card" data-coords="${ubicacion.coordenadas}">
-            <h4>${ubicacion.nombre}</h4>
-            <p>${ubicacion.direccion}</p>
-            <p>🕒 ${ubicacion.horario}</p>
-            ${ubicacion.iframe}
-        </div>
-    `).join('');
-
-    const modalUbicacion = crearModalPersonalizado(`
-        <h3>📍 Selecciona tu punto de recolección</h3>
-        <div class="ubicaciones-container">${opcionesUbicacion}</div>
-    `);
-
-    document.querySelectorAll('.ubicacion-card').forEach(card => {
-        card.addEventListener('click', () => confirmarUbicacion(ubicaciones.find(u => u.coordenadas === card.dataset.coords)));
-    });
-}
-
-function confirmarUbicacion(ubicacion) {
-    const ahora = new Date();
-    const horaActual = ahora.getHours();
-    const diaActual = ahora.getDay(); // 0=Domingo, 1=Lunes...
-    let horarioValido = false;
-
-    // Validación de horarios actualizada
-    if (diaActual >= 1 && diaActual <= 4) { // Lunes-Jueves
-        horarioValido = horaActual >= 16 && horaActual < 21; // 4PM - 9PM
-    } else if (diaActual === 5) { // Viernes
-        horarioValido = (horaActual >= 16 && horaActual < 24) || horaActual === 0; // 4PM - 1AM
-    } else if (diaActual === 6) { // Sábado
-        horarioValido = (horaActual >= 11 && horaActual < 24) || horaActual < 2; // 11AM - 2AM
-    } else { // Domingo
-        horarioValido = horaActual >= 10 && horaActual < 19; // 10AM - 7PM
-    }
-
-    if (!horarioValido) {
-        const modalError = crearModalPersonalizado(`
-            <span class="cerrar-modal">&times;</span>
-            <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
-            <p>${ubicacion.nombre} está cerrado ahora.</p>
-            <p>Intenta con otra ubicación 😋</p>
-        `);
-        modalError.querySelector('.cerrar-modal').onclick = () => modalError.remove();
+    if (carrito.reduce((total, item) => total + (item.cantidad || 1), 0) < MIN_PEDIDO) {
+        alert(`Mínimo ${MIN_PEDIDO} productos para pedido`);
         return;
     }
 
-    const modalConfirmacion = crearModalPersonalizado(`
-        <h3>¿Confirmas esta ubicación?</h3>
-        <p>${ubicacion.direccion}</p>
-        ${ubicacion.iframe}
-        <div class="scroll-text">Desliza para confirmar 👇</div>
-        <div class="confirmar-botones">
-            <button id="confirmar-si" class="btn-dorado">SÍ</button>
-            <button id="confirmar-no">NO</button>
-        </div>
-    `);
-
-    document.getElementById('confirmar-si').onclick = () => {
-        modalConfirmacion.remove();
-        enviarPedidoFinal(ubicacion);
-    };
-
-    document.getElementById('confirmar-no').onclick = () => {
-        modalConfirmacion.remove();
-        mostrarSeleccionUbicacion();
-    };
+    modalUbicacion.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+    
+    // Configurar interacción con el mapa
+    const direccion = document.querySelector('.direccion-clickeable');
+    const mapa = document.getElementById('mapa-container');
+    
+    direccion.addEventListener('click', () => {
+        mapa.style.display = mapa.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    direccion.addEventListener('dblclick', () => {
+        mapa.style.display = 'none';
+    });
 }
 
+function cerrarModalUbicacion() {
+    modalUbicacion.classList.add('modal-oculto');
+    document.body.style.overflow = 'auto';
+}
+
+// ===== WHATSAPP =====
 function enviarPedidoFinal(ubicacion) {
     let mensaje = `*PEDIDO GOLDEN DRINKS*%0A%0A` +
         `*Recoger en:* ${ubicacion.direccion}%0A` +
@@ -380,21 +333,16 @@ function enviarPedidoFinal(ubicacion) {
         `Titular: Eric Daniel Gutiérrez Arana%0A` +
         `CLABE: 012 261 01584933343 3 (BBVA)%0A%0A` +
         `*INSTRUCCIÓN:*%0A` +
-        `📸 Adjunta el comprobante con <strong>TU NOMBRE</strong> como concepto.`;
+        `📸 Adjunta el comprobante con TU NOMBRE como concepto`;
 
     window.open(`https://wa.me/525611649344?text=${encodeURIComponent(mensaje)}`, '_blank');
+    carrito = [];
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
+    cerrarModalUbicacion();
 }
 
 // ===== FUNCIONES AUXILIARES =====
-function crearModalPersonalizado(html) {
-    const modal = document.createElement('div');
-    modal.className = 'modal-contenido';
-    modal.innerHTML = html;
-    document.body.appendChild(modal);
-    document.body.style.overflow = 'hidden';
-    return modal;
-}
-
 function obtenerOpcionesTexto(item) {
     const extras = [];
     
@@ -440,7 +388,7 @@ function calcularSubtotal(item) {
         extras += item.seleccion.coffee_bubble === 'si' ? item.opciones.coffee_bubble.si : 0;
     }
 
-    return (item.base + extras) * (item.cuantidad || 1);
+    return (item.base + extras) * (item.cantidad || 1);
 }
 
 function calcularTotal() {
