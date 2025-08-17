@@ -141,6 +141,59 @@ button:active {
     color: #FFD700;
 }
 
+/* === INSTRUCCIÓN DE TRANSFERENCIA === */
+.instruccion-transferencia {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid #FFD700;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* === TARJETAS DE UBICACIÓN === */
+.ubicacion-card {
+    background: rgba(30, 30, 30, 0.7);
+    border-left: 4px solid #FFD700;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.ubicacion-card:hover {
+    transform: scale(1.02);
+}
+
+/* === BOTONES DORADOS === */
+.btn-dorado {
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+    color: #000 !important;
+    font-weight: bold;
+}
+
+/* === CONTENEDOR DE UBICACIONES === */
+.ubicaciones-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 15px 0;
+}
+
+/* === TEXTO DE DESLIZAR === */
+.scroll-text {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #FFD700;
+}
+
+/* === BOTONES DE CONFIRMACIÓN === */
+.confirmar-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .titulo-tag3d {
@@ -158,5 +211,9 @@ button:active {
     
     button {
         padding: 14px 20px;
+    }
+    
+    .confirmar-botones {
+        flex-direction: column;
     }
 }

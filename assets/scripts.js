@@ -74,6 +74,17 @@ const productos = {
     }
 };
 
+// ===== UBICACIONES =====
+const ubicaciones = [
+    {
+        nombre: "Calle Coral 120",
+        direccion: "Calle Coral 120, colonia Estrella, CDMX",
+        horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
+        coordenadas: "19.4326,-99.1332",
+        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888348679687!2d-99.1353827!3d19.4326077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92b75aa014d%3A0x9a5f5e5e5e5e5e5e!2sCalle%20Coral%20120!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="200" style="border:0;" allowfullscreen loading="lazy"></iframe>`
+    }
+];
+
 // ===== VARIABLES GLOBALES =====
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 const MIN_PEDIDO = 4;
@@ -110,8 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== FUNCIONES PRINCIPALES =====
-
-// Renderiza todos los productos en el menú
 function renderizarProductos() {
     for (const categoria in productos) {
         const container = document.getElementById(`${categoria}-container`);
@@ -135,7 +144,6 @@ function renderizarProductos() {
         }
     }
 
-    // Agregar event listeners a los botones de selección
     document.querySelectorAll('.btn-seleccionar').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const categoria = e.target.getAttribute('data-categoria');
@@ -149,12 +157,10 @@ function renderizarProductos() {
     });
 }
 
-// Muestra el modal con las opciones del producto
 function mostrarOpciones(producto) {
     tituloModal.textContent = producto.nombre;
     formularioOpciones.innerHTML = '';
 
-    // Generar opciones según categoría
     if (producto.categoria === 'bebidas') {
         formularioOpciones.innerHTML = `
             <div class="opcion-grupo">
@@ -205,13 +211,11 @@ function mostrarOpciones(producto) {
         `;
     }
 
-    // Mostrar modal
     modalOpciones.classList.remove('modal-oculto');
     document.body.style.overflow = 'hidden';
     modalOpciones.dataset.producto = JSON.stringify(producto);
 }
 
-// Confirma la selección y agrega al carrito
 function confirmarSeleccion() {
     const producto = JSON.parse(modalOpciones.dataset.producto);
     const opciones = {
@@ -230,8 +234,6 @@ function confirmarSeleccion() {
 }
 
 // ===== CARRITO =====
-
-// Agrega un item al carrito
 function agregarAlCarrito(item) {
     carrito.push(item);
     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -239,7 +241,6 @@ function agregarAlCarrito(item) {
     cerrarModalOpciones();
 }
 
-// Muestra el modal del carrito
 function mostrarCarrito() {
     listaCarrito.innerHTML = '';
     let total = 0;
@@ -264,7 +265,6 @@ function mostrarCarrito() {
     document.body.style.overflow = 'hidden';
 }
 
-// Elimina un item del carrito
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -272,7 +272,6 @@ function eliminarDelCarrito(index) {
     mostrarCarrito();
 }
 
-// Actualiza la UI del carrito (contador)
 function actualizarCarritoUI() {
     const totalItems = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
     contadorCarrito.textContent = totalItems;
@@ -280,8 +279,6 @@ function actualizarCarritoUI() {
 }
 
 // ===== WHATSAPP =====
-
-// Envía el pedido por WhatsApp
 function enviarWhatsApp() {
     const totalItems = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
     if (totalItems < MIN_PEDIDO) {
@@ -289,26 +286,115 @@ function enviarWhatsApp() {
         return;
     }
 
-    let mensaje = `*PEDIDO GOLDEN DRINKS*%0A%0A*Hora:* ${new Date().toLocaleString()}%0A%0A`;
-    
-    carrito.forEach(item => {
-        mensaje += `*${item.nombre}* x${item.cantidad || 1}%0A`;
-        mensaje += `(${obtenerOpcionesTexto(item)})%0A`;
-        mensaje += `$${calcularSubtotal(item)} MXN%0A%0A`;
+    const modalComprobante = crearModalPersonalizado(`
+        <h3>⏰ ¡Adjunta tu comprobante! ⏰</h3>
+        <p class="instruccion-transferencia">⚠️ <strong>INSTRUCCIÓN:</strong> Al transferir, usa <u>TU NOMBRE</u> como concepto.</p>
+        <button id="continuar-comprobante">CONTINUAR</button>
+    `);
+
+    document.getElementById('continuar-comprobante').addEventListener('click', () => {
+        modalComprobante.remove();
+        mostrarSeleccionUbicacion();
     });
+}
 
-    mensaje += `*TOTAL: $${calcularTotal()} MXN*%0A%0A`;
-    mensaje += `*Datos bancarios*%0A`;
-    mensaje += `Titular: Eric Daniel Gutiérrez Arana%0A`;
-    mensaje += `CLABE: 012 261 01584933343 3 (BBVA)%0A%0A`;
-    mensaje += `📍 *Retiro en:* Calle Coral 120, CDMX`;
+function mostrarSeleccionUbicacion() {
+    let opcionesUbicacion = ubicaciones.map(ubicacion => `
+        <div class="ubicacion-card" data-coords="${ubicacion.coordenadas}">
+            <h4>${ubicacion.nombre}</h4>
+            <p>${ubicacion.direccion}</p>
+            <p>🕒 ${ubicacion.horario}</p>
+            ${ubicacion.iframe}
+        </div>
+    `).join('');
 
-    window.open(`https://wa.me/525611649344?text=${mensaje}`, '_blank');
+    const modalUbicacion = crearModalPersonalizado(`
+        <h3>📍 Selecciona tu punto de recolección</h3>
+        <div class="ubicaciones-container">${opcionesUbicacion}</div>
+    `);
+
+    document.querySelectorAll('.ubicacion-card').forEach(card => {
+        card.addEventListener('click', () => confirmarUbicacion(ubicaciones.find(u => u.coordenadas === card.dataset.coords)));
+    });
+}
+
+function confirmarUbicacion(ubicacion) {
+    const ahora = new Date();
+    const horaActual = ahora.getHours();
+    const diaActual = ahora.getDay(); // 0=Domingo, 1=Lunes...
+    let horarioValido = false;
+
+    // Validación de horarios actualizada
+    if (diaActual >= 1 && diaActual <= 4) { // Lunes-Jueves
+        horarioValido = horaActual >= 16 && horaActual < 21; // 4PM - 9PM
+    } else if (diaActual === 5) { // Viernes
+        horarioValido = (horaActual >= 16 && horaActual < 24) || horaActual === 0; // 4PM - 1AM
+    } else if (diaActual === 6) { // Sábado
+        horarioValido = (horaActual >= 11 && horaActual < 24) || horaActual < 2; // 11AM - 2AM
+    } else { // Domingo
+        horarioValido = horaActual >= 10 && horaActual < 19; // 10AM - 7PM
+    }
+
+    if (!horarioValido) {
+        const modalError = crearModalPersonalizado(`
+            <span class="cerrar-modal">&times;</span>
+            <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
+            <p>${ubicacion.nombre} está cerrado ahora.</p>
+            <p>Intenta con otra ubicación 😋</p>
+        `);
+        modalError.querySelector('.cerrar-modal').onclick = () => modalError.remove();
+        return;
+    }
+
+    const modalConfirmacion = crearModalPersonalizado(`
+        <h3>¿Confirmas esta ubicación?</h3>
+        <p>${ubicacion.direccion}</p>
+        ${ubicacion.iframe}
+        <div class="scroll-text">Desliza para confirmar 👇</div>
+        <div class="confirmar-botones">
+            <button id="confirmar-si" class="btn-dorado">SÍ</button>
+            <button id="confirmar-no">NO</button>
+        </div>
+    `);
+
+    document.getElementById('confirmar-si').onclick = () => {
+        modalConfirmacion.remove();
+        enviarPedidoFinal(ubicacion);
+    };
+
+    document.getElementById('confirmar-no').onclick = () => {
+        modalConfirmacion.remove();
+        mostrarSeleccionUbicacion();
+    };
+}
+
+function enviarPedidoFinal(ubicacion) {
+    let mensaje = `*PEDIDO GOLDEN DRINKS*%0A%0A` +
+        `*Recoger en:* ${ubicacion.direccion}%0A` +
+        `*Hora:* ${new Date().toLocaleString()}%0A%0A` +
+        `*Pedido:*%0A${carrito.map(item => 
+            `- ${item.nombre} x${item.cantidad || 1} (${obtenerOpcionesTexto(item)}) - $${calcularSubtotal(item)} MXN`
+        ).join('%0A')}%0A%0A` +
+        `*TOTAL: $${calcularTotal()} MXN*%0A%0A` +
+        `*Datos bancarios*%0A` +
+        `Titular: Eric Daniel Gutiérrez Arana%0A` +
+        `CLABE: 012 261 01584933343 3 (BBVA)%0A%0A` +
+        `*INSTRUCCIÓN:*%0A` +
+        `📸 Adjunta el comprobante con <strong>TU NOMBRE</strong> como concepto.`;
+
+    window.open(`https://wa.me/525611649344?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
 
 // ===== FUNCIONES AUXILIARES =====
+function crearModalPersonalizado(html) {
+    const modal = document.createElement('div');
+    modal.className = 'modal-contenido';
+    modal.innerHTML = html;
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    return modal;
+}
 
-// Devuelve el texto de las opciones seleccionadas
 function obtenerOpcionesTexto(item) {
     const extras = [];
     
@@ -338,7 +424,6 @@ function obtenerOpcionesTexto(item) {
     return extras.join(', ');
 }
 
-// Calcula el subtotal de un item
 function calcularSubtotal(item) {
     let extras = 0;
     
@@ -355,25 +440,23 @@ function calcularSubtotal(item) {
         extras += item.seleccion.coffee_bubble === 'si' ? item.opciones.coffee_bubble.si : 0;
     }
 
-    return (item.base + extras) * (item.cantidad || 1);
+    return (item.base + extras) * (item.cuantidad || 1);
 }
 
-// Calcula el total del carrito
 function calcularTotal() {
     return carrito.reduce((total, item) => total + calcularSubtotal(item), 0);
 }
 
-// Cierra el modal de opciones
 function cerrarModalOpciones() {
     modalOpciones.classList.add('modal-oculto');
     document.body.style.overflow = 'auto';
 }
 
-// Cierra el modal del carrito
 function cerrarModalCarrito() {
     modalCarrito.classList.add('modal-oculto');
     document.body.style.overflow = 'auto';
 }
 
-// Hace funciones accesibles globalmente
+// Hacer funciones accesibles globalmente
 window.eliminarDelCarrito = eliminarDelCarrito;
+
