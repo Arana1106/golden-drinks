@@ -57,14 +57,14 @@ body {
 }
 
 /* COLORES ESPECÍFICOS POR PRODUCTO */
-.producto-card h3[data-producto="Red Fire"] { color: #F7015D; } /* Rojo neón */
-.producto-card h3[data-producto="Green Corp"] { color: #39FF14; } /* Verde neón */
-.producto-card h3[data-producto="Dark Side"] { color: #9D00FF; } /* Morado neón */
-.producto-card h3[data-producto="Blue Sea"] { color: #00F3FF; } /* Azul neón */
-.producto-card h3[data-producto="Café Remix"] { color: #E2725B; } /* Café terracota */
-.producto-card h3[data-producto="Café Descafeinado"] { color: #FFA500; } /* Naranja neón */
-.producto-card h3[data-producto="Té del Día"] { color: #E0E0E0; } /* Gris neón */
-.producto-card h3[data-producto="Bebida del Día"] { color: #E0E0E0; } /* Blanco neón */
+.producto-card h3[data-producto="InFerNo"] { color: #F7015D; } /* Rojo neón */
+.producto-card h3[data-producto="DisCorDiA"] { color: #39FF14; } /* Verde neón */
+.producto-card h3[data-producto="SoBerBia"] { color: #9D00FF; } /* Morado neón */
+.producto-card h3[data-producto="Arcángel"] { color: #00F3FF; } /* Azul neón */
+.producto-card h3[data-producto="IRA DIVINA"] { color: #E2725B; } /* Café terracota */
+.producto-card h3[data-producto="PACTUM"] { color: #FFA500; } /* Naranja neón */
+.producto-card h3[data-producto="REDENCION"] { color: #E0E0E0; } /* Gris neón */
+.producto-card h3[data-producto="REVELACION"] { color: #E0E0E0; } /* Blanco neón */
 
 .producto-card:hover {
     transform: translateY(-5px);

@@ -1,32 +1,32 @@
 // ===== DATOS DE PRODUCTOS =====
 const productos = {
     bebidas: {
-        "Red Fire": {
-            descripcion: "Bebida sabor frutos rojos 475ml",
+        "InFerNo": {
+            descripcion: "Pasión ardiente con  sabor a frutos rojos 475ml",
             base: 35,
             opciones: {
                 alcohol: { sin: 0, con: 10, advertencia: "🚨 Se solicitará INE para bebidas con alcohol" },
                 jelly: { no: 0, si: 5 }
             }
         },
-        "Green Corp": {
-            descripcion: "Bebida sabor manzana verde 475ml",
+        "DisCorDiA": {
+            descripcion: "Entre más lo resistes más deseas probar su sabor manzana verde 475ml",
             base: 35,
             opciones: {
                 alcohol: { sin: 0, con: 10, advertencia: "🚨 Se solicitará INE para bebidas con alcohol" },
                 jelly: { no: 0, si: 5 }
             }
         },
-        "Dark Side": {
-            descripcion: "Bebida sabor frutos del bosque 475ml",
+        "SoBerBia": {
+            descripcion: "Tienes el poder de tomarlo todo... pero tienes la debilidad para no hacerlo? bebida sabor frutos del bosque 475ml",
             base: 35,
             opciones: {
                 alcohol: { sin: 0, con: 10, advertencia: "🚨 Se solicitará INE para bebidas con alcohol" },
                 jelly: { no: 0, si: 5 }
             }
         },
-        "Blue Sea": {
-            descripcion: "Bebida sabor blueberry 475ml",
+        "Arcángel": {
+            descripcion: "Creeme puedo volver a los chicos malos buenos por un fin de semana sabor blueberry 475ml",
             base: 35,
             opciones: {
                 alcohol: { sin: 0, con: 10, advertencia: "🚨 Se solicitará INE para bebidas con alcohol" },
@@ -35,8 +35,8 @@ const productos = {
         }
     },
     cafes: {
-        "Café Remix": {
-            descripcion: "Café deconstruido frío 475ml",
+        "IRA DIVINA": {
+            descripcion: "Energía Divina toma un café deconstruido frío 475ml",
             base: 25,
             opciones: {
                 leche: { sin: 0, con: 10, deslactosada: 10 },
@@ -44,8 +44,8 @@ const productos = {
                 coffee_bubble: { no: 0, si: 10 }
             }
         },
-        "Café Descafeinado": {
-            descripcion: "Café descafeinado frío 475ml",
+        "PACTUM": {
+            descripcion: "Pacto con el diablo, tranquilo solo es un suave café descafeinado frío 475ml",
             base: 25,
             opciones: {
                 leche: { sin: 0, con: 10, deslactosada: 10 },
@@ -55,16 +55,16 @@ const productos = {
         }
     },
     tes: {
-        "Té del Día": {
-            descripcion: "Clásico té del día frío 475ml",
+        "REDENCION": {
+            descripcion: "Todos la buscamos, y todos la necesitamos su sabor purificador en el clásico té del día frío 475ml",
             base: 25,
             opciones: {
                 azucar: { sin: 0, con: 0, sustituto: 0 },
                 jelly: { no: 0, si: 5 }
             }
         },
-        "Bebida del Día": {
-            descripcion: "Pregunta por los sabores 475ml",
+        "REVELACIÓN": {
+            descripcion: "Sorpresa Divina o Infernal pregunta por los sabores 475ml",
             base: 25,
             opciones: {
                 azucar: { sin: 0, con: 0, sustituto: 0 },
