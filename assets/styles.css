@@ -57,7 +57,7 @@ body {
 }
 
 /* COLORES ESPECÍFICOS POR PRODUCTO */
-.producto-card h3[data-producto="Red Fire"] { color: #FF073A; } /* Rojo neón */
+.producto-card h3[data-producto="Red Fire"] { color: #F7015D; } /* Rojo neón */
 .producto-card h3[data-producto="Green Corp"] { color: #39FF14; } /* Verde neón */
 .producto-card h3[data-producto="Dark Side"] { color: #9D00FF; } /* Morado neón */
 .producto-card h3[data-producto="Blue Sea"] { color: #00F3FF; } /* Azul neón */
