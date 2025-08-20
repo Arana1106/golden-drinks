@@ -19,7 +19,7 @@ body {
 /* TÍTULO TAG 3D */
 .titulo-tag3d {
     font-family: 'Impact', sans-serif;
-    color: #FFD700;
+    color: #BF00FF;
     text-shadow: 
         3px 3px 0 #000,
         -1px -1px 0 #000,
@@ -38,7 +38,7 @@ body {
     padding: 10px 15px;
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #FFD700;
+    color: #51D1F6;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 

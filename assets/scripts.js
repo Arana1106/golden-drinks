@@ -329,7 +329,7 @@ function enviarPedidoFinal(ubicacion) {
         `  - $${calcularSubtotal(item)} MXN`
     ).join('\n\n');
 
-    const mensaje = `*PEDIDO GOLDEN DRINKS*\n\n` +
+    const mensaje = `*PEDIDO NÉBULA DRINKS*\n\n` +
         `📍 *Recoger en:* ${ubicacion.direccion}\n` +
         `🕒 *Hora:* ${new Date().toLocaleString()}\n\n` +
         `📋 *Pedido:*\n${listaProductos}\n\n` +
