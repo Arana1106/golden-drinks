@@ -1,7 +1,7 @@
 // ===== DATOS DE PRODUCTOS =====
 const productos = {
     bebidas: {
-        "InFerNo": {
+        "INFERNO": {
             descripcion: "Pasión ardiente con  sabor a frutos rojos 475ml",
             base: 35,
             opciones: {
@@ -9,7 +9,7 @@ const productos = {
                 jelly: { no: 0, si: 5 }
             }
         },
-        "DisCorDiA": {
+        "JALURIA": {
             descripcion: "Entre más lo resistes más deseas probar su sabor manzana verde 475ml",
             base: 35,
             opciones: {
@@ -17,16 +17,16 @@ const productos = {
                 jelly: { no: 0, si: 5 }
             }
         },
-        "SoBerBia": {
-            descripcion: "Tienes el poder de tomarlo todo... pero tienes la debilidad para no hacerlo? bebida sabor frutos del bosque 475ml",
+        "ASMODEO": {
+            descripcion: "Te hará sentir la lujuria en un sorbo por su sabor y color de los frutos del bosque 475ml",
             base: 35,
             opciones: {
                 alcohol: { sin: 0, con: 10, advertencia: "🚨 Se solicitará INE para bebidas con alcohol" },
                 jelly: { no: 0, si: 5 }
             }
         },
-        "Arcángel": {
-            descripcion: "Creeme puedo volver a los chicos malos buenos por un fin de semana sabor blueberry 475ml",
+        "LEVIATAN": {
+            descipcion: "Sumérgete en las profundidades de una la tentación con  sabor a  blueberry 475ml",
             base: 35,
             opciones: {
                 alcohol: { sin: 0, con: 10, advertencia: "🚨 Se solicitará INE para bebidas con alcohol" },
@@ -329,7 +329,7 @@ function enviarPedidoFinal(ubicacion) {
         `  - $${calcularSubtotal(item)} MXN`
     ).join('\n\n');
 
-    const mensaje = `*PEDIDO NÉBULA DRINKS*\n\n` +
+    const mensaje = `*SINNER'S*\n\n` +
         `📍 *Recoger en:* ${ubicacion.direccion}\n` +
         `🕒 *Hora:* ${new Date().toLocaleString()}\n\n` +
         `📋 *Pedido:*\n${listaProductos}\n\n` +
