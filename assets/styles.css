@@ -1,52 +1,35 @@
-/* ===== ESTILOS GENERALES SINNER'S ===== */
-html, body {
+/* ===== ESTILOS GENERALES SINNER'S - CORREGIDO ===== */
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     font-family: 'Libre Baskerville', serif;
-    background-color: #0A0A0A !important;
+    background: #0A0A0A; /* Fondo negro sólido como base */
     color: #E0E0E0;
-    overflow-x: hidden;
-    position: relative;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* Fondo con textura y oscurecido */
+/* Textura oscura con detalles rojos sutiles */
 body::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 30%, rgba(138, 3, 3, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(138, 3, 3, 0.1) 0%, transparent 25%),
-        url('https://i.ibb.co/2LgNSSy/1000065665.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    z-index: -2;
-    opacity: 0.3;
-}
-
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 5, 5, 0.95);
+        radial-gradient(circle at 15% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 25%),
+        linear-gradient(45deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
     z-index: -1;
 }
 
-/* ===== CONTENEDORES SIEMPRE OSCUROS ===== */
-.arena-negra, #menu, .categoria, .productos-container, header, main, footer {
-    background-color: transparent !important;
-    color: #E0E0E0 !important;
+.arena-negra {
+    background: transparent;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== TIPOGRAFÍAS GÓTICAS ===== */
@@ -66,7 +49,6 @@ body::after {
     margin: 30px 0;
     font-size: 3.5rem;
     text-transform: uppercase;
-    background: transparent !important;
 }
 
 .categoria-titulo {
@@ -78,24 +60,24 @@ body::after {
     text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
     font-family: 'Nosifer', cursive;
     letter-spacing: 2px;
+    color: #FFD700;
 }
 
-/* ===== PRODUCTOS ===== */
+/* ===== CONTENEDOR DE PRODUCTOS ===== */
 .productos-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
     margin: 20px 0;
-    background: transparent !important;
 }
 
 .producto-card {
-    background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
+    background: linear-gradient(145deg, #111111, #0D0D0D);
     border-radius: 12px;
     padding: 25px;
     transition: all 0.3s ease;
     border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
     position: relative;
     overflow: hidden;
 }
@@ -221,4 +203,171 @@ button {
     background: linear-gradient(145deg, #FF0000, #8B0000);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+}
+
+#confirmar-opciones, #whatsapp-btn {
+    background: linear-gradient(145deg, #FFD700, #DAA520);
+    color: #000;
+    border: 2px solid #8B0000;
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+#seguir-pidiendo, .btn-regresar {
+    background: linear-gradient(145deg, #333, #222);
+    color: #FFF;
+    border: 2px solid #666;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ===== MODALES OSCUROS ===== */
+.modal-oculto {
+    display: none;
+}
+
+.modal-contenido {
+    background: linear-gradient(145deg, #111111, #0D0D0D);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 2px solid #8B0000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #FFD700;
+    text-shadow: 0 0 5px #000;
+    transition: color 0.3s ease;
+}
+
+.cerrar-modal:hover {
+    color: #8B0000;
+}
+
+/* ===== ESTILOS RESTANTES ===== */
+.instruccion-transferencia {
+    background: rgba(139, 0, 0, 0.2);
+    border-left: 3px solid #FFD700;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.ubicacion-info {
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 12px;
+    border: 1px solid #444;
+}
+
+.direccion-clickeable {
+    cursor: pointer;
+    padding: 15px;
+    background: rgba(139, 0, 0, 0.2);
+    border-left: 3px solid #FFD700;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.direccion-clickeable:hover {
+    background: rgba(139, 0, 0, 0.3);
+}
+
+.mapa-container {
+    margin-top: 20px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #8B0000;
+}
+
+.mapa-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.botones-ubicacion {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    position: sticky;
+    bottom: 0;
+    background: #111111;
+    padding: 20px 0;
+    border-top: 2px solid #8B0000;
+}
+
+.carrito-contenido {
+    background: linear-gradient(145deg, #0D0D0D, #111111);
+    border: 2px solid #FFD700;
+    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.scroll-text {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #FFD700;
+}
+
+.confirmar-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .titulo-tag3d {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .productos-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .modal-contenido {
+        width: 95vw;
+        padding: 25px;
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .confirmar-botones, .botones-ubicacion {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #confirmar-ubicacion, #regresar-carrito {
+        width: 100%;
+    }
 }

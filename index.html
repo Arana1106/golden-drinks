@@ -3,35 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINNER'S - Elixires Prohibidos</title>
-    <meta name="description" content="SINNER'S - Elixires prohibidos y brebajes oscuros. Experiencia gótica en cada sorbo.">
-    <meta name="keywords" content="bebidas, café, té, elixires, sinner's, gótico, dark, cdmx">
-    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <title>SINNER'S</title>
     <link rel="stylesheet" href="assets/styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
 </head>
 <body class="arena-negra">
     <header>
         <h1 class="titulo-tag3d">SINNER'S</h1>
-        <button id="carrito-btn" aria-label="Carrito de compras">🛒 <span id="contador">0</span></button>
+        <button id="carrito-btn">🛒 <span id="contador">0</span></button>
     </header>
 
     <main id="menu">
-        <!-- Bebidas - ELIXIRES PROHIBIDOS -->
+        <!-- Bebidas -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #4B0082;">🔥 ELIXIRES PROHIBIDOS</h2>
+            <h2 class="categoria-titulo" style="border-left: 5px solid #FF073A;">ELIXIRES PROHIBIDOS</h2>
             <div class="productos-container" id="bebidas-container"></div>
         </section>
 
-        <!-- Cafés - BREBAJES OSCUROS -->
+        <!-- Cafés -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #8B4513;">☕ BREBAJES OSCUROS</h2>
+            <h2 class="categoria-titulo" style="border-left: 5px solid #FFFFFF;">BREBAJES OSCUROS</h2>
             <div class="productos-container" id="cafes-container"></div>
         </section>
 
-        <!-- Tés - POCIONES MALDITAS -->
+        <!-- Tés -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #DAA520;">🍵 POCIONES MALDITAS</h2>
+            <h2 class="categoria-titulo" style="border-left: 5px solid #FFAA00;">POCIONES MALDITAS</h2>
             <div class="productos-container" id="tes-container"></div>
         </section>
     </main>
@@ -39,11 +35,11 @@
     <!-- Modal de Opciones -->
     <div id="modal-opciones" class="modal-oculto">
         <div class="modal-contenido">
-            <span class="cerrar-modal" aria-label="Cerrar modal">&times;</span>
-            <h3 id="titulo-modal" aria-live="polite"></h3>
+            <span class="cerrar-modal">&times;</span>
+            <h3 id="titulo-modal"></h3>
             <form id="formulario-opciones"></form>
             <div class="botones-opciones">
-                <button id="confirmar-opciones" class="btn-dorado">AGREGAR AL PECADO</button>
+                <button id="confirmar-opciones" class="btn-dorado">AGREGAR</button>
                 <button id="regresar-modal">REGRESAR</button>
             </div>
         </div>
@@ -52,13 +48,13 @@
     <!-- Modal del Carrito -->
     <div id="modal-carrito" class="modal-oculto">
         <div class="modal-contenido carrito-contenido">
-            <span class="cerrar-modal" aria-label="Cerrar carrito">&times;</span>
-            <h3>📜 Tu Lista de Pecados</h3>
+            <span class="cerrar-modal">&times;</span>
+            <h3>Tu Pedido</h3>
             <div id="lista-carrito" class="items-carrito"></div>
             <p class="total" id="total-carrito">Total: $0 MXN</p>
             <div class="botones-carrito">
-                <button id="whatsapp-btn" class="btn-dorado">🔮 CONFIRMAR UBICACIÓN</button>
-                <button id="seguir-pidiendo">➕ SEGUIR PECANDO</button>
+                <button id="whatsapp-btn" class="btn-dorado">CONFIRMAR UBICACIÓN</button>
+                <button id="seguir-pidiendo">SEGUIR PIDIENDO</button>
             </div>
         </div>
     </div>
@@ -66,37 +62,20 @@
     <!-- Modal de Ubicación -->
     <div id="modal-ubicacion" class="modal-oculto">
         <div class="modal-contenido">
-            <span class="cerrar-modal" aria-label="Cerrar modal">&times;</span>
-            <h3>📍 Altar de Recogimiento</h3>
+            <span class="cerrar-modal">&times;</span>
+            <h3>📍 Punto de Recolección</h3>
             <div class="ubicacion-info">
-                <p class="direccion-clickeable">🏰 Calle Coral 120, colonia Estrella, CDMX</p>
+                <p class="direccion-clickeable">Calle Coral 120, colonia Estrella, CDMX</p>
                 <div class="mapa-container" id="mapa-container" style="display:none">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDAuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" 
-                            width="100%" 
-                            height="300" 
-                            style="border:0;" 
-                            allowfullscreen 
-                            loading="lazy"
-                            aria-label="Mapa de ubicación de Sinner's">
-                    </iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDA.0MCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             <div class="botones-ubicacion">
-                <button id="confirmar-ubicacion" class="btn-dorado">✅ CONFIRMAR RITUAL</button>
-                <button id="regresar-carrito">↩️ REGRESAR AL PECADO</button>
+                <button id="confirmar-ubicacion" class="btn-dorado">CONFIRMAR</button>
+                <button id="regresar-carrito">REGRESAR AL CARRITO</button>
             </div>
         </div>
     </div>
-
-    <!-- Footer Temático -->
-    <footer style="text-align: center; margin-top: 40px; padding: 20px; border-top: 1px solid #FFD700;">
-        <p style="color: #FFD700; font-family: 'Nosifer', cursive; font-size: 0.9rem;">
-            🔥 EL QUE PRUEBA NUESTROS ELIXIRES, JAMÁS SE REDIME 🔥
-        </p>
-        <p style="color: #E0E0E0; font-size: 0.8rem; margin-top: 10px;">
-            © 2024 SINNER'S - Todos los pecados reservados
-        </p>
-    </footer>
 
     <script src="assets/scripts.js"></script>
 </body>
