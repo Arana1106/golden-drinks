@@ -1,19 +1,16 @@
-```css
-/* ESTILOS GENERALES */
+/* ===== ESTILOS GENERALES SINNER'S ===== */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-image: url('https://i.ibb.co/2LgNSSy/1000065665.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    position: relative;
+    font-family: 'Libre Baskerville', serif;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+    color: #E0E0E0;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* Capa overlay para mejorar legibilidad del texto */
+/* Patrón de textura sutil */
 body::before {
     content: '';
     position: absolute;
@@ -21,166 +18,220 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 15, 15, 0.78);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 85% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 25%);
     z-index: -1;
 }
 
-/* Ajustamos el contenedor principal */
 .arena-negra {
     background: transparent;
-    color: white;
     padding: 20px;
     position: relative;
     z-index: 1;
 }
 
-/* TIPOGRAFÍAS SINNER'S */
+/* ===== TIPOGRAFÍAS GÓTICAS ===== */
 .titulo-tag3d {
     font-family: 'Nosifer', cursive;
-    color: #FFD700;
+    color: #8B0000;
     text-shadow: 
         3px 3px 0 #000,
         -1px -1px 0 #000,
         1px -1px 0 #000,
         -1px 1px 0 #000,
-        0 0 15px #FFD700,
-        0 0 25px #FFD700;
-    letter-spacing: 3px;
+        0 0 15px #8B0000,
+        0 0 25px #8B0000,
+        0 0 35px #8B0000;
+    letter-spacing: 4px;
     text-align: center;
-    margin: 20px 0;
-    font-size: 3rem;
+    margin: 30px 0;
+    font-size: 3.5rem;
+    text-transform: uppercase;
 }
 
-/* CATEGORÍAS - TEXTO DORADO */
 .categoria-titulo {
-    padding: 10px 15px;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #CFFF04;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-    font-family: 'Libre Baskerville', serif;
+    padding: 15px 20px;
+    font-size: 2rem;
+    margin: 30px 0 20px 0;
+    background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.3), transparent);
+    border-left: 4px solid #8B0000;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
+    font-family: 'Nosifer', cursive;
+    letter-spacing: 2px;
 }
 
-/* PRODUCTOS */
+/* ===== CONTENEDOR DE PRODUCTOS ===== */
 .productos-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 20px 0;
 }
 
 .producto-card {
-    background: rgba(20, 20, 20, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
 }
 
-/* COLORES POR PRODUCTO CON NUEVOS NOMBRES SINNER'S */
+.producto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.producto-card:hover::before {
+    left: 100%;
+}
+
+.producto-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(139, 0, 0, 0.4);
+    border-color: #8B0000;
+}
+
+/* ===== COLORES POR SABOR - NUEVA PALETA ===== */
 .producto-card h3[data-producto="LEVIATAN"] { 
-    color: #4B0082;
-    text-shadow: 0 0 5px #4B0082, 0 0 15px #4B0082;
-    font-family: 'Libre Baskerville', serif;
+    color: #4169E1;
+    text-shadow: 0 0 10px #4169E1, 0 0 20px #4169E1;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
-.producto-card h3[data-producto="INFIERNO"] { 
+.producto-card h3[data-producto="INFERNO"] { 
     color: #DC143C;
-    text-shadow: 0 0 5px #DC143C, 0 0 15px #DC143C;
-    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 10px #DC143C, 0 0 20px #DC143C;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
 .producto-card h3[data-producto="JALURIA"] { 
     color: #32CD32;
-    text-shadow: 0 0 5px #32CD32, 0 0 15px #32CD32;
-    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 10px #32CD32, 0 0 20px #32CD32;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
 .producto-card h3[data-producto="ASMODEO"] { 
-    color: #6A0DAD;
-    text-shadow: 0 0 5px #6A0DAD, 0 0 15px #6A0DAD;
-    font-family: 'Libre Baskerville', serif;
+    color: #9370DB;
+    text-shadow: 0 0 10px #9370DB, 0 0 20px #9370DB;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
 .producto-card h3[data-producto="IRA DIVINA"] { 
     color: #8B4513;
-    text-shadow: 0 0 5px #8B4513, 0 0 15px #8B4513;
-    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 10px #8B4513, 0 0 20px #8B4513;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
 .producto-card h3[data-producto="PACTUM"] { 
     color: #D2B48C;
-    text-shadow: 0 0 5px #D2B48C, 0 0 15px #D2B48C;
-    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 10px #D2B48C, 0 0 20px #D2B48C;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
 .producto-card h3[data-producto="REDENCIÓN"] { 
     color: #DAA520;
-    text-shadow: 0 0 5px #DAA520, 0 0 15px #DAA520;
-    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 10px #DAA520, 0 0 20px #DAA520;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
 .producto-card h3[data-producto="REVELACIÓN"] { 
     color: #FFD700;
-    text-shadow: 0 0 5px #FFD700, 0 0 15px #FFD700;
-    font-family: 'Libre Baskerville', serif;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    font-family: 'Nosifer', cursive;
+    font-size: 1.6rem;
 }
 
-.producto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-}
-
-.producto-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+.producto-card p {
+    color: #CCC;
+    line-height: 1.6;
+    margin: 10px 0;
+    font-size: 0.95rem;
 }
 
 .producto-card .precio {
-    font-weight: bold;
-    margin: 10px 0;
     color: #FFD700;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    margin: 15px 0;
 }
 
-/* BOTONES */
+/* ===== BOTONES GÓTICOS ===== */
 button {
-    min-height: 48px;
-    min-width: 48px;
-    padding: 12px 24px;
+    min-height: 50px;
+    padding: 15px 25px;
     font-size: 16px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.btn-seleccionar, #confirmar-opciones, #whatsapp-btn {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-    font-weight: bold;
+.btn-seleccionar {
+    background: linear-gradient(145deg, #8B0000, #660000);
+    color: #FFF;
+    border: 2px solid #FFD700;
     width: 100%;
     margin-top: 15px;
-    border: 2px solid #000;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+}
+
+.btn-seleccionar:hover {
+    background: linear-gradient(145deg, #FF0000, #8B0000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+}
+
+#confirmar-opciones, #whatsapp-btn {
+    background: linear-gradient(145deg, #FFD700, #DAA520);
+    color: #000;
+    border: 2px solid #8B0000;
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
 }
 
 #seguir-pidiendo, .btn-regresar {
-    background: #333;
-    color: white;
+    background: linear-gradient(145deg, #333, #222);
+    color: #FFF;
+    border: 2px solid #666;
     width: 100%;
     margin-top: 10px;
 }
 
 button:active {
-    transform: scale(0.95);
+    transform: scale(0.98);
 }
 
-/* MODALES */
+/* ===== MODALES OSCUROS ===== */
 .modal-oculto {
     display: none;
 }
 
 .modal-contenido {
-    background: #1a1a1a;
-    padding: 25px;
+    background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
+    padding: 30px;
     border-radius: 15px;
     width: 90%;
     max-width: 500px;
@@ -191,140 +242,115 @@ button:active {
     z-index: 1001;
     max-height: 85vh;
     overflow-y: auto;
-    padding-bottom: 80px;
+    border: 2px solid #8B0000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
 }
 
 .cerrar-modal {
     position: absolute;
     top: 15px;
     right: 15px;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     color: #FFD700;
+    text-shadow: 0 0 5px #000;
+    transition: color 0.3s ease;
 }
 
-/* === INSTRUCCIÓN DE TRANSFERENCIA === */
+.cerrar-modal:hover {
+    color: #8B0000;
+}
+
+/* ===== RESTANTE DEL CÓDIGO (manteniendo estructura pero con colores actualizados) ===== */
 .instruccion-transferencia {
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(139, 0, 0, 0.2);
     border-left: 3px solid #FFD700;
-    padding: 10px;
-    margin: 15px 0;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
-/* === MODAL DE UBICACIÓN === */
 .ubicacion-info {
-    margin: 20px 0;
-    padding: 15px;
+    margin: 25px 0;
+    padding: 20px;
     background: rgba(40, 40, 40, 0.6);
-    border-radius: 10px;
+    border-radius: 12px;
+    border: 1px solid #333;
 }
 
 .direccion-clickeable {
     cursor: pointer;
-    padding: 10px;
-    background: rgba(255, 215, 0, 0.1);
+    padding: 15px;
+    background: rgba(139, 0, 0, 0.1);
     border-left: 3px solid #FFD700;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    border-radius: 6px;
 }
 
 .direccion-clickeable:hover {
-    background: rgba(255, 215, 0, 0.2);
+    background: rgba(139, 0, 0, 0.3);
 }
 
 .mapa-container {
-    margin-top: 15px;
-    height: 300px;
+    margin-top: 20px;
+    height: 320px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: 2px solid #8B0000;
 }
 
 .mapa-container iframe {
     width: 100%;
-    height: 300px;
+    height: 100%;
     border-radius: 8px;
-    border: 1px solid #FFD700;
 }
 
-/* === CONTENEDOR DE UBICACIONES === */
-.ubicaciones-container {
-    max-height: 60vh;
-    overflow-y: auto;
-    margin: 15px 0;
-}
-
-/* === BOTONES DE UBICACIÓN === */
 .botones-ubicacion {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 25px;
     position: sticky;
     bottom: 0;
-    background: #1a1a1a;
-    padding: 15px 0;
-    border-top: 1px solid #FFD700;
+    background: #1A1A1A;
+    padding: 20px 0;
+    border-top: 2px solid #8B0000;
 }
 
-#confirmar-ubicacion {
-    flex: 2;
-}
-
-#regresar-carrito {
-    flex: 1;
-    background: #333;
-    color: white;
-}
-
-/* === CARRITO TRANSPARENTE === */
 .carrito-contenido {
-    background: rgba(10, 10, 10, 0.95);
+    background: linear-gradient(145deg, #0F0F0F, #1A1A1A);
     border: 2px solid #FFD700;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-    padding: 25px;
+    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+    padding: 30px;
     border-radius: 15px;
 }
 
-/* === TEXTO DE DESLIZAR === */
-.scroll-text {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 0.9rem;
-    color: #FFD700;
-}
-
-/* === BOTONES DE CONFIRMACIÓN === */
-.confirmar-botones {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .titulo-tag3d {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
-
+    
     .productos-container {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
-
+    
     .modal-contenido {
         width: 95vw;
-        padding: 20px;
+        padding: 25px;
     }
-
+    
     button {
-        padding: 14px 20px;
+        padding: 12px 20px;
     }
-
+    
     .confirmar-botones, .botones-ubicacion {
         flex-direction: column;
+        gap: 10px;
     }
-
+    
     #confirmar-ubicacion, #regresar-carrito {
         width: 100%;
     }
 }
-
