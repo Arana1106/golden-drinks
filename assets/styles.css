@@ -1,374 +1,392 @@
 /* ESTILOS GENERALES - GÓTICO/GORE - FONDO OSCURO COMPLETO */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'MedievalSharp', 'Arial', sans-serif;
-    background-color: #0A0A0A !important;
-    color: #E0E0E0;
-    overflow-x: hidden;
+html,body { 
+  margin: 0; 
+  padding: 0; 
+  width: 100%; 
+  height: 100%; 
+  font-family: 'MedievalSharp', 'Arial', sans-serif; 
+  background-color: #0A0A0A !important; 
+  color: #E0E0E0; 
+  overflow-x: hidden; 
 }
 
 /* Fondo con textura para toda la página */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(138, 3, 3, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(138, 3, 3, 0.1) 0%, transparent 25%),
-        url('https://i.ibb.co/2LgNSSy/1000065665.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    z-index: -2;
-    opacity: 0.3;
+body::before{ 
+  content: ''; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background:  
+    radial-gradient(circle at 20% 30%, rgba(138, 3, 3, 0.15) 0%, transparent 25%), 
+    radial-gradient(circle at 80% 70%, rgba(138, 3, 3, 0.1) 0%, transparent 25%), 
+    url('https://i.ibb.co/2LgNSSy/1000065665.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat; 
+  z-index: -2; 
+  opacity: 0.3; 
 }
 
 /* Overlay oscuro para toda la página */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 5, 5, 0.95);
-    z-index: -1;
+body::after{ 
+  content: ''; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(5, 5, 5, 0.95); 
+  z-index: -1; 
 }
 
 /* Contenedor principal - Fondo oscuro garantizado */
-.arena-negra, #menu, .categoria, .productos-container, header, main {
-    background-color: #0A0A0A !important;
-    color: #E0E0E0 !important;
+.arena-negra,#menu, .categoria, .productos-container, header, main { 
+  background-color: #0A0A0A !important; 
+  color: #E0E0E0 !important; 
 }
 
 /* Aseguramos que todos los contenedores tengan fondo oscuro */
-header, main, section, div, footer, article, aside, nav {
-    background-color: transparent !important;
+header,main, section, div, footer, article, aside, nav { 
+  background-color: transparent !important; 
 }
 
 /* TIPOGRAFÍAS SINNER'S - MÁS GÓTICO */
-.titulo-tag3d {
-    font-family: 'UnifrakturMaguntia', 'Nosifer', cursive;
-    color: #FFD700;
-    text-shadow: 
-        2px 2px 0 #8A0303,
-        -1px -1px 0 #8A0303,
-        1px -1px 0 #8A0303,
-        -1px 1px 0 #8A0303,
-        0 0 10px #8A0303,
-        0 0 20px #8A0303;
-    letter-spacing: 2px;
-    text-align: center;
-    margin: 20px 0;
-    font-size: 3.5rem;
-    background: transparent !important;
+.titulo-tag3d{ 
+  font-family: 'UnifrakturMaguntia', 'Nosifer', cursive; 
+  color: #FFD700; 
+  text-shadow:  
+    2px 2px 0 #8A0303, 
+    -1px -1px 0 #8A0303, 
+    1px -1px 0 #8A0303, 
+    -1px 1px 0 #8A0303, 
+    0 0 10px #8A0303, 
+    0 0 20px #8A0303; 
+  letter-spacing: 2px; 
+  text-align: center; 
+  margin: 20px 0; 
+  font-size: 3.5rem; 
+  background: transparent !important; 
 }
 
 /* CATEGORÍAS - ESTILO GÓTICO */
-.categoria-titulo {
-    padding: 12px 20px;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-family: 'Eater', 'Libre Baskerville', serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-    display: inline-block;
-    background: rgba(20, 20, 20, 0.8) !important;
-    border-radius: 5px;
+.categoria-titulo{ 
+  padding: 12px 20px; 
+  font-size: 1.8rem; 
+  margin-bottom: 20px; 
+  font-family: 'Eater', 'Libre Baskerville', serif; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  position: relative; 
+  display: inline-block; 
+  background: rgba(20, 20, 20, 0.8) !important; 
+  border-radius: 5px; 
 }
 
-.categoria-titulo::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+.categoria-titulo::after { 
+  content: ""; 
+  position: absolute; 
+  bottom: 0; 
+  left: 20px; 
+  right: 20px; 
+  height: 2px; 
+  background: linear-gradient(90deg, transparent, #FFD700, transparent); 
 }
 
 /* COLORES ESPECÍFICOS POR CATEGORÍA */
-.categoria:nth-child(1) .categoria-titulo {
-    color: #FFD700;
-    text-shadow: 0 0 5px #8A0303, 0 0 10px #8A0303;
-    border-left: 5px solid #8A0303;
+.categoria:nth-child(1).categoria-titulo { 
+  color: #FFD700; 
+  text-shadow: 0 0 5px #8A0303, 0 0 10px #8A0303; 
+  border-left: 5px solid #8A0303; 
 }
 
-.categoria:nth-child(2) .categoria-titulo {
-    color: #D2B48C;
-    text-shadow: 0 0 5px #5A4B41, 0 0 10px #5A4B41;
-    border-left: 5px solid #5A4B41;
+.categoria:nth-child(2) .categoria-titulo { 
+  color: #D2B48C; 
+  text-shadow: 0 0 5px #5A4B41, 0 0 10px #5A4B41; 
+  border-left: 5px solid #5A4B41; 
 }
 
-.categoria:nth-child(3) .categoria-titulo {
-    color: #F0E68C;
-    text-shadow: 0 0 5px #3C2A21, 0 0 10px #3C2A21;
-    border-left: 5px solid #3C2A21;
+.categoria:nth-child(3) .categoria-titulo { 
+  color: #F0E68C; 
+  text-shadow: 0 0 5px #3C2A21, 0 0 10px #3C2A21; 
+  border-left: 5px solid #3C2A21; 
 }
 
 /* PRODUCTOS - TARJETAS CON ESTILO GÓTICO */
-.productos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    margin-bottom: 40px;
-    background: transparent !important;
+.productos-container{ 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 25px; 
+  margin-bottom: 40px; 
+  background: transparent !important; 
 }
 
-.producto-card {
-    background: rgba(15, 15, 15, 0.95) !important;
-    border-radius: 8px;
-    padding: 20px;
-    transition: all 0.3s ease;
-    border: 1px solid #333;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+.producto-card { 
+  background: rgba(15, 15, 15, 0.95) !important; 
+  border-radius: 8px; 
+  padding: 20px; 
+  transition: all 0.3s ease; 
+  border: 1px solid #333; 
+  position: relative; 
+  overflow: hidden; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
 }
 
-.producto-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #FFD700, transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
+.producto-card::before { 
+  content: ""; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  height: 3px; 
+  background: linear-gradient(90deg, transparent, #FFD700, transparent); 
+  opacity: 0; 
+  transition: opacity 0.3s; 
 }
 
-.producto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(138, 3, 3, 0.4);
-    border-color: #8A0303;
+.producto-card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 25px rgba(138, 3, 3, 0.4); 
+  border-color: #8A0303; 
 }
 
-.producto-card:hover::before {
-    opacity: 1;
+.producto-card:hover::before { 
+  opacity: 1; 
 }
 
-.producto-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-    font-family: 'Creepster', 'Libre Baskerville', serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #E0E0E0;
+.producto-card h3 { 
+  font-size: 1.5rem; 
+  margin-bottom: 12px; 
+  font-family: 'Creepster', 'Libre Baskerville', serif; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  color: #E0E0E0; 
 }
 
-.producto-card .precio {
-    font-weight: bold;
-    margin: 12px 0;
-    color: #FFD700;
-    font-size: 1.3rem;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+.producto-card .precio { 
+  font-weight: bold; 
+  margin: 12px 0; 
+  color: #FFD700; 
+  font-size: 1.3rem; 
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); 
 }
 
-/* COLORES PARA PRODUCTOS - ASMODEO MODIFICADO */
-.producto-card h3[data-producto="INFERNO"] { 
-    color: #DC143C;
-    text-shadow: 0 0 5px #DC143C, 0 0 10px #FF2400;
+/* ===== COLORES DE PRODUCTOS (fusionado) ===== */
+.producto-card h3[data-producto="LEVIATAN"] {  
+  color: #4169E1;  
+  text-shadow: 0 0 10px #4169E1, 0 0 20px #4169E1;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="INFERNO"] {  
+  color: #DC143C;  
+  text-shadow: 0 0 10px #DC143C, 0 0 20px #DC143C;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="JALURIA"] {  
+  color: #32CD32;  
+  text-shadow: 0 0 10px #32CD32, 0 0 20px #32CD32;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="ASMODEO"] {  
+  color: #9370DB;  
+  text-shadow: 0 0 10px #9370DB, 0 0 20px #9370DB;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="IRA DIVINA"] {  
+  color: #8B4513;  
+  text-shadow: 0 0 10px #8B4513, 0 0 20px #8B4513;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="PACTUM"] {  
+  color: #D2B48C;  
+  text-shadow: 0 0 10px #D2B48C, 0 0 20px #D2B48C;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="REDENCIÓN"] {  
+  color: #DAA520;  
+  text-shadow: 0 0 10px #DAA520, 0 0 20px #DAA520;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
+}
+.producto-card h3[data-producto="REVELACIÓN"] {  
+  color: #FFD700;  
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.6rem;  
 }
 
-.producto-card h3[data-producto="JALURIA"] { 
-    color: #39FF14;
-    text-shadow: 0 0 5px #39FF14, 0 0 10px #00FF00;
+/* ===== DESCRIPCIONES DE PRODUCTO ===== */
+.producto-card p {  
+  color: #CCC;  
+  line-height: 1.6;  
+  margin: 10px 0;  
+  font-size: 0.95rem;  
 }
 
-.producto-card h3[data-producto="ABISMO"] { 
-    color: #6A0DAD;
-    text-shadow: 0 0 5px #6A0DAD, 0 0 10px #9370DB;
+/* BOTONES - ESTILO GÓTICO + SELECCIÓN (fusionado) */
+button{ 
+  min-height: 48px; 
+  min-width: 48px; 
+  padding: 12px 24px; 
+  font-size: 16px; 
+  border-radius: 5px; 
+  border: none; 
+  cursor: pointer; 
+  transition: all 0.3s; 
+  font-family: 'MedievalSharp', cursive; 
+  font-weight: bold; 
 }
 
-/* ASMODEO - TONO OSCURO CON SOMBRAS PÚRPURA */
-.producto-card h3[data-producto="ASMODEO"] { 
-    color: #4B0082;
-    text-shadow: 0 0 5px #8B008B, 0 0 10px #8B008B, 0 0 15px #4B0082;
+.btn-seleccionar {  
+  background: linear-gradient(145deg, #8B0000, #660000);  
+  color: #FFF;  
+  border: 2px solid #FFD700;  
+  width: 100%;  
+  margin-top: 15px;  
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);  
+}
+.btn-seleccionar:hover {  
+  background: linear-gradient(145deg, #FF0000, #8B0000);  
+  transform: translateY(-2px);  
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);  
 }
 
-.producto-card h3[data-producto="IRA DIVINA"] { 
-    color: #FF4500;
-    text-shadow: 0 0 5px #FF4500, 0 0 10px #FF8C00;
+#confirmar-opciones, #whatsapp-btn, #confirmar-ubicacion { 
+  background: linear-gradient(135deg, #FFD700, #DAA520); 
+  color: #000; 
+  border: 2px solid #8B0000; 
+  width: 100%; 
+  margin-top: 15px; 
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); 
 }
-
-.producto-card h3[data-producto="PACTUM"] { 
-    color: #B87333;
-    text-shadow: 0 0 5px #B87333, 0 0 10px #CD7F32;
+#seguir-pidiendo, .btn-regresar, #regresar-carrito { 
+  background: #222; 
+  color: #CCC; 
+  border: 1px solid #444; 
 }
-
-.producto-card h3[data-producto="REDENCIÓN"] { 
-    color: #DAA520;
-    text-shadow: 0 0 5px #DAA520, 0 0 10px #F0E68C;
-}
-
-.producto-card h3[data-producto="REVELACIÓN"] { 
-    color: #FFD700;
-    text-shadow: 0 0 5px #FFD700, 0 0 10px #FFF8DC;
-}
-
-/* BOTONES - ESTILO GÓTICO */
-button {
-    min-height: 48px;
-    min-width: 48px;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'MedievalSharp', cursive;
-    font-weight: bold;
-}
-
-.btn-seleccionar, #confirmar-opciones, #whatsapp-btn, #confirmar-ubicacion {
-    background: linear-gradient(135deg, #8A0303, #600);
-    color: #FFF;
-    border: 1px solid #FFD700;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-seleccionar:hover, #confirmar-opciones:hover, #whatsapp-btn:hover, #confirmar-ubicacion:hover {
-    background: linear-gradient(135deg, #A00404, #700);
-    box-shadow: 0 0 15px rgba(138, 3, 3, 0.7);
-}
-
-#seguir-pidiendo, .btn-regresar, #regresar-carrito {
-    background: #222;
-    color: #CCC;
-    border: 1px solid #444;
-}
-
-#seguir-pidiendo:hover, .btn-regresar:hover, #regresar-carrito:hover {
-    background: #333;
-    color: #FFF;
+#seguir-pidiendo:hover, .btn-regresar:hover, #regresar-carrito:hover { 
+  background: #333; 
+  color: #FFF; 
 }
 
 /* MODALES - ESTILO OSCURO GÓTICO */
-.modal-contenido {
-    background: #0F0F0F !important;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    max-height: 85vh;
-    overflow-y: auto;
-    border: 2px solid #8A0303;
-    box-shadow: 0 0 30px rgba(138, 3, 3, 0.5);
+.modal-contenido{ 
+  background: #0F0F0F !important; 
+  padding: 30px; 
+  border-radius: 10px; 
+  width: 90%; 
+  max-width: 500px; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  z-index: 1001; 
+  max-height: 85vh; 
+  overflow-y: auto; 
+  border: 2px solid #8A0303; 
+  box-shadow: 0 0 30px rgba(138, 3, 3, 0.5); 
 }
 
-.cerrar-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #FFD700;
-    text-shadow: 0 0 5px #000;
-    transition: color 0.3s;
+.cerrar-modal { 
+  position: absolute; 
+  top: 15px; 
+  right: 15px; 
+  font-size: 28px; 
+  cursor: pointer; 
+  color: #FFD700; 
+  text-shadow: 0 0 5px #000; 
+  transition: color 0.3s; 
 }
-
-.cerrar-modal:hover {
-    color: #8A0303;
+.cerrar-modal:hover { 
+  color: #8A0303; 
 }
 
 /* ELEMENTOS DE FORMULARIO CON ESTILO GÓTICO */
-.opcion-grupo {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: rgba(30, 30, 30, 0.7);
-    border-radius: 5px;
-    border-left: 3px solid #8A0303;
+.opcion-grupo{ 
+  margin-bottom: 20px; 
+  padding: 15px; 
+  background: rgba(30, 30, 30, 0.7); 
+  border-radius: 5px; 
+  border-left: 3px solid #8A0303; 
 }
-
-.opcion-grupo h3 {
-    color: #FFD700;
-    margin-bottom: 10px;
-    font-family: 'MedievalSharp', cursive;
-    font-size: 1.2rem;
+.opcion-grupo h3 { 
+  color: #FFD700; 
+  margin-bottom: 10px; 
+  font-family: 'MedievalSharp', cursive; 
+  font-size: 1.2rem; 
 }
-
-.opcion-grupo label {
-    display: block;
-    margin-bottom: 8px;
-    cursor: pointer;
-    color: #E0E0E0;
+.opcion-grupo label { 
+  display: block; 
+  margin-bottom: 8px; 
+  cursor: pointer; 
+  color: #E0E0E0; 
 }
-
-.opcion-grupo input[type="radio"] {
-    margin-right: 8px;
-    accent-color: #8A0303;
+.opcion-grupo input[type="radio"] { 
+  margin-right: 8px; 
+  accent-color: #8A0303; 
 }
 
 /* GARANTIZAR que todos los textos sean visibles */
-* {
-    color: #E0E0E0 !important;
+· { 
+  color: #E0E0E0 !important; 
 }
 
 /* Excepciones para elementos que deben tener color específico */
-.titulo-tag3d, .producto-card h3[data-producto], .producto-card .precio, 
-.opcion-grupo h3, .cerrar-modal, .btn-seleccionar, #confirmar-opciones, 
-#whatsapp-btn, #confirmar-ubicacion {
-    color: inherit !important;
+.titulo-tag3d,.producto-card h3[data-producto], 
+.producto-card .precio,  
+.opcion-grupo h3,.cerrar-modal, 
+.btn-seleccionar, #confirmar-opciones,  
+#whatsapp-btn,#confirmar-ubicacion { 
+  color: inherit !important; 
 }
 
 /* SCROLLBAR PERSONALIZADO */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #1A1A1A;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #8A0303;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #A00404;
-}
+::-webkit-scrollbar{ width: 8px; }
+::-webkit-scrollbar-track { background: #1A1A1A; }
+::-webkit-scrollbar-thumb { background: #8A0303; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #A00404; }
 
 /* MODALES - Fondo oscuro para el overlay del modal */
-.modal {
-    background-color: rgba(0, 0, 0, 0.92) !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+.modal{ 
+  background-color: rgba(0, 0, 0, 0.92) !important; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 1000; 
 }
-
-.modal-oculto {
-    display: none !important;
-}
+.modal-oculto { display: none !important; }
 
 /* Asegurar que no haya espacios blancos en ningún lugar */
-body > * {
-    background-color: #0A0A0A !important;
-}
+body> * { background-color: #0A0A0A !important; }
 
 /* Forzar fondo oscuro en todos los elementos potenciales */
-div, section, main, header, footer, article, aside, nav {
-    background-color: #0A0A0A !important;
-    color: #E0E0E0 !important;
+div,section, main, header, footer, article, aside, nav { 
+  background-color: #0A0A0A !important; 
+  color: #E0E0E0 !important; 
+}
+
+/* ===== ESLOGAN FINAL ===== */
+.eslogan-final {  
+  text-align: center;  
+  font-family: 'Nosifer', cursive;  
+  font-size: 1.2rem;   /* más pequeño para que quepa */
+  letter-spacing: 2px;  
+  color: #FFD700;  
+  text-shadow: 0 0 10px #8B0000, 0 0 20px #8B0000;  
+  margin: 30px 10px;  
+  padding: 10px;  
+  line-height: 1.4;  
 }

@@ -1,70 +1,70 @@
-// ===== DATOS DE PRODUCTOS SINNER'S =====
+// ===== DATOS DE PRODUCTOS SINNER'S - PRECIOS CORREGIDOS =====
 const productos = {
     bebidas: {
         "LEVIATAN": {
             descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. 475ml",
-            base: 55,
+            base: 50, // Corregido: 50 pesos
             opciones: {
                 alcohol: { 
                     sin: 0, 
-                    con: 20, 
+                    con: 15, // Corregido: 15 pesos
                     advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
                     nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
-                    si: 15,
+                    si: 15, // 15 pesos
                     nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
         "INFERNO": {
             descripcion: "Pasión ardiente con sabor a frutos rojos 475ml",
-            base: 60,
+            base: 50, // Corregido: 50 pesos
             opciones: {
                 alcohol: { 
                     sin: 0, 
-                    con: 20, 
+                    con: 15, // Corregido: 15 pesos
                     advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
                     nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
-                    si: 15,
+                    si: 15, // 15 pesos
                     nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
         "JALURIA": {
             descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde con jengibre 475ml",
-            base: 50,
+            base: 50, // 50 pesos (correcto)
             opciones: {
                 alcohol: { 
                     sin: 0, 
-                    con: 20, 
+                    con: 15, // Corregido: 15 pesos
                     advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
                     nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
-                    si: 15,
+                    si: 15, // 15 pesos
                     nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
         "ASMODEO": {
             descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque 475ml",
-            base: 65,
+            base: 50, // Corregido: 50 pesos
             opciones: {
                 alcohol: { 
                     sin: 0, 
-                    con: 20, 
+                    con: 15, // Corregido: 15 pesos
                     advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
                     nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
-                    si: 15,
+                    si: 15, // 15 pesos
                     nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
@@ -73,12 +73,12 @@ const productos = {
     cafes: {
         "IRA DIVINA": {
             descripcion: "Energía Divina toma un café deconstruido frío 475ml",
-            base: 45,
+            base: 45, // 45 pesos (se mantiene)
             opciones: {
                 leche: { 
                     sin: 0, 
-                    con: 10, 
-                    deslactosada: 10 
+                    con: 10, // 10 pesos (correcto)
+                    deslactosada: 10 // 10 pesos (correcto)
                 },
                 azucar: { 
                     sin: 0, 
@@ -87,19 +87,19 @@ const productos = {
                 },
                 coffee_bubble: { 
                     no: 0, 
-                    si: 12,
+                    si: 15, // Corregido: 15 pesos (Gemas del Infierno)
                     nombre: "Gemas del Infierno (Coffee Jelly)"
                 }
             }
         },
         "PACTUM": {
             descripcion: "Pacto con el diablo, tranquilo solo es un suave café descafeinado 475ml",
-            base: 40,
+            base: 40, // 40 pesos (se mantiene)
             opciones: {
                 leche: { 
                     sin: 0, 
-                    con: 10, 
-                    deslactosada: 10 
+                    con: 10, // 10 pesos (correcto)
+                    deslactosada: 10 // 10 pesos (correcto)
                 },
                 azucar: { 
                     sin: 0, 
@@ -108,7 +108,7 @@ const productos = {
                 },
                 coffee_bubble: { 
                     no: 0, 
-                    si: 12,
+                    si: 15, // Corregido: 15 pesos (Gemas del Infierno)
                     nombre: "Gemas del Infierno (Coffee Jelly)"
                 }
             }
@@ -117,7 +117,7 @@ const productos = {
     tes: {
         "REDENCIÓN": {
             descripcion: "Todos la buscamos, y todos la necesitamos su sabor en sus 475 ml",
-            base: 35,
+            base: 35, // Corregido: 35 pesos
             opciones: {
                 azucar: { 
                     sin: 0, 
@@ -126,14 +126,14 @@ const productos = {
                 },
                 jelly: { 
                     no: 0, 
-                    si: 15,
+                    si: 15, // 15 pesos
                     nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
         "REVELACIÓN": {
             descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrevete a conocer el veredicto. 475ml",
-            base: 40,
+            base: 35, // Corregido: 35 pesos
             opciones: {
                 azucar: { 
                     sin: 0, 
@@ -142,7 +142,7 @@ const productos = {
                 },
                 jelly: { 
                     no: 0, 
-                    si: 15,
+                    si: 15, // 15 pesos
                     nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
@@ -275,7 +275,7 @@ function mostrarOpciones(producto) {
             </div>
             <div class="opcion-grupo">
                 <h3>${producto.opciones.jelly.nombre}:</h3>
-                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
+                <label><input type="radio" name="jelly" value"no" checked> No (+$${producto.opciones.jelly.no})</label>
                 <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
             </div>
         `;
