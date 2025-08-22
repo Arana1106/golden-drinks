@@ -1,16 +1,16 @@
-/* ===== ESTILOS GENERALES SINNER'S ===== */
+/* ===== ESTILOS GENERALES SINNER'S - CORREGIDO ===== */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Libre Baskerville', serif;
-    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+    background: #0A0A0A; /* Fondo negro sólido como base */
     color: #E0E0E0;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
 }
 
-/* Patrón de textura sutil */
+/* Textura oscura con detalles rojos sutiles */
 body::before {
     content: '';
     position: absolute;
@@ -18,9 +18,10 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 25%),
-        radial-gradient(circle at 85% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 25%);
+    background: 
+        radial-gradient(circle at 15% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 25%),
+        linear-gradient(45deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
     z-index: -1;
 }
 
@@ -59,6 +60,7 @@ body::before {
     text-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
     font-family: 'Nosifer', cursive;
     letter-spacing: 2px;
+    color: #FFD700;
 }
 
 /* ===== CONTENEDOR DE PRODUCTOS ===== */
@@ -70,12 +72,12 @@ body::before {
 }
 
 .producto-card {
-    background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
+    background: linear-gradient(145deg, #111111, #0D0D0D);
     border-radius: 12px;
     padding: 25px;
     transition: all 0.3s ease;
     border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
     position: relative;
     overflow: hidden;
 }
@@ -101,7 +103,7 @@ body::before {
     border-color: #8B0000;
 }
 
-/* ===== COLORES POR SABOR - NUEVA PALETA ===== */
+/* ===== COLORES POR SABOR ===== */
 .producto-card h3[data-producto="LEVIATAN"] { 
     color: #4169E1;
     text-shadow: 0 0 10px #4169E1, 0 0 20px #4169E1;
@@ -230,7 +232,7 @@ button:active {
 }
 
 .modal-contenido {
-    background: linear-gradient(145deg, #1A1A1A, #0F0F0F);
+    background: linear-gradient(145deg, #111111, #0D0D0D);
     padding: 30px;
     border-radius: 15px;
     width: 90%;
@@ -243,7 +245,7 @@ button:active {
     max-height: 85vh;
     overflow-y: auto;
     border: 2px solid #8B0000;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
 }
 
 .cerrar-modal {
@@ -261,7 +263,7 @@ button:active {
     color: #8B0000;
 }
 
-/* ===== RESTANTE DEL CÓDIGO (manteniendo estructura pero con colores actualizados) ===== */
+/* ===== ESTILOS RESTANTES ===== */
 .instruccion-transferencia {
     background: rgba(139, 0, 0, 0.2);
     border-left: 3px solid #FFD700;
@@ -274,15 +276,15 @@ button:active {
 .ubicacion-info {
     margin: 25px 0;
     padding: 20px;
-    background: rgba(40, 40, 40, 0.6);
+    background: rgba(30, 30, 30, 0.8);
     border-radius: 12px;
-    border: 1px solid #333;
+    border: 1px solid #444;
 }
 
 .direccion-clickeable {
     cursor: pointer;
     padding: 15px;
-    background: rgba(139, 0, 0, 0.1);
+    background: rgba(139, 0, 0, 0.2);
     border-left: 3px solid #FFD700;
     transition: all 0.3s ease;
     border-radius: 6px;
@@ -312,23 +314,37 @@ button:active {
     margin-top: 25px;
     position: sticky;
     bottom: 0;
-    background: #1A1A1A;
+    background: #111111;
     padding: 20px 0;
     border-top: 2px solid #8B0000;
 }
 
 .carrito-contenido {
-    background: linear-gradient(145deg, #0F0F0F, #1A1A1A);
+    background: linear-gradient(145deg, #0D0D0D, #111111);
     border: 2px solid #FFD700;
     box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
     padding: 30px;
     border-radius: 15px;
 }
 
+.scroll-text {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #FFD700;
+}
+
+.confirmar-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .titulo-tag3d {
         font-size: 2.5rem;
+        letter-spacing: 2px;
     }
     
     .productos-container {
@@ -343,6 +359,7 @@ button:active {
     
     button {
         padding: 12px 20px;
+        font-size: 14px;
     }
     
     .confirmar-botones, .botones-ubicacion {
