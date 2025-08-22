@@ -8,12 +8,13 @@ const productos = {
                 alcohol: { 
                     sin: 0, 
                     con: 20, 
-                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido" 
+                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
+                    nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
                     si: 15,
-                    nombre: "LÁGRIMAS DE DEMONIO"
+                    nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
@@ -24,12 +25,13 @@ const productos = {
                 alcohol: { 
                     sin: 0, 
                     con: 20, 
-                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido" 
+                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
+                    nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
                     si: 15,
-                    nombre: "LÁGRIMAS DE DEMONIO"
+                    nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
@@ -40,12 +42,13 @@ const productos = {
                 alcohol: { 
                     sin: 0, 
                     con: 20, 
-                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido" 
+                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
+                    nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
                     si: 15,
-                    nombre: "LÁGRIMAS DE DEMONIO"
+                    nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
@@ -56,12 +59,13 @@ const productos = {
                 alcohol: { 
                     sin: 0, 
                     con: 20, 
-                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido" 
+                    advertencia: "🚨 Se solicitará INE para Elixir Prohibido (Alcohol 2.5 oz)",
+                    nombre: "Elixir Prohibido (Alcohol 2.5 oz)"
                 },
                 jelly: { 
                     no: 0, 
                     si: 15,
-                    nombre: "LÁGRIMAS DE DEMONIO"
+                    nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         }
@@ -84,7 +88,7 @@ const productos = {
                 coffee_bubble: { 
                     no: 0, 
                     si: 12,
-                    nombre: "GEMAS DEL INFIERNO"
+                    nombre: "Gemas del Infierno (Coffee Jelly)"
                 }
             }
         },
@@ -105,7 +109,7 @@ const productos = {
                 coffee_bubble: { 
                     no: 0, 
                     si: 12,
-                    nombre: "GEMAS DEL INFIERNO"
+                    nombre: "Gemas del Infierno (Coffee Jelly)"
                 }
             }
         }
@@ -123,7 +127,7 @@ const productos = {
                 jelly: { 
                     no: 0, 
                     si: 15,
-                    nombre: "LÁGRIMAS DE DEMONIO"
+                    nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         },
@@ -139,7 +143,7 @@ const productos = {
                 jelly: { 
                     no: 0, 
                     si: 15,
-                    nombre: "LÁGRIMAS DE DEMONIO"
+                    nombre: "Lágrimas de Demonio (Bubble Jelly)"
                 }
             }
         }
@@ -153,13 +157,13 @@ const ubicaciones = [
         direccion: "Calle Coral 120, colonia Estrella, CDMX",
         horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
         coordenadas: "19.4326,-99.1332",
-        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDA.0MCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
+        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDAuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
     }
 ];
 
 // ===== VARIABLES GLOBALES =====
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-const MIN_PEDIDO = 3;  // Cambiado de 4 a 3
+const MIN_PEDIDO = 3;
 
 // ===== ELEMENTOS DEL DOM =====
 const carritoBtn = document.getElementById('carrito-btn');
@@ -250,9 +254,9 @@ function mostrarOpciones(producto) {
     if (producto.categoria === 'bebidas') {
         formularioOpciones.innerHTML = `
             <div class="opcion-grupo">
-                <h3>Elixir Prohibido:</h3>
+                <h3>${producto.opciones.alcohol.nombre}:</h3>
                 <label><input type="radio" name="alcohol" value="sin" checked> Sin (+$${producto.opciones.alcohol.sin})</label>
-                <label><input type="radio" name="alcohol" value="con"> Con Elixir Prohibido (+$${producto.opciones.alcohol.con})</label>
+                <label><input type="radio" name="alcohol" value="con"> Con (+$${producto.opciones.alcohol.con})</label>
                 <p class="advertencia">${producto.opciones.alcohol.advertencia}</p>
             </div>
             <div class="opcion-grupo">
@@ -445,15 +449,15 @@ function obtenerOpcionesTexto(item) {
     const extras = [];
     
     if (item.categoria === 'bebidas') {
-        extras.push(item.seleccion.alcohol === 'con' ? 'Con Elixir Prohibido' : 'Sin Elixir Prohibido');
-        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio' : 'Sin Lágrimas de Demonio');
+        extras.push(item.seleccion.alcohol === 'con' ? 'Con Elixir Prohibido (Alcohol 2.5 oz)' : 'Sin Elixir Prohibido');
+        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio (Bubble Jelly)' : 'Sin Lágrimas de Demonio');
     } 
     else if (item.categoria === 'tes') {
         extras.push(
             item.seleccion.azucar === 'con' ? 'Con azúcar' : 
             item.seleccion.azucar === 'sustituto' ? 'Con sustituto' : 'Sin azúcar'
         );
-        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio' : 'Sin Lágrimas de Demonio');
+        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio (Bubble Jelly)' : 'Sin Lágrimas de Demonio');
     } 
     else if (item.categoria === 'cafes') {
         extras.push(
@@ -464,7 +468,7 @@ function obtenerOpcionesTexto(item) {
             item.seleccion.azucar === 'con' ? 'Con azúcar' : 
             item.seleccion.azucar === 'sustituto' ? 'Con sustituto' : 'Sin azúcar'
         );
-        extras.push(item.seleccion.coffee_bubble === 'si' ? 'Con Gemas del Infierno' : 'Sin Gemas del Infierno');
+        extras.push(item.seleccion.coffee_bubble === 'si' ? 'Con Gemas del Infierno (Coffee Jelly)' : 'Sin Gemas del Infierno');
     }
 
     return extras.join(', ');
