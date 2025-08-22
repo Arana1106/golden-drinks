@@ -156,7 +156,7 @@ const ubicaciones = [
         nombre: "Calle Coral 120",
         direccion: "Calle Coral 120, colonia Estrella, CDMX",
         horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
-        coordenadas: "19.4326,-99.1332",
+        coordenadas: "19° 28.667', -99° 7.017'",
         iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDAuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
     }
 ];
@@ -198,9 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     regresarCarritoBtn?.addEventListener('click', () => {
         cerrarModalUbicacion();
         mostrarCarrito();
-if (!validarHorarioUbicacion(ubicacion)) {
-    return;
-}
     });
     
     // Cerrar modales al hacer clic en la X
@@ -378,6 +375,44 @@ function actualizarCarritoUI() {
     }
 }
 
+// ===== VALIDACIÓN DE HORARIO =====
+function validarHorarioUbicacion(ubicacion) {
+    const ahora = new Date();
+    const horaActual = ahora.getHours();
+    const diaActual = ahora.getDay();
+    let horarioValido = false;
+
+    if (diaActual >= 1 && diaActual <= 4) { // Lunes-Jueves
+        horarioValido = horaActual >= 16 && horaActual < 21;
+    } else if (diaActual === 5) { // Viernes
+        horarioValido = (horaActual >= 16 && horaActual < 24) || horaActual === 0;
+    } else if (diaActual === 6) { // Sábado
+        horarioValido = (horaActual >= 11 && horaActual < 24) || horaActual < 2;
+    } else { // Domingo
+        horarioValido = horaActual >= 10 && horaActual < 19;
+    }
+
+    if (!horarioValido) {
+        const modalError = document.createElement('div');
+        modalError.className = 'modal-contenido';
+        modalError.innerHTML = `
+            <span class="cerrar-modal">&times;</span>
+            <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
+            <p>${ubicacion.nombre} está cerrado en este momento.</p>
+            <p>Horario: ${ubicacion.horario}</p>
+            <p>Intenta con otra ubicación 😋</p>
+        `;
+        document.body.appendChild(modalError);
+        
+        modalError.querySelector('.cerrar-modal').addEventListener('click', () => {
+            modalError.remove();
+        });
+        
+        return false;
+    }
+    return true;
+}
+
 // ===== UBICACIÓN =====
 function mostrarSeleccionUbicacion() {
     const totalItems = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
@@ -412,6 +447,11 @@ function enviarPedidoFinal(ubicacion) {
     const totalItems = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
     if (totalItems < MIN_PEDIDO) {
         alert(`¡PEDIDO MÍNIMO DE ${MIN_PEDIDO} PRODUCTOS! Actual: ${totalItems}`);
+        return;
+    }
+    
+    // Validar horario antes de proceder
+    if (!validarHorarioUbicacion(ubicacion)) {
         return;
     }
     
@@ -496,43 +536,6 @@ function calcularSubtotal(item) {
     return (item.base + extras) * (item.cantidad || 1);
 }
 
-function validarHorarioUbicacion(ubicacion) {
-    const ahora = new Date();
-    const horaActual = ahora.getHours();
-    const diaActual = ahora.getDay();
-    let horarioValido = false;
-
-    if (diaActual >= 1 && diaActual <= 4) { // Lunes-Jueves
-        horarioValido = horaActual >= 16 && horaActual < 21;
-    } else if (diaActual === 5) { // Viernes
-        horarioValido = (horaActual >= 16 && horaActual < 24) || horaActual === 0;
-    } else if (diaActual === 6) { // Sábado
-        horarioValido = (horaActual >= 11 && horaActual < 24) || horaActual < 2;
-    } else { // Domingo
-        horarioValido = horaActual >= 10 && horaActual < 19;
-    }
-
-    if (!horarioValido) {
-        const modalError = document.createElement('div');
-        modalError.className = 'modal-contenido';
-        modalError.innerHTML = `
-            <span class="cerrar-modal">&times;</span>
-            <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
-            <p>${ubicacion.nombre} está cerrado en este momento.</p>
-            <p>Horario: ${ubicacion.horario}</p>
-            <p>Intenta con otra ubicación 😋</p>
-        `;
-        document.body.appendChild(modalError);
-        
-        modalError.querySelector('.cerrar-modal').addEventListener('click', () => {
-            modalError.remove();
-        });
-        
-        return false;
-    }
-    return true;
-}
-
 function calcularTotal() {
     return carrito.reduce((total, item) => total + calcularSubtotal(item), 0);
 }
@@ -549,4 +552,3 @@ function cerrarModalCarrito() {
 
 // Hacer funciones accesibles globalmente
 window.eliminarDelCarrito = eliminarDelCarrito;
-
