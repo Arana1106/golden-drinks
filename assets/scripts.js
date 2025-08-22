@@ -156,8 +156,8 @@ const ubicaciones = [
         nombre: "Calle Coral 120",
         direccion: "Calle Coral 120, colonia Estrella, CDMX",
         horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
-        coordenadas: "19° 28.667', -99° 7.017'",
-        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDAuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
+        coordenadas: "19.4326,-99.1332",
+        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDA.0I0JX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
     }
 ];
 
@@ -393,19 +393,40 @@ function validarHorarioUbicacion(ubicacion) {
     }
 
     if (!horarioValido) {
+        // Crear el modal de error con la misma estructura que los otros modales
         const modalError = document.createElement('div');
-        modalError.className = 'modal-contenido';
+        modalError.className = 'modal';
         modalError.innerHTML = `
-            <span class="cerrar-modal">&times;</span>
-            <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
-            <p>${ubicacion.nombre} está cerrado en este momento.</p>
-            <p>Horario: ${ubicacion.horario}</p>
-            <p>Intenta con otra ubicación 😋</p>
+            <div class="modal-contenido">
+                <span class="cerrar-modal">&times;</span>
+                <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
+                <p>${ubicacion.nombre} está cerrado en este momento.</p>
+                <p><strong>Horario:</strong> ${ubicacion.horario}</p>
+                <p>Intenta con otra ubicación 😋</p>
+            </div>
         `;
+        
         document.body.appendChild(modalError);
         
-        modalError.querySelector('.cerrar-modal').addEventListener('click', () => {
+        // Mostrar el modal
+        modalError.classList.remove('modal-oculto');
+        document.body.style.overflow = 'hidden';
+        
+        // Configurar el evento para cerrar el modal
+        const cerrarBtn = modalError.querySelector('.cerrar-modal');
+        cerrarBtn.addEventListener('click', () => {
+            modalError.classList.add('modal-oculto');
+            document.body.style.overflow = 'auto';
             modalError.remove();
+        });
+        
+        // Cerrar el modal al hacer clic fuera del contenido
+        modalError.addEventListener('click', (e) => {
+            if (e.target === modalError) {
+                modalError.classList.add('modal-oculto');
+                document.body.style.overflow = 'auto';
+                modalError.remove();
+            }
         });
         
         return false;
