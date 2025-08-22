@@ -198,6 +198,9 @@ document.addEventListener('DOMContentLoaded', () => {
     regresarCarritoBtn?.addEventListener('click', () => {
         cerrarModalUbicacion();
         mostrarCarrito();
+if (!validarHorarioUbicacion(ubicacion)) {
+    return;
+}
     });
     
     // Cerrar modales al hacer clic en la X
@@ -493,6 +496,43 @@ function calcularSubtotal(item) {
     return (item.base + extras) * (item.cantidad || 1);
 }
 
+function validarHorarioUbicacion(ubicacion) {
+    const ahora = new Date();
+    const horaActual = ahora.getHours();
+    const diaActual = ahora.getDay();
+    let horarioValido = false;
+
+    if (diaActual >= 1 && diaActual <= 4) { // Lunes-Jueves
+        horarioValido = horaActual >= 16 && horaActual < 21;
+    } else if (diaActual === 5) { // Viernes
+        horarioValido = (horaActual >= 16 && horaActual < 24) || horaActual === 0;
+    } else if (diaActual === 6) { // Sábado
+        horarioValido = (horaActual >= 11 && horaActual < 24) || horaActual < 2;
+    } else { // Domingo
+        horarioValido = horaActual >= 10 && horaActual < 19;
+    }
+
+    if (!horarioValido) {
+        const modalError = document.createElement('div');
+        modalError.className = 'modal-contenido';
+        modalError.innerHTML = `
+            <span class="cerrar-modal">&times;</span>
+            <h3>⌛ ¡FUERA DE HORARIO! ⌛</h3>
+            <p>${ubicacion.nombre} está cerrado en este momento.</p>
+            <p>Horario: ${ubicacion.horario}</p>
+            <p>Intenta con otra ubicación 😋</p>
+        `;
+        document.body.appendChild(modalError);
+        
+        modalError.querySelector('.cerrar-modal').addEventListener('click', () => {
+            modalError.remove();
+        });
+        
+        return false;
+    }
+    return true;
+}
+
 function calcularTotal() {
     return carrito.reduce((total, item) => total + calcularSubtotal(item), 0);
 }
@@ -509,3 +549,4 @@ function cerrarModalCarrito() {
 
 // Hacer funciones accesibles globalmente
 window.eliminarDelCarrito = eliminarDelCarrito;
+
