@@ -1,81 +1,7 @@
-// ===== FUNCIÓN PARA ABRIR GOOGLE MAPS =====
-function abrirGoogleMaps() {
-    const coordenadas = "19.4777778,-99.1169444";
-    const url = `https://www.google.com/maps/search/?api=1&query=${coordenadas}`;
-    
-    window.open(url, '_blank');
-    
-    const direccion = document.querySelector('.direccion-clickeable');
-    direccion.style.background = 'rgba(0, 139, 0, 0.3)';
-    direccion.style.borderLeft = '3px solid #00FF00';
-    
-    setTimeout(() => {
-        direccion.style.background = 'rgba(139, 0, 0, 0.2)';
-        direccion.style.borderLeft = '3px solid #FFD700';
-    }, 1000);
-}
-
-// ===== DETECCIÓN DE DOBLE CLIC EN MÓVIL =====
+// ===== VARIABLES GLOBALES =====
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+const MIN_PEDIDO = 3;
 let lastTap = 0;
-document.addEventListener('touchend', function(e) {
-    const currentTime = new Date().getTime();
-    const tapLength = currentTime - lastTap;
-    
-    if (tapLength < 300 && tapLength > 0) {
-        if (e.target.classList.contains('direccion-clickeable')) {
-            abrirGoogleMaps();
-        }
-    }
-    lastTap = currentTime;
-});
-
-// ===== FUNCIÓN PARA VERIFICAR PEDIDO MÍNIMO =====
-function verificarPedidoMinimo() {
-    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
-    
-    if (totalArticulos < MIN_PEDIDO) {
-        mostrarAdvertenciaPedidoMinimo();
-        return false;
-    }
-    return true;
-}
-
-// ===== FUNCIÓN PARA MOSTRAR ADVERTENCIA =====
-function mostrarAdvertenciaPedidoMinimo() {
-    let modalAdvertencia = document.getElementById('modal-advertencia');
-    
-    if (!modalAdvertencia) {
-        modalAdvertencia = document.createElement('div');
-        modalAdvertencia.id = 'modal-advertencia';
-        modalAdvertencia.className = 'modal modal-oculto';
-        modalAdvertencia.innerHTML = `
-            <div class="modal-contenido">
-                <span class="cerrar-modal" onclick="cerrarModalAdvertencia()">&times;</span>
-                <h3>🚫 PEDIDO MÍNIMO REQUERIDO</h3>
-                <p>El pedido mínimo es de <strong>${MIN_PEDIDO} artículos</strong>.</p>
-                <p>Actualmente tienes <span id="cantidad-actual" style="color: #FF0000; font-weight: bold;">0</span> artículos en tu carrito.</p>
-                <p>¡Agrega más productos para continuar!</p>
-                <div class="botones-advertencia">
-                    <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modalAdvertencia);
-    }
-    
-    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
-    document.getElementById('cantidad-actual').textContent = totalArticulos;
-    
-    modalAdvertencia.classList.remove('modal-oculto');
-}
-
-// ===== FUNCIÓN PARA CERRAR LA ADVERTENCIA =====
-function cerrarModalAdvertencia() {
-    const modalAdvertencia = document.getElementById('modal-advertencia');
-    if (modalAdvertencia) {
-        modalAdvertencia.classList.add('modal-oculto');
-    }
-}
 
 // ===== DATOS DE PRODUCTOS =====
 const productos = {
@@ -211,7 +137,7 @@ const productos = {
             }
         },
         "REVELACIÓN": {
-            descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrevete to conocer el veredicto. Agua del día 475ml",
+            descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrevete to conocer el veredicto. Bebida del día 475ml",
             base: 35,
             opciones: {
                 azucar: { 
@@ -238,10 +164,6 @@ const ubicaciones = [
         coordenadas: "19.4777778,-99.1169444"
     }
 ];
-
-// ===== VARIABLES GLOBALES =====
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-const MIN_PEDIDO = 3;
 
 // ===== ELEMENTOS DEL DOM =====
 const carritoBtn = document.getElementById('carrito-btn');
@@ -304,6 +226,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (subtituloElement) {
         subtituloElement.remove();
     }
+});
+
+// ===== EFECTO DE SCROLL PARALLAX =====
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const documentHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollY / documentHeight;
+    
+    // Cambiar opacidades y colores basado en scroll
+    document.documentElement.style.setProperty('--scroll-porcentaje', scrollPercent);
+    document.documentElement.style.setProperty('--opacidad-cielo', 1 - scrollPercent);
+    document.documentElement.style.setProperty('--opacidad-infierno', scrollPercent);
 });
 
 // ===== FUNCIONES PRINCIPALES =====
@@ -369,7 +303,7 @@ function mostrarOpciones(producto) {
     } else if (producto.categoria === 'tes') {
         formularioOpciones.innerHTML = `
             <div class="opcion-grupo">
-                <h3>Azúcar:</h3>
+                <h3>Endulzante:</h3>
                 <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
                 <label><input type="radio" name="azucar" value="con"> Con</label>
                 <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
@@ -389,7 +323,7 @@ function mostrarOpciones(producto) {
                 <label><input type="radio" name="leche" value="deslactosada"> Deslactosada (+$${producto.opciones.leche.deslactosada})</label>
             </div>
             <div class="opcion-grupo">
-                <h3>Azúcar:</h3>
+                <h3>Endulzante:</h3>
                 <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
                 <label><input type="radio" name="azucar" value="con"> Con</label>
                 <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
@@ -597,6 +531,86 @@ function calcularSubtotal(item) {
 
 function calcularTotal() {
     return carrito.reduce((total, item) => total + calcularSubtotal(item), 0);
+}
+
+// ===== FUNCIÓN PARA ABRIR GOOGLE MAPS =====
+function abrirGoogleMaps() {
+    const coordenadas = "19.4777778,-99.1169444";
+    const url = `https://www.google.com/maps/search/?api=1&query=${coordenadas}`;
+    
+    window.open(url, '_blank');
+    
+    const direccion = document.querySelector('.direccion-clickeable');
+    direccion.style.background = 'rgba(0, 139, 0, 0.3)';
+    direccion.style.borderLeft = '3px solid #00FF00';
+    
+    setTimeout(() => {
+        direccion.style.background = 'rgba(139, 0, 0, 0.2)';
+        direccion.style.borderLeft = '3px solid #FFD700';
+    }, 1000);
+}
+
+// ===== DETECCIÓN DE DOBLE CLIC EN MÓVIL =====
+document.addEventListener('touchend', function(e) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+    
+    if (tapLength < 300 && tapLength > 0) {
+        if (e.target.classList.contains('direccion-clickeable')) {
+            abrirGoogleMaps();
+        }
+    }
+    lastTap = currentTime;
+});
+
+// ===== FUNCIÓN PARA VERIFICAR PEDIDO MÍNIMO =====
+function verificarPedidoMinimo() {
+    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
+    
+    if (totalArticulos < MIN_PEDIDO) {
+        mostrarAdvertenciaPedidoMinimo();
+        return false;
+    }
+    return true;
+}
+
+// ===== FUNCIÓN PARA MOSTRAR ADVERTENCIA =====
+function mostrarAdvertenciaPedidoMinimo() {
+    let modalAdvertencia = document.getElementById('modal-advertencia');
+    
+    if (!modalAdvertencia) {
+        modalAdvertencia = document.createElement('div');
+        modalAdvertencia.id = 'modal-advertencia';
+        modalAdvertencia.className = 'modal modal-oculto';
+        modalAdvertencia.innerHTML = `
+            <div class="modal-contenido">
+                <span class="cerrar-modal" onclick="cerrarModalAdvertencia()">&times;</span>
+                <h3>🚫 PEDIDO MÍNIMO REQUERIDO</h3>
+                <p>El pedido mínimo es de <strong>${MIN_PEDIDO} artículos</strong>.</p>
+                <p>Actualmente tienes <span id="cantidad-actual" style="color: #FF0000; font-weight: bold;">0</span> artículos en tu carrito.</p>
+                <p>¡Agrega más productos para continuar!</p>
+                <div class="botones-advertencia">
+                    <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modalAdvertencia);
+    }
+    
+    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
+    document.getElementById('cantidad-actual').textContent = totalArticulos;
+    
+    modalAdvertencia.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+}
+
+// ===== FUNCIÓN PARA CERRAR LA ADVERTENCIA =====
+function cerrarModalAdvertencia() {
+    const modalAdvertencia = document.getElementById('modal-advertencia');
+    if (modalAdvertencia) {
+        modalAdvertencia.classList.add('modal-oculto');
+        document.body.style.overflow = 'auto';
+    }
 }
 
 // Hacer funciones accesibles globalmente
