@@ -152,7 +152,7 @@ const productos = {
     cafes: {
         "IRA DIVINA": {
             descripcion: "Energía Divina toma un café deconstruido frío 475ml",
-            base: 45,
+            base: 40,
             opciones: {
                 leche: { 
                     sin: 0, 
