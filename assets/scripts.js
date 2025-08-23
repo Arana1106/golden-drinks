@@ -3,6 +3,36 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 const MIN_PEDIDO = 3;
 let lastTap = 0;
 
+// ===== FUNCIÓN PARA CAMBIAR TEMA =====
+function cambiarTema() {
+    const body = document.body;
+    if (body.classList.contains('theme-inferno')) {
+        body.classList.remove('theme-inferno');
+        body.classList.add('theme-paraiso');
+        localStorage.setItem('tema', 'paraiso');
+    } else {
+        body.classList.remove('theme-paraiso');
+        body.classList.add('theme-inferno');
+        localStorage.setItem('tema', 'inferno');
+    }
+}
+
+// ===== INICIALIZACIÓN DE TEMA =====
+function inicializarTema() {
+    const temaGuardado = localStorage.getItem('tema');
+    const body = document.body;
+    
+    // Establecer tema inferno por defecto si no hay tema guardado
+    if (!temaGuardado) {
+        body.classList.add('theme-inferno');
+        localStorage.setItem('tema', 'inferno');
+    } else if (temaGuardado === 'paraiso') {
+        body.classList.add('theme-paraiso');
+    } else {
+        body.classList.add('theme-inferno');
+    }
+}
+
 // ===== DATOS DE PRODUCTOS =====
 const productos = {
     bebidas: {
@@ -87,8 +117,8 @@ const productos = {
                 },
                 azucar: { 
                     sin: 0, 
-                    con: 0, 
-                    sustituto: 0 
+                    con: 0,
+                    sustituto: 0
                 },
                 coffee_bubble: { 
                     no: 0, 
@@ -98,7 +128,7 @@ const productos = {
             }
         },
         "PACTUM": {
-            descripcion: "Pacto con el diablo, tranquilo solo es un suave café descafeinado 475ml",
+            descripcion: "Pacto con el diablo, tranquilo solo es suave café descafeinado 475ml",
             base: 40,
             opciones: {
                 leche: { 
@@ -108,8 +138,8 @@ const productos = {
                 },
                 azucar: { 
                     sin: 0, 
-                    con: 0, 
-                    sustituto: 0 
+                    con: 0,
+                    sustituto: 0
                 },
                 coffee_bubble: { 
                     no: 0, 
@@ -121,13 +151,13 @@ const productos = {
     },
     tes: {
         "REDENCIÓN": {
-            descripcion: "Todos la buscamos, y todos la necesitamos por su sabor intenso de su elección Té frío del día con sus 475 ml",
+            descripcion: "Todos la buscamos, y todos la necesitamos su sabor en sus 475 ml",
             base: 35,
             opciones: {
                 azucar: { 
                     sin: 0, 
-                    con: 0, 
-                    sustituto: 0 
+                    con: 0,
+                    sustituto: 0
                 },
                 jelly: { 
                     no: 0, 
@@ -142,8 +172,8 @@ const productos = {
             opciones: {
                 azucar: { 
                     sin: 0, 
-                    con: 0, 
-                    sustituto: 0 
+                    con: 0,
+                    sustituto: 0
                 },
                 jelly: { 
                     no: 0, 
@@ -184,47 +214,15 @@ const confirmarUbicacionBtn = document.getElementById('confirmar-ubicacion');
 const regresarCarritoBtn = document.getElementById('regresar-carrito');
 
 // ===== INICIALIZACIÓN =====
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    inicializarTema();
     renderizarProductos();
     actualizarCarritoUI();
     
-    if (carritoBtn) carritoBtn.addEventListener('click', mostrarCarrito);
-    
-    if (whatsappBtn) {
-        whatsappBtn.addEventListener('click', function() {
-            if (verificarPedidoMinimo()) {
-                mostrarSeleccionUbicacion();
-            }
-        });
-    }
-    
-    if (confirmarOpcionesBtn) confirmarOpcionesBtn.addEventListener('click', confirmarSeleccion);
-    if (regresarModalBtn) regresarModalBtn.addEventListener('click', cerrarModalOpciones);
-    if (seguirPidiendoBtn) seguirPidiendoBtn.addEventListener('click', cerrarModalCarrito);
-    if (confirmarUbicacionBtn) confirmarUbicacionBtn.addEventListener('click', () => enviarPedidoFinal(ubicaciones[0]));
-    
-    if (regresarCarritoBtn) {
-        regresarCarritoBtn.addEventListener('click', () => {
-            cerrarModalUbicacion();
-            setTimeout(() => {
-                mostrarCarrito();
-            }, 100);
-        });
-    }
-    
-    document.querySelectorAll('.cerrar-modal').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            if (modal) {
-                modal.classList.add('modal-oculto');
-                document.body.style.overflow = 'auto';
-            }
-        });
-    });
-    
-    const subtituloElement = document.querySelector('.subtitulo');
-    if (subtituloElement) {
-        subtituloElement.remove();
+    // Agregar evento de clic al título para cambiar tema
+    const titulo = document.querySelector('.titulo-principal');
+    if (titulo) {
+        titulo.addEventListener('click', cambiarTema);
     }
 });
 
@@ -234,7 +232,6 @@ window.addEventListener('scroll', () => {
     const documentHeight = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = scrollY / documentHeight;
     
-    // Cambiar opacidades y colores basado en scroll
     document.documentElement.style.setProperty('--scroll-porcentaje', scrollPercent);
     document.documentElement.style.setProperty('--opacidad-cielo', 1 - scrollPercent);
     document.documentElement.style.setProperty('--opacidad-infierno', scrollPercent);
@@ -246,118 +243,90 @@ function renderizarProductos() {
         const container = document.getElementById(`${categoria}-container`);
         if (!container) continue;
         container.innerHTML = '';
-
-        for (const nombreProducto in productos[categoria]) {
-            const producto = productos[categoria][nombreProducto];
-            const card = document.createElement('div');
-            card.className = 'producto-card';
-            card.innerHTML = `
-                <h3 data-producto="${nombreProducto}">${nombreProducto}</h3>
-                <p>${producto.descripcion}</p>
-                <p class="precio">$${producto.base} MXN</p>
-                <button class="btn-seleccionar" 
-                        data-categoria="${categoria}"
-                        data-producto="${nombreProducto}">
-                    Seleccionar
-                </button>
+        
+        for (const productoNombre in productos[categoria]) {
+            const producto = productos[categoria][productoNombre];
+            const productoHTML = `
+                <div class="producto-card">
+                    <h3 data-producto="${productoNombre}">${productoNombre}</h3>
+                    <p>${producto.descripcion}</p>
+                    <div class="precio">$${producto.base}.00</div>
+                    <button class="btn-seleccionar" onclick="mostrarOpciones('${categoria}', '${productoNombre}')">
+                        SELECCIONAR
+                    </button>
+                </div>
             `;
-            container.appendChild(card);
+            container.innerHTML += productoHTML;
         }
     }
-
-    document.querySelectorAll('.btn-seleccionar').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const categoria = e.target.getAttribute('data-categoria');
-            const nombreProducto = e.target.getAttribute('data-producto');
-            if (categoria && nombreProducto && productos[categoria] && productos[categoria][nombreProducto]) {
-                mostrarOpciones({
-                    nombre: nombreProducto,
-                    categoria: categoria,
-                    ...productos[categoria][nombreProducto]
-                });
-            }
-        });
-    });
 }
 
-function mostrarOpciones(producto) {
+function mostrarOpciones(categoria, productoNombre) {
     if (!tituloModal || !formularioOpciones || !modalOpciones) return;
     
-    tituloModal.textContent = producto.nombre;
+    const producto = productos[categoria][productoNombre];
+    tituloModal.textContent = productoNombre;
     formularioOpciones.innerHTML = '';
-
-    if (producto.categoria === 'bebidas') {
-        formularioOpciones.innerHTML = `
+    
+    for (const opcionTipo in producto.opciones) {
+        const opcion = producto.opciones[opcionTipo];
+        const opcionHTML = `
             <div class="opcion-grupo">
-                <h3>${producto.opciones.alcohol.nombre}:</h3>
-                <label><input type="radio" name="alcohol" value="sin" checked> Sin (+$${producto.opciones.alcohol.sin})</label>
-                <label><input type="radio" name="alcohol" value="con"> Con (+$${producto.opciones.alcohol.con})</label>
-                <p class="advertencia">${producto.opciones.alcohol.advertencia}</p>
-            </div>
-            <div class="opcion-grupo">
-                <h3>${producto.opciones.jelly.nombre}:</h3>
-                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
-                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
-            </div>
-        `;
-    } else if (producto.categoria === 'tes') {
-        formularioOpciones.innerHTML = `
-            <div class="opcion-grupo">
-                <h3>Endulzante:</h3>
-                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
-                <label><input type="radio" name="azucar" value="con"> Con</label>
-                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
-            </div>
-            <div class="opcion-grupo">
-                <h3>${producto.opciones.jelly.nombre}:</h3>
-                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
-                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
+                <h3>${opcion.nombre || opcionTipo.toUpperCase()}</h3>
+                ${Object.keys(opcion).filter(key => key !== 'nombre' && key !== 'advertencia').map(valor => {
+                    const etiqueta = valor === 'sin' ? 'Sin' : 
+                                   valor === 'con' ? 'Con' : 
+                                   valor === 'no' ? 'No' : 
+                                   valor === 'si' ? 'Sí' : 
+                                   valor.charAt(0).toUpperCase() + valor.slice(1);
+                    return `
+                        <label>
+                            <input type="radio" name="${opcionTipo}" value="${valor}" ${valor === 'sin' || valor === 'no' ? 'checked' : ''}>
+                            ${etiqueta} (+$${opcion[valor]}.00)
+                        </label>
+                    `;
+                }).join('')}
+                ${opcion.advertencia ? `<div class="advertencia">${opcion.advertencia}</div>` : ''}
             </div>
         `;
-    } else if (producto.categoria === 'cafes') {
-        formularioOpciones.innerHTML = `
-            <div class="opcion-grupo">
-                <h3>Leche:</h3>
-                <label><input type="radio" name="leche" value="sin" checked> Sin (+$${producto.opciones.leche.sin})</label>
-                <label><input type="radio" name="leche" value="con"> Con (+$${producto.opciones.leche.con})</label>
-                <label><input type="radio" name="leche" value="deslactosada"> Deslactosada (+$${producto.opciones.leche.deslactosada})</label>
-            </div>
-            <div class="opcion-grupo">
-                <h3>Endulzante:</h3>
-                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
-                <label><input type="radio" name="azucar" value="con"> Con</label>
-                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
-            </div>
-            <div class="opcion-grupo">
-                <h3>${producto.opciones.coffee_bubble.nombre}:</h3>
-                <label><input type="radio" name="coffee_bubble" value="no" checked> No (+$${producto.opciones.coffee_bubble.no})</label>
-                <label><input type="radio" name="coffee_bubble" value="si"> Sí (+$${producto.opciones.coffee_bubble.si})</label>
-            </div>
-        `;
+        formularioOpciones.innerHTML += opcionHTML;
     }
-
+    
+    modalOpciones.dataset.categoria = categoria;
+    modalOpciones.dataset.producto = productoNombre;
     modalOpciones.classList.remove('modal-oculto');
     document.body.style.overflow = 'hidden';
-    modalOpciones.dataset.producto = JSON.stringify(producto);
 }
 
 function confirmarSeleccion() {
     if (!modalOpciones || !modalOpciones.dataset.producto) return;
     
-    const producto = JSON.parse(modalOpciones.dataset.producto);
-    const opciones = {
-        alcohol: formularioOpciones.querySelector('input[name="alcohol"]:checked')?.value,
-        jelly: formularioOpciones.querySelector('input[name="jelly"]:checked')?.value,
-        azucar: formularioOpciones.querySelector('input[name="azucar"]:checked')?.value,
-        leche: formularioOpciones.querySelector('input[name="leche"]:checked')?.value,
-        coffee_bubble: formularioOpciones.querySelector('input[name="coffee_bubble"]:checked')?.value
+    const categoria = modalOpciones.dataset.categoria;
+    const productoNombre = modalOpciones.dataset.producto;
+    const producto = productos[categoria][productoNombre];
+    
+    const opcionesSeleccionadas = {};
+    let precioExtra = 0;
+    
+    for (const opcionTipo in producto.opciones) {
+        const selected = formularioOpciones.querySelector(`input[name="${opcionTipo}"]:checked`);
+        if (selected) {
+            opcionesSeleccionadas[opcionTipo] = selected.value;
+            precioExtra += producto.opciones[opcionTipo][selected.value];
+        }
+    }
+    
+    const item = {
+        nombre: productoNombre,
+        categoria: categoria,
+        precioBase: producto.base,
+        opciones: opcionesSeleccionadas,
+        precioExtra: precioExtra,
+        cantidad: 1,
+        total: producto.base + precioExtra
     };
-
-    agregarAlCarrito({
-        ...producto,
-        seleccion: opciones,
-        cantidad: 1
-    });
+    
+    agregarAlCarrito(item);
 }
 
 // ===== CARRITO =====
@@ -372,24 +341,20 @@ function mostrarCarrito() {
     if (!listaCarrito || !totalCarrito || !modalCarrito) return;
     
     listaCarrito.innerHTML = '';
-    let total = 0;
-
     carrito.forEach((item, index) => {
-        const subtotal = calcularSubtotal(item);
-        total += subtotal;
-
-        const itemElement = document.createElement('div');
-        itemElement.className = 'item-carrito';
-        itemElement.innerHTML = `
-            <h4>${item.nombre} x${item.cantidad || 1}</h4>
-            <p>${obtenerOpcionesTexto(item)}</p>
-            <p>Subtotal: $${subtotal} MXN</p>
-            <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+        const itemHTML = `
+            <div class="item-carrito">
+                <h4>${item.nombre}</h4>
+                <p>Base: $${item.precioBase}.00</p>
+                <p>Extras: $${item.precioExtra}.00</p>
+                <p>Total: $${item.total}.00</p>
+                <button onclick="eliminarDelCarrito(${index})">ELIMINAR</button>
+            </div>
         `;
-        listaCarrito.appendChild(itemElement);
+        listaCarrito.innerHTML += itemHTML;
     });
-
-    totalCarrito.textContent = `Total: $${total} MXN`;
+    
+    totalCarrito.textContent = `$${calcularTotal()}.00`;
     modalCarrito.classList.remove('modal-oculto');
     document.body.style.overflow = 'hidden';
 }
@@ -417,11 +382,31 @@ function mostrarSeleccionUbicacion() {
     if (!verificarPedidoMinimo()) {
         return;
     }
-
-    if (modalUbicacion) {
-        modalUbicacion.classList.remove('modal-oculto');
-        document.body.style.overflow = 'hidden';
+    
+    if (!modalUbicacion) return;
+    
+    const ubicacionContainer = modalUbicacion.querySelector('.ubicacion-info');
+    if (ubicacionContainer) {
+        ubicacionContainer.innerHTML = '';
+        ubicaciones.forEach((ubicacion, index) => {
+            ubicacionContainer.innerHTML += `
+                <div class="direccion-clickeable" onclick="seleccionarUbicacion(${index})">
+                    ${ubicacion.nombre}
+                </div>
+                <div class="horario-ubicacion">
+                    ${ubicacion.horario}
+                </div>
+            `;
+        });
     }
+    
+    modalUbicacion.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+}
+
+function seleccionarUbicacion(index) {
+    const ubicacion = ubicaciones[index];
+    enviarPedidoFinal(ubicacion);
 }
 
 function cerrarModalUbicacion() {
@@ -451,82 +436,57 @@ function enviarPedidoFinal(ubicacion) {
         return;
     }
     
-    const listaProductos = carrito.map(item => 
-        `▪ ${item.nombre} x${item.cantidad || 1}\n` +
-        `  - ${obtenerOpcionesTexto(item)}\n` +
-        `  - $${calcularSubtotal(item)} MXN`
-    ).join('\n\n');
-
-    const mensaje = `*PEDIDO SINNER'S* 🔥\n\n` +
-        `📍 *Recoger en:* ${ubicacion.direccion}\n` +
-        `🕒 *Hora:* ${new Date().toLocaleString()}\n\n` +
-        `📋 *Pedido:*\n${listaProductos}\n\n` +
-        `💰 *TOTAL: $${calcularTotal()} MXN*\n\n` +
-        `🏦 *Datos bancarios*\n` +
-        `Titular: Eric Daniel Gutiérrez Arana\n` +
-        `CLABE: 012 261 01584933343 3 (BBVA)\n\n` +
-        `📸 *INSTRUCCIÓN:*\n` +
-        `Adjunta el comprobante con TU NOMBRE como concepto`;
-
-    const mensajeCodificado = encodeURIComponent(mensaje)
-        .replace(/\n/g, '%0A')
-        .replace(/\*/g, '%2A');
-
-    window.open(`https://wa.me/525611649344?text=${mensajeCodificado}`, '_blank');
+    let mensaje = "¡Hola! Quiero hacer mi pedido:\n\n";
     
+    carrito.forEach((item, index) => {
+        mensaje += `${index + 1}. ${item.nombre} - $${item.total}.00\n`;
+        mensaje += `   Opciones: ${obtenerOpcionesTexto(item)}\n\n`;
+    });
+    
+    mensaje += `Total: $${calcularTotal()}.00\n\n`;
+    mensaje += `Ubicación: ${ubicacion.nombre}\n`;
+    mensaje += `Dirección: ${ubicacion.direccion}\n\n`;
+    mensaje += "¡Gracias!";
+    
+    const telefono = "5215512345678";
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+    
+    // Limpiar carrito después de enviar
     carrito = [];
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarritoUI();
     cerrarModalUbicacion();
 }
 
-// ===== FUNCIONES AUXILIARES =====
+// ===== AUXILIARES =====
 function obtenerOpcionesTexto(item) {
     const extras = [];
     
-    if (item.categoria === 'bebidas') {
-        extras.push(item.seleccion.alcohol === 'con' ? 'Con Elixir Prohibido (Alcohol 2.5 oz)' : 'Sin Elixir Prohibido');
-        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio (Bubble Jelly)' : 'Sin Lágrimas de Demonio');
-    } 
-    else if (item.categoria === 'tes') {
-        extras.push(
-            item.seleccion.azucar === 'con' ? 'Con azúcar' : 
-            item.seleccion.azucar === 'sustituto' ? 'Con sustituto' : 'Sin azúcar'
-        );
-        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio (Bubble Jelly)' : 'Sin Lágrimas de Demonio');
-    } 
-    else if (item.categoria === 'cafes') {
-        extras.push(
-            item.seleccion.leche === 'con' ? 'Con leche' : 
-            item.seleccion.leche === 'deslactosada' ? 'Con leche deslactosada' : 'Sin leche'
-        );
-        extras.push(
-            item.seleccion.azucar === 'con' ? 'Con azúcar' : 
-            item.seleccion.azucar === 'sustituto' ? 'Con sustituto' : 'Sin azúcar'
-        );
-        extras.push(item.seleccion.coffee_bubble === 'si' ? 'Con Gemas del Infierno (Coffee Jelly)' : 'Sin Gemas del Infierno');
+    for (const opcion in item.opciones) {
+        const valor = item.opciones[opcion];
+        if (valor !== 'sin' && valor !== 'no') {
+            extras.push(`${opcion}: ${valor}`);
+        }
     }
-
-    return extras.join(', ');
+    
+    return extras.length > 0 ? extras.join(', ') : 'Sin extras';
 }
 
 function calcularSubtotal(item) {
     let extras = 0;
     
-    if (item.categoria === 'bebidas') {
-        extras += item.seleccion.alcohol === 'con' ? item.opciones.alcohol.con : 0;
-        extras += item.seleccion.jelly === 'si' ? item.opciones.jelly.si : 0;
-    } 
-    else if (item.categoria === 'tes') {
-        extras += item.seleccion.jelly === 'si' ? item.opciones.jelly.si : 0;
-    } 
-    else if (item.categoria === 'cafes') {
-        extras += item.seleccion.leche === 'con' ? item.opciones.leche.con : 
-                 item.seleccion.leche === 'deslactosada' ? item.opciones.leche.deslactosada : 0;
-        extras += item.seleccion.coffee_bubble === 'si' ? item.opciones.coffee_bubble.si : 0;
+    for (const opcion in item.opciones) {
+        const valor = item.opciones[opcion];
+        if (productos[item.categoria] && productos[item.categoria][item.nombre]) {
+            const opcionesProducto = productos[item.categoria][item.nombre].opciones;
+            if (opcionesProducto && opcionesProducto[opcion]) {
+                extras += opcionesProducto[opcion][valor] || 0;
+            }
+        }
     }
-
-    return (item.base + extras) * (item.cantidad || 1);
+    
+    return item.precioBase + extras;
 }
 
 function calcularTotal() {
@@ -537,17 +497,7 @@ function calcularTotal() {
 function abrirGoogleMaps() {
     const coordenadas = "19.4777778,-99.1169444";
     const url = `https://www.google.com/maps/search/?api=1&query=${coordenadas}`;
-    
     window.open(url, '_blank');
-    
-    const direccion = document.querySelector('.direccion-clickeable');
-    direccion.style.background = 'rgba(0, 139, 0, 0.3)';
-    direccion.style.borderLeft = '3px solid #00FF00';
-    
-    setTimeout(() => {
-        direccion.style.background = 'rgba(139, 0, 0, 0.2)';
-        direccion.style.borderLeft = '3px solid #FFD700';
-    }, 1000);
 }
 
 // ===== DETECCIÓN DE DOBLE CLIC EN MÓVIL =====
@@ -556,10 +506,10 @@ document.addEventListener('touchend', function(e) {
     const tapLength = currentTime - lastTap;
     
     if (tapLength < 300 && tapLength > 0) {
-        if (e.target.classList.contains('direccion-clickeable')) {
-            abrirGoogleMaps();
-        }
+        e.preventDefault();
+        abrirGoogleMaps();
     }
+    
     lastTap = currentTime;
 });
 
@@ -571,6 +521,7 @@ function verificarPedidoMinimo() {
         mostrarAdvertenciaPedidoMinimo();
         return false;
     }
+    
     return true;
 }
 
@@ -585,20 +536,14 @@ function mostrarAdvertenciaPedidoMinimo() {
         modalAdvertencia.innerHTML = `
             <div class="modal-contenido">
                 <span class="cerrar-modal" onclick="cerrarModalAdvertencia()">&times;</span>
-                <h3>🚫 PEDIDO MÍNIMO REQUERIDO</h3>
-                <p>El pedido mínimo es de <strong>${MIN_PEDIDO} artículos</strong>.</p>
-                <p>Actualmente tienes <span id="cantidad-actual" style="color: #FF0000; font-weight: bold;">0</span> artículos en tu carrito.</p>
-                <p>¡Agrega más productos para continuar!</p>
-                <div class="botones-advertencia">
-                    <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
-                </div>
+                <h2>Pedido Mínimo Requerido</h2>
+                <p>Debes agregar al menos ${MIN_PEDIDO} artículos para realizar tu pedido.</p>
+                <p>Actualmente tienes ${carrito.reduce((total, item) => total + (item.cantidad || 1), 0)} artículo(s) en tu carrito.</p>
+                <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
             </div>
         `;
         document.body.appendChild(modalAdvertencia);
     }
-    
-    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
-    document.getElementById('cantidad-actual').textContent = totalArticulos;
     
     modalAdvertencia.classList.remove('modal-oculto');
     document.body.style.overflow = 'hidden';
@@ -620,3 +565,9 @@ window.cerrarModalCarrito = cerrarModalCarrito;
 window.cerrarModalUbicacion = cerrarModalUbicacion;
 window.cerrarModalAdvertencia = cerrarModalAdvertencia;
 window.abrirGoogleMaps = abrirGoogleMaps;
+window.mostrarOpciones = mostrarOpciones;
+window.confirmarSeleccion = confirmarSeleccion;
+window.mostrarCarrito = mostrarCarrito;
+window.mostrarSeleccionUbicacion = mostrarSeleccionUbicacion;
+window.seleccionarUbicacion = seleccionarUbicacion;
+window.cambiarTema = cambiarTema;

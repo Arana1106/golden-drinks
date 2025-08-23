@@ -252,7 +252,7 @@ body::before {
 .categoria:nth-child(3) .producto-card {
   background: linear-gradient(135deg, rgba(30, 50, 120, 0.6), rgba(50, 30, 100, 0.5));
   border: 2px solid rgba(65, 105, 225, 0.5);
-  box-shadow: 0 8px 25px rgba(30, 144, 255, 0.3);
+  box-shadow: 0 0 25px rgba(30, 144, 255, 0.3);
 }
 
 .producto-card:hover {
@@ -761,73 +761,218 @@ button:active {
   .titulo-principal {
     font-size: 2rem;
   }
+  
+  .modal-contenido {
+    width: 95%;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .botones-opciones,
+  .botones-carrito,
+  .botones-ubicacion {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .productos-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .header {
+    padding: 15px 10px;
+  }
 }
 
-/* Estilos para el tema Paraíso */
+/* ===== TEMA PARAÍSO (League of Legends) ===== */
 body.tema-paraiso {
   --opacidad-infierno: 0;
   --opacidad-cielo: 1;
 }
 
 body.tema-paraiso::before {
-  opacity: 0.6;
+  opacity: 0.7;
   background:  
-    /* Forma de V invertida - Azul celeste (arriba) */
+    /* Cielo azul celestial - League of Legends */
     linear-gradient(15deg, 
-      rgba(100, 150, 255, 0.25) 0%, 
-      rgba(100, 150, 255, 0.15) 15%, 
+      rgba(0, 112, 192, 0.25) 0%, 
+      rgba(0, 82, 162, 0.15) 15%, 
       transparent 30%),
-    /* Forma de V invertida - Dorado (centro) */
+    /* Oro divino - League of Legends */
     linear-gradient(15deg, 
       transparent 25%, 
       rgba(255, 215, 0, 0.25) 40%, 
-      rgba(255, 215, 0, 0.15) 55%, 
+      rgba(218, 165, 32, 0.15) 55%, 
       transparent 70%),
-    /* Forma de V invertida - Blanco (abajo) */
+    /* Blanco puro celestial */
     linear-gradient(15deg, 
       transparent 60%, 
       rgba(255, 255, 255, 0.25) 75%, 
-      rgba(255, 255, 255, 0.15) 85%, 
+      rgba(240, 240, 240, 0.15) 85%, 
       transparent 95%),
-    /* Partículas de efecto celestial */
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="rgba(100,150,255,0.03)" cx="30" cy="30" r="2"/><circle fill="rgba(255,215,0,0.03)" cx="70" cy="40" r="1.5"/><circle fill="rgba(255,255,255,0.03)" cx="50" cy="70" r="1.8"/><circle fill="rgba(200,200,255,0.03)" cx="80" cy="80" r="1.3"/></svg>') repeat;
+    /* Partículas de luz celestial */
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="rgba(0,112,192,0.05)" cx="30" cy="30" r="2"/><circle fill="rgba(255,215,0,0.05)" cx="70" cy="40" r="1.5"/><circle fill="rgba(255,255,255,0.05)" cx="50" cy="70" r="1.8"/><circle fill="rgba(200,220,255,0.05)" cx="80" cy="80" r="1.3"/></svg>') repeat;
 }
 
 body.tema-paraiso .header {
   background: linear-gradient(135deg, 
-    rgba(100, 150, 255, 0.15) 0%, 
+    rgba(0, 112, 192, 0.15) 0%, 
     rgba(0, 0, 0, 0.95) 80%);
-  border-bottom: 3px solid #6496FF;
-  border-top: 3px solid #6496FF;
-  box-shadow: 0 5px 25px rgba(100, 150, 255, 0.5);
+  border-bottom: 3px solid #0070C0;
+  border-top: 3px solid #0070C0;
+  box-shadow: 0 5px 25px rgba(0, 112, 192, 0.5);
 }
 
 body.tema-paraiso .header::before {
   background: 
     radial-gradient(circle at top center, 
-    rgba(100, 150, 255, 0.2) 0%, 
+    rgba(0, 112, 192, 0.2) 0%, 
     transparent 70%);
 }
 
 body.tema-paraiso .titulo-principal {
-  color: #6496FF;
+  color: #0070C0;
   text-shadow: 
     2px 2px 0 #000, 
     -1px -1px 0 #000, 
     1px -1px 0 #000, 
     -1px 1px 0 #000, 
-    0 0 15px #6496FF, 
-    0 0 30px #0044AA;
+    0 0 15px #0070C0, 
+    0 0 30px #0052A2;
 }
 
 body.tema-paraiso .footer {
-  border-top: 3px solid #6496FF;
+  border-top: 3px solid #0070C0;
 }
 
 body.tema-paraiso .footer::before {
   background: 
     radial-gradient(ellipse at center, 
-    rgba(100, 150, 255, 0.1) 0%, 
+    rgba(0, 112, 192, 0.1) 0%, 
     transparent 70%),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><path fill="rgba(100,150,255,0.1)" d="M40,10 C45,25 55,25 60,30 C55,35 55,45 50,40 C45,50 40,45 35,40 C30,45 30,35 25,30 C30,25 35,25 40,10 Z"/></svg>') repeat;
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><path fill="rgba(0,112,192,0.1)" d="M40,10 C45,25 55,25 60,30 C55,35 55,45 50,40 C45,50 40,45 35,40 C30,45 30,35 25,30 C30,25 35,25 40,10 Z"/></svg>') repeat;
+}
+
+body.tema-paraiso .categoria:nth-child(1) .categoria-titulo {
+  background: linear-gradient(135deg, rgba(0, 112, 192, 0.7), rgba(0, 82, 162, 0.6));
+  color: #a0d0ff;
+  box-shadow: 0 0 20px rgba(0, 112, 192, 0.4);
+}
+
+body.tema-paraiso .categoria:nth-child(2) .categoria-titulo {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.7), rgba(218, 165, 32, 0.6));
+  color: #ffec8b;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+body.tema-paraiso .categoria:nth-child(3) .categoria-titulo {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(220, 220, 220, 0.6));
+  color: #f0f0f0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+body.tema-paraiso .categoria:nth-child(1) .producto-card {
+  background: linear-gradient(135deg, rgba(0, 82, 162, 0.6), rgba(0, 62, 132, 0.5));
+  border: 2px solid rgba(0, 112, 192, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 112, 192, 0.3);
+}
+
+body.tema-paraiso .categoria:nth-child(2) .producto-card {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.6), rgba(184, 134, 11, 0.5));
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+body.tema-paraiso .categoria:nth-child(3) .producto-card {
+  background: linear-gradient(135deg, rgba(220, 220, 220, 0.6), rgba(200, 200, 200, 0.5));
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+body.tema-paraiso .categoria:nth-child(1) .btn-seleccionar {
+  background: linear-gradient(135deg, #0070C0, #0052A2);
+  color: #FFF;
+  border: 2px solid #a0d0ff;
+  box-shadow: 0 0 12px rgba(0, 112, 192, 0.5);
+}
+
+body.tema-paraiso .categoria:nth-child(2) .btn-seleccionar {
+  background: linear-gradient(135deg, #FFD700, #DAA520);
+  color: #FFF;
+  border: 2px solid #ffec8b;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+body.tema-paraiso .categoria:nth-child(3) .btn-seleccionar {
+  background: linear-gradient(135deg, #FFFFFF, #E0E0E0);
+  color: #333;
+  border: 2px solid #f0f0f0;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+body.tema-paraiso #carrito-btn {
+  background: rgba(0, 112, 192, 0.8);
+  border: 2px solid #0052A2;
+  color: #ffd700;
+  box-shadow: 0 0 10px rgba(0, 112, 192, 0.5);
+}
+
+body.tema-paraiso #carrito-btn:hover {
+  background: rgba(0, 82, 162, 0.9);
+  box-shadow: 0 0 15px rgba(0, 82, 162, 0.6);
+}
+
+body.tema-paraiso #contador {
+  background: #0052A2;
+}
+
+body.tema-paraiso .modal-contenido {
+  background: linear-gradient(135deg, #0a1a2a 0%, #1a2840 100%);
+  border: 3px solid #0070C0;
+  box-shadow: 0 0 35px rgba(0, 112, 192, 0.6);
+}
+
+body.tema-paraiso .item-carrito {
+  background: linear-gradient(135deg, rgba(0, 40, 80, 0.7), rgba(0, 30, 60, 0.8));
+  border-left: 5px solid #0070C0;
+  border-bottom: 2px solid #0052A2;
+}
+
+body.tema-paraiso .item-carrito:hover {
+  border-left-color: #0090FF;
+}
+
+body.tema-paraiso .cerrar-modal {
+  color: #0070C0;
+}
+
+body.tema-paraiso .cerrar-modal:hover {
+  color: #0052A2;
+}
+
+body.tema-paraiso ::-webkit-scrollbar-thumb {
+  background: #0070C0;
+  border: 1px solid #0052A2;
+}
+
+body.tema-paraiso ::-webkit-scrollbar-thumb:hover {
+  background: #0052A2;
+}
+
+/* Estilos para carrito vacío */
+.carrito-vacio {
+  text-align: center;
+  padding: 20px;
+  color: #ccc;
+  font-style: italic;
+}
+
+/* Precio total en el carrito */
+.precio-total {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 1px 1px 2px #000;
 }
