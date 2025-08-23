@@ -252,7 +252,7 @@ body::before {
 .categoria:nth-child(3) .producto-card {
   background: linear-gradient(135deg, rgba(30, 50, 120, 0.6), rgba(50, 30, 100, 0.5));
   border: 2px solid rgba(65, 105, 225, 0.5);
-  box-shadow: 0 0 25px rgba(30, 144, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(30, 144, 255, 0.3);
 }
 
 .producto-card:hover {
