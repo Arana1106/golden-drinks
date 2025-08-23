@@ -44,7 +44,7 @@ body::before {
 .titulo-principal {
     font-family: 'Nosifer', cursive;
     font-size: 3.2rem;
-    color: #990000;
+    color: #ff0000;
     text-shadow: 
         3px 3px 0 #000,
         -2px -2px 0 #000,
@@ -144,7 +144,6 @@ body::before {
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    /* Borde negro base para todos los títulos */
     text-shadow: 
         2px 2px 0 #000,
         -1px -1px 0 #000,
@@ -268,29 +267,32 @@ body::before {
 }
 
 /* ===== BOTONES ===== */
-.btn-seleccionar {
-    background: linear-gradient(135deg, #8b0000, #600);
-    color: #fff !important;
-    border: 2px solid #ffd700;
-    padding: 15px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px;
+button {
+    min-height: 45px;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    margin-top: 15px;
+    transition: all 0.3s;
     font-family: 'Arial', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+.btn-seleccionar {
+    background: linear-gradient(135deg, #8A0303, #600);
+    color: #FFF;
+    border: 1px solid #FFD700;
+    width: 100%;
+    margin-top: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-seleccionar:hover {
-    background: linear-gradient(135deg, #a00404, #700);
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    background: linear-gradient(135deg, #A00404, #700);
+    box-shadow: 0 0 15px rgba(138, 3, 3, 0.7);
     transform: translateY(-2px);
-    border-color: #ff6b6b;
 }
 
 /* ===== MODALES ===== */
@@ -336,6 +338,137 @@ body::before {
     color: #ff0000;
 }
 
+/* ===== SOLUCIÓN DEFINITIVA PARA MODALES ATASCADOS ===== */
+.modal-oculto {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: -1000 !important;
+}
+
+.modal {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1000 !important;
+}
+
+/* FORZAR CIERRE DE MODALES CON TRANSICIÓN */
+.modal {
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-oculto {
+    transform: translateY(-100px) scale(0.9);
+    opacity: 0;
+}
+
+/* ===== BOTONES DE MODALES ===== */
+#confirmar-opciones, #whatsapp-btn, #confirmar-ubicacion {
+    background: linear-gradient(135deg, #8A0303, #600);
+    color: #FFF;
+    border: 1px solid #FFD700;
+    margin-top: 15px;
+}
+
+#confirmar-opciones:hover, #whatsapp-btn:hover, #confirmar-ubicacion:hover {
+    background: linear-gradient(135deg, #A00404, #700);
+    box-shadow: 0 0 15px rgba(138, 3, 3, 0.7);
+}
+
+#seguir-pidiendo, .btn-regresar, #regresar-carrito {
+    background: #222;
+    color: #CCC;
+    border: 1px solid #444;
+    margin-top: 10px;
+}
+
+#seguir-pidiendo:hover, .btn-regresar:hover, #regresar-carrito:hover {
+    background: #333;
+    color: #FFF;
+}
+
+/* ===== FORMULARIOS ===== */
+.opcion-grupo {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(30, 30, 30, 0.7);
+    border-radius: 5px;
+    border-left: 3px solid #8A0303;
+}
+
+.opcion-grupo h3 {
+    color: #FFD700;
+    margin-bottom: 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+}
+
+.opcion-grupo label {
+    display: block;
+    margin-bottom: 6px;
+    cursor: pointer;
+    color: #E0E0E0;
+    font-size: 0.9rem;
+}
+
+.opcion-grupo input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #8A0303;
+}
+
+/* ===== UBICACIÓN ===== */
+.ubicacion-info {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+.direccion-clickeable {
+    cursor: pointer;
+    padding: 12px;
+    background: rgba(139, 0, 0, 0.2);
+    border-left: 3px solid #FFD700;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.direccion-clickeable:hover {
+    background: rgba(139, 0, 0, 0.3);
+}
+
+.mapa-container {
+    margin-top: 15px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid #8A0303;
+}
+
+.mapa-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.botones-ubicacion {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* ===== CARRITO ===== */
+.carrito-contenido {
+    background: linear-gradient(145deg, #0D0D0D, #111111);
+    border: 2px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .titulo-principal {
@@ -359,22 +492,31 @@ body::before {
     .producto-card h3 {
         font-size: 1.5rem;
     }
+    
+    .botones-ubicacion {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #confirmar-ubicacion, #regresar-carrito {
+        width: 100%;
+    }
 }
 
-/* ===== SCROLLBAR PERSONALIZADO ===== */
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a0000;
+    background: #1A1A1A;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #8b0000;
-    border-radius: 5px;
+    background: #8A0303;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff0000;
+    background: #A00404;
 }

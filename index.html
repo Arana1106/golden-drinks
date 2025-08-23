@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="arena-negra">
-    <header>
-        <h1 class="titulo-tag3d">SINNER'S</h1>
+    <header class="header">
+        <h1 class="titulo-principal">SINNER'S</h1>
         <button id="carrito-btn">🛒 <span id="contador">0</span></button>
     </header>
 
-    <main id="menu">
+    <main id="menu" class="contenedor-principal">
         <!-- Bebidas -->
         <section class="categoria">
             <h2 class="categoria-titulo" style="border-left: 5px solid #FF0000;">BEBIDAS DEL PECADO</h2>
@@ -35,12 +35,12 @@
     <!-- Modal de Opciones -->
     <div id="modal-opciones" class="modal modal-oculto">
         <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
+            <span class="cerrar-modal" onclick="cerrarModalOpciones()">&times;</span>
             <h3 id="titulo-modal"></h3>
             <form id="formulario-opciones"></form>
             <div class="botones-opciones">
                 <button id="confirmar-opciones" class="btn-dorado">AGREGAR AL CARRITO</button>
-                <button id="regresar-modal">REGRESAR</button>
+                <button id="regresar-modal" onclick="cerrarModalOpciones()">REGRESAR</button>
             </div>
         </div>
     </div>
@@ -48,13 +48,13 @@
     <!-- Modal del Carrito -->
     <div id="modal-carrito" class="modal modal-oculto">
         <div class="modal-contenido carrito-contenido">
-            <span class="cerrar-modal">&times;</span>
+            <span class="cerrar-modal" onclick="cerrarModalCarrito()">&times;</span>
             <h3>Tu Pedido</h3>
             <div id="lista-carrito" class="items-carrito"></div>
             <p class="total" id="total-carrito">Total: $0 MXN</p>
             <div class="botones-carrito">
                 <button id="whatsapp-btn" class="btn-dorado">CONFIRMAR UBICACIÓN</button>
-                <button id="seguir-pidiendo">SEGUIR PIDIENDO</button>
+                <button id="seguir-pidiendo" onclick="cerrarModalCarrito()">SEGUIR PIDIENDO</button>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
     <!-- Modal de Ubicación -->
     <div id="modal-ubicacion" class="modal modal-oculto">
         <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
+            <span class="cerrar-modal" onclick="cerrarModalUbicacion()">&times;</span>
             <h3>📍 Punto de Recolección</h3>
             <div class="ubicacion-info">
                 <p class="direccion-clickeable">Calle Coral 120, colonia Estrella, CDMX</p>
@@ -71,8 +71,8 @@
                 </div>
             </div>
             <div class="botones-ubicacion">
-                <button id="confirmar-ubicacion" class="btn-dorado">CONFIRMAR PEDIDO</button>
-                <button id="regresar-carrito">REGRESAR AL CARRITO</button>
+                <button id="confirmar-ubicacion" class="btn-dorado" onclick="enviarPedidoFinal(ubicaciones[0])">CONFIRMAR PEDIDO</button>
+                <button id="regresar-carrito" onclick="cerrarModalUbicacion(); setTimeout(() => { mostrarCarrito(); }, 100);">REGRESAR AL CARRITO</button>
             </div>
         </div>
     </div>
