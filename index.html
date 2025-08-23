@@ -4,93 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SINNER'S</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="arena-negra">
+<body>
+    <!-- HEADER -->
     <header class="header">
         <h1 class="titulo-principal">SINNER'S</h1>
-        <button id="carrito-btn">🛒 <span id="contador">0</span></button>
+        <button id="carrito-btn">🛒<span id="contador">0</span></button>
     </header>
 
-    <main id="menu" class="contenedor-principal">
-        <!-- Bebidas -->
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="contenedor-principal">
+        <!-- CATEGORÍA 1: BEBIDAS -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #FF0000;">BEBIDAS DEL PECADO</h2>
-            <div class="productos-container" id="bebidas-container"></div>
+            <h2 class="categoria-titulo">BEBIDAS DEL INFRAMUNDO</h2>
+            <div class="productos-container" id="bebidas-container">
+                <!-- Productos de bebidas se generarán con JavaScript -->
+            </div>
         </section>
 
-        <!-- Cafés -->
+        <!-- CATEGORÍA 2: CAFÉS -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #8B4513;">CAFÉS MALDITOS</h2>
-            <div class="productos-container" id="cafes-container"></div>
+            <h2 class="categoria-titulo">ELIXIRES DE ENERGÍA</h2>
+            <div class="productos-container" id="cafes-container">
+                <!-- Productos de cafés se generarán con JavaScript -->
+            </div>
         </section>
 
-        <!-- Tés -->
+        <!-- CATEGORÍA 3: TÉS -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #FFD700;">TÉS OSCUROS</h2>
-            <div class="productos-container" id="tes-container"></div>
+            <h2 class="categoria-titulo">TÉS DE LA REDENCIÓN</h2>
+            <div class="productos-container" id="tes-container">
+                <!-- Productos de tés se generarán con JavaScript -->
+            </div>
         </section>
     </main>
 
-    <!-- Modal de Opciones -->
+    <!-- MODAL DE OPCIONES -->
     <div id="modal-opciones" class="modal modal-oculto">
         <div class="modal-contenido">
-            <span class="cerrar-modal" onclick="cerrarModalOpciones()">&times;</span>
-            <h3 id="titulo-modal"></h3>
-            <form id="formulario-opciones"></form>
+            <span class="cerrar-modal">&times;</span>
+            <h2 id="titulo-modal">Selecciona opciones</h2>
+            <form id="formulario-opciones">
+                <!-- Opciones se generan dinámicamente -->
+            </form>
             <div class="botones-opciones">
-                <button id="confirmar-opciones" class="btn-dorado">AGREGAR AL CARRITO</button>
-                <button id="regresar-modal" onclick="cerrarModalOpciones()">REGRESAR</button>
+                <button id="regresar-modal">Regresar</button>
+                <button id="confirmar-opciones">Confirmar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal del Carrito -->
+    <!-- MODAL DE CARRITO -->
     <div id="modal-carrito" class="modal modal-oculto">
-        <div class="modal-contenido carrito-contenido">
-            <span class="cerrar-modal" onclick="cerrarModalCarrito()">&times;</span>
-            <h3>Tu Pedido</h3>
-            <div id="lista-carrito" class="items-carrito"></div>
-            <p class="total" id="total-carrito">Total: $0 MXN</p>
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Tu Carrito Infernal</h2>
+            <div class="items-carrito" id="lista-carrito">
+                <!-- Items del carrito se generan dinámicamente -->
+            </div>
+            <p id="total-carrito">Total: $0 MXN</p>
             <div class="botones-carrito">
-                <button id="whatsapp-btn" class="btn-dorado">CONFIRMAR UBICACIÓN</button>
-                <button id="seguir-pidiendo" onclick="cerrarModalCarrito()">SEGUIR PIDIENDO</button>
+                <button id="seguir-pidiendo">Seguir Pidiendo</button>
+                <button id="whatsapp-btn">CONFIRMAR UBICACIÓN</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal de Ubicación -->
+    <!-- MODAL DE UBICACIÓN -->
     <div id="modal-ubicacion" class="modal modal-oculto">
         <div class="modal-contenido">
-            <span class="cerrar-modal" onclick="cerrarModalUbicacion()">&times;</span>
-            <h3>📍 Punto de Recolección</h3>
+            <span class="cerrar-modal">&times;</span>
+            <h2>Selecciona Ubicación</h2>
             <div class="ubicacion-info">
-                <p class="direccion-clickeable" ondblclick="abrirGoogleMaps()">
+                <div class="direccion-clickeable" onclick="abrirGoogleMaps()">
                     📍 Calle Coral 120, colonia Estrella, CDMX
-                    <br>
-                    <small style="color: #FFD700; font-size: 12px;">
-                        (Doble clic para abrir en Google Maps)
-                    </small>
-                </p>
-                <p class="horario-ubicacion">
-                    🕒 <strong>Horario:</strong><br>
-                    Lunes a Jueves: 4:00 PM - 9:00 PM<br>
-                    Viernes: 4:00 PM - 1:00 AM<br>
-                    Sábado: 11:00 AM - 2:00 AM<br>
-                    Domingo: 10:00 AM - 7:00 PM
-                </p>
+                </div>
+                <div class="horario-ubicacion">
+                    🕒 Lunes a Jueves: 4:00 PM - 9:00 PM<br>
+                    🕒 Viernes: 4:00 PM - 1:00 AM<br>
+                    🕒 Sábado: 11:00 AM - 2:00 AM<br>
+                    🕒 Domingo: 10:00 AM - 7:00 PM
+                </div>
             </div>
             <div class="botones-ubicacion">
-                <button id="confirmar-ubicacion" class="btn-dorado" onclick="enviarPedidoFinal(ubicaciones[0])">CONFIRMAR PEDIDO</button>
-                <button id="regresar-carrito" onclick="cerrarModalUbicacion(); setTimeout(() => { mostrarCarrito(); }, 100);">REGRESAR AL CARRITO</button>
+                <button id="regresar-carrito">Regresar al Carrito</button>
+                <button id="confirmar-ubicacion">Confirmar Esta Ubicación</button>
             </div>
         </div>
     </div>
 
-    <script src="assets/scripts.js"></script>
-<footer class="footer">
-    <p class="eslogan">"Lo suave de la pureza mezclada en perdición"</p>
-    <p class="copyright">© 2024 SINNER'S - El campo de batalla definitivo para los dioses de la sed</p>
-</footer>
+    <!-- MODAL DE ADVERTENCIA (Agregado) -->
+    <div id="modal-advertencia" class="modal modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalAdvertencia()">&times;</span>
+            <h3>🚫 PEDIDO MÍNIMO REQUERIDO</h3>
+            <p>El pedido mínimo es de <strong>3 artículos</strong>.</p>
+            <p>Actualmente tienes <span id="cantidad-actual" style="color: #FF0000; font-weight: bold;">0</span> artículos en tu carrito.</p>
+            <p>¡Agrega más productos para continuar!</p>
+            <div class="botones-advertencia">
+                <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p class="eslogan">"Donde cada sorbo es un pecado deliciouso"</p>
+        <p class="copyright">© 2024 Sinner's - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
