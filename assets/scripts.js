@@ -1,3 +1,88 @@
+// ===== FUNCIÓN PARA ABRIR GOOGLE MAPS =====
+function abrirGoogleMaps() {
+    const coordenadas = "19.4777778,-99.1169444";
+    const url = `https://www.google.com/maps/search/?api=1&query=${coordenadas}`;
+    
+    // Abrir en nueva pestaña
+    window.open(url, '_blank');
+    
+    // Feedback visual para el usuario
+    const direccion = document.querySelector('.direccion-clickeable');
+    direccion.style.background = 'rgba(0, 139, 0, 0.3)';
+    direccion.style.borderLeft = '3px solid #00FF00';
+    
+    setTimeout(() => {
+        direccion.style.background = 'rgba(139, 0, 0, 0.2)';
+        direccion.style.borderLeft = '3px solid #FFD700';
+    }, 1000);
+}
+
+// ===== DETECCIÓN DE DOBLE CLIC EN MÓVIL =====
+let lastTap = 0;
+document.addEventListener('touchend', function(e) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+    
+    if (tapLength < 300 && tapLength > 0) {
+        // Doble tap detectado
+        if (e.target.classList.contains('direccion-clickeable')) {
+            abrirGoogleMaps();
+        }
+    }
+    lastTap = currentTime;
+});
+
+// ===== FUNCIÓN PARA VERIFICAR PEDIDO MÍNIMO =====
+function verificarPedidoMinimo() {
+    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
+    
+    if (totalArticulos < MIN_PEDIDO) {
+        mostrarAdvertenciaPedidoMinimo();
+        return false;
+    }
+    return true;
+}
+
+// ===== FUNCIÓN PARA MOSTRAR ADVERTENCIA =====
+function mostrarAdvertenciaPedidoMinimo() {
+    // Crear modal de advertencia si no existe
+    let modalAdvertencia = document.getElementById('modal-advertencia');
+    
+    if (!modalAdvertencia) {
+        modalAdvertencia = document.createElement('div');
+        modalAdvertencia.id = 'modal-advertencia';
+        modalAdvertencia.className = 'modal modal-oculto';
+        modalAdvertencia.innerHTML = `
+            <div class="modal-contenido">
+                <span class="cerrar-modal" onclick="cerrarModalAdvertencia()">&times;</span>
+                <h3>🚫 PEDIDO MÍNIMO REQUERIDO</h3>
+                <p>El pedido mínimo es de <strong>${MIN_PEDIDO} artículos</strong>.</p>
+                <p>Actualmente tienes <span id="cantidad-actual" style="color: #FF0000; font-weight: bold;">0</span> artículos en tu carrito.</p>
+                <p>¡Agrega más productos para continuar!</p>
+                <div class="botones-advertencia">
+                    <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modalAdvertencia);
+    }
+    
+    // Actualizar cantidad actual
+    const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
+    document.getElementById('cantidad-actual').textContent = totalArticulos;
+    
+    // Mostrar modal
+    modalAdvertencia.classList.remove('modal-oculto');
+}
+
+// ===== FUNCIÓN PARA CERRAR LA ADVERTENCIA =====
+function cerrarModalAdvertencia() {
+    const modalAdvertencia = document.getElementById('modal-advertencia');
+    if (modalAdvertencia) {
+        modalAdvertencia.classList.add('modal-oculto');
+    }
+}
+
 // ===== DATOS DE PRODUCTOS SINNER'S - PRECIOS CORREGIDOS =====
 const productos = {
     bebidas: {
@@ -93,7 +178,7 @@ const productos = {
             }
         },
         "PACTUM": {
-            descripcion: "Pacto con el diablo, tranquilo solo es un suave café frío descafeinado 475ml",
+            descripcion: "Pacto con el diablo, tranquilo solo es un suave café descafeinado 475ml",
             base: 40,
             opciones: {
                 leche: { 
@@ -156,8 +241,7 @@ const ubicaciones = [
         nombre: "Calle Coral 120",
         direccion: "Calle Coral 120, colonia Estrella, CDMX",
         horario: "Lunes a Jueves: 4:00 PM - 9:00 PM | Viernes: 4:00 PM - 1:00 AM | Sábado: 11:00 AM - 2:00 AM | Domingo: 10:00 AM - 7:00 PM",
-        coordenadas: "19.4777778,-99.1169444",
-        iframe: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.381734292895!2d-99.1195194!3d19.4777778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI4JzQ0LjAiTiA5OcKwMDcnMDEuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>`
+        coordenadas: "19.4777778,-99.1169444"
     }
 ];
 
@@ -170,7 +254,7 @@ const carritoBtn = document.getElementById('carrito-btn');
 const contadorCarrito = document.getElementById('contador');
 const modalCarrito = document.getElementById('modal-carrito');
 const modalOpciones = document.getElementById('modal-opciones');
-let modalUbicacion = document.getElementById('modal-ubicacion'); // Cambiado a let para poder reasignar
+let modalUbicacion = document.getElementById('modal-ubicacion');
 const cerrarModalCarritoBtn = document.getElementById('cerrar-carrito');
 const listaCarrito = document.getElementById('lista-carrito');
 const totalCarrito = document.getElementById('total-carrito');
@@ -190,7 +274,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Event listeners para Termux (más robustos)
     if (carritoBtn) carritoBtn.addEventListener('click', mostrarCarrito);
-    if (whatsappBtn) whatsappBtn.addEventListener('click', mostrarSeleccionUbicacion);
+    
+    // WhatsApp button con validación de pedido mínimo
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function() {
+            if (verificarPedidoMinimo()) {
+                mostrarSeleccionUbicacion();
+            }
+        });
+    }
+    
     if (confirmarOpcionesBtn) confirmarOpcionesBtn.addEventListener('click', confirmarSeleccion);
     if (regresarModalBtn) regresarModalBtn.addEventListener('click', cerrarModalOpciones);
     if (seguirPidiendoBtn) seguirPidiendoBtn.addEventListener('click', cerrarModalCarrito);
@@ -218,7 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // REMOVER CUALQUIER REFERENCIA AL SUBTÍTULO QUE YA NO EXISTE
-    // Esto previene errores en la consola
     const subtituloElement = document.querySelector('.subtitulo');
     if (subtituloElement) {
         subtituloElement.remove();
@@ -277,37 +369,4 @@ function mostrarOpciones(producto) {
             <div class="opcion-grupo">
                 <h3>${producto.opciones.alcohol.nombre}:</h3>
                 <label><input type="radio" name="alcohol" value="sin" checked> Sin (+$${producto.opciones.alcohol.sin})</label>
-                <label><input type="radio" name="alcohol" value="con"> Con (+$${producto.opciones.alcohol.con})</label>
-                <p class="advertencia">${producto.opciones.alcohol.advertencia}</p>
-            </div>
-            <div class="opcion-grupo">
-                <h3>${producto.opciones.jelly.nombre}:</h3>
-                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
-                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
-            </div>
-        `;
-    } else if (producto.categoria === 'tes') {
-        formularioOpciones.innerHTML = `
-            <div class="opcion-grupo">
-                <h3>Endulzante:</h3>
-                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
-                <label><input type="radio" name="azucar" value="con"> Con</label>
-                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
-            </div>
-            <div class="opcion-grupo">
-                <h3>${producto.opciones.jelly.nombre}:</h3>
-                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
-                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
-            </div>
-        `;
-    } else if (producto.categoria === 'cafes') {
-        formularioOpciones.innerHTML = `
-            <div class="opcion-grupo">
-                <h3>Leche:</h3>
-                <label><input type="radio" name="leche" value="sin" checked> Sin (+$${producto.opciones.leche.sin})</label>
-                <label><input type="radio" name="leche" value="con"> Con (+$${producto.opciones.leche.con})</label>
-                <label><input type="radio" name="leche" value="deslactosada"> Deslactosada (+$${producto.opciones.leche.deslactosada})</label>
-            </div>
-            <div class="opcion-grupo">
-                <h3>Endulzante:</h3>
                 <label><input type="radio
