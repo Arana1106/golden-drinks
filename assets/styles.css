@@ -1,4 +1,4 @@
-/* ===== ESTILOS SINNER'S ===== */
+/* ===== ESTILOS SINNER'S - VIAJE DEL CIELO AL INFRAMUNDO ===== */
 @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Eater&family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
 
 :root {
@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    min-height: 40px;
+    min-height: 40px; /* Touch targets grandes para móviles */
 }
 
 html, body {
@@ -22,7 +22,7 @@ html, body {
     color: #d0d0d0;
     overflow-x: hidden;
     position: relative;
-    touch-action: manipulation;
+    touch-action: manipulation; /* Mejora respuesta táctil */
 }
 
 body::before {
@@ -33,27 +33,31 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
+        /* Forma de V invertida - Rojo (arriba) */
         linear-gradient(15deg, 
             rgba(220, 20, 60, 0.25) 0%,
             rgba(220, 20, 60, 0.15) 15%,
             transparent 30%),
+        /* Forma de V invertida - Morado (centro) */
         linear-gradient(15deg, 
             transparent 25%,
             rgba(147, 112, 219, 0.25) 40%,
             rgba(147, 112, 219, 0.15) 55%,
             transparent 70%),
+        /* Forma de V invertida - Azul (abajo) */
         linear-gradient(15deg, 
             transparent 60%,
             rgba(30, 144, 255, 0.25) 75%,
             rgba(30, 144, 255, 0.15) 85%,
             transparent 95%),
+        /* Partículas de efecto Infinity War */
         url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="rgba(220,20,60,0.03)" cx="30" cy="30" r="2"/><circle fill="rgba(147,112,219,0.03)" cx="70" cy="40" r="1.5"/><circle fill="rgba(30,144,255,0.03)" cx="50" cy="70" r="1.8"/><circle fill="rgba(65,105,225,0.03)" cx="80" cy="80" r="1.3"/></svg>') repeat;
     z-index: -1;
     opacity: calc(0.8 + (0.2 * var(--opacidad-infierno)));
     transition: opacity 0.5s ease;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER - UMBRAL CELESTIAL ===== */
 .header {
     text-align: center;
     padding: 20px 15px;
@@ -146,7 +150,7 @@ body::before {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* ===== CONTENEDOR PRINCIPAL ===== */
+/* ===== CONTENEDOR PRINCIPAL CON EFECTO PARALLAX ===== */
 .contenedor-principal {
     max-width: 100%;
     margin: 0 auto;
@@ -155,7 +159,7 @@ body::before {
     transform-style: preserve-3d;
 }
 
-/* ===== CATEGORÍAS ===== */
+/* ===== CATEGORÍAS - PURGATORIO (Transición) ===== */
 .categoria {
     margin-bottom: 35px;
     position: relative;
@@ -192,6 +196,7 @@ body::before {
     transition: all 0.4s ease;
 }
 
+/* Gradiente de colores por categoría - Sin bordes */
 .categoria:nth-child(1) .categoria-titulo {
     background: linear-gradient(135deg, rgba(220, 20, 60, 0.7), rgba(150, 0, 30, 0.6));
     color: #ffa0a0;
@@ -210,7 +215,7 @@ body::before {
     box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
 }
 
-/* ===== PRODUCTOS ===== */
+/* ===== PRODUCTOS - DESCENSO AL INFRAMUNDO ===== */
 .productos-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -230,6 +235,7 @@ body::before {
     transition: transform 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 }
 
+/* Gradiente de opacidad según posición */
 .categoria:nth-child(1) .producto-card {
     background: linear-gradient(135deg, rgba(100, 20, 60, 0.6), rgba(120, 10, 40, 0.5));
     border: 2px solid rgba(220, 20, 60, 0.5);
@@ -268,6 +274,7 @@ body::before {
     box-shadow: 0 12px 35px rgba(30, 144, 255, 0.5);
 }
 
+/* TÍTULOS DE PRODUCTOS - MANTENIENDO COLORES ORIGINALES */
 .producto-card h3 {
     font-family: 'Cinzel', serif;
     font-size: 1.7rem;
@@ -280,6 +287,7 @@ body::before {
     transition: all 0.3s ease;
 }
 
+/* Colores originales mantenidos pero con mejor contraste */
 .producto-card h3[data-producto="LEVIATAN"] { color: #5a8eff; }
 .producto-card h3[data-producto="INFERNO"] { color: #ff3b4a; }
 .producto-card h3[data-producto="JALURIA"] { color: #4aff4a; }
@@ -299,6 +307,7 @@ body::before {
     transition: color 0.3s ease;
 }
 
+/* PRECIOS CON COLORES SEGÚN CATEGORÍA */
 .producto-card .precio {
     font-weight: bold;
     font-size: 1.4rem;
@@ -312,6 +321,7 @@ body::before {
     transition: all 0.3s ease;
 }
 
+/* Rojo - Plateado metálico con borde oscuro */
 .categoria:nth-child(1) .producto-card .precio {
     color: #e0e0e0;
     background: linear-gradient(135deg, rgba(100, 100, 120, 0.3), rgba(70, 70, 90, 0.2));
@@ -319,6 +329,7 @@ body::before {
     box-shadow: 0 0 10px rgba(200, 200, 200, 0.3);
 }
 
+/* Morado - Dorado con borde oscuro */
 .categoria:nth-child(2) .producto-card .precio {
     color: #ffd700;
     background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(160, 82, 45, 0.2));
@@ -326,6 +337,7 @@ body::before {
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
+/* Azul - Blanco hueso con borde oscuro */
 .categoria:nth-child(3) .producto-card .precio {
     color: #f5f5dc;
     background: linear-gradient(135deg, rgba(100, 100, 100, 0.3), rgba(70, 70, 70, 0.2));
@@ -333,7 +345,7 @@ body::before {
     box-shadow: 0 0 10px rgba(245, 245, 220, 0.3);
 }
 
-/* ===== BOTONES ===== */
+/* ===== BOTONES DE SELECCIÓN POR CATEGORÍA ===== */
 .btn-seleccionar {
     width: 100%;
     margin-top: 12px;
@@ -351,6 +363,7 @@ body::before {
     transform: translateZ(0);
 }
 
+/* Botones de selección con colores según categoría */
 .categoria:nth-child(1) .btn-seleccionar {
     background: linear-gradient(135deg, #8b0000, #600);
     color: #FFF;
@@ -393,7 +406,7 @@ button:active {
     transform: translateZ(0) scale(0.97);
 }
 
-/* ===== FORMULARIOS Y OPCIONES ===== */
+/* ===== ESTILOS PARA FORMULARIOS Y OPCIONES ===== */
 .opcion-grupo {
     margin-bottom: 20px;
     padding: 15px;
@@ -453,7 +466,7 @@ button:active {
     border-left: 3px solid #ff0000;
 }
 
-/* ===== BOTONES DE MODALES ===== */
+/* ===== ESTILOS PARA BOTONES DE MODALES ===== */
 .botones-opciones {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -471,13 +484,6 @@ button:active {
 .botones-ubicacion {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.botones-advertencia {
-    display: grid;
-    grid-template-columns: 1fr;
     gap: 15px;
     margin-top: 20px;
 }
@@ -522,28 +528,7 @@ button:active {
     border-color: #777;
 }
 
-.botones-advertencia button {
-    background: linear-gradient(135deg, #8A0303, #600);
-    color: #FFF;
-    border: 2px solid #FFD700;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Cinzel', serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
-}
-
-.botones-advertencia button:hover {
-    background: linear-gradient(135deg, #A00404, #700);
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-}
-
-/* ===== UBICACIÓN ===== */
+/* ===== ESTILOS PARA UBICACIÓN ===== */
 .ubicacion-info {
     margin: 20px 0;
     padding: 20px;
@@ -563,7 +548,6 @@ button:active {
     transition: all 0.3s ease;
     font-family: 'MedievalSharp', cursive;
     font-size: 1.1rem;
-    display: inline-block;
 }
 
 .direccion-clickeable:hover {
@@ -583,7 +567,7 @@ button:active {
     border: 1px solid #444;
 }
 
-/* ===== ITEMS DEL CARRITO ===== */
+/* ===== ESTILOS PARA ITEMS DEL CARRITO ===== */
 .items-carrito {
     max-height: 300px;
     overflow-y: auto;
@@ -706,7 +690,7 @@ button:active {
     display: none;
 }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER - UMBRAL DEL INFRAMUNDO ===== */
 .footer {
     text-align: center;
     padding: 40px 20px;

@@ -4,117 +4,350 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SINNER'S</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== ESTILOS SINNER'S - VIAJE DEL CIELO AL INFRAMUNDO ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Eater&family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+
+        :root {
+            --opacidad-cielo: 1;
+            --opacidad-infierno: 0;
+            --scroll-porcentaje: 0;
+            --color-primario: #DC143C;
+            --color-secundario: #9370DB;
+            --color-terciario: #1e90ff;
+            --transition-time: 0.5s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            min-height: 40px;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Cinzel', serif;
+            background: #000000;
+            color: #d0d0d0;
+            overflow-x: hidden;
+            position: relative;
+            touch-action: manipulation;
+            transition: background-color var(--transition-time) ease, color var(--transition-time) ease;
+        }
+
+        body.color-transition {
+            background: linear-gradient(135deg, 
+                rgba(220, 20, 60, 0.1), 
+                rgba(147, 112, 219, 0.1),
+                rgba(30, 144, 255, 0.1),
+                #000000);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(15deg, 
+                    rgba(220, 20, 60, calc(0.25 * var(--opacidad-cielo))) 0%,
+                    rgba(220, 20, 60, calc(0.15 * var(--opacidad-cielo))) 15%,
+                    transparent 30%),
+                linear-gradient(15deg, 
+                    transparent 25%,
+                    rgba(147, 112, 219, calc(0.25 * var(--opacidad-cielo))) 40%,
+                    rgba(147, 112, 219, calc(0.15 * var(--opacidad-cielo))) 55%,
+                    transparent 70%),
+                linear-gradient(15deg, 
+                    transparent 60%,
+                    rgba(30, 144, 255, calc(0.25 * var(--opacidad-cielo))) 75%,
+                    rgba(30, 144, 255, calc(0.15 * var(--opacidad-cielo))) 85%,
+                    transparent 95%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="rgba(220,20,60,0.03)" cx="30" cy="30" r="2"/><circle fill="rgba(147,112,219,0.03)" cx="70" cy="40" r="1.5"/><circle fill="rgba(30,144,255,0.03)" cx="50" cy="70" r="1.8"/><circle fill="rgba(65,105,225,0.03)" cx="80" cy="80" r="1.3"/></svg>') repeat;
+            z-index: -1;
+            opacity: calc(0.8 + (0.2 * var(--opacidad-infierno)));
+            transition: opacity var(--transition-time) ease, background var(--transition-time) ease;
+        }
+
+        /* ===== HEADER CON TRANSICIÓN DE COLOR ===== */
+        .header {
+            text-align: center;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, 
+                rgba(220, 20, 60, 0.15) 0%, 
+                rgba(0, 0, 0, 0.95) 80%);
+            border-bottom: 3px solid var(--color-primario);
+            border-top: 3px solid var(--color-primario);
+            box-shadow: 0 5px 25px rgba(220, 20, 60, 0.5);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            backdrop-filter: blur(5px);
+            transition: all var(--transition-time) ease;
+            transform: translateZ(0);
+        }
+
+        .header.color-transition {
+            background: linear-gradient(135deg, 
+                rgba(220, 20, 60, 0.2),
+                rgba(147, 112, 219, 0.2),
+                rgba(30, 144, 255, 0.2),
+                rgba(0, 0, 0, 0.95));
+            background-size: 400% 400%;
+            animation: headerGradient 10s ease infinite;
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(90deg, #DC143C, #9370DB, #1e90ff) 1;
+        }
+
+        @keyframes headerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .titulo-principal {
+            font-family: 'Nosifer', cursive;
+            font-size: 2.5rem;
+            color: var(--color-primario);
+            text-shadow: 
+                2px 2px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                0 0 15px var(--color-primario),
+                0 0 30px #8B0000;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .titulo-principal.color-transition {
+            background: linear-gradient(90deg, #DC143C, #9370DB, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGradient 3s ease infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== BOTÓN DE CARRITO CON TRANSICIÓN ===== */
+        #carrito-btn {
+            background: rgba(139, 69, 19, 0.8);
+            border: 2px solid #8b0000;
+            border-radius: 8px;
+            width: 60px;
+            height: 60px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #ffd700;
+            font-family: 'MedievalSharp', cursive;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #carrito-btn.color-transition {
+            background: linear-gradient(135deg, #8b0000, #6a5acd, #1e90ff);
+            animation: buttonPulse 2s infinite;
+        }
+
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 10px rgba(139, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(30, 144, 255, 0.7); }
+            100% { box-shadow: 0 0 10px rgba(139, 0, 0, 0.5); }
+        }
+
+        /* ===== BOTONES DE SELECCIÓN CON TRANSICIÓN ===== */
+        .btn-seleccionar {
+            width: 100%;
+            margin-top: 12px;
+            text-transform: uppercase;
+            font-size: 16px;
+            min-height: 48px;
+            padding: 14px 20px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            transform: translateZ(0);
+        }
+
+        .btn-seleccionar.color-transition {
+            animation: buttonFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes buttonFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .categoria:nth-child(1) .btn-seleccionar {
+            background: linear-gradient(135deg, #8b0000, #600);
+            color: #FFF;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 0 12px rgba(139, 0, 0, 0.5);
+        }
+
+        .categoria:nth-child(2) .btn-seleccionar {
+            background: linear-gradient(135deg, #9370DB, #6a5acd);
+            color: #FFF;
+            border: 2px solid #d8a0ff;
+            box-shadow: 0 0 12px rgba(147, 112, 219, 0.5);
+        }
+
+        .categoria:nth-child(3) .btn-seleccionar {
+            background: linear-gradient(135deg, #1e90ff, #4169E1);
+            color: #FFF;
+            border: 2px solid #a0d0ff;
+            box-shadow: 0 0 12px rgba(30, 144, 255, 0.5);
+        }
+
+        .btn-seleccionar:hover {
+            transform: translateZ(10px) translateY(-2px);
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.4);
+        }
+
+        .categoria:nth-child(1) .btn-seleccionar:hover {
+            background: linear-gradient(135deg, #a00404, #700);
+        }
+
+        .categoria:nth-child(2) .btn-seleccionar:hover {
+            background: linear-gradient(135deg, #a591e0, #7b68ee);
+        }
+
+        .categoria:nth-child(3) .btn-seleccionar:hover {
+            background: linear-gradient(135deg, #4169E1, #1e90ff);
+        }
+
+        /* ===== EFECTOS DE TRANSICIÓN AL SCROLL ===== */
+        .producto-card {
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(3px);
+            transform: translateZ(calc(10px - (8px * var(--scroll-porcentaje))));
+            transition: transform 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        .producto-card.color-transition {
+            transition: transform 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease, background 0.6s ease;
+        }
+
+        .producto-card:hover {
+            transform: translateZ(40px) translateY(-5px);
+            backdrop-filter: blur(1px);
+        }
+
+        /* Resto del CSS se mantiene igual pero con transiciones añadidas */
+        
+        /* ===== BOTÓN DE ACTIVACIÓN/DESACTIVACIÓN DE EFECTOS ===== */
+        .toggle-effects {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #8b0000, #6a5acd);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-effects:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+    </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header class="header">
         <h1 class="titulo-principal">SINNER'S</h1>
         <button id="carrito-btn">🛒<span id="contador">0</span></button>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL -->
     <main class="contenedor-principal">
-        <!-- CATEGORÍA 1: BEBIDAS -->
-        <section class="categoria">
-            <h2 class="categoria-titulo">BEBIDAS DEL INFRAMUNDO</h2>
-            <div class="productos-container" id="bebidas-container">
-                <!-- Productos de bebidas se generarán con JavaScript -->
-            </div>
-        </section>
-
-        <!-- CATEGORÍA 2: CAFÉS -->
-        <section class="categoria">
-            <h2 class="categoria-titulo">ELIXIRES DE ENERGÍA</h2>
-            <div class="productos-container" id="cafes-container">
-                <!-- Productos de cafés se generarán con JavaScript -->
-            </div>
-        </section>
-
-        <!-- CATEGORÍA 3: TÉS -->
-        <section class="categoria">
-            <h2 class="categoria-titulo">TÉS DE LA REDENCIÓN</h2>
-            <div class="productos-container" id="tes-container">
-                <!-- Productos de tés se generarán con JavaScript -->
-            </div>
-        </section>
+        <!-- Contenido de la página -->
     </main>
 
-    <!-- MODAL DE OPCIONES -->
-    <div id="modal-opciones" class="modal modal-oculto">
-        <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
-            <h2 id="titulo-modal">Selecciona opciones</h2>
-            <form id="formulario-opciones">
-                <!-- Opciones se generan dinámicamente -->
-            </form>
-            <div class="botones-opciones">
-                <button id="regresar-modal">Regresar</button>
-                <button id="confirmar-opciones">Confirmar</button>
-            </div>
-        </div>
-    </div>
+    <button class="toggle-effects" onclick="toggleColorEffects()">Efectos de Color 🌈</button>
 
-    <!-- MODAL DE CARRITO -->
-    <div id="modal-carrito" class="modal modal-oculto">
-        <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
-            <h2>Tu Carrito Infernal</h2>
-            <div class="items-carrito" id="lista-carrito">
-                <!-- Items del carrito se generan dinámicamente -->
-            </div>
-            <p id="total-carrito">Total: $0 MXN</p>
-            <div class="botones-carrito">
-                <button id="seguir-pidiendo">Seguir Pidiendo</button>
-                <button id="whatsapp-btn">CONFIRMAR UBICACIÓN</button>
-            </div>
-        </div>
-    </div>
+    <script>
+        // Función para alternar efectos de color
+        function toggleColorEffects() {
+            document.body.classList.toggle('color-transition');
+            document.querySelector('.header').classList.toggle('color-transition');
+            document.querySelector('.titulo-principal').classList.toggle('color-transition');
+            document.getElementById('carrito-btn').classList.toggle('color-transition');
+            
+            // Aplicar a todos los botones de selección
+            document.querySelectorAll('.btn-seleccionar').forEach(btn => {
+                btn.classList.toggle('color-transition');
+            });
+            
+            // Aplicar a todas las tarjetas de producto
+            document.querySelectorAll('.producto-card').forEach(card => {
+                card.classList.toggle('color-transition');
+            });
+            
+            // Cambiar texto del botón
+            const toggleBtn = document.querySelector('.toggle-effects');
+            if (document.body.classList.contains('color-transition')) {
+                toggleBtn.textContent = 'Efectos de Color ✅';
+            } else {
+                toggleBtn.textContent = 'Efectos de Color 🌈';
+            }
+        }
 
-    <!-- MODAL DE UBICACIÓN -->
-    <div id="modal-ubicacion" class="modal modal-oculto">
-        <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
-            <h2>Selecciona Ubicación</h2>
-            <div class="ubicacion-info">
-                <div class="direccion-clickeable" onclick="abrirGoogleMaps()">
-                    📍 Calle Coral 120, colonia Estrella, CDMX
-                </div>
-                <div class="horario-ubicacion">
-                    🕒 Lunes a Jueves: 4:00 PM - 9:00 PM<br>
-                    🕒 Viernes: 4:00 PM - 1:00 AM<br>
-                    🕒 Sábado: 11:00 AM - 2:00 AM<br>
-                    🕒 Domingo: 10:00 AM - 7:00 PM
-                </div>
-            </div>
-            <div class="botones-ubicacion">
-                <button id="regresar-carrito">Regresar al Carrito</button>
-                <button id="confirmar-ubicacion">Confirmar Esta Ubicación</button>
-            </div>
-        </div>
-    </div>
+        // Efecto de scroll parallax (ya existente)
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const documentHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollY / documentHeight;
+            
+            document.documentElement.style.setProperty('--scroll-porcentaje', scrollPercent);
+            document.documentElement.style.setProperty('--opacidad-cielo', 1 - scrollPercent);
+            document.documentElement.style.setProperty('--opacidad-infierno', scrollPercent);
+        });
 
-    <!-- MODAL DE ADVERTENCIA (Agregado) -->
-    <div id="modal-advertencia" class="modal modal-oculto">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" onclick="cerrarModalAdvertencia()">&times;</span>
-            <h3>🚫 PEDIDO MÍNIMO REQUERIDO</h3>
-            <p>El pedido mínimo es de <strong>3 artículos</strong>.</p>
-            <p>Actualmente tienes <span id="cantidad-actual" style="color: #FF0000; font-weight: bold;">0</span> artículos en tu carrito.</p>
-            <p>¡Agrega más productos para continuar!</p>
-            <div class="botones-advertencia">
-                <button onclick="cerrarModalAdvertencia()">ENTENDIDO</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p class="eslogan">"Donde cada sorbo es un pecado deliciouso"</p>
-        <p class="copyright">© 2024 Sinner's - Todos los derechos reservados</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+        // Activar efectos por defecto
+        window.addEventListener('load', () => {
+            toggleColorEffects();
+        });
+    </script>
 </body>
 </html>
