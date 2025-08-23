@@ -211,7 +211,7 @@ const productos = {
             }
         },
         "REVELACIÓN": {
-            descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrevete to conocer el veredicto. 475ml",
+            descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrevete to conocer el veredicto. Agua del día 475ml",
             base: 35,
             opciones: {
                 azucar: { 
@@ -369,7 +369,7 @@ function mostrarOpciones(producto) {
     } else if (producto.categoria === 'tes') {
         formularioOpciones.innerHTML = `
             <div class="opcion-grupo">
-                <h3>Endulzante:</h3>
+                <h3>Azúcar:</h3>
                 <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
                 <label><input type="radio" name="azucar" value="con"> Con</label>
                 <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
@@ -389,7 +389,7 @@ function mostrarOpciones(producto) {
                 <label><input type="radio" name="leche" value="deslactosada"> Deslactosada (+$${producto.opciones.leche.deslactosada})</label>
             </div>
             <div class="opcion-grupo">
-                <h3>Endulzante:</h3>
+                <h3>Azúcar:</h3>
                 <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
                 <label><input type="radio" name="azucar" value="con"> Con</label>
                 <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
