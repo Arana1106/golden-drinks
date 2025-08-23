@@ -121,7 +121,7 @@ const productos = {
     },
     tes: {
         "REDENCIÓN": {
-            descripcion: "Todos la buscamos, y todos la necesitamos su sabor en sus 475 ml",
+            descripcion: "Todos la buscamos, y todos la necesitamos por su sabor intenso de su elección Té frío del día con sus 475 ml",
             base: 35,
             opciones: {
                 azucar: { 
