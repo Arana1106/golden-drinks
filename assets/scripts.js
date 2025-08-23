@@ -3,10 +3,8 @@ function abrirGoogleMaps() {
     const coordenadas = "19.4777778,-99.1169444";
     const url = `https://www.google.com/maps/search/?api=1&query=${coordenadas}`;
     
-    // Abrir en nueva pestaña
     window.open(url, '_blank');
     
-    // Feedback visual para el usuario
     const direccion = document.querySelector('.direccion-clickeable');
     direccion.style.background = 'rgba(0, 139, 0, 0.3)';
     direccion.style.borderLeft = '3px solid #00FF00';
@@ -24,7 +22,6 @@ document.addEventListener('touchend', function(e) {
     const tapLength = currentTime - lastTap;
     
     if (tapLength < 300 && tapLength > 0) {
-        // Doble tap detectado
         if (e.target.classList.contains('direccion-clickeable')) {
             abrirGoogleMaps();
         }
@@ -45,7 +42,6 @@ function verificarPedidoMinimo() {
 
 // ===== FUNCIÓN PARA MOSTRAR ADVERTENCIA =====
 function mostrarAdvertenciaPedidoMinimo() {
-    // Crear modal de advertencia si no existe
     let modalAdvertencia = document.getElementById('modal-advertencia');
     
     if (!modalAdvertencia) {
@@ -67,11 +63,9 @@ function mostrarAdvertenciaPedidoMinimo() {
         document.body.appendChild(modalAdvertencia);
     }
     
-    // Actualizar cantidad actual
     const totalArticulos = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
     document.getElementById('cantidad-actual').textContent = totalArticulos;
     
-    // Mostrar modal
     modalAdvertencia.classList.remove('modal-oculto');
 }
 
@@ -83,7 +77,7 @@ function cerrarModalAdvertencia() {
     }
 }
 
-// ===== DATOS DE PRODUCTOS SINNER'S - PRECIOS CORREGIDOS =====
+// ===== DATOS DE PRODUCTOS =====
 const productos = {
     bebidas: {
         "LEVIATAN": {
@@ -272,10 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarProductos();
     actualizarCarritoUI();
     
-    // Event listeners para Termux (más robustos)
     if (carritoBtn) carritoBtn.addEventListener('click', mostrarCarrito);
     
-    // WhatsApp button con validación de pedido mínimo
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', function() {
             if (verificarPedidoMinimo()) {
@@ -289,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (seguirPidiendoBtn) seguirPidiendoBtn.addEventListener('click', cerrarModalCarrito);
     if (confirmarUbicacionBtn) confirmarUbicacionBtn.addEventListener('click', () => enviarPedidoFinal(ubicaciones[0]));
     
-    // Configurar el botón de regresar CORRECTAMENTE
     if (regresarCarritoBtn) {
         regresarCarritoBtn.addEventListener('click', () => {
             cerrarModalUbicacion();
@@ -299,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Cerrar modales al hacer clic en la X
     document.querySelectorAll('.cerrar-modal').forEach(btn => {
         btn.addEventListener('click', function() {
             const modal = this.closest('.modal');
@@ -310,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // REMOVER CUALQUIER REFERENCIA AL SUBTÍTULO QUE YA NO EXISTE
     const subtituloElement = document.querySelector('.subtitulo');
     if (subtituloElement) {
         subtituloElement.remove();
@@ -342,7 +331,6 @@ function renderizarProductos() {
         }
     }
 
-    // Event listeners para botones de selección
     document.querySelectorAll('.btn-seleccionar').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const categoria = e.target.getAttribute('data-categoria');
@@ -369,4 +357,252 @@ function mostrarOpciones(producto) {
             <div class="opcion-grupo">
                 <h3>${producto.opciones.alcohol.nombre}:</h3>
                 <label><input type="radio" name="alcohol" value="sin" checked> Sin (+$${producto.opciones.alcohol.sin})</label>
-                <label><input type="radio
+                <label><input type="radio" name="alcohol" value="con"> Con (+$${producto.opciones.alcohol.con})</label>
+                <p class="advertencia">${producto.opciones.alcohol.advertencia}</p>
+            </div>
+            <div class="opcion-grupo">
+                <h3>${producto.opciones.jelly.nombre}:</h3>
+                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
+                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
+            </div>
+        `;
+    } else if (producto.categoria === 'tes') {
+        formularioOpciones.innerHTML = `
+            <div class="opcion-grupo">
+                <h3>Endulzante:</h3>
+                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
+                <label><input type="radio" name="azucar" value="con"> Con</label>
+                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
+            </div>
+            <div class="opcion-grupo">
+                <h3>${producto.opciones.jelly.nombre}:</h3>
+                <label><input type="radio" name="jelly" value="no" checked> No (+$${producto.opciones.jelly.no})</label>
+                <label><input type="radio" name="jelly" value="si"> Sí (+$${producto.opciones.jelly.si})</label>
+            </div>
+        `;
+    } else if (producto.categoria === 'cafes') {
+        formularioOpciones.innerHTML = `
+            <div class="opcion-grupo">
+                <h3>Leche:</h3>
+                <label><input type="radio" name="leche" value="sin" checked> Sin (+$${producto.opciones.leche.sin})</label>
+                <label><input type="radio" name="leche" value="con"> Con (+$${producto.opciones.leche.con})</label>
+                <label><input type="radio" name="leche" value="deslactosada"> Deslactosada (+$${producto.opciones.leche.deslactosada})</label>
+            </div>
+            <div class="opcion-grupo">
+                <h3>Endulzante:</h3>
+                <label><input type="radio" name="azucar" value="sin" checked> Sin</label>
+                <label><input type="radio" name="azucar" value="con"> Con</label>
+                <label><input type="radio" name="azucar" value="sustituto"> Sustituto</label>
+            </div>
+            <div class="opcion-grupo">
+                <h3>${producto.opciones.coffee_bubble.nombre}:</h3>
+                <label><input type="radio" name="coffee_bubble" value="no" checked> No (+$${producto.opciones.coffee_bubble.no})</label>
+                <label><input type="radio" name="coffee_bubble" value="si"> Sí (+$${producto.opciones.coffee_bubble.si})</label>
+            </div>
+        `;
+    }
+
+    modalOpciones.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+    modalOpciones.dataset.producto = JSON.stringify(producto);
+}
+
+function confirmarSeleccion() {
+    if (!modalOpciones || !modalOpciones.dataset.producto) return;
+    
+    const producto = JSON.parse(modalOpciones.dataset.producto);
+    const opciones = {
+        alcohol: formularioOpciones.querySelector('input[name="alcohol"]:checked')?.value,
+        jelly: formularioOpciones.querySelector('input[name="jelly"]:checked')?.value,
+        azucar: formularioOpciones.querySelector('input[name="azucar"]:checked')?.value,
+        leche: formularioOpciones.querySelector('input[name="leche"]:checked')?.value,
+        coffee_bubble: formularioOpciones.querySelector('input[name="coffee_bubble"]:checked')?.value
+    };
+
+    agregarAlCarrito({
+        ...producto,
+        seleccion: opciones,
+        cantidad: 1
+    });
+}
+
+// ===== CARRITO =====
+function agregarAlCarrito(item) {
+    carrito.push(item);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
+    cerrarModalOpciones();
+}
+
+function mostrarCarrito() {
+    if (!listaCarrito || !totalCarrito || !modalCarrito) return;
+    
+    listaCarrito.innerHTML = '';
+    let total = 0;
+
+    carrito.forEach((item, index) => {
+        const subtotal = calcularSubtotal(item);
+        total += subtotal;
+
+        const itemElement = document.createElement('div');
+        itemElement.className = 'item-carrito';
+        itemElement.innerHTML = `
+            <h4>${item.nombre} x${item.cantidad || 1}</h4>
+            <p>${obtenerOpcionesTexto(item)}</p>
+            <p>Subtotal: $${subtotal} MXN</p>
+            <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+        `;
+        listaCarrito.appendChild(itemElement);
+    });
+
+    totalCarrito.textContent = `Total: $${total} MXN`;
+    modalCarrito.classList.remove('modal-oculto');
+    document.body.style.overflow = 'hidden';
+}
+
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
+    mostrarCarrito();
+}
+
+function actualizarCarritoUI() {
+    const totalItems = carrito.reduce((total, item) => total + (item.cantidad || 1), 0);
+    if (contadorCarrito) contadorCarrito.textContent = totalItems;
+    if (whatsappBtn) {
+        whatsappBtn.disabled = totalItems < MIN_PEDIDO;
+        whatsappBtn.textContent = totalItems < MIN_PEDIDO 
+            ? `MÍNIMO ${MIN_PEDIDO} PRODUCTOS` 
+            : 'CONFIRMAR UBICACIÓN';
+    }
+}
+
+// ===== UBICACIÓN =====
+function mostrarSeleccionUbicacion() {
+    if (!verificarPedidoMinimo()) {
+        return;
+    }
+
+    if (modalUbicacion) {
+        modalUbicacion.classList.remove('modal-oculto');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function cerrarModalUbicacion() {
+    if (modalUbicacion) {
+        modalUbicacion.classList.add('modal-oculto');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function cerrarModalOpciones() {
+    if (modalOpciones) {
+        modalOpciones.classList.add('modal-oculto');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function cerrarModalCarrito() {
+    if (modalCarrito) {
+        modalCarrito.classList.add('modal-oculto');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// ===== WHATSAPP =====
+function enviarPedidoFinal(ubicacion) {
+    if (!verificarPedidoMinimo()) {
+        return;
+    }
+    
+    const listaProductos = carrito.map(item => 
+        `▪ ${item.nombre} x${item.cantidad || 1}\n` +
+        `  - ${obtenerOpcionesTexto(item)}\n` +
+        `  - $${calcularSubtotal(item)} MXN`
+    ).join('\n\n');
+
+    const mensaje = `*PEDIDO SINNER'S* 🔥\n\n` +
+        `📍 *Recoger en:* ${ubicacion.direccion}\n` +
+        `🕒 *Hora:* ${new Date().toLocaleString()}\n\n` +
+        `📋 *Pedido:*\n${listaProductos}\n\n` +
+        `💰 *TOTAL: $${calcularTotal()} MXN*\n\n` +
+        `🏦 *Datos bancarios*\n` +
+        `Titular: Eric Daniel Gutiérrez Arana\n` +
+        `CLABE: 012 261 01584933343 3 (BBVA)\n\n` +
+        `📸 *INSTRUCCIÓN:*\n` +
+        `Adjunta el comprobante con TU NOMBRE como concepto`;
+
+    const mensajeCodificado = encodeURIComponent(mensaje)
+        .replace(/\n/g, '%0A')
+        .replace(/\*/g, '%2A');
+
+    window.open(`https://wa.me/525611649344?text=${mensajeCodificado}`, '_blank');
+    
+    carrito = [];
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarCarritoUI();
+    cerrarModalUbicacion();
+}
+
+// ===== FUNCIONES AUXILIARES =====
+function obtenerOpcionesTexto(item) {
+    const extras = [];
+    
+    if (item.categoria === 'bebidas') {
+        extras.push(item.seleccion.alcohol === 'con' ? 'Con Elixir Prohibido (Alcohol 2.5 oz)' : 'Sin Elixir Prohibido');
+        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio (Bubble Jelly)' : 'Sin Lágrimas de Demonio');
+    } 
+    else if (item.categoria === 'tes') {
+        extras.push(
+            item.seleccion.azucar === 'con' ? 'Con azúcar' : 
+            item.seleccion.azucar === 'sustituto' ? 'Con sustituto' : 'Sin azúcar'
+        );
+        extras.push(item.seleccion.jelly === 'si' ? 'Con Lágrimas de Demonio (Bubble Jelly)' : 'Sin Lágrimas de Demonio');
+    } 
+    else if (item.categoria === 'cafes') {
+        extras.push(
+            item.seleccion.leche === 'con' ? 'Con leche' : 
+            item.seleccion.leche === 'deslactosada' ? 'Con leche deslactosada' : 'Sin leche'
+        );
+        extras.push(
+            item.seleccion.azucar === 'con' ? 'Con azúcar' : 
+            item.seleccion.azucar === 'sustituto' ? 'Con sustituto' : 'Sin azúcar'
+        );
+        extras.push(item.seleccion.coffee_bubble === 'si' ? 'Con Gemas del Infierno (Coffee Jelly)' : 'Sin Gemas del Infierno');
+    }
+
+    return extras.join(', ');
+}
+
+function calcularSubtotal(item) {
+    let extras = 0;
+    
+    if (item.categoria === 'bebidas') {
+        extras += item.seleccion.alcohol === 'con' ? item.opciones.alcohol.con : 0;
+        extras += item.seleccion.jelly === 'si' ? item.opciones.jelly.si : 0;
+    } 
+    else if (item.categoria === 'tes') {
+        extras += item.seleccion.jelly === 'si' ? item.opciones.jelly.si : 0;
+    } 
+    else if (item.categoria === 'cafes') {
+        extras += item.seleccion.leche === 'con' ? item.opciones.leche.con : 
+                 item.seleccion.leche === 'deslactosada' ? item.opciones.leche.deslactosada : 0;
+        extras += item.seleccion.coffee_bubble === 'si' ? item.opciones.coffee_bubble.si : 0;
+    }
+
+    return (item.base + extras) * (item.cantidad || 1);
+}
+
+function calcularTotal() {
+    return carrito.reduce((total, item) => total + calcularSubtotal(item), 0);
+}
+
+// Hacer funciones accesibles globalmente
+window.eliminarDelCarrito = eliminarDelCarrito;
+window.cerrarModalOpciones = cerrarModalOpciones;
+window.cerrarModalCarrito = cerrarModalCarrito;
+window.cerrarModalUbicacion = cerrarModalUbicacion;
+window.cerrarModalAdvertencia = cerrarModalAdvertencia;
+window.abrirGoogleMaps = abrirGoogleMaps;
