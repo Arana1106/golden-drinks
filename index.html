@@ -15,38 +15,38 @@
     <main id="menu">
         <!-- Bebidas -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #FF073A;">ELIXIRES PROHIBIDOS</h2>
+            <h2 class="categoria-titulo" style="border-left: 5px solid #FF0000;">BEBIDAS DEL PECADO</h2>
             <div class="productos-container" id="bebidas-container"></div>
         </section>
 
         <!-- Cafés -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #FFFFFF;">BREBAJES OSCUROS</h2>
+            <h2 class="categoria-titulo" style="border-left: 5px solid #8B4513;">CAFÉS MALDITOS</h2>
             <div class="productos-container" id="cafes-container"></div>
         </section>
 
         <!-- Tés -->
         <section class="categoria">
-            <h2 class="categoria-titulo" style="border-left: 5px solid #FFAA00;">POCIONES MALDITAS</h2>
+            <h2 class="categoria-titulo" style="border-left: 5px solid #FFD700;">TÉS OSCUROS</h2>
             <div class="productos-container" id="tes-container"></div>
         </section>
     </main>
 
     <!-- Modal de Opciones -->
-    <div id="modal-opciones" class="modal-oculto">
+    <div id="modal-opciones" class="modal modal-oculto">
         <div class="modal-contenido">
             <span class="cerrar-modal">&times;</span>
             <h3 id="titulo-modal"></h3>
             <form id="formulario-opciones"></form>
             <div class="botones-opciones">
-                <button id="confirmar-opciones" class="btn-dorado">AGREGAR</button>
+                <button id="confirmar-opciones" class="btn-dorado">AGREGAR AL CARRITO</button>
                 <button id="regresar-modal">REGRESAR</button>
             </div>
         </div>
     </div>
 
     <!-- Modal del Carrito -->
-    <div id="modal-carrito" class="modal-oculto">
+    <div id="modal-carrito" class="modal modal-oculto">
         <div class="modal-contenido carrito-contenido">
             <span class="cerrar-modal">&times;</span>
             <h3>Tu Pedido</h3>
@@ -60,18 +60,18 @@
     </div>
 
     <!-- Modal de Ubicación -->
-    <div id="modal-ubicacion" class="modal-oculto">
+    <div id="modal-ubicacion" class="modal modal-oculto">
         <div class="modal-contenido">
             <span class="cerrar-modal">&times;</span>
             <h3>📍 Punto de Recolección</h3>
             <div class="ubicacion-info">
                 <p class="direccion-clickeable">Calle Coral 120, colonia Estrella, CDMX</p>
-                <div class="mapa-container" id="mapa-container" style="display:none">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15050.55127400031!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDA.0MCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                <div class="mapa-container" id="mapa-container" style="display: none;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.381734292895!2d-99.1195194!3d19.4777778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI4JzQwLjAiTiA5OcKwMDcnMDEuMCJX!5e0!3m2!1sen!2smx!4v1620000000000!5m2!1sen!2smx" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             <div class="botones-ubicacion">
-                <button id="confirmar-ubicacion" class="btn-dorado">CONFIRMAR</button>
+                <button id="confirmar-ubicacion" class="btn-dorado">CONFIRMAR PEDIDO</button>
                 <button id="regresar-carrito">REGRESAR AL CARRITO</button>
             </div>
         </div>
