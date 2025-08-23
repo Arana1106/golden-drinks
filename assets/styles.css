@@ -18,13 +18,15 @@ html, body {
     height: 100%;
     font-family: 'Cinzel', serif;
     background: linear-gradient(to bottom, 
-        #0a1020 0%, 
-        #1a1830 20%,
-        #251840 40%,
-        #301850 60%,
-        #3a1860 80%,
-        #451870 100%);
-    color: #e0e0e0;
+        #0a0a14 0%, 
+        #141420 15%,
+        #1a1828 30%,
+        #221830 45%,
+        #281430 60%,
+        #2e1030 75%,
+        #220c20 90%,
+        #0a080a 100%);
+    color: #d0d0d0;
     overflow-x: hidden;
     position: relative;
     transition: background 0.5s ease;
@@ -40,20 +42,20 @@ body::before {
     background: 
         /* Efecto de luz celestial que se desvanece */
         radial-gradient(ellipse at top center, 
-            rgba(100, 150, 255, calc(0.15 * var(--opacidad-cielo))) 0%,
-            rgba(70, 100, 200, calc(0.1 * var(--opacidad-cielo))) 20%,
-            rgba(50, 70, 150, calc(0.05 * var(--opacidad-cielo))) 40%,
+            rgba(80, 0, 0, calc(0.15 * var(--opacidad-cielo))) 0%,
+            rgba(60, 0, 0, calc(0.1 * var(--opacidad-cielo))) 20%,
+            rgba(40, 0, 0, calc(0.05 * var(--opacidad-cielo))) 40%,
             transparent 70%),
         /* Elementos celestiales que se desvanecen */
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><path fill="rgba(255,255,255,0.08)" d="M60,15 L70,45 L100,45 L75,65 L85,95 L60,75 L35,95 L45,65 L20,45 L50,45 Z"/></svg>') 0% 5% / 120px 120px repeat,
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><circle fill="rgba(200,200,255,0.06)" cx="40" cy="40" r="5"/></svg>') 0% 10% / 80px 80px repeat,
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><path fill="rgba(139,0,0,0.08)" d="M60,15 L70,45 L100,45 L75,65 L85,95 L60,75 L35,95 L45,65 L20,45 L50,45 Z"/></svg>') 0% 5% / 120px 120px repeat,
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><circle fill="rgba(139,0,0,0.06)" cx="40" cy="40" r="5"/></svg>') 0% 10% / 80px 80px repeat,
         /* Transición al inframundo */
         radial-gradient(ellipse at bottom center, 
             transparent 30%,
-            rgba(139, 0, 0, calc(0.1 * var(--opacidad-infierno))) 60%,
-            rgba(100, 0, 0, calc(0.2 * var(--opacidad-infierno))) 100%),
+            rgba(40, 0, 0, calc(0.1 * var(--opacidad-infierno))) 60%,
+            rgba(20, 0, 0, calc(0.2 * var(--opacidad-infierno))) 100%),
         /* Elementos infernales que emergen */
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(139,0,0,0.08)" d="M50,15 C60,35 80,35 90,45 C80,55 80,75 65,65 C50,85 50,75 35,65 C20,75 20,55 10,45 C20,35 40,35 50,15 Z"/></svg>') 0% 80% / 100px 100px repeat;
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="rgba(80,0,0,0.08)" d="M50,15 C60,35 80,35 90,45 C80,55 80,75 65,65 C50,85 50,75 35,65 C20,75 20,55 10,45 C20,35 40,35 50,15 Z"/></svg>') 0% 80% / 100px 100px repeat;
     z-index: -1;
     opacity: calc(0.7 + (0.3 * var(--opacidad-infierno)));
     transition: opacity 0.5s ease;
@@ -64,12 +66,12 @@ body::before {
     text-align: center;
     padding: 25px 15px;
     background: linear-gradient(135deg, 
-        rgba(0, 30, 120, 0.9) 0%, 
-        rgba(50, 0, 100, 0.85) 50%,
-        rgba(80, 0, 80, 0.8) 100%);
-    border-bottom: 3px solid #4169E1;
-    border-top: 3px solid #1e90ff;
-    box-shadow: 0 5px 25px rgba(30, 144, 255, 0.5);
+        rgba(60, 0, 0, 0.9) 0%, 
+        rgba(80, 0, 0, 0.85) 50%,
+        rgba(100, 0, 0, 0.8) 100%);
+    border-bottom: 3px solid #8b0000;
+    border-top: 3px solid #8b0000;
+    box-shadow: 0 5px 25px rgba(139, 0, 0, 0.5);
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
@@ -89,7 +91,7 @@ body::before {
     height: 100%;
     background: 
         radial-gradient(circle at top center, 
-            rgba(255, 255, 255, 0.2) 0%,
+            rgba(139, 0, 0, 0.2) 0%,
             transparent 70%);
     z-index: -1;
 }
@@ -97,14 +99,14 @@ body::before {
 .titulo-principal {
     font-family: 'Nosifer', cursive;
     font-size: 2.8rem;
-    color: #ffd700;
+    color: #8b0000;
     text-shadow: 
         2px 2px 0 #000,
         -1px -1px 0 #000,
         1px -1px 0 #000,
         -1px 1px 0 #000,
-        0 0 15px #1e90ff,
-        0 0 30px #4169E1;
+        0 0 15px #8b0000,
+        0 0 30px #8b0000;
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -112,15 +114,15 @@ body::before {
 
 /* ===== BOTÓN DE CARRITO ===== */
 #carrito-btn {
-    background: rgba(139, 69, 19, 0.8);
-    border: 2px solid #8b0000;
+    background: rgba(80, 0, 0, 0.8);
+    border: 2px solid #600;
     border-radius: 8px;
     width: 60px;
     height: 60px;
     font-size: 1.4rem;
     cursor: pointer;
     transition: all 0.3s;
-    color: #ffd700;
+    color: #8b0000;
     font-family: 'MedievalSharp', cursive;
     box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
     display: flex;
@@ -130,7 +132,7 @@ body::before {
 }
 
 #carrito-btn:hover {
-    background: rgba(160, 90, 40, 0.9);
+    background: rgba(100, 0, 0, 0.9);
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
 }
@@ -139,7 +141,7 @@ body::before {
     position: absolute;
     top: -5px;
     right: -5px;
-    background: #ff0000;
+    background: #8b0000;
     color: white;
     border-radius: 50%;
     width: 22px;
@@ -198,25 +200,25 @@ body::before {
     transition: all 0.4s ease;
 }
 
-/* Gradiente de colores por categoría */
+/* Gradiente de colores por categoría - Versión más oscura */
 .categoria:nth-child(1) .categoria-titulo {
-    background: linear-gradient(135deg, rgba(0, 50, 150, 0.7), rgba(80, 0, 120, 0.6));
-    color: #a0d0ff;
-    border-left: 6px solid #4169E1;
-    box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+    background: linear-gradient(135deg, rgba(60, 0, 0, 0.7), rgba(80, 0, 0, 0.6));
+    color: #ff8a8a;
+    border-left: 6px solid #8b0000;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
 }
 
 .categoria:nth-child(2) .categoria-titulo {
-    background: linear-gradient(135deg, rgba(100, 0, 100, 0.7), rgba(120, 0, 80, 0.6));
-    color: #d8a0ff;
-    border-left: 6px solid #9370DB;
-    box-shadow: 0 0 20px rgba(147, 112, 219, 0.4);
+    background: linear-gradient(135deg, rgba(80, 0, 0, 0.7), rgba(100, 0, 0, 0.6));
+    color: #ff8a8a;
+    border-left: 6px solid #8b0000;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
 }
 
 .categoria:nth-child(3) .categoria-titulo {
-    background: linear-gradient(135deg, rgba(120, 0, 50, 0.7), rgba(150, 0, 30, 0.6));
-    color: #ffa0a0;
-    border-left: 6px solid #DC143C;
+    background: linear-gradient(135deg, rgba(100, 0, 0, 0.7), rgba(120, 0, 0, 0.6));
+    color: #ff8a8a;
+    border-left: 6px solid #8b0000;
     box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
 }
 
@@ -240,23 +242,23 @@ body::before {
     transition: transform 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-/* Gradiente de opacidad según posición */
+/* Gradiente de opacidad según posición - Versión más oscura */
 .categoria:nth-child(1) .producto-card {
-    background: linear-gradient(135deg, rgba(30, 50, 120, 0.6), rgba(50, 30, 100, 0.5));
-    border: 2px solid rgba(65, 105, 225, 0.5);
-    box-shadow: 0 8px 25px rgba(30, 144, 255, 0.3);
+    background: linear-gradient(135deg, rgba(40, 0, 0, 0.6), rgba(50, 0, 0, 0.5));
+    border: 2px solid rgba(139, 0, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
 }
 
 .categoria:nth-child(2) .producto-card {
-    background: linear-gradient(135deg, rgba(80, 30, 100, 0.6), rgba(100, 20, 80, 0.5));
-    border: 2px solid rgba(147, 112, 219, 0.5);
-    box-shadow: 0 8px 25px rgba(147, 112, 219, 0.3);
+    background: linear-gradient(135deg, rgba(50, 0, 0, 0.6), rgba(60, 0, 0, 0.5));
+    border: 2px solid rgba(139, 0, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
 }
 
 .categoria:nth-child(3) .producto-card {
-    background: linear-gradient(135deg, rgba(100, 20, 60, 0.6), rgba(120, 10, 40, 0.5));
-    border: 2px solid rgba(220, 20, 60, 0.5);
-    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+    background: linear-gradient(135deg, rgba(60, 0, 0, 0.6), rgba(70, 0, 0, 0.5));
+    border: 2px solid rgba(139, 0, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
 }
 
 .producto-card:hover {
@@ -265,18 +267,18 @@ body::before {
 }
 
 .categoria:nth-child(1) .producto-card:hover {
-    border-color: rgba(65, 105, 225, 0.8);
-    box-shadow: 0 12px 35px rgba(30, 144, 255, 0.5);
+    border-color: rgba(139, 0, 0, 0.8);
+    box-shadow: 0 12px 35px rgba(139, 0, 0, 0.5);
 }
 
 .categoria:nth-child(2) .producto-card:hover {
-    border-color: rgba(147, 112, 219, 0.8);
-    box-shadow: 0 12px 35px rgba(147, 112, 219, 0.5);
+    border-color: rgba(139, 0, 0, 0.8);
+    box-shadow: 0 12px 35px rgba(139, 0, 0, 0.5);
 }
 
 .categoria:nth-child(3) .producto-card:hover {
-    border-color: rgba(220, 20, 60, 0.8);
-    box-shadow: 0 12px 35px rgba(220, 20, 60, 0.5);
+    border-color: rgba(139, 0, 0, 0.8);
+    box-shadow: 0 12px 35px rgba(139, 0, 0, 0.5);
 }
 
 /* TÍTULOS DE PRODUCTOS - MANTENIENDO COLORES ORIGINALES PERO ADAPTADOS */
@@ -348,9 +350,9 @@ button:active {
 }
 
 .btn-seleccionar {
-    background: linear-gradient(135deg, #9a0404, #700);
+    background: linear-gradient(135deg, #8b0000, #600);
     color: #FFF;
-    border: 2px solid #FFD700;
+    border: 2px solid #8b0000;
     width: 100%;
     margin-top: 15px;
     text-transform: uppercase;
@@ -359,7 +361,7 @@ button:active {
 }
 
 .btn-seleccionar:hover {
-    background: linear-gradient(135deg, #b00505, #800);
+    background: linear-gradient(135deg, #a00404, #700);
     transform: translateZ(10px) translateY(-2px);
     box-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
 }
@@ -368,7 +370,7 @@ button:active {
 .opcion-grupo {
     margin-bottom: 20px;
     padding: 15px;
-    background: linear-gradient(135deg, rgba(40, 40, 60, 0.6), rgba(30, 30, 50, 0.7));
+    background: linear-gradient(135deg, rgba(40, 0, 0, 0.6), rgba(30, 0, 0, 0.7));
     border-radius: 8px;
     border-left: 4px solid #8b0000;
     border-bottom: 2px solid #600;
@@ -376,7 +378,7 @@ button:active {
 }
 
 .opcion-grupo:hover {
-    background: linear-gradient(135deg, rgba(50, 50, 70, 0.7), rgba(40, 40, 60, 0.8));
+    background: linear-gradient(135deg, rgba(50, 0, 0, 0.7), rgba(40, 0, 0, 0.8));
     transform: translateX(5px);
 }
 
@@ -447,9 +449,9 @@ button:active {
 }
 
 #confirmar-opciones, #whatsapp-btn, #confirmar-ubicacion {
-    background: linear-gradient(135deg, #8A0303, #600);
+    background: linear-gradient(135deg, #8b0000, #600);
     color: #FFF;
-    border: 2px solid #FFD700;
+    border: 2px solid #8b0000;
     padding: 15px;
     font-size: 16px;
     border-radius: 8px;
@@ -462,7 +464,7 @@ button:active {
 }
 
 #confirmar-opciones:hover, #whatsapp-btn:hover, #confirmar-ubicacion:hover {
-    background: linear-gradient(135deg, #A00404, #700);
+    background: linear-gradient(135deg, #a00404, #700);
     transform: translateY(-2px);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
 }
@@ -490,7 +492,7 @@ button:active {
 .ubicacion-info {
     margin: 20px 0;
     padding: 20px;
-    background: linear-gradient(135deg, rgba(40, 40, 60, 0.7), rgba(30, 30, 50, 0.8));
+    background: linear-gradient(135deg, rgba(40, 0, 0, 0.7), rgba(30, 0, 0, 0.8));
     border-radius: 10px;
     border: 2px solid #555;
     text-align: center;
@@ -500,7 +502,7 @@ button:active {
     cursor: pointer;
     padding: 15px;
     background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(100, 0, 0, 0.3));
-    border-left: 4px solid #FFD700;
+    border-left: 4px solid #8b0000;
     border-radius: 8px;
     margin-bottom: 15px;
     transition: all 0.3s ease;
@@ -531,7 +533,7 @@ button:active {
     overflow-y: auto;
     margin: 20px 0;
     padding: 10px;
-    background: rgba(20, 20, 20, 0.6);
+    background: rgba(20, 0, 0, 0.6);
     border-radius: 8px;
     border: 1px solid #500000;
 }
@@ -612,7 +614,7 @@ button:active {
     padding: 28px;
     border-radius: 12px;
     border: 3px solid #8b0000;
-    box-shadow: 0 0 35px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 35px rgba(139, 0, 0, 0.6);
     max-width: 95%;
     width: 100%;
     max-height: 85vh;
@@ -631,7 +633,7 @@ button:active {
     top: 15px;
     right: 15px;
     font-size: 30px;
-    color: #ffd700;
+    color: #8b0000;
     cursor: pointer;
     text-shadow: 0 0 5px #000;
     z-index: 1001;
@@ -654,9 +656,9 @@ button:active {
     padding: 40px 20px;
     margin-top: 60px;
     background: linear-gradient(to top, 
-        rgba(80, 0, 40, 0.8) 0%,
-        rgba(60, 0, 30, 0.9) 100%);
-    border-top: 3px solid #DC143C;
+        rgba(60, 0, 0, 0.8) 0%,
+        rgba(40, 0, 0, 0.9) 100%);
+    border-top: 3px solid #8b0000;
     position: relative;
     overflow: hidden;
     opacity: calc(0.8 + (0.2 * var(--opacidad-infierno)));
@@ -673,7 +675,7 @@ button:active {
     height: 100%;
     background: 
         radial-gradient(ellipse at center, 
-            rgba(255, 0, 0, 0.1) 0%,
+            rgba(139, 0, 0, 0.1) 0%,
             transparent 70%),
         url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><path fill="rgba(139,0,0,0.1)" d="M40,10 C45,25 55,25 60,30 C55,35 55,45 50,40 C45,50 40,45 35,40 C30,45 30,35 25,30 C30,25 35,25 40,10 Z"/></svg>') repeat;
     z-index: -1;
@@ -682,8 +684,8 @@ button:active {
 .eslogan {
     font-family: 'Cinzel', serif;
     font-size: 1.4rem;
-    color: #ffd700;
-    text-shadow: 1px 1px 2px #000, 0 0 8px rgba(255, 0, 0, 0.5);
+    color: #8b0000;
+    text-shadow: 1px 1px 2px #000, 0 0 8px rgba(139, 0, 0, 0.5);
     margin-bottom: 15px;
     font-style: italic;
 }
@@ -706,13 +708,13 @@ button:active {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #8A0303;
+    background: #8b0000;
     border-radius: 4px;
     border: 1px solid #600;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #A00404;
+    background: #a00404;
 }
 
 /* ===== RESPONSIVE ===== */
