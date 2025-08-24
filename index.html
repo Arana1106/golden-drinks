@@ -57,7 +57,7 @@
                 rgba(178, 34, 34, calc(0.3 * var(--opacidad-infierno))) 30%,
                 transparent 70%),
                 /* Partículas celestiales/demoníacas */
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="rgba(100,149,237,0.05)" cx="30" cy="30" r="2"/><circle fill="rgba(139,0,0,0.05)" cx="70" cy="40" r="1.5"/><circle fill="rgba(255,215,0,0.05)" cx="50" cy="70" r="1.8"/><circle fill="rgba(192,192,192,0.05)" cx="80" cy="80" r="1.3"/></svg>') repeat;
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="rgba(100,149,237,0.05)" cx="30" cy="30" r="2"/><circle fill="rgba(139,0,0,0.05)" cx="70" cy="40" r="1.5"/><circle fill="rgba(255,215,0,0.05)" cx="50, 70" r="1.8"/><circle fill="rgba(192,192,192,0.05)" cx="80" cy="80" r="1.3"/></svg>') repeat;
             z-index: -1;
             opacity: calc(0.8 + (0.2 * var(--opacidad-infierno)));
             transition: all 0.5s ease;
@@ -226,8 +226,8 @@
         }
 
         /* Colores específicos para cada producto */
-        .producto-card h3[data-producto="LEVIATAN"]{ color: #5a8eff; }
-        .producto-card h3[data-producto="INFERNO"]{ color: #ff3b4a; }
+        .producto-card h3[data-producto="LEVIATÁN"]{ color: #5a8eff; }
+        .producto-card h3[data-producto="INFIERNO"]{ color: #ff3b4a; }
         .producto-card h3[data-producto="JALURIA"]{ color: #4aff4a; }
         .producto-card h3[data-producto="ASMODEO"]{ color: #b28aff; }
         .producto-card h3[data-producto="IRA DIVINA"]{ color: #c28c4a; }
@@ -626,9 +626,114 @@
         .horario-ubicacion {
             line-height: 1.6;
         }
+
+        /* Alerta de pedido mínimo */
+        .alerta-minimo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #8b0000, #600);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 350px;
+        }
+
+        .alerta-minimo .cerrar-alerta {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 10px;
+        }
+
+        .preparacion-info {
+            background: rgba(139, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Sección de combos */
+        .combos-section {
+            margin: 40px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(100, 20, 60, 0.6), rgba(120, 10, 40, 0.5));
+            border: 2px solid rgba(220, 20, 60, 0.5);
+        }
+
+        .combos-section h2 {
+            font-family: 'Eater', cursive;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffa0a0;
+        }
+
+        .combo-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .combo-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .combo-card p {
+            margin-bottom: 15px;
+        }
+
+        .combo-card .precio-combo {
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        body.tema-angeles .combos-section {
+            background: linear-gradient(135deg, rgba(70, 100, 170, 0.6), rgba(50, 80, 150, 0.5));
+            border: 2px solid rgba(100, 149, 237, 0.5);
+        }
+
+        body.tema-angeles .combo-card {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Estilos para detalles de variables en el carrito */
+        .detalles-variables {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .detalles-variables div {
+            margin: 3px 0;
+        }
     </style>
 </head>
 <body class="tema-demonios">
+    <!-- Alerta de pedido mínimo -->
+    <div class="alerta-minimo" id="alerta-minimo">
+        <div>
+            <strong>PEDIDO MÍNIMO</strong>
+            <p>No aceptamos pedidos con menos de 3 productos. Agrega más items para continuar.</p>
+        </div>
+        <button class="cerrar-alerta" id="cerrar-alerta">&times;</button>
+    </div>
+
     <!-- HEADER -->
     <header class="header">
         <h1 class="titulo-principal" id="titulo-tema">SINNER'S</h1>
@@ -663,6 +768,28 @@
                 <!-- Los productos se cargarán dinámicamente -->
             </div>
         </section>
+
+        <!-- SECCIÓN DE COMBOS (solo visible en tema demonios) -->
+        <div class="combos-section" id="combos-demonios">
+            <h2>PECADOS RECOMENDADOS</h2>
+            <div class="combo-card">
+                <h3>TRINIDAD DEL INFIERNO</h3>
+                <p>INFERNO + ASMODEO + REVELACIÓN</p>
+                <p class="precio-combo">$120.00 MXN</p>
+                <button class="btn-seleccionar" onclick="seleccionarCombo('demonios')">SELECCIONAR COMBO</button>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE COMBOS (solo visible en tema ángeles) -->
+        <div class="combos-section" id="combos-angeles" style="display: none;">
+            <h2>MANDAMIENTOS DEL DÍA</h2>
+            <div class="combo-card">
+                <h3>SANTÍSIMA TRINIDAD</h3>
+                <p>LEVIATÁN + JALURIA + REDENCIÓN</p>
+                <p class="precio-combo">$120.00 MXN</p>
+                <button class="btn-seleccionar" onclick="seleccionarCombo('angeles')">SELECCIONAR COMBO</button>
+            </div>
+        </div>
     </main>
 
     <!-- MODALES -->
@@ -699,16 +826,32 @@
                 <div class="direccion-clickeable" id="abrir-maps">
                     ⚡ Calle Coral 120, colonia Estrella, CDMX
                 </div>
+                <div class="preparacion-info">
+                    ESTA DIRECCIÓN TIENE UN TIEMPO DE PREPARACION APROXIMADO DE 5 MINUTOS DESPUÉS DE REALIZAR EL PEDIDO.
+                </div>
                 <p class="horario-ubicacion">
-                    🕒 Lunes a Jueves: 4:00 PM - 9:00 PM<br>
-                    🔥 Viernes: 4:00 PM - 1:00 AM<br>
-                    😈 Sábado: 11:00 AM - 2:00 AM<br>
-                    ☀️ Domingo: 10:00 AM - 7:00 PM
+                    Lunes a Jueves: 4:00 PM - 9:00 PM<br>
+                    Viernes: 4:00 PM - 1:00 AM<br>
+                    Sábado: 11:00 AM - 2:00 AM<br>
+                    Domingo: 10:00 AM - 7:00 PM
                 </p>
             </div>
             <div class="botones-ubicacion">
                 <button id="regresar-carrito">VOLVER ATRÁS</button>
                 <button id="confirmar-ubicacion">ENVIAR PECADO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA COMBOS -->
+    <div id="modal-combo" class="modal modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-combo">&times;</span>
+            <h2 id="titulo-combo">Personalizar Combo</h2>
+            <div id="opciones-combo"></div>
+            <div class="botones-opciones">
+                <button id="regresar-combo">REGRESAR</button>
+                <button id="confirmar-combo">AGREGAR COMBO AL CARRITO</button>
             </div>
         </div>
     </div>
@@ -719,49 +862,45 @@
         <p class="copyright">© 2023 SINNER'S - ELEGIR ES UN PECADO, NO ELEGIR ES CONDENARSE</p>
     </footer>
 
-    <!-- JavaScript: PEGA ESTE CÓDIGO JUSTO ANTES DEL CIERRE DE body -->
+    <!-- JavaScript -->
     <script>
         // Datos de productos
         const productos = {
             bebidas: [
                 { 
                     id: 1, 
-                    nombre: "LEVIATAN", 
-                    descripcion: "Una bebida oscura y misteriosa con toques de frutos del bosque", 
-                    precio: 85, 
+                    nombre: "LEVIATÁN", 
+                    sabor: "Mora azul", 
+                    precio: 45, 
                     opciones: {
-                        "Tamaño": ["Pequeño (+$0)", "Mediano (+$15)", "Grande (+$25)"],
-                        "Hielo": ["Normal", "Sin hielo", "Extra hielo"]
+                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
                     }
                 },
                 { 
                     id: 2, 
-                    nombre: "INFERNO", 
-                    descripcion: "Mezcla ardiente con especias y un toque picante", 
-                    precio: 95, 
+                    nombre: "INFIERNO", 
+                    sabor: "Frutos rojos + limón", 
+                    precio: 45, 
                     opciones: {
-                        "Tamaño": ["Pequeño (+$0)", "Mediano (+$15)", "Grande (+$25)"],
-                        "Picor": ["Suave", "Moderado", "Extremo"]
+                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
                     }
                 },
                 { 
                     id: 3, 
                     nombre: "JALURIA", 
-                    descripcion: "Bebida afrutada con mezcla de sabores tropicales", 
-                    precio: 80, 
+                    sabor: "Manzana verde + jengibre", 
+                    precio: 45, 
                     opciones: {
-                        "Tamaño": ["Pequeño (+$0)", "Mediano (+$15)", "Grande (+$25)"],
-                        "Dulzura": ["Normal", "Poco dulce", "Extra dulce"]
+                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
                     }
                 },
                 { 
                     id: 4, 
                     nombre: "ASMODEO", 
-                    descripcion: "Coctel elegante con notas amargas y cítricas", 
-                    precio: 105, 
+                    sabor: "Frutos rojos", 
+                    precio: 45, 
                     opciones: {
-                        "Tamaño": ["Pequeño (+$0)", "Mediano (+$15)", "Grande (+$25)"],
-                        "Alcohol": ["Normal", "Suave", "Fuerte"]
+                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
                     }
                 }
             ],
@@ -769,23 +908,20 @@
                 { 
                     id: 5, 
                     nombre: "IRA DIVINA", 
-                    descripcion: "Café intenso con un toque de especias ardientes", 
-                    precio: 65, 
+                    sabor: "Café + leche", 
+                    precio: 35, 
                     opciones: {
-                        "Tamaño": ["Chico (+$0)", "Mediano (+$10)", "Grande (+$15)"],
-                        "Leche": ["Entera", "Deslactosada", "Almendras", "Soja", "Sin leche"],
-                        "Dulce": ["Normal", "Poco dulce", "Extra dulce", "Sin dulce"]
+                        "LECHE": ["Normal (+$0)", "Deslactosada (+$10)"],
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"]
                     }
                 },
                 { 
                     id: 6, 
                     nombre: "PACTUM", 
-                    descripcion: "Café suave con notas de chocolate y avellana", 
-                    precio: 60, 
+                    sabor: "Café descafeinado", 
+                    precio: 35, 
                     opciones: {
-                        "Tamaño": ["Chico (+$0)", "Mediano (+$10)", "Grande (+$15)"],
-                        "Leche": ["Entera", "Deslactosada", "Almendras", "Soja", "Sin leche"],
-                        "Dulce": ["Normal", "Poco dulce", "Extra dulce", "Sin dulce"]
+                        "LECHE": ["Normal (+$0)", "Deslactosada (+$10)"]
                     }
                 }
             ],
@@ -793,32 +929,46 @@
                 { 
                     id: 7, 
                     nombre: "REDENCIÓN", 
-                    descripcion: "Té herbal reconfortante con notas cítricas", 
-                    precio: 60, 
+                    sabor: "Manzanilla, negro o verde", 
+                    precio: 35, 
                     opciones: {
-                        "Tamaño": ["Chico (+$0)", "Mediano (+$10)", "Grande (+$15)"],
-                        "Dulce": ["Normal", "Poco dulce", "Extra dulce", "Sin dulce"],
-                        "Temp": ["Caliente", "Tibio", "Frío"]
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"]
                     }
                 },
                 { 
                     id: 8, 
                     nombre: "REVELACIÓN", 
-                    descripcion: "Té aromático con flores y especias exóticas", 
-                    precio: 70, 
+                    sabor: "Agua del día", 
+                    precio: 35, 
                     opciones: {
-                        "Tamaño": ["Chico (+$0)", "Mediano (+$10)", "Grande (+$15)"],
-                        "Dulce": ["Normal", "Poco dulce", "Extra dulce", "Sin dulce"],
-                        "Temp": ["Caliente", "Tibio", "Frío"]
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"]
                     }
                 }
             ]
+        };
+
+        // Datos de combos
+        const combos = {
+            demonios: {
+                nombre: "TRINIDAD DEL INFIERNO",
+                productos: ["INFIERNO", "ASMODEO", "REVELACIÓN"],
+                precioBase: 120,
+                descripcion: "INFERNO + ASMODEO + REVELACIÓN"
+            },
+            angeles: {
+                nombre: "SANTÍSIMA TRINIDAD",
+                productos: ["LEVIATÁN", "JALURIA", "REDENCIÓN"],
+                precioBase: 120,
+                descripcion: "LEVIATÁN + JALURIA + REDENCIÓN"
+            }
         };
 
         // Variables globales
         let carrito = [];
         let productoSeleccionado = null;
         let opcionesSeleccionadas = {};
+        let comboSeleccionado = null;
+        let opcionesComboSeleccionadas = {};
 
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
@@ -839,6 +989,10 @@
             document.getElementById('cerrar-opciones').addEventListener('click', cerrarModalOpciones);
             document.getElementById('cerrar-carrito').addEventListener('click', cerrarModalCarrito);
             document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
+            document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
+            document.getElementById('cerrar-alerta').addEventListener('click', function() {
+                document.getElementById('alerta-minimo').style.display = 'none';
+            });
             
             // Botones de modales
             document.getElementById('regresar-modal').addEventListener('click', cerrarModalOpciones);
@@ -847,6 +1001,8 @@
             document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
             document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
             document.getElementById('confirmar-ubicacion').addEventListener('click', enviarPedidoWhatsApp);
+            document.getElementById('regresar-combo').addEventListener('click', cerrarModalCombo);
+            document.getElementById('confirmar-combo').addEventListener('click', confirmarCombo);
             document.getElementById('abrir-maps').addEventListener('click', abrirGoogleMaps);
             
             // Cerrar modales al hacer clic fuera
@@ -878,7 +1034,7 @@
             div.className = 'producto-card';
             div.innerHTML = `
                 <h3 data-producto="${producto.nombre}">${producto.nombre}</h3>
-                <p>${producto.descripcion}</p>
+                <p>${producto.sabor}</p>
                 <p class="precio">$${producto.precio}.00 MXN</p>
                 <button class="btn-seleccionar">SELECCIONAR PECADO</button>
             `;
@@ -953,11 +1109,29 @@
 
         // Confirmar selección y agregar al carrito
         function confirmarSeleccion() {
+            // Calcular precio adicional por opciones
+            let precioAdicional = 0;
+            let detallesVariables = [];
+            
+            for (const [opcion, valor] of Object.entries(opcionesSeleccionadas)) {
+                if (valor.includes('+$15')) precioAdicional += 15;
+                if (valor.includes('+$20')) precioAdicional += 20;
+                if (valor.includes('+$10')) precioAdicional += 10;
+                
+                // Guardar detalles para mostrar en carrito
+                if (!valor.includes('+$0')) {
+                    detallesVariables.push(`${opcion}: ${valor}`);
+                }
+            }
+            
+            const precioTotal = productoSeleccionado.precio + precioAdicional;
+            
             const itemCarrito = {
                 ...productoSeleccionado,
                 opciones: {...opcionesSeleccionadas},
                 cantidad: 1,
-                precioTotal: productoSeleccionado.precio
+                precioTotal: precioTotal,
+                detallesVariables: detallesVariables
             };
             
             // Verificar si ya existe en el carrito
@@ -968,7 +1142,7 @@
             
             if (indexExistente !== -1) {
                 carrito[indexExistente].cantidad++;
-                carrito[indexExistente].precioTotal += itemCarrito.precio;
+                carrito[indexExistente].precioTotal += precioTotal;
             } else {
                 carrito.push(itemCarrito);
             }
@@ -1007,10 +1181,20 @@
                 carrito.forEach((item, index) => {
                     const itemElement = document.createElement('div');
                     itemElement.className = 'item-carrito';
+                    
+                    let detallesHTML = '';
+                    if (item.detallesVariables && item.detallesVariables.length > 0) {
+                        detallesHTML = `<div class="detalles-variables">`;
+                        item.detallesVariables.forEach(detalle => {
+                            detallesHTML += `<div>${detalle}</div>`;
+                        });
+                        detallesHTML += `</div>`;
+                    }
+                    
                     itemElement.innerHTML = `
                         <div class="item-info">
                             <h4>${item.nombre}</h4>
-                            <p>${Object.values(item.opciones).join(', ')}</p>
+                            ${detallesHTML}
                             <p class="precio-item">$${item.precioTotal}.00 MXN</p>
                         </div>
                         <div class="item-controles">
@@ -1038,13 +1222,14 @@
         // Modificar cantidad de items en carrito
         function modificarCantidad(index, cambio) {
             const item = carrito[index];
+            const precioUnitario = item.precioTotal / item.cantidad;
             
             if (cambio === 1) {
                 item.cantidad++;
-                item.precioTotal += item.precio;
+                item.precioTotal += precioUnitario;
             } else if (cambio === -1 && item.cantidad > 1) {
                 item.cantidad--;
-                item.precioTotal -= item.precio;
+                item.precioTotal -= precioUnitario;
             }
             
             actualizarCarrito();
@@ -1070,16 +1255,150 @@
             if (body.classList.contains('tema-demonios')) {
                 body.classList.remove('tema-demonios');
                 body.classList.add('tema-angeles');
+                document.getElementById('combos-demonios').style.display = 'none';
+                document.getElementById('combos-angeles').style.display = 'block';
             } else {
                 body.classList.remove('tema-angeles');
                 body.classList.add('tema-demonios');
+                document.getElementById('combos-demonios').style.display = 'block';
+                document.getElementById('combos-angeles').style.display = 'none';
             }
+        }
+
+        // Seleccionar combo
+        function seleccionarCombo(tipo) {
+            comboSeleccionado = combos[tipo];
+            opcionesComboSeleccionadas = {};
+            mostrarModalCombo();
+        }
+
+        // Mostrar modal de combo
+        function mostrarModalCombo() {
+            const modal = document.getElementById('modal-combo');
+            const tituloCombo = document.getElementById('titulo-combo');
+            const opcionesCombo = document.getElementById('opciones-combo');
+            
+            tituloCombo.textContent = `Personalizar ${comboSeleccionado.nombre}`;
+            opcionesCombo.innerHTML = '';
+            
+            // Crear opciones para cada producto del combo
+            comboSeleccionado.productos.forEach(nombreProducto => {
+                // Buscar el producto en los datos
+                let producto = null;
+                for (const categoria in productos) {
+                    producto = productos[categoria].find(p => p.nombre === nombreProducto);
+                    if (producto) break;
+                }
+                
+                if (producto) {
+                    const productoGroup = document.createElement('div');
+                    productoGroup.className = 'opcion-group';
+                    productoGroup.innerHTML = `<h3>${producto.nombre} (${producto.sabor})</h3>`;
+                    
+                    for (const [opcion, valores] of Object.entries(producto.opciones)) {
+                        valores.forEach((valor, index) => {
+                            const inputId = `combo-${producto.nombre}-${opcion}-${index}`;
+                            
+                            const div = document.createElement('div');
+                            
+                            const radio = document.createElement('input');
+                            radio.type = 'radio';
+                            radio.name = `${producto.nombre}-${opcion}`;
+                            radio.value = valor;
+                            radio.id = inputId;
+                            radio.checked = index === 0;
+                            
+                            radio.addEventListener('change', function() {
+                                if (!opcionesComboSeleccionadas[producto.nombre]) {
+                                    opcionesComboSeleccionadas[producto.nombre] = {};
+                                }
+                                opcionesComboSeleccionadas[producto.nombre][opcion] = valor;
+                            });
+                            
+                            const label = document.createElement('label');
+                            label.htmlFor = inputId;
+                            label.textContent = valor;
+                            
+                            div.appendChild(radio);
+                            div.appendChild(label);
+                            productoGroup.appendChild(div);
+                        });
+                        
+                        // Establecer valor por defecto
+                        if (!opcionesComboSeleccionadas[producto.nombre]) {
+                            opcionesComboSeleccionadas[producto.nombre] = {};
+                        }
+                        opcionesComboSeleccionadas[producto.nombre][opcion] = valores[0];
+                    }
+                    
+                    opcionesCombo.appendChild(productoGroup);
+                }
+            });
+            
+            modal.classList.remove('modal-oculto');
+        }
+
+        // Cerrar modal de combo
+        function cerrarModalCombo() {
+            document.getElementById('modal-combo').classList.add('modal-oculto');
+        }
+
+        // Confirmar combo y agregar al carrito
+        function confirmarCombo() {
+            // Calcular precio adicional por opciones
+            let precioAdicional = 0;
+            let detallesCombo = [];
+            
+            for (const [nombreProducto, opciones] of Object.entries(opcionesComboSeleccionadas)) {
+                for (const [opcion, valor] of Object.entries(opciones)) {
+                    if (valor.includes('+$15')) precioAdicional += 15;
+                    if (valor.includes('+$20')) precioAdicional += 20;
+                    if (valor.includes('+$10')) precioAdicional += 10;
+                    
+                    // Guardar detalles para mostrar en carrito
+                    if (!valor.includes('+$0')) {
+                        detallesCombo.push(`${nombreProducto}: ${valor}`);
+                    }
+                }
+            }
+            
+            const precioTotal = comboSeleccionado.precioBase + precioAdicional;
+            
+            const itemCarrito = {
+                id: `combo-${comboSeleccionado.nombre}`,
+                nombre: comboSeleccionado.nombre,
+                descripcion: comboSeleccionado.descripcion,
+                opciones: {...opcionesComboSeleccionadas},
+                cantidad: 1,
+                precioTotal: precioTotal,
+                detallesVariables: detallesCombo,
+                esCombo: true
+            };
+            
+            carrito.push(itemCarrito);
+            actualizarCarrito();
+            cerrarModalCombo();
+            
+            // Efecto visual de confirmación
+            const carritoBtn = document.getElementById('carrito-btn');
+            carritoBtn.classList.add('pulse-effect');
+            setTimeout(() => {
+                carritoBtn.classList.remove('pulse-effect');
+            }, 500);
         }
 
         // Funciones para los modales de ubicación
         function mostrarSeleccionUbicacion() {
             if (carrito.length === 0) {
                 alert('Agrega al menos un producto al carrito primero');
+                return;
+            }
+            
+            // Verificar pedido mínimo de 3 productos
+            const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+            if (totalProductos < 3) {
+                alert('PEDIDO MÍNIMO: Debes agregar al menos 3 productos para realizar tu pedido.');
+                document.getElementById('alerta-minimo').style.display = 'flex';
                 return;
             }
             
@@ -1102,17 +1421,50 @@
                 return;
             }
             
+            // Verificar pedido mínimo de 3 productos
+            const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+            if (totalProductos < 3) {
+                alert('PEDIDO MÍNIMO: Debes agregar al menos 3 productos para realizar tu pedido.');
+                document.getElementById('alerta-minimo').style.display = 'flex';
+                return;
+            }
+            
             let mensaje = "¡Hola! Quiero realizar el siguiente pedido:%0A%0A";
             
             carrito.forEach(item => {
-                mensaje += `- ${item.nombre} (${Object.values(item.opciones).join(', ')}) x${item.cantidad} - $${item.precioTotal}%0A`;
+                if (item.esCombo) {
+                    // Formato para combos
+                    mensaje += `- COMBO: ${item.nombre}%0A`;
+                    mensaje += `  ${item.descripcion}%0A`;
+                    
+                    // Agregar detalles de variables para combos
+                    if (item.detallesVariables && item.detallesVariables.length > 0) {
+                        item.detallesVariables.forEach(detalle => {
+                            mensaje += `  · ${detalle}%0A`;
+                        });
+                    }
+                    
+                    mensaje += `  x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                } else {
+                    // Formato para productos individuales
+                    mensaje += `- ${item.nombre}`;
+                    
+                    // Agregar detalles de variables
+                    if (item.detallesVariables && item.detallesVariables.length > 0) {
+                        item.detallesVariables.forEach(detalle => {
+                            mensaje += `%0A  · ${detalle}`;
+                        });
+                    }
+                    
+                    mensaje += `%0A  x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                }
             });
             
             const total = carrito.reduce((sum, item) => sum + item.precioTotal, 0);
             mensaje += `%0ATotal: $${total} MXN%0A%0A`;
             mensaje += "Dirección: Calle Coral 120, colonia Estrella, CDMX%0A";
             
-            window.open(`https://wa.me/5215512345678?text=${mensaje}`, '_blank');
+            window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
             
             // Limpiar carrito después de enviar
             carrito = [];
