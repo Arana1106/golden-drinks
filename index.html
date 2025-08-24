@@ -172,7 +172,7 @@
         }
 
         .categoria-titulo {
-            font-family: 'Eater', cursive;
+            font-family: 'Cinzel', serif; /* Fuente refinada y medieval */
             font-size: 1.6rem;
             padding: 12px 20px;
             margin: 20px 0 15px 0;
@@ -184,6 +184,8 @@
             background: linear-gradient(135deg, rgba(139, 0, 0, 0.7), rgba(100, 0, 0, 0.6));
             color: #ffa0a0;
             box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         /* ===== PRODUCTOS ===== */
@@ -511,8 +513,6 @@
             
             .modal-contenido {
                 width: 95%;
-                padding: 20px;
-                margin: 10px;
             }
             
             .productos-container {
@@ -722,6 +722,152 @@
         .detalles-variables div {
             margin: 3px 0;
         }
+
+        /* Nuevos estilos para el modal de pago */
+        #modal-pago {
+            z-index: 1003;
+        }
+
+        .instrucciones-pago {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--color-dorado);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .instrucciones-pago h3 {
+            color: var(--color-dorado);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .instrucciones-pago ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .instrucciones-pago li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .datos-bancarios {
+            background: rgba(139, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .direccion-seleccionada {
+            background: rgba(100, 149, 237, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .botones-pago {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .botones-pago button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+        }
+
+        #regresar-direccion {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        #confirmar-pedido {
+            background: linear-gradient(135deg, #8b0000, #600);
+            color: white;
+        }
+
+        /* Panel administrativo */
+        #admin-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a0000 0%, #2a0000 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #8b0000;
+            box-shadow: 0 0 35px rgba(139, 0, 0, 0.6);
+            z-index: 1004;
+            display: none;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        #admin-panel h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admin-form {
+            display: grid;
+            gap: 10px;
+        }
+
+        .admin-form label {
+            color: #ffd700;
+        }
+
+        .admin-form input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #8b0000;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .admin-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .admin-buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+        }
+
+        #cerrar-admin {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        #guardar-cambios {
+            background: linear-gradient(135deg, #8b0000, #600);
+            color: white;
+        }
+
+        /* Estilo para resaltar el sabor en el modal */
+        .sabor-destacado {
+            color: #ffd700;
+            font-weight: bold;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(139, 0, 0, 0.2);
+            border-radius: 5px;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="tema-demonios">
@@ -797,6 +943,7 @@
         <div class="modal-contenido">
             <span class="cerrar-modal" id="cerrar-opciones">&times;</span>
             <h2 id="titulo-modal">Personalizar Producto</h2>
+            <div id="sabor-destacado" class="sabor-destacado"></div>
             <form id="formulario-opciones"></form>
             <div class="botones-opciones">
                 <button id="regresar-modal">REGRESAR</button>
@@ -856,6 +1003,57 @@
         </div>
     </div>
 
+    <!-- MODAL PARA INSTRUCCIONES DE PAGO -->
+    <div id="modal-pago" class="modal modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-pago">&times;</span>
+            <h2>Instrucciones de Pago</h2>
+            
+            <div class="instrucciones-pago">
+                <h3>Para completar tu pedido:</h3>
+                <ol>
+                    <li>Para hacer el pedido se requiere hacer transferencia.</li>
+                    <li>Datos bancarios:
+                        <div class="datos-bancarios">
+                            Titular: Eric Daniel Gutiérrez Arana<br>
+                            CLABE: 012 261 01584933343 3 (BBVA)<br>
+                            CONCEPTO: Coloca tu nombre o el de la persona que vaya a realizar la recolección.
+                        </div>
+                    </li>
+                    <li>Envía tu comprobante junto con tu pedido</li>
+                </ol>
+                
+                <div class="direccion-seleccionada" id="direccion-confirmacion">
+                    <!-- Aquí se mostrará la dirección seleccionada -->
+                </div>
+                
+                <div class="botones-pago">
+                    <button id="regresar-direccion">REGRESAR A DIRECCIÓN</button>
+                    <button id="confirmar-pedido">CONFIRMAR PEDIDO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL ADMINISTRATIVO (oculto inicialmente) -->
+    <div id="admin-panel">
+        <h2>Panel Administrativo</h2>
+        <div class="admin-form">
+            <label for="admin-producto">Producto:</label>
+            <select id="admin-producto">
+                <option value="">Seleccionar producto</option>
+            </select>
+            
+            <label for="admin-precio">Nuevo Precio Base:</label>
+            <input type="number" id="admin-precio" min="0">
+            
+            <div class="admin-buttons">
+                <button id="cerrar-admin">CERRAR</button>
+                <button id="guardar-cambios">GUARDAR CAMBIOS</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="footer">
         <p class="eslogan">PUREZA CORRUPTA POR LA LUJURIA EN CADA SORBO</p>
@@ -864,43 +1062,47 @@
 
     <!-- JavaScript -->
     <script>
-        // Datos de productos
+        // Datos de productos con las descripciones correctas
         const productos = {
             bebidas: [
                 { 
                     id: 1, 
                     nombre: "LEVIATÁN", 
+                    descripcion: "Sumérgete en las profundidades de la tentación azul oscura.",
                     sabor: "Mora azul", 
-                    precio: 45, 
+                    precio: 50, 
                     opciones: {
-                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
+                        "TOPSINS": ["Sin topping (+$0)", "Lágrimas de Demonio (+$15)", "Elixir Prohibido (+$15)"]
                     }
                 },
                 { 
                     id: 2, 
                     nombre: "INFIERNO", 
-                    sabor: "Frutos rojos + limón", 
-                    precio: 45, 
+                    descripcion: "Pasión ardiente con sabor a frutos rojos",
+                    sabor: "Frutos rojos", 
+                    precio: 50, 
                     opciones: {
-                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
+                        "TOPSINS": ["Sin topping (+$0)", "Lágrimas de Demonio (+$15)", "Elixir Prohibido (+$15)"]
                     }
                 },
                 { 
                     id: 3, 
                     nombre: "JALURIA", 
-                    sabor: "Manzana verde + jengibre", 
-                    precio: 45, 
+                    descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde con jengibre",
+                    sabor: "Manzana verde", 
+                    precio: 50, 
                     opciones: {
-                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
+                        "TOPSINS": ["Sin topping (+$0)", "Lágrimas de Demonio (+$15)", "Elixir Prohibido (+$15)"]
                     }
                 },
                 { 
                     id: 4, 
                     nombre: "ASMODEO", 
-                    sabor: "Frutos rojos", 
-                    precio: 45, 
+                    descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque",
+                    sabor: "Frutos del bosque", 
+                    precio: 50, 
                     opciones: {
-                        "TOPSINS": ["Sin topping (+$0)", "Boba (+$15)", "Alcohol (+$20)"]
+                        "TOPSINS": ["Sin topping (+$0)", "Lágrimas de Demonio (+$15)", "Elixir Prohibido (+$15)"]
                     }
                 }
             ],
@@ -908,20 +1110,25 @@
                 { 
                     id: 5, 
                     nombre: "IRA DIVINA", 
-                    sabor: "Café + leche", 
-                    precio: 35, 
+                    descripcion: "Energía Divina toma un café deconstruido frío",
+                    sabor: "Café deconstruido", 
+                    precio: 40, 
                     opciones: {
                         "LECHE": ["Normal (+$0)", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"]
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"],
+                        "TOPSINS": ["Sin topping (+$0)", "Gemas del Infierno (+$15)"]
                     }
                 },
                 { 
                     id: 6, 
                     nombre: "PACTUM", 
+                    descripcion: "Pacto con el diablo, tranquilo solo es un suave café descafeinado",
                     sabor: "Café descafeinado", 
-                    precio: 35, 
+                    precio: 40, 
                     opciones: {
-                        "LECHE": ["Normal (+$0)", "Deslactosada (+$10)"]
+                        "LECHE": ["Normal (+$0)", "Deslactosada (+$10)"],
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"],
+                        "TOPSINS": ["Sin topping (+$0)", "Gemas del Infierno (+$15)"]
                     }
                 }
             ],
@@ -929,19 +1136,23 @@
                 { 
                     id: 7, 
                     nombre: "REDENCIÓN", 
-                    sabor: "Manzanilla, negro o verde", 
+                    descripcion: "Todos la buscamos, y todos la necesitamos su sabor Negro, o Verde y más en sus 475 ml (pregunta por la disponibilidad de los sabores)",
+                    sabor: "Pregunta por la selección", 
                     precio: 35, 
                     opciones: {
-                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"]
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"],
+                        "TOPSINS": ["Sin topping (+$0)", "Lágrimas de Demonio (+$15)"]
                     }
                 },
                 { 
                     id: 8, 
                     nombre: "REVELACIÓN", 
-                    sabor: "Agua del día", 
+                    descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto.",
+                    sabor: "Bebida del día", 
                     precio: 35, 
                     opciones: {
-                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"]
+                        "ENDULZANTE": ["Azúcar (+$0)", "Sustituto (+$0)", "Sin endulzante (+$0)"],
+                        "TOPSINS": ["Sin topping (+$0)", "Lágrimas de Demonio (+$15)"]
                     }
                 }
             ]
@@ -969,12 +1180,15 @@
         let opcionesSeleccionadas = {};
         let comboSeleccionado = null;
         let opcionesComboSeleccionadas = {};
+        let direccionSeleccionada = "";
 
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             cargarProductos();
+            cargarCarritoDesdeLocalStorage();
             actualizarCarrito();
             configurarEventos();
+            configurarPanelAdmin();
         });
 
         // Configurar eventos
@@ -990,6 +1204,7 @@
             document.getElementById('cerrar-carrito').addEventListener('click', cerrarModalCarrito);
             document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
             document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
+            document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
             document.getElementById('cerrar-alerta').addEventListener('click', function() {
                 document.getElementById('alerta-minimo').style.display = 'none';
             });
@@ -1000,10 +1215,12 @@
             document.getElementById('seguir-pidiendo').addEventListener('click', cerrarModalCarrito);
             document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
             document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
-            document.getElementById('confirmar-ubicacion').addEventListener('click', enviarPedidoWhatsApp);
+            document.getElementById('confirmar-ubicacion').addEventListener('click', mostrarInstruccionesPago);
             document.getElementById('regresar-combo').addEventListener('click', cerrarModalCombo);
             document.getElementById('confirmar-combo').addEventListener('click', confirmarCombo);
             document.getElementById('abrir-maps').addEventListener('click', abrirGoogleMaps);
+            document.getElementById('regresar-direccion').addEventListener('click', regresarADireccion);
+            document.getElementById('confirmar-pedido').addEventListener('click', enviarPedidoWhatsApp);
             
             // Cerrar modales al hacer clic fuera
             document.querySelectorAll('.modal').forEach(modal => {
@@ -1013,6 +1230,20 @@
                     }
                 });
             });
+
+            // Acceso al panel administrativo con Ctrl+Alt+A
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.altKey && e.key === 'a') {
+                    e.preventDefault();
+                    document.getElementById('admin-panel').style.display = 'block';
+                }
+            });
+
+            // Eventos del panel administrativo
+            document.getElementById('cerrar-admin').addEventListener('click', function() {
+                document.getElementById('admin-panel').style.display = 'none';
+            });
+            document.getElementById('guardar-cambios').addEventListener('click', guardarCambiosAdmin);
         }
 
         // Cargar productos en la interfaz
@@ -1034,7 +1265,7 @@
             div.className = 'producto-card';
             div.innerHTML = `
                 <h3 data-producto="${producto.nombre}">${producto.nombre}</h3>
-                <p>${producto.sabor}</p>
+                <p>${producto.descripcion}</p>
                 <p class="precio">$${producto.precio}.00 MXN</p>
                 <button class="btn-seleccionar">SELECCIONAR PECADO</button>
             `;
@@ -1057,9 +1288,11 @@
         function mostrarModalOpciones() {
             const modal = document.getElementById('modal-opciones');
             const tituloModal = document.getElementById('titulo-modal');
+            const saborDestacado = document.getElementById('sabor-destacado');
             const formulario = document.getElementById('formulario-opciones');
             
             tituloModal.textContent = `Personalizar ${productoSeleccionado.nombre}`;
+            saborDestacado.textContent = `Sabor: ${productoSeleccionado.sabor}`;
             formulario.innerHTML = '';
             
             // Crear opciones personalizables
@@ -1147,6 +1380,7 @@
                 carrito.push(itemCarrito);
             }
             
+            guardarCarritoEnLocalStorage();
             actualizarCarrito();
             cerrarModalOpciones();
             
@@ -1156,6 +1390,19 @@
             setTimeout(() => {
                 carritoBtn.classList.remove('pulse-effect');
             }, 500);
+        }
+
+        // Guardar carrito en localStorage
+        function guardarCarritoEnLocalStorage() {
+            localStorage.setItem('sinnerCart', JSON.stringify(carrito));
+        }
+
+        // Cargar carrito desde localStorage
+        function cargarCarritoDesdeLocalStorage() {
+            const carritoGuardado = localStorage.getItem('sinnerCart');
+            if (carritoGuardado) {
+                carrito = JSON.parse(carritoGuardado);
+            }
         }
 
         // Actualizar carrito
@@ -1232,6 +1479,7 @@
                 item.precioTotal -= precioUnitario;
             }
             
+            guardarCarritoEnLocalStorage();
             actualizarCarrito();
             abrirModalCarrito(); // Refrescar vista
         }
@@ -1239,6 +1487,7 @@
         // Eliminar item del carrito
         function eliminarItem(index) {
             carrito.splice(index, 1);
+            guardarCarritoEnLocalStorage();
             actualizarCarrito();
             
             if (carrito.length === 0) {
@@ -1338,7 +1587,7 @@
             modal.classList.remove('modal-oculto');
         }
 
-        // Cerrar modal de combo
+                // Cerrar modal de combo
         function cerrarModalCombo() {
             document.getElementById('modal-combo').classList.add('modal-oculto');
         }
@@ -1372,10 +1621,12 @@
                 cantidad: 1,
                 precioTotal: precioTotal,
                 detallesVariables: detallesCombo,
-                esCombo: true
+                esCombo: true,
+                cuentaComoTres: true // Marcar que cuenta como 3 productos
             };
             
             carrito.push(itemCarrito);
+            guardarCarritoEnLocalStorage();
             actualizarCarrito();
             cerrarModalCombo();
             
@@ -1395,7 +1646,7 @@
             }
             
             // Verificar pedido mínimo de 3 productos
-            const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+            const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
             if (totalProductos < 3) {
                 alert('PEDIDO MÍNIMO: Debes agregar al menos 3 productos para realizar tu pedido.');
                 document.getElementById('alerta-minimo').style.display = 'flex';
@@ -1404,6 +1655,9 @@
             
             document.getElementById('modal-carrito').classList.add('modal-oculto');
             document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+            
+            // Establecer dirección por defecto
+            direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
         }
 
         function cerrarModalUbicacion() {
@@ -1415,6 +1669,24 @@
             window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
         }
 
+        function mostrarInstruccionesPago() {
+            document.getElementById('modal-ubicacion').classList.add('modal-oculto');
+            
+            // Mostrar la dirección seleccionada en el modal de pago
+            document.getElementById('direccion-confirmacion').textContent = `📍 ${direccionSeleccionada}`;
+            
+            document.getElementById('modal-pago').classList.remove('modal-oculto');
+        }
+
+        function cerrarModalPago() {
+            document.getElementById('modal-pago').classList.add('modal-oculto');
+        }
+
+        function regresarADireccion() {
+            document.getElementById('modal-pago').classList.add('modal-oculto');
+            document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+        }
+
         function enviarPedidoWhatsApp() {
             if (carrito.length === 0) {
                 alert('No hay items en el carrito');
@@ -1422,7 +1694,7 @@
             }
             
             // Verificar pedido mínimo de 3 productos
-            const totalProductos = carrito.reduce((total, item) => total + item.cantidad, 0);
+            const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
             if (totalProductos < 3) {
                 alert('PEDIDO MÍNIMO: Debes agregar al menos 3 productos para realizar tu pedido.');
                 document.getElementById('alerta-minimo').style.display = 'flex';
@@ -1462,14 +1734,74 @@
             
             const total = carrito.reduce((sum, item) => sum + item.precioTotal, 0);
             mensaje += `%0ATotal: $${total} MXN%0A%0A`;
-            mensaje += "Dirección: Calle Coral 120, colonia Estrella, CDMX%0A";
+            mensaje += `Dirección: ${direccionSeleccionada}%0A%0A`;
+            mensaje += "Datos bancarios:%0A";
+            mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
+            mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
+            mensaje += "¡Gracias!";
             
             window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
             
             // Limpiar carrito después de enviar
             carrito = [];
+            guardarCarritoEnLocalStorage();
             actualizarCarrito();
-            cerrarModalUbicacion();
+            cerrarModalPago();
+        }
+
+        // Configurar panel administrativo
+        function configurarPanelAdmin() {
+            const selectProducto = document.getElementById('admin-producto');
+            
+            // Limpiar opciones existentes
+            selectProducto.innerHTML = '<option value="">Seleccionar producto</option>';
+            
+            // Agregar todos los productos al selector
+            for (const categoria in productos) {
+                productos[categoria].forEach(producto => {
+                    const option = document.createElement('option');
+                    option.value = `${categoria}-${producto.id}`;
+                    option.textContent = `${producto.nombre} - $${producto.precio}`;
+                    selectProducto.appendChild(option);
+                });
+            }
+            
+            // Agregar evento para cargar precio actual al seleccionar producto
+            selectProducto.addEventListener('change', function() {
+                if (this.value) {
+                    const [categoria, id] = this.value.split('-');
+                    const producto = productos[categoria].find(p => p.id === parseInt(id));
+                    document.getElementById('admin-precio').value = producto.precio;
+                } else {
+                    document.getElementById('admin-precio').value = '';
+                }
+            });
+        }
+
+        // Guardar cambios en el panel administrativo
+        function guardarCambiosAdmin() {
+            const selectProducto = document.getElementById('admin-producto');
+            const inputPrecio = document.getElementById('admin-precio');
+            
+            if (!selectProducto.value || !inputPrecio.value) {
+                alert('Por favor, selecciona un producto y ingresa un precio válido.');
+                return;
+            }
+            
+            const [categoria, id] = selectProducto.value.split('-');
+            const producto = productos[categoria].find(p => p.id === parseInt(id));
+            
+            if (producto) {
+                producto.precio = parseInt(inputPrecio.value);
+                alert(`Precio de ${producto.nombre} actualizado a $${producto.precio}`);
+                
+                // Recargar productos en la interfaz
+                document.getElementById(`${categoria}-container`).innerHTML = '';
+                productos[categoria].forEach(p => {
+                    const elementoProducto = crearElementoProducto(p);
+                    document.getElementById(`${categoria}-container`).appendChild(elementoProducto);
+                });
+            }
         }
     </script>
 </body>
