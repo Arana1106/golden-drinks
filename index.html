@@ -51,7 +51,6 @@
 
         body {
             font-family: 'Cinzel', serif;
-            background: linear-gradient(to bottom, var(--color-primario), var(--color-secundario), var(--color-fondo));
             color: white;
             line-height: 1.6;
             overflow-x: hidden;
@@ -59,6 +58,15 @@
             min-height: 100vh;
             padding-bottom: 80px;
             transition: all 0.5s ease;
+        }
+
+        /* Fondos diferentes para cada tema */
+        body.tema-demoniaco {
+            background: linear-gradient(to bottom, #0a0a0a, #600000, #8b0000);
+        }
+
+        body.tema-angelical {
+            background: linear-gradient(to bottom, #0a0a0a, #1e3a8a, #4169E1);
         }
 
         .container {
@@ -72,39 +80,38 @@
             text-align: center;
             padding: 20px 0;
             margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 3px solid var(--color-texto);
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect fill="none" stroke="%23ffd700" stroke-width="2" x="10" y="10" width="80" height="80" rx="5" ry="5"/><circle fill="%23ffd700" cx="50" cy="50" r="5"/></svg>');
-            opacity: 0.1;
-            pointer-events: none;
+        /* Header para tema demoníaco */
+        body.tema-demoniaco header {
+            background: linear-gradient(to bottom, #600000, #8b0000);
+            border-bottom: 3px solid #ff2a2a;
+        }
+
+        body.tema-demoniaco h1 {
+            color: #ff2a2a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header para tema angelical */
+        body.tema-angelical header {
+            background: linear-gradient(to bottom, #1e3a8a, #4169E1);
+            border-bottom: 3px solid #ffd700;
+        }
+
+        body.tema-angelical h1 {
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         h1 {
             font-family: var(--fuente-titulo);
             font-size: 3.5rem;
-            color: var(--color-texto);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             margin-bottom: 10px;
             letter-spacing: 3px;
-        }
-
-        .subtitulo {
-            font-family: var(--fuente-subtitulo);
-            font-size: 1.2rem;
-            color: var(--color-texto);
-            margin-bottom: 15px;
         }
 
         /* BOTÓN CARRITO */
@@ -185,7 +192,7 @@
         }
 
         .producto-card {
-            background: linear-gradient(145deg, rgba(139, 0, 0, 0.3), rgba(220, 20, 60, 0.2));
+            background: rgba(0, 0, 0, 0.6);
             border: 2px solid var(--color-bordes);
             border-radius: 10px;
             padding: 20px;
@@ -195,11 +202,6 @@
             overflow: hidden;
         }
 
-        body.tema-angelical .producto-card {
-            background: linear-gradient(145deg, rgba(65, 105, 225, 0.3), rgba(30, 144, 255, 0.2));
-            border: 2px solid var(--color-bordes);
-        }
-
         .producto-card::before {
             content: '';
             position: absolute;
@@ -207,13 +209,41 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path fill="none" stroke="%23DC143C" stroke-width="1.5" d="M30,10 Q50,30 70,10 Q90,40 70,70 Q50,90 30,70 Q10,40 30,10 Z" /></svg>');
             opacity: 0.2;
             pointer-events: none;
         }
 
-        body.tema-angelical .producto-card::before {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path fill="none" stroke="%231e90ff" stroke-width="1" d="M20,20 L80,20 L80,80 L20,80 Z M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
+        /* Colores específicos para cada producto */
+        .producto-card[data-producto="LEVIATÁN"]::before {
+            background: linear-gradient(45deg, #0000ff, #1e90ff);
+        }
+
+        .producto-card[data-producto="INFIERNO"]::before {
+            background: linear-gradient(45deg, #8b0000, #ff0000);
+        }
+
+        .producto-card[data-producto="JALURIA"]::before {
+            background: linear-gradient(45deg, #006400, #00ff00);
+        }
+
+        .producto-card[data-producto="ASMODEO"]::before {
+            background: linear-gradient(45deg, #4b0082, #9400d3);
+        }
+
+        .producto-card[data-producto="IRA DIVINA"]::before {
+            background: linear-gradient(45deg, #8b0000, #ff8c00);
+        }
+
+        .producto-card[data-producto="PACTUM"]::before {
+            background: linear-gradient(45deg, #2f4f4f, #696969);
+        }
+
+        .producto-card[data-producto="REDENCIÓN"]::before {
+            background: linear-gradient(45deg, #000080, #0000ff);
+        }
+
+        .producto-card[data-producto="REVELACIÓN"]::before {
+            background: linear-gradient(45deg, #4b0082, #8a2be2);
         }
 
         .producto-card:hover {
@@ -224,8 +254,17 @@
         .producto-card h3 {
             font-family: var(--fuente-productos);
             font-size: 1.5rem;
-            color: var(--color-texto);
             margin-bottom: 10px;
+        }
+
+        /* Colores para nombres de productos en tema demoníaco */
+        body.tema-demoniaco .producto-card h3 {
+            color: #ff2a2a;
+        }
+
+        /* Colores para nombres de productos en tema angelical */
+        body.tema-angelical .producto-card h3 {
+            color: #1e90ff;
         }
 
         .producto-card p {
@@ -294,6 +333,45 @@
         .combo-card p {
             margin-bottom: 15px;
             font-family: 'MedievalSharp', cursive;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            border: 2px solid var(--color-bordes);
+            text-align: center;
+        }
+
+        .eslogan {
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--color-texto);
+        }
+
+        .copyright {
+            font-family: 'MedievalSharp', cursive;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .info-footer p {
+            margin-bottom: 10px;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        body.tema-angelical footer {
+            border-color: #1e90ff;
+            background: rgba(65, 105, 225, 0.2);
+        }
+
+        body.tema-demoniaco footer {
+            border-color: #dc143c;
+            background: rgba(139, 0, 0, 0.3);
         }
 
         /* MODALES */
@@ -488,7 +566,7 @@
             z-index: 1100;
             box-shadow: var(--sombra);
             max-width: 90%;
-        }
+}
 
         .cerrar-alerta {
             background: none;
@@ -544,7 +622,6 @@
     <div class="container">
         <header id="cambiador-tema">
             <h1>SINNER'S</h1>
-            <p class="subtitulo">Elige tu lado en la batalla celestial</p>
         </header>
 
         <!-- Alerta de pedido mínimo (oculta por defecto) -->
@@ -584,13 +661,13 @@
         <section>
             <h2>PECADOS RECOMENDADOS</h2>
             <div class="combos-container">
-                <div class="combo-card">
+                <div class="combo-card" id="combo-demoniaco">
                     <h3>TRINIDAD DEL INFIERNO</h3>
                     <p>INFERNO + ASMODEO + REVELACIÓN</p>
                     <p class="precio">$120.00 MXN</p>
                     <button class="btn-seleccionar" onclick="seleccionarCombo('demonios')">SELECCIONAR COMBO</button>
                 </div>
-                <div class="combo-card">
+                <div class="combo-card" id="combo-angelical" style="display:none;">
                     <h3>SANTÍSIMA TRINIDAD</h3>
                     <p>LEVIATÁN + JALURIA + REDENCIÓN</p>
                     <p class="precio">$120.00 MXN</p>
@@ -598,6 +675,18 @@
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="info-footer">
+                <p class="eslogan">"Donde los pecados tienen sabor y las virtudes tienen precio"</p>
+                <p class="copyright">© 2023 Sinner's - Todos los derechos reservados</p>
+                <p><strong>📍 Ubicación:</strong> Calle Coral 120, colonia Estrella, CDMX</p>
+                <p><strong>📞 WhatsApp:</strong> 56 1164 9344</p>
+                <p><strong>💳 Transferencia:</strong> BBVA - Eric Daniel Gutiérrez Arana</p>
+                <p><strong>🔞 Verificación de edad:</strong> Se solicitará INE para bebidas alcohólicas</p>
+            </div>
+        </footer>
     </div>
 
     <!-- Botón de carrito flotante -->
@@ -870,11 +959,13 @@
             if (body.classList.contains('tema-demoniaco')) {
                 body.classList.remove('tema-demoniaco');
                 body.classList.add('tema-angelical');
-                document.querySelector('.subtitulo').textContent = "El paraíso te espera";
+                document.getElementById('combo-demoniaco').style.display = 'none';
+                document.getElementById('combo-angelical').style.display = 'block';
             } else {
                 body.classList.remove('tema-angelical');
                 body.classList.add('tema-demoniaco');
-                document.querySelector('.subtitulo').textContent = "Elige tu lado en la batalla celestial";
+                document.getElementById('combo-demoniaco').style.display = 'block';
+                document.getElementById('combo-angelical').style.display = 'none';
             }
         }
 
@@ -895,6 +986,7 @@
         function crearElementoProducto(producto) {
             const div = document.createElement('div');
             div.className = 'producto-card';
+            div.setAttribute('data-producto', producto.nombre);
             div.innerHTML = `
                 <h3 data-producto="${producto.nombre}">${producto.nombre}</h3>
                 <p>${producto.descripcion}</p>
@@ -1077,7 +1169,7 @@
             modal.classList.remove('modal-oculto');
         }
 
-        // Cerrar modal de opciones
+                // Cerrar modal de opciones
         function cerrarModalOpciones() {
             document.getElementById('modal-opciones').classList.add('modal-oculto');
         }
@@ -1421,7 +1513,7 @@
                     }
                 }
                 
-                // Procesar toppings
+                // Processar toppings
                 if (opciones.toppings && opciones.toppings.length > 0) {
                     opciones.toppings.forEach(toppingNombre => {
                         // Buscar el producto para encontrar el topping
