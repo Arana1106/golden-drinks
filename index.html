@@ -1,887 +1,195 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SINNER'S</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Eater&family=Cinzel:wght@400;700&family=MedievalSharp&family=UnifrakturMaguntia&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
     <style>
         /* ===== ESTILOS SINNER'S - ÁNGELES vs DEMONIOS ===== */
-        :root {
-            --azul-cielo: #4169E1;
-            --azul-profundo: #1e90ff;
-            --purpura-magico: #9370DB;
-            --purpura-oscuro: #8B008B;
-            --rojo-pasion: #DC143C;
-            --rojo-oscuro: #8b0000;
-            --dorado: #ffd700;
-            --dorado-oscuro: #DAA520;
-            --gris-angelical: #f0f8ff;
-            --negro-demonio: #0a0a0a;
-            --sombra-angel: 0 4px 15px rgba(255, 255, 255, 0.3);
-            --sombra-demonio: 0 4px 15px rgba(255, 0, 0, 0.3);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Eater&family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            min-height: 40px;
-        }
-
-        body {
-            font-family: 'Cinzel', serif;
-            background: linear-gradient(to bottom, var(--azul-cielo), var(--purpura-magico), var(--rojo-pasion), var(--rojo-oscuro));
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-            touch-action: manipulation;
-            min-height: 100vh;
-            padding-bottom: 80px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* HEADER ESTILO ANTIGUO */
-        header {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 3px solid var(--dorado);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect fill="none" stroke="%23ffd700" stroke-width="2" x="10" y="10" width="80" height="80" rx="5" ry="5"/><circle fill="%23ffd700" cx="50" cy="50" r="5"/></svg>');
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        h1 {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 3.5rem;
-            color: var(--dorado);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-        }
-
-        .subtitulo {
-            font-family: 'IM Fell English SC', serif;
-            font-size: 1.2rem;
-            color: var(--gris-angelical);
-            margin-bottom: 15px;
-        }
-
-        /* BOTÓN CARRITO */
-        .carrito-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--dorado);
-            color: var(--negro-demonio);
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--sombra-demonio);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .carrito-btn:hover {
-            transform: scale(1.1);
-            background: var(--dorado-oscuro);
-        }
-
-        #contador {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--rojo-pasion);
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* SECCIONES */
-        section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        h2 {
-            font-family: 'Eater', cursive;
-            font-size: 2rem;
-            color: var(--dorado);
-            margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--dorado);
-        }
-
-        .angelical h2 {
-            font-family: 'Cinzel', serif;
-            color: var(--gris-angelical);
-            border-bottom: 2px solid var(--azul-cielo);
-        }
-
-        /* PRODUCTOS */
-        .productos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        /* ESTILOS PARA PRODUCTOS CELESTIALES - MARCOS RENACENTISTAS */
-        .angelical .producto-card {
-            background: linear-gradient(145deg, rgba(65, 105, 225, 0.3), rgba(30, 144, 255, 0.2));
-            border: 2px solid var(--dorado);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .angelical .producto-card::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            border: 1px solid rgba(255, 215, 0, 0.5);
-            border-radius: 8px;
-            pointer-events: none;
-        }
-
-        .angelical .producto-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path fill="none" stroke="%23ffd700" stroke-width="1" d="M20,20 L80,20 L80,80 L20,80 Z M30,30 L70,30 L70,70 L30,70 Z" /></svg>');
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        /* ESTILOS PARA PRODUCTOS INFERNALES - BORDES DE RAÍCES */
-        .infernal .producto-card {
-            background: linear-gradient(145deg, rgba(139, 0, 0, 0.3), rgba(220, 20, 60, 0.2));
-            border: 2px solid var(--rojo-pasion);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .infernal .producto-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path fill="none" stroke="%23DC143C" stroke-width="1.5" d="M30,10 Q50,30 70,10 Q90,40 70,70 Q50,90 30,70 Q10,40 30,10 Z" /></svg>');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-
-        .producto-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--sombra-demonio);
-        }
-
-        .angelical .producto-card:hover {
-            box-shadow: var(--sombra-angel);
-        }
-
-        .producto-card h3 {
-            font-family: 'IM Fell English SC', serif;
-            font-size: 1.5rem;
-            color: var(--dorado);
-            margin-bottom: 10px;
-        }
-
-        .infernal .producto-card h3 {
-            font-family: 'Eater', cursive;
-            color: var(--rojo-pasion);
-        }
-
-        .producto-card p {
-            font-family: 'MedievalSharp', cursive;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .precio {
-            font-weight: bold;
-            color: var(--dorado);
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        .btn-seleccionar {
-            background: var(--dorado);
-            color: var(--negro-demonio);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-seleccionar:hover {
-            background: var(--dorado-oscuro);
-            transform: scale(1.05);
-        }
-
-        /* COMBOS */
-        .combos-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .combo-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--purpura-magico);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            width: 280px;
-            transition: all 0.3s ease;
-        }
-
-        .combo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--sombra-demonio);
-        }
-
-        .combo-card h3 {
-            font-family: 'Eater', cursive;
-            color: var(--purpura-magico);
-            margin-bottom: 15px;
-        }
-
-        .combo-card p {
-            margin-bottom: 15px;
-            font-family: 'MedievalSharp', cursive;
-        }
-
-        /* MODALES */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .modal-contenido {
-            background: linear-gradient(to bottom, var(--rojo-oscuro), var(--negro-demonio));
-            border: 2px solid var(--dorado);
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .angelical .modal-contenido {
-            background: linear-gradient(to bottom, var(--azul-cielo), var(--negro-demonio));
-        }
-
-        .cerrar-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: var(--dorado);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .modal-titulo {
-            font-family: 'Eater', cursive;
-            color: var(--dorado);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .angelical .modal-titulo {
-            font-family: 'Cinzel', serif;
-        }
-
-        .opcion-group {
-            margin-bottom: 20px;
-        }
-
-        .opcion-group h3 {
-            font-family: 'MedievalSharp', cursive;
-            color: var(--dorado);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .topping-checkbox {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .topping-checkbox input {
-            margin-right: 10px;
-        }
-
-        .topping-checkbox label {
-            font-family: 'MedievalSharp', cursive;
-            flex-grow: 1;
-        }
-
-        .topping-info {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .topping-price {
-            color: var(--dorado);
-            font-weight: bold;
-        }
-
-        .botones-modal {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .btn-modal {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-confirmar {
-            background: var(--dorado);
-            color: var(--negro-demonio);
-        }
-
-        .btn-cancelar {
-            background: var(--rojo-oscuro);
-            color: white;
-        }
-
-        .btn-modal:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
-        }
-
-        /* CARRITO */
-        .item-carrito {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .item-info h4 {
-            font-family: 'IM Fell English SC', serif;
-            color: var(--dorado);
-            margin-bottom: 5px;
-        }
-
-        .detalles-variables {
-            font-size: 0.8rem;
-            color: #ccc;
-            margin-bottom: 5px;
-        }
-
-        .precio-item {
-            color: var(--dorado);
-            font-weight: bold;
-        }
-
-        .item-controles {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .item-controles button {
-            background: var(--dorado);
-            color: var(--negro-demonio);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .carrito-vacio {
-            text-align: center;
-            padding: 20px;
-            color: #ccc;
-        }
-
-        .total-carrito {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            color: var(--dorado);
-            text-align: right;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 2px solid var(--dorado);
-        }
-
-        /* ALERTA */
-        .alerta-minimo {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--rojo-oscuro);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 1100;
-            box-shadow: var(--sombra-demonio);
-            max-width: 90%;
-        }
-
-        .cerrar-alerta {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-left: 15px;
-        }
-
-        /* EFECTOS */
-        .pulse-effect {
-            animation: pulse 0.5s ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .modal-oculto {
-            display: none;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .productos-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .combos-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .combo-card {
-                width: 100%;
-                max-width: 280px;
-            }
-            
-            .modal-contenido {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
 <body class="tema-demonios">
-    <div class="container">
-        <header>
-            <h1>SINNER'S</h1>
-            <p class="subtitulo">Elige tu lado en la batalla celestial</p>
-        </header>
-
-        <!-- Alerta de pedido mínimo (oculta por defecto) -->
-        <div class="alerta-minimo" id="alerta-minimo">
-            <div>
-                <strong>PEDIDO MÍNIMO</strong>
-                <p>No aceptamos pedidos con menos de 3 productos. Agrega más items para continuar.</p>
-            </div>
-            <button class="cerrar-alerta" id="cerrar-alerta">&times;</button>
+    <!-- Alerta de pedido mínimo (oculta por defecto) -->
+    <div class="alerta-minimo" id="alerta-minimo">
+        <div>
+            <strong>PEDIDO MÍNIMO</strong>
+            <p>No aceptamos pedidos con menos de 3 productos. Agrega más items para continuar.</p>
         </div>
-
-        <!-- Bebidas del Pecado (Infernal) -->
-        <section class="infernal">
-            <h2>BEBIDAS DEL PECADO</h2>
-            <div class="productos-grid" id="bebidas-container">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
-        </section>
-
-        <!-- Cafés Malditos (Transición) -->
-        <section class="infernal">
-            <h2>CAFÉS MALDITOS</h2>
-            <div class="productos-grid" id="cafes-container">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
-        </section>
-
-        <!-- Tés Oscuros (Infernal) -->
-        <section class="infernal">
-            <h2>TÉS OSCUROS</h2>
-            <div class="productos-grid" id="tes-container">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
-        </section>
-
-        <!-- Combos -->
-        <section class="infernal">
-            <h2>PECADOS RECOMENDADOS</h2>
-            <div class="combos-container">
-                <div class="combo-card" id="combos-demonios">
-                    <h3>TRINIDAD DEL INFIERNO</h3>
-                    <p>INFERNO + ASMODEO + REVELACIÓN</p>
-                    <p class="precio">$120.00 MXN</p>
-                    <button class="btn-seleccionar" onclick="seleccionarCombo('demonios')">SELECCIONAR COMBO</button>
-                </div>
-                <div class="combo-card" id="combos-angeles" style="display:none;">
-                    <h3>SANTÍSIMA TRINIDAD</h3>
-                    <p>LEVIATÁN + JALURIA + REDENCIÓN</p>
-                    <p class="precio">$120.00 MXN</p>
-                    <button class="btn-seleccionar" onclick="seleccionarCombo('angeles')">SELECCIONAR COMBO</button>
-                </div>
-            </div>
-        </section>
+        <button class="cerrar-alerta" id="cerrar-alerta">&times;</button>
     </div>
 
-    <!-- Botón de carrito flotante -->
-    <button class="carrito-btn" id="carrito-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="contador">0</span>
-    </button>
+<!-- JavaScript -->
 
-    <!-- Modal de opciones de producto -->
-    <div class="modal modal-oculto" id="modal-opciones">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-opciones">&times;</button>
-            <h2 class="modal-titulo" id="titulo-modal">Personalizar Producto</h2>
-            <p><strong>Sabor:</strong> <span id="sabor-destacado"></span></p>
-            <div id="formulario-opciones"></div>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-modal">CANCELAR</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-opciones">CONFIRMAR</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de carrito -->
-    <div class="modal modal-oculto" id="modal-carrito">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-carrito">&times;</button>
-            <h2 class="modal-titulo">TU CARRITO DE PECADOS</h2>
-            <div id="lista-carrito"></div>
-            <p class="total-carrito" id="total-carrito">Total: $0.00 MXN</p>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="seguir-pidiendo">SEGUIR PIDIENDO</button>
-                <button class="btn-modal btn-confirmar" id="whatsapp-btn">FINALIZAR PEDIDO</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de ubicación -->
-    <div class="modal modal-oculto" id="modal-ubicacion">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-ubicacion">&times;</button>
-            <h2 class="modal-titulo">CONFIRMAR UBICACIÓN</h2>
-            <p>Por favor confirma que esta es tu ubicación para entregar tu pedido:</p>
-            <p><strong>Calle Coral 120, colonia Estrella, CDMX</strong></p>
-            <p>Si necesitas ver la ubicación en Google Maps, haz clic abajo:</p>
-            <button class="btn-modal btn-confirmar" id="abrir-maps" style="width:100%; margin:10px 0;">ABRIR GOOGLE MAPS</button>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-carrito">REGRESAR</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-ubicacion">CONFIRMAR UBICACIÓN</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de combo -->
-    <div class="modal modal-oculto" id="modal-combo">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-combo">&times;</button>
-            <h2 class="modal-titulo" id="titulo-combo">Personalizar Combo</h2>
-            <div id="opciones-combo"></div>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-combo">CANCELAR</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-combo">CONFIRMAR COMBO</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de pago -->
-    <div class="modal modal-oculto" id="modal-pago">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-pago">&times;</button>
-            <h2 class="modal-titulo">INSTRUCCIONES DE PAGO</h2>
-            <p>Para completar tu pedido, realiza una transferencia a:</p>
-            <p><strong>Banco:</strong> BBVA</p>
-            <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
-            <p><strong>CLABE:</strong> 012 261 01584933343 3</p>
-            <p>Una vez realizado el pago, haz clic en el botón de abajo para enviar tu pedido por WhatsApp con el comprobante.</p>
-            <p id="direccion-confirmacion">📍 Calle Coral 120, colonia Estrella, CDMX</p>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-direccion">CAMBIAR DIRECCIÓN</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-pedido">ENVIAR POR WHATSAPP</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Panel administrativo (oculto) -->
-    <div class="modal modal-oculto" id="admin-panel">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-admin">&times;</button>
-            <h2 class="modal-titulo">PANEL ADMINISTRATIVO</h2>
-            <div class="opcion-group">
-                <h3>Modificar Precios</h3>
-                <select id="admin-producto">
-                    <option value="">Seleccionar producto</option>
-                </select>
-                <input type="number" id="admin-precio" placeholder="Nuevo precio" style="width:100%; padding:10px; margin-top:10px; border-radius:5px; border:1px solid #ccc;">
-            </div>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="cerrar-admin-btn">CERRAR</button>
-                <button class="btn-modal btn-confirmar" id="guardar-cambios">GUARDAR CAMBIOS</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Datos de productos con toppings corregidos
-        const productos = {
-            bebidas: [
-                { 
-                    id: 1, 
-                    nombre: "LEVIATÁN", 
-                    descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. 475ml",
-                    sabor: "Mora azul", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 2, 
-                    nombre: "INFIERNO", 
-                    descripcion: "Pasión ardiente con sabor a frutos rojos 475ml",
-                    sabor: "Frutos rojos", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 3, 
-                    nombre: "JALURIA", 
-                    descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde. 475ml",
-                    sabor: "Manzana verde", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 4, 
-                    nombre: "ASMODEO", 
-                    descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque. 475ml",
-                    sabor: "Frutos del bosque", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                }
-            ],
-            cafes: [
-                { 
-                    id: 5, 
-                    nombre: "IRA DIVINA", 
-                    descripcion: "Energía Divina toma un café deconstruido frío. 475ml",
-                    sabor: "Café deconstruido", 
-                    precio: 40, 
-                    opciones: {
-                        "LECHE": ["Normal", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 6, 
-                    nombre: "PACTUM", 
-                    descripcion: "Pacto con the devil, tranquilo solo es un suave café descafeinado. 475ml",
-                    sabor: "Café descafeinado", 
-                    precio: 40, 
-                    opciones: {
-                        "LECHE": ["Normal", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
-                    ]
-                }
-            ],
-            tes: [
-                { 
-                    id: 7, 
-                    nombre: "REDENCIÓN", 
-                    descripcion: "Todos la buscamos, y todos la necesitamos. 475ml",
-                    sabor: "Pregunta por la selección", 
-                    precio: 35, 
-                    opciones: {
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 8, 
-                    nombre: "REVELACIÓN", 
-                    descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto. Bebida del día. 475ml",
-                    sabor: "Bebida del día", 
-                    precio: 35, 
-                    opciones: {
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
-                    ]
-                }
-            ]
-        };
-
-        // Datos de combos
-        const combos = {
-            demonios: {
-                nombre: "TRINIDAD DEL INFIERNO",
-                productos: ["INFIERNO", "ASMODEO", "REVELACIÓN"],
-                precioBase: 120,
-                descripcion: "INFERNO + ASMODEO + REVELACIÓN"
+<script>
+    // Datos de productos con toppings corregidos
+    const productos = {
+        bebidas: [
+            { 
+                id: 1, 
+                nombre: "LEVIATÁN", 
+                descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. 475ml",
+                sabor: "Mora azul", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                ]
             },
-            angeles: {
-                nombre: "SANTÍSIMA TRINIDAD",
-                productos: ["LEVIATÁN", "JALURIA", "REDENCIÓN"],
-                precioBase: 120,
-                descripcion: "LEVIATÁN + JALURIA + REDENCIÓN"
+            { 
+                id: 2, 
+                nombre: "INFIERNO", 
+                descripcion: "Pasión ardiente con sabor a frutos rojos 475ml",
+                sabor: "Frutos rojos", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                ]
+            },
+            { 
+                id: 3, 
+                nombre: "JALURIA", 
+                descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde con jengibre 475ml",
+                sabor: "Manzana verde", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                ]
+            },
+            { 
+                id: 4, 
+                nombre: "ASMODEO", 
+                descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque 475ml",
+                sabor: "Frutos del bosque", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                ]
             }
-        };
+        ],
+        cafes: [
+            { 
+                id: 5, 
+                nombre: "IRA DIVINA", 
+                descripcion: "Energía Divina toma un café deconstruido frío 475ml",
+                sabor: "Café deconstruido", 
+                precio: 40, 
+                opciones: {
+                    "LECHE": ["Normal", "Deslactosada (+$10)"],
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
+                ]
+            },
+            { 
+                id: 6, 
+                nombre: "PACTUM", 
+                descripcion: "Pacto con the devil, tranquilo solo es un suave café descafeinado 475ml",
+                sabor: "Café descafeinado", 
+                precio: 40, 
+                opciones: {
+                    "LECHE": ["Normal", "Deslactosada (+$10)"],
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
+                ]
+            }
+        ],
+        tes: [
+            { 
+                id: 7, 
+                nombre: "REDENCIÓN", 
+                descripcion: "Todos la buscamos, y todos la necesitamos su sabor Negro, o Verde y más en sus 475 ml (pregunta por la disponibilidad de los sabores)",
+                sabor: "Pregunta por la selección", 
+                precio: 35, 
+                opciones: {
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
+                ]
+            },
+            { 
+                id: 8, 
+                nombre: "REVELACIÓN", 
+                descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto. Bebida del día 475ml",
+                sabor: "Bebida del día", 
+                precio: 35, 
+                opciones: {
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
+                ]
+            }
+        ]
+    };
 
-        // Variables globales
-        let carrito = [];
-        let productoSeleccionado = null;
-        let opcionesSeleccionadas = {};
-        let comboSeleccionado = null;
-        let opcionesComboSeleccionadas = {};
-        let direccionSeleccionada = "";
+    // Datos de combos
+    const combos = {
+        demonios: {
+            nombre: "TRINIDAD DEL INFIERNO",
+            productos: ["INFIERNO", "ASMODEO", "REVELACIÓN"],
+            precioBase: 120,
+            descripcion: "INFERNO + ASMODEO + REVELACIÓN"
+        },
+        angeles: {
+            nombre: "SANTÍSIMA TRINIDAD",
+            productos: ["LEVIATÁN", "JALURIA", "REDENCIÓN"],
+            precioBase: 120,
+            descripcion: "LEVIATÁN + JALURIA + REDENCIÓN"
+        }
+    };
 
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            cargarProductos();
-            cargarCarritoDesdeLocalStorage();
-            actualizarCarrito();
-            configurarEventos();
-            configurarPanelAdmin();
+    // Variables globales
+    let carrito = [];
+    let productoSeleccionado = null;
+    let opcionesSeleccionadas = {};
+    let comboSeleccionado = null;
+    let opcionesComboSeleccionadas = {};
+    let direccionSeleccionada = "";
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', function() {
+        cargarProductos();
+        cargarCarritoDesdeLocalStorage();
+        actualizarCarrito();
+        configurarEventos();
+        configurarPanelAdmin();
+    });
+
+    // Configurar eventos
+    function configurarEventos() {
+        // Cambio de tema con doble clic
+        document.getElementById('titulo-tema').addEventListener('dblclick', cambiarTema);
+        
+        // Botón carrito
+        document.getElementById('carrito-btn').addEventListener('click', abrirModalCarrito);
+        
+        // Cerrar modales
+        document.getElementById('cerrar-opciones').addEventListener('click', cerrarModalOpciones);
+        document.getElementById('cerrar-carrito').addEventListener('click', cerrarModalCarrito);
+        document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
+        document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
+        document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
+        document.getElementById('cerrar-alerta').addEventListener('click', function() {
+            document.getElementById('alerta-minimo').style.display = 'none';
         });
-
-        // Configurar eventos
-        function configurarEventos() {
-            // Cambio de tema con doble clic
-            document.getElementById('titulo-tema').addEventListener('dblclick', cambiarTema);
-            
-            // Botón carrito
-            document.getElementById('carrito-btn').addEventListener('click', abrirModalCarrito);
-            
-            // Cerrar modales
-            document.getElementById('cerrar-opciones').addEventListener('click', cerrarModalOpciones);
-            document.getElementById('cerrar-carrito').addEventListener('click', cerrarModalCarrito);
-            document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
-            document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
-            document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
-            document.getElementById('cerrar-alerta').addEventListener('click', function() {
-                document.getElementById('alerta-minimo').style.display = 'none';
-            });
-            
-            // Botones de modales
-            document.getElementById('regresar-modal').addEventListener('click', cerrarModalOpciones);
-            document.getElementById('confirmar-opciones').addEventListener('click', confirmarSeleccion);
-            document.getElementById('seguir-pidiendo').addEventListener('click', cerrarModalCarrito);
-            document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
-            document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
-            document.getElementById('confirmar-ubicacion').addEventListener('click', mostrarInstruccionesPago);
+        
+        // Botones de modales
+        document.getElementById('regresar-modal').addEventListener('click', cerrarModalOpciones);
+        document.getElementById('confirmar-opciones').addEventListener('click', confirmarSeleccion);
+        document.getElementById('seguir-pidiendo').addEventListener('click', cerrarModalCarrito);
+        document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
+        document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
+                    document.getElementById('confirmar-ubicacion').addEventListener('click', mostrarInstruccionesPago);
             document.getElementById('regresar-combo').addEventListener('click', cerrarModalCombo);
             document.getElementById('confirmar-combo').addEventListener('click', confirmarCombo);
             document.getElementById('abrir-maps').addEventListener('click', abrirGoogleMaps);
@@ -1333,7 +641,7 @@
                     productoGroup.className = 'opcion-group';
                     productoGroup.innerHTML = `<h3>${producto.nombre} (${producto.sabor})</h3>`;
                     
-                    // Mostrar opciones para cafés and tés
+                    // Mostrar opciones para cafés y tés
                     if (producto.opciones) {
                         for (const [opcion, valores] of Object.entries(producto.opciones)) {
                             valores.forEach((valor, index) => {
@@ -1686,5 +994,6 @@
             }
         }
     </script>
+
 </body>
 </html>
