@@ -660,7 +660,6 @@
         <div class="modal-contenido">
             <button class="cerrar-modal" id="cerrar-opciones">&times;</button>
             <h2 class="modal-titulo" id="titulo-modal">Personalizar Producto</h2>
-            <p><strong>Sabor:</strong> <span id="sabor-destacado"></span></p>
             <div id="formulario-opciones"></div>
             <div class="botones-modal">
                 <button class="btn-modal btn-cancelar" id="regresar-modal">CANCELAR</button>
@@ -1041,7 +1040,6 @@
             const formulario = document.getElementById('formulario-opciones');
             
             tituloModal.textContent = `Personalizar ${productoSeleccionado.nombre}`;
-            saborDestacado.textContent = `Sabor: ${productoSeleccionado.sabor}`;
             formulario.innerHTML = '';
             
             // Crear opciones personalizables (para cafés y tés)
