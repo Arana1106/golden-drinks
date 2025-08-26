@@ -769,6 +769,34 @@
             </div>
         </div>
     </div>
+<!-- Modal de verificación de edad -->
+<div class="modal modal-oculto" id="modal-verificacion-edad">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-verificacion-edad">&times;</button>
+        <h2 class="modal-titulo">VERIFICACIÓN DE EDAD</h2>
+        <div style="text-align: center; font-size: 1.5rem; margin: 20px 0; color: #ff2a2a;">
+            <p>🔞 SE SOLICITARÁ INE PARA BEBIDAS ALCOHÓLICAS</p>
+        </div>
+        <div class="botones-modal" style="justify-content: center;">
+            <button class="btn-modal btn-confirmar" id="entendido-verificacion">ENTENDIDO</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de pedido mínimo -->
+<div class="modal modal-oculto" id="modal-pedido-minimo">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-pedido-minimo">&times;</button>
+        <h2 class="modal-titulo">PEDIDO MÍNIMO</h2>
+        <div style="text-align: center; font-size: 1.2rem; margin: 20px 0;">
+            <p>No se pueden realizar pedidos con menos de 3 productos.</p>
+            <p>Agrega más items para continuar.</p>
+        </div>
+        <div class="botones-modal" style="justify-content: center;">
+            <button class="btn-modal btn-confirmar" id="aceptar-pedido-minimo">ACEPTAR</button>
+        </div>
+    </div>
+</div>
 
     <script>
         // Datos de productos con toppings corregidos
@@ -925,8 +953,6 @@
             document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
             document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
             document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
-            document.getElementById('cerrar-alerta').addEventListener('click', function() {
-                document.getElementById('alerta-minimo').style.display = 'none';
             });
             
             // Botones de modales
@@ -1561,27 +1587,31 @@
             }, 500);
         }
 
-        // Funciones para los modales de ubicación
         function mostrarSeleccionUbicacion() {
-            if (carrito.length === 0) {
-                alert('Agrega al menos un producto al carrito primero');
-                return;
-            }
-            
-            // Verificar pedido mínimo de 3 productos
-            const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
-            if (totalProductos < 3) {
-                alert('PEDIDO MÍNIMO: Debes agregar al menos 3 productos para realizar tu pedido.');
-                document.getElementById('alerta-minimo').style.display = 'flex';
-                return;
-            }
-            
-            document.getElementById('modal-carrito').classList.add('modal-oculto');
-            document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
-            
-            // Establecer dirección por defecto
-            direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
-        }
+    if (carrito.length === 0) {
+        mostrarPedidoMinimo();
+        return;
+    }
+    
+    // Verificar pedido mínimo de 3 productos
+    const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
+    if (totalProductos < 3) {
+        mostrarPedidoMinimo();
+        return;
+    }
+// Verificar pedido mínimo de 3 productos
+const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
+if (totalProductos < 3) {
+    mostrarPedidoMinimo();
+    return;
+}
+    
+    document.getElementById('modal-carrito').classList.add('modal-oculto');
+    document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+    
+    // Establecer dirección por defecto
+    direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
+}
 
         function cerrarModalUbicacion() {
             document.getElementById('modal-ubicacion').classList.add('modal-oculto');
