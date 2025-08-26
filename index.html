@@ -30,9 +30,9 @@
             --color-primario: #4169E1;
             --color-secundario: #1e90ff;
             --color-acento: #00bfff;
-            --color-texto: #ffd700;
+            --color-texto: #c0c0c0; /* Plateado en lugar de dorado */
             --color-fondo: #0a0a0a;
-            --color-bordes: #1e90ff;
+            --color-bordes: #c0c0c0; /* Plateado para bordes */
             --sombra: 0 4px 15px rgba(255, 255, 255, 0.3);
             
             /* Fuentes angelicales */
@@ -87,8 +87,8 @@
 
         /* Header para tema demoníaco */
         body.tema-demoniaco header {
-            background: linear-gradient(to bottom, #600000, #8b0000);
-            border-bottom: 3px solid #ff2a2a;
+            background: #000000; /* Negro sólido */
+            border-bottom: 3px solid #ff2a2a; /* Rojo vibrante */
         }
 
         body.tema-demoniaco h1 {
@@ -98,12 +98,12 @@
 
         /* Header para tema angelical */
         body.tema-angelical header {
-            background: linear-gradient(to bottom, #1e3a8a, #4169E1);
-            border-bottom: 3px solid #ffd700;
+            background: #000000; /* Negro sólido */
+            border-bottom: 3px solid #c0c0c0; /* Plateado */
         }
 
         body.tema-angelical h1 {
-            color: #ffd700;
+            color: #c0c0c0; /* Plateado */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
@@ -359,13 +359,8 @@
             color: #ccc;
         }
 
-        .info-footer p {
-            margin-bottom: 10px;
-            font-family: 'MedievalSharp', cursive;
-        }
-
         body.tema-angelical footer {
-            border-color: #1e90ff;
+            border-color: #c0c0c0; /* Plateado */
             background: rgba(65, 105, 225, 0.2);
         }
 
@@ -390,7 +385,7 @@
         }
 
         .modal-contenido {
-            background: linear-gradient(to bottom, var(--color-primario), var(--color-fondo));
+            background: linear-gradient(to bottom, var(--color-primario), var(--color-fondo);
             border: 2px solid var(--color-texto);
             border-radius: 15px;
             padding: 30px;
@@ -640,7 +635,7 @@
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Footer (solo eslogan y copyright) -->
         <footer>
             <div class="info-footer">
                 <p class="eslogan">"Donde los pecados tienen sabor y las virtudes tienen precio"</p>
@@ -687,7 +682,7 @@
         <div class="modal-contenido">
             <button class="cerrar-modal" id="cerrar-ubicacion">&times;</button>
             <h2 class="modal-titulo">CONFIRMAR UBICACIÓN</h2>
-            <p>Por favor confirma que este es tu punto de recolección para entregar tu pedido:</p>
+            <p>Por favor confirma que esta es tu ubicación para entregar tu pedido:</p>
             <p><strong>Calle Coral 120, colonia Estrella, CDMX</strong></p>
             <p>Si necesitas ver la ubicación en Google Maps, haz clic abajo:</p>
             <button class="btn-modal btn-confirmar" id="abrir-maps" style="width:100%; margin:10px 0;">ABRIR GOOGLE MAPS</button>
@@ -720,7 +715,7 @@
             <p><strong>Banco:</strong> BBVA</p>
             <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
             <p><strong>CLABE:</strong> 012 261 01584933343 3</p>
-<p><strong>COMPROBANTE DE PAGO:</strong> Inserta tu nombre completo o de la persona que realizará la recolección como CONCEPTO</p>
+            <p><strong>COMPROBANTE DE PAGO:</strong> Inserta tu nombre completo o de la persona que realizará la recolección como CONCEPTO</p>
             <p>Una vez realizado el pago, haz clic en el botón de abajo para enviar tu pedido por WhatsApp con el comprobante.</p>
             <p id="direccion-confirmacion">📍 Calle Coral 120, colonia Estrella, CDMX</p>
             <div class="botones-modal">
@@ -812,7 +807,7 @@
                 { 
                     id: 5, 
                     nombre: "IRA DIVINA", 
-                    descripcion: "Energía Divina toma un café deconstruido frío. 475ml",
+                    descripcion: "Energía Divina toma un café Cold Brew frío. 475ml",
                     sabor: "Café deconstruido", 
                     precio: 40, 
                     opciones: {
@@ -826,7 +821,7 @@
                 { 
                     id: 6, 
                     nombre: "PACTUM", 
-                    descripcion: "Sin alterarte,toma un respiro y tranquil@ solo es un suave café descafeinado frío 475ml.",
+                    descripcion: "Pacto con the devil, tranquilo solo es un suave café Cold Brew descafeinado. 475ml",
                     sabor: "Café descafeinado", 
                     precio: 40, 
                     opciones: {
@@ -842,7 +837,7 @@
                 { 
                     id: 7, 
                     nombre: "REDENCIÓN", 
-                    descripcion: "Todos la buscamos, y todos la necesitamos.Pregunta por la disponibilidad de tu Té frío del día en sus 475ml",
+                    descripcion: "Todos la buscamos, y todos la necesitamos. 475ml",
                     sabor: "Pregunta por la selección", 
                     precio: 35, 
                     opciones: {
@@ -859,7 +854,7 @@
                     sabor: "Bebida del día", 
                     precio: 35, 
                     opciones: {
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                        "ENDULzante": ["Azúcar", "Sustituto", "Sin endulzante"]
                     },
                     toppings: [
                         { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
@@ -1037,7 +1032,6 @@
         function mostrarModalOpciones() {
             const modal = document.getElementById('modal-opciones');
             const tituloModal = document.getElementById('titulo-modal');
-            const saborDestacado = document.getElementById('sabor-destacado');
             const formulario = document.getElementById('formulario-opciones');
             
             tituloModal.textContent = `Personalizar ${productoSeleccionado.nombre}`;
@@ -1513,7 +1507,7 @@
             modal.classList.remove('modal-oculto');
         }
 
-        // Cerrar modal de combo
+                // Cerrar modal de combo
         function cerrarModalCombo() {
             document.getElementById('modal-combo').classList.add('modal-oculto');
         }
