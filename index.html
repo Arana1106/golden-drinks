@@ -672,7 +672,7 @@
             <p class="total-carrito" id="total-carrito">Total: $0.00 MXN</p>
             <div class="botones-modal">
                 <button class="btn-modal btn-cancelar" id="seguir-pidiendo">SEGUIR PIDIENDO</button>
-                <button class="btn-modal btn-confirmar" id="whatsapp-btn">FINALIZAR PEDido</button>
+                <button class="btn-modal btn-confirmar" id="whatsapp-btn">FINALIZAR PEDIDO</button>
             </div>
         </div>
     </div>
@@ -681,9 +681,24 @@
     <div class="modal modal-oculto" id="modal-ubicacion">
         <div class="modal-contenido">
             <button class="cerrar-modal" id="cerrar-ubicacion">&times;</button>
-            <h2 class="modal-titulo">CONFIRMAR UBICACIÓN</h2>
-            <p>Por favor confirma que esta es tu ubicación para entregar tu pedido:</p>
-            <p><strong>Calle Coral 120, colonia Estrella, CDMX</strong></p>
+            <h2 class="modal-titulo">SELECCIONAR UBICACIÓN</h2>
+            <p>Por favor selecciona tu ubicación para entregar tu pedido:</p>
+            
+            <div class="opcion-group">
+                <h3>DIRECCIÓN DE ENTREGA</h3>
+                <div class="topping-checkbox">
+                    <input type="radio" name="direccion" id="direccion-coral" value="Calle Coral 120, colonia Estrella, CDMX" checked>
+                    <label for="direccion-coral">Calle Coral 120, colonia Estrella, CDMX</label>
+                </div>
+                <div class="topping-checkbox">
+                    <input type="radio" name="direccion" id="direccion-personalizada" value="">
+                    <label for="direccion-personalizada">Otra dirección</label>
+                </div>
+                <div id="campo-direccion-personalizada" style="display: none; margin-top: 10px;">
+                    <input type="text" id="input-direccion-personalizada" placeholder="Escribe tu dirección completa" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+            </div>
+            
             <p>Si necesitas ver la ubicación en Google Maps, haz clic abajo:</p>
             <button class="btn-modal btn-confirmar" id="abrir-maps" style="width:100%; margin:10px 0;">ABRIR GOOGLE MAPS</button>
             <div class="botones-modal">
@@ -715,9 +730,8 @@
             <p><strong>Banco:</strong> BBVA</p>
             <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
             <p><strong>CLABE:</strong> 012 261 01584933343 3</p>
-            <p><strong>COMPROBANTE DE PAGO:</strong> Inserta tu nombre completo o de la persona que realizará la recolección como CONCEPTO</p>
             <p>Una vez realizado el pago, haz clic en el botón de abajo para enviar tu pedido por WhatsApp con el comprobante.</p>
-            <p id="direccion-confirmacion">📍 Calle Coral 120, colonia Estrella, CDMX</p>
+            <p id="direccion-confirmacion">📍 </p>
             <div class="botones-modal">
                 <button class="btn-modal btn-cancelar" id="regresar-direccion">CAMBIAR DIRECCIÓN</button>
                 <button class="btn-modal btn-confirmar" id="confirmar-pedido">ENVIAR POR WHATSAPP</button>
@@ -725,13 +739,14 @@
         </div>
     </div>
 
-    <!-- Modal de verificación de edad -->
+    <!-- Modal de verificación de edad (SOLO PARA ALCOHOL) -->
     <div class="modal modal-oculto" id="modal-verificacion-edad">
         <div class="modal-contenido">
             <button class="cerrar-modal" id="cerrar-verificacion-edad">&times;</button>
             <h2 class="modal-titulo">VERIFICACIÓN DE EDAD</h2>
             <div style="text-align: center; font-size: 1.5rem; margin: 20px 0; color: #ff2a2a;">
                 <p>🔞 SE SOLICITARÁ INE PARA BEBIDAS ALCOHÓLICAS</p>
+                <p style="font-size: 1rem; margin-top: 10px;">(Ron 2.5 oz)</p>
             </div>
             <div class="botones-modal" style="justify-content: center;">
                 <button class="btn-modal btn-confirmar" id="entendido-verificacion">ENTENDIDO</button>
@@ -766,7 +781,7 @@
                     precio: 50, 
                     toppings: [
                         { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                        { nombre: "Elixir Prohibido (Ron 2.5 oz)", precio: 15 }
                     ]
                 },
                 { 
@@ -777,7 +792,7 @@
                     precio: 50, 
                     toppings: [
                         { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                        { nombre: "Elixir Prohibido (Ron 2.5 oz)", precio: 15 }
                     ]
                 },
                 { 
@@ -788,7 +803,7 @@
                     precio: 50, 
                     toppings: [
                         { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                        { nombre: "Elixir Prohibido (Ron 2.5 oz)", precio: 15 }
                     ]
                 },
                 { 
@@ -799,7 +814,7 @@
                     precio: 50, 
                     toppings: [
                         { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
+                        { nombre: "Elixir Prohibido (Ron 2.5 oz)", precio: 15 }
                     ]
                 }
             ],
@@ -807,7 +822,7 @@
                 { 
                     id: 5, 
                     nombre: "IRA DIVINA", 
-                    descripcion: "Energía Divina toma un café Cold Brew frío. 475ml",
+                    descripcion: "Energía Divina toma un café deconstruido frío. 475ml",
                     sabor: "Café deconstruido", 
                     precio: 40, 
                     opciones: {
@@ -821,7 +836,7 @@
                 { 
                     id: 6, 
                     nombre: "PACTUM", 
-                    descripcion: "Pacto con the devil, tranquilo solo es un suave café Cold Brew descafeinado. 475ml",
+                    descripcion: "Pacto con the devil, tranquilo solo es un suave café descafeinado. 475ml",
                     sabor: "Café descafeinado", 
                     precio: 40, 
                     opciones: {
@@ -854,7 +869,7 @@
                     sabor: "Bebida del día", 
                     precio: 35, 
                     opciones: {
-                        "ENDULzante": ["Azúcar", "Sustituto", "Sin endulzante"]
+                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
                     },
                     toppings: [
                         { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
@@ -885,7 +900,7 @@
         let opcionesSeleccionadas = {};
         let comboSeleccionado = null;
         let opcionesComboSeleccionadas = {};
-        let direccionSeleccionada = "";
+        let direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
 
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
@@ -918,7 +933,7 @@
             document.getElementById('seguir-pidiendo').addEventListener('click', cerrarModalCarrito);
             document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
             document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
-            document.getElementById('confirmar-ubicacion').addEventListener('click', mostrarInstruccionesPago);
+            document.getElementById('confirmar-ubicacion').addEventListener('click', confirmarUbicacion);
             document.getElementById('regresar-combo').addEventListener('click', cerrarModalCombo);
             document.getElementById('confirmar-combo').addEventListener('click', confirmarCombo);
             document.getElementById('abrir-maps').addEventListener('click', abrirGoogleMaps);
@@ -926,6 +941,15 @@
             document.getElementById('confirmar-pedido').addEventListener('click', enviarPedidoWhatsApp);
             document.getElementById('entendido-verificacion').addEventListener('click', cerrarVerificacionEdad);
             document.getElementById('aceptar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
+            
+            // Selección de dirección
+            document.getElementById('direccion-personalizada').addEventListener('change', function() {
+                document.getElementById('campo-direccion-personalizada').style.display = this.checked ? 'block' : 'none';
+            });
+            
+            document.getElementById('direccion-coral').addEventListener('change', function() {
+                document.getElementById('campo-direccion-personalizada').style.display = 'none';
+            });
             
             // Cerrar modales al hacer clic fuera
             document.querySelectorAll('.modal').forEach(modal => {
@@ -990,20 +1014,7 @@
         function seleccionarProducto(producto) {
             productoSeleccionado = producto;
             opcionesSeleccionadas = {};
-            
-            // Verificar si el producto tiene alcohol como opción
-            const tieneAlcohol = producto.toppings && 
-                producto.toppings.some(topping => 
-                    topping.nombre.includes("Elixir Prohibido") || 
-                    topping.nombre.includes("Alcohol")
-                );
-            
-            // Mostrar advertencia de verificación de edad si tiene alcohol
-            if (tieneAlcohol) {
-                mostrarVerificacionEdad();
-            } else {
-                mostrarModalOpciones();
-            }
+            mostrarModalOpciones();
         }
 
         // Mostrar modal de verificación de edad
@@ -1134,6 +1145,12 @@
                         if (this.checked) {
                             // Desmarcar "Sin topping"
                             document.getElementById('topping-sin').checked = false;
+                            
+                            // Verificar si es alcohol para mostrar advertencia
+                            if (topping.nombre.includes("Elixir Prohibido")) {
+                                mostrarVerificacionEdad();
+                                return;
+                            }
                             
                             // Agregar topping a las opciones seleccionadas
                             if (!opcionesSeleccionadas.toppings) {
@@ -1467,6 +1484,12 @@
                                 }
                                 
                                 if (this.checked) {
+                                    // Verificar si es alcohol para mostrar advertencia
+                                    if (topping.nombre.includes("Elixir Prohibido")) {
+                                        mostrarVerificacionEdad();
+                                        return;
+                                    }
+                                    
                                     opcionesComboSeleccionadas[producto.nombre].toppings.push(topping.nombre);
                                 } else {
                                     const index = opcionesComboSeleccionadas[producto.nombre].toppings.indexOf(topping.nombre);
@@ -1507,7 +1530,7 @@
             modal.classList.remove('modal-oculto');
         }
 
-                // Cerrar modal de combo
+        // Cerrar modal de combo
         function cerrarModalCombo() {
             document.getElementById('modal-combo').classList.add('modal-oculto');
         }
@@ -1595,9 +1618,24 @@
             
             document.getElementById('modal-carrito').classList.add('modal-oculto');
             document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+        }
+
+        function confirmarUbicacion() {
+            const direccionCoral = document.getElementById('direccion-coral');
+            const direccionPersonalizada = document.getElementById('direccion-personalizada');
             
-            // Establecer dirección por defecto
-            direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
+            if (direccionCoral.checked) {
+                direccionSeleccionada = direccionCoral.value;
+            } else if (direccionPersonalizada.checked) {
+                const direccionInput = document.getElementById('input-direccion-personalizada').value.trim();
+                if (direccionInput === '') {
+                    alert('Por favor ingresa una dirección válida');
+                    return;
+                }
+                direccionSeleccionada = direccionInput;
+            }
+            
+            mostrarInstruccionesPago();
         }
 
         function cerrarModalUbicacion() {
@@ -1615,7 +1653,7 @@
             // Mostrar la dirección seleccionada en el modal de pago
             document.getElementById('direccion-confirmacion').textContent = `📍 ${direccionSeleccionada}`;
             
-            document.getElementById('modal-pago').classList.remove('modal-oculto');
+                        document.getElementById('modal-pago').classList.remove('modal-oculto');
         }
 
         function cerrarModalPago() {
@@ -1624,7 +1662,7 @@
 
         function regresarADireccion() {
             document.getElementById('modal-pago').classList.add('modal-oculto');
-            document.getElementById('modal-ubicacion').style.display = 'flex';
+            document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
         }
 
         function enviarPedidoWhatsApp() {
@@ -1677,6 +1715,7 @@
             mensaje += "Datos bancarios:%0A";
             mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
             mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
+            mensaje += "Para finalizar tu pedido ingresa tu comprobante, no olvies colocar TU NOMBRE como concepto";
             mensaje += "¡Gracias!";
             
             window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
