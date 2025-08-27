@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,14 +29,15 @@
         }
 
         body.tema-angelical {
-            /* Colores angelicales */
-            --color-primario: #4169E1;
-            --color-secundario: #1e90ff;
-            --color-acento: #00bfff;
-            --color-texto: #ffd700;
-            --color-fondo: #0a0a0a;
-            --color-bordes: #1e90ff;
-            --sombra: 0 4px 15px rgba(255, 255, 255, 0.3);
+    /* Colores angelicales */
+    --color-primario: #4169E1;
+    --color-secundario: #1e90ff;
+    --color-acento: #00bfff;
+    --color-texto: #c0c0c0; /* Plateado */
+    --color-fondo: #0a0a0a;
+    --color-bordes: #c0c0c0; /* Plateado para bordes */
+    --sombra: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
             
             /* Fuentes angelicales */
             --fuente-titulo: 'UnifrakturMaguntia', cursive;
@@ -89,7 +91,7 @@
 
         /* Header para tema demoníaco */
         body.tema-demoniaco header {
-            background: linear-gradient(to bottom, #600000, #8b0000);
+            background: #000000;
             border-bottom: 3px solid #ff2a2a;
         }
 
@@ -100,12 +102,12 @@
 
         /* Header para tema angelical */
         body.tema-angelical header {
-            background: linear-gradient(to bottom, #1e3a8a, #4169E1);
-            border-bottom: 3px solid #ffd700;
+            background: #000000;
+            border-bottom: 3px solid #c0c0c0;
         }
 
         body.tema-angelical h1 {
-            color: #ffd700;
+            color: #c0c0c0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
@@ -1537,7 +1539,6 @@
             }
             
             const precioTotal = comboSeleccionado.precioBase + precioAdicional;
-            
             const itemCarrito = {
                 id: `combo-${comboSeleccionado.nombre}`,
                 nombre: comboSeleccionado.nombre,
@@ -1632,16 +1633,16 @@
                 if (item.esCombo) {
                     // Formato para combos
                     mensaje += `- COMBO: ${item.nombre}%0A`;
-                    mensaje += `  ${item.descripcion}%0A`;
+                    mensaje += ` ${item.descripcion}%0A`;
                     
                     // Agregar detalles de variables para combos
                     if (item.detallesVariables && item.detallesVariables.length > 0) {
                         item.detallesVariables.forEach(detalle => {
-                            mensaje += `  · ${detalle}%0A`;
+                            mensaje += ` · ${detalle}%0A`;
                         });
                     }
                     
-                    mensaje += `  x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                    mensaje += ` x${item.cantidad} - $${item.precioTotal}%0A%0A`;
                 } else {
                     // Formato para productos individuales
                     mensaje += `- ${item.nombre}`;
@@ -1649,11 +1650,11 @@
                     // Agregar detalles de variables
                     if (item.detallesVariables && item.detallesVariables.length > 0) {
                         item.detallesVariables.forEach(detalle => {
-                            mensaje += `%0A  · ${detalle}`;
+                            mensaje += `%0A · ${detalle}`;
                         });
                     }
                     
-                    mensaje += `%0A  x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                    mensaje += `%0A x${item.cantidad} - $${item.precioTotal}%0A%0A`;
                 }
             });
             
@@ -1663,6 +1664,7 @@
             mensaje += "Datos bancarios:%0A";
             mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
             mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
+            mensaje += "Para completar el pedido favor de integrar su comprobante de pago al enviar la solicitud de su pedido colocar en CONCEPTO: (TU NOMBRE o EL DE LA PERSONA QUE REALIZARÁ LA RECOLECCIÓN)";
             mensaje += "¡Gracias!";
             
             window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
