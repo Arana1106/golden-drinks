@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,7 +30,7 @@
             --color-primario: #4169E1;
             --color-secundario: #1e90ff;
             --color-acento: #00bfff;
-            --color-texto: #ffd700;
+            --color-texto: #c0c0c0;
             --color-fondo: #0a0a0a;
             --color-bordes: #1e90ff;
             --sombra: 0 4px 15px rgba(255, 255, 255, 0.3);
@@ -683,10 +681,7 @@
             <div class="info-footer">
                 <p class="eslogan">"Donde los pecados tienen sabor y las virtudes tienen precio"</p>
                 <p class="copyright">© 2023 Sinner's - Todos los derechos reservados</p>
-                <p><strong>📍 Ubicación:</strong> Calle Coral 120, colonia Estrella, CDMX</p>
-                <p><strong>📞 WhatsApp:</strong> 56 1164 9344</p>
-                <p><strong>💳 Transferencia:</strong> BBVA - Eric Daniel Gutiérrez Arana</p>
-                <p><strong>🔞 Verificación de edad:</strong> Se solicitará INE para bebidas alcohólicas</p>
+                
             </div>
         </footer>
     </div>
@@ -771,105 +766,104 @@
             </div>
         </div>
     </div>
-
     <script>
         // Datos de productos con toppings corregidos
         const productos = {
             bebidas: [
                 { 
                     id: 1, 
-                    nombre: "LEVIATÁN", 
-                    descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. 475ml",
-                    sabor: "Mora azul", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 2, 
-                    nombre: "INFIERNO", 
-                    descripcion: "Pasión ardiente con sabor a frutos rojos 475ml",
-                    sabor: "Frutos rojos", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 3, 
-                    nombre: "JALURIA", 
-                    descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde. 475ml",
-                    sabor: "Manzana verde", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 4, 
-                    nombre: "ASMODEO", 
-                    descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque. 475ml",
-                    sabor: "Frutos del bosque", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Alcohol 2.5 oz)", precio: 15 }
-                    ]
-                }
-            ],
-            cafes: [
-                { 
-                    id: 5, 
-                    nombre: "IRA DIVINA", 
-                    descripcion: "Energía Divina toma un café deconstruido frío. 475ml",
-                    sabor: "Café deconstruido", 
-                    precio: 40, 
-                    opciones: {
-                        "LECHE": ["Normal", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 6, 
-                    nombre: "PACTUM", 
-                    descripcion: "Pacto con the devil, tranquilo solo es un suave café descafeinado. 475ml",
-                    sabor: "Café descafeinado", 
-                    precio: 40, 
-                    opciones: {
-                        "LECHE": ["Normal", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
-                    ]
-                }
-            ],
-            tes: [
-                { 
-                    id: 7, 
-                    nombre: "REDENCIÓN", 
-                    descripcion: "Todos la buscamos, y todos la necesitamos. 475ml",
-                    sabor: "Pregunta por la selección", 
-                    precio: 35, 
-                    opciones: {
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 8, 
-                    nombre: "REVELACIÓN", 
-                    descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto. Bebida del día. 475ml",
-                    sabor: "Bebida del día", 
+            nombre: "LEVIATÁN", 
+            descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. (475ml)",
+            sabor: "Mora azul", 
+            precio: 50, 
+            toppings: [
+                { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                { nombre: "Elixir Prohibido (Vodka 2.5 oz)", precio: 15 }
+            ]
+        },
+        { 
+            id: 2, 
+            nombre: "INFIERNO", 
+            descripcion: "Pasión ardiente con sabor a frutos rojos. (475ml)",
+            sabor: "Frutos rojos", 
+            precio: 50, 
+            toppings: [
+                { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                { nombre: "Elixir Prohibido (Ron Blanco 2.5 oz)", precio: 15 }
+            ]
+        },
+        { 
+            id: 3, 
+            nombre: "JALURIA", 
+            descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde. (475ml)",
+            sabor: "Manzana verde", 
+            precio: 50, 
+            toppings: [
+                { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                { nombre: "Elixir Prohibido (Ron Blanco 2.5 oz)", precio: 15 }
+            ]
+        },
+        { 
+            id: 4, 
+            nombre: "ASMODEO", 
+            descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque. (475ml)",
+            sabor: "Frutos del bosque", 
+            precio: 50, 
+            toppings: [
+                { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                { nombre: "Elixir Prohibido (Vodka 1.5 oz/Ron Blanco 1 oz)", precio: 15 }
+            ]
+        }
+    ],
+    cafes: [
+        { 
+            id: 5, 
+            nombre: "IRA DIVINA", 
+            descripcion: "Energía Divina toma un Café Cold Brew. (475ml)",
+            sabor: "Café", 
+            precio: 40, 
+            opciones: {
+                "LECHE": ["Normal", "Deslactosada (+$10)"],
+                "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+            },
+            toppings: [
+                { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
+            ]
+        },
+        { 
+            id: 6, 
+            nombre: "PACTUM", 
+            descripcion: "Pacto divino, tranquil@ solo es un suave Cold Brew descafeinado. (475ml)",
+            sabor: "Café descafeinado", 
+            precio: 40, 
+            opciones: {
+                "LECHE": ["Normal", "Deslactosada (+$10)"],
+                "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+            },
+            toppings: [
+                { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
+            ]
+        }
+    ],
+    tes: [
+        { 
+            id: 7, 
+            nombre: "REDENCIÓN", 
+            descripcion: "Todos la buscamos, y todos la necesitamos. Cold Brew Tea. (475ml)",
+            sabor: "Té negro, Té verde, Té de frutos del bosque, Té de Jamaica (pregunta por la disponibilidad de tu selección)", 
+            precio: 35, 
+            opciones: {
+                "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+            },
+            toppings: [
+                { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
+            ]
+        },
+        { 
+            id: 8, 
+            nombre: "REVELACIÓN", 
+            descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto. Bebida refrescante del día. (475ml)",
+            sabor: "Bebida sorpresa del día",  
                     precio: 35, 
                     opciones: {
                         "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
@@ -1663,7 +1657,9 @@
             mensaje += "Datos bancarios:%0A";
             mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
             mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
-            mensaje += "¡Gracias!";
+    mensaje += "Al momento de realizar el pedido se confirmará la preparación del mismo una vez que se adjunte el comprobante de pago"
+    mensaje += "En el CONCEPTO de la transferencia COLOCA TU NOMBRE o el NOMBRE DE LA PERSONA que realizará la recolección"
+    mensaje += "¡Gracias!";
             
             window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
             
