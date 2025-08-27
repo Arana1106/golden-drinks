@@ -882,23 +882,15 @@
             boton.addEventListener('click', () => seleccionarProducto(producto));
             return div;
         }
-        // Seleccionar producto para personalizar
-        function seleccionarProducto(producto) {
-            productoSeleccionado = producto;
-            opcionesSeleccionadas = {};
-            // Verificar si el producto tiene alcohol como opción
-            const tieneAlcohol = producto.toppings && 
-                producto.toppings.some(topping => 
-                    topping.nombre.includes("Elixir Prohibido") || 
-                    topping.nombre.includes("Alcohol")
-                );
-            // Mostrar advertencia de verificación de edad si tiene alcohol
-            if (tieneAlcohol) {
-                mostrarVerificacionEdad();
-            } else {
-                mostrarModalOpciones();
-            }
-        }
+        
+            // Seleccionar producto para personalizar
+function seleccionarProducto(producto) {
+    productoSeleccionado = producto;
+    opcionesSeleccionadas = {};
+    
+    // Mostrar directamente las opciones (sin verificación inicial)
+    mostrarModalOpciones();
+}
         // Mostrar modal de verificación de edad
         function mostrarVerificacionEdad() {
             const modal = document.getElementById('modal-verificacion-edad');
@@ -1011,6 +1003,10 @@
                                 opcionesSeleccionadas.toppings = [];
                             }
                             opcionesSeleccionadas.toppings.push(topping.nombre);
+                            // MOSTRAR VERIFICACIÓN DE EDAD SOLO SI SELECCIONAN ELIXIR PROHIBIDO
+                            if (topping.nombre.includes("Elixir Prohibido")) {
+                             mostrarVerificacionEdad();
+                            }
                         } else {
                             // Remover topping de las opciones seleccionadas
                             if (opcionesSeleccionadas.toppings) {
