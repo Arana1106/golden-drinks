@@ -9,7 +9,6 @@
     <style>
         /* ===== ESTILOS SINNER'S - ÁNGELES vs DEMONIOS ===== */
         :root {
-            /* Colores demoníacos (iniciales) */
             --color-primario: #8b0000;
             --color-secundario: #DC143C;
             --color-acento: #ff4500;
@@ -17,32 +16,25 @@
             --color-fondo: #0a0a0a;
             --color-bordes: #DC143C;
             --sombra: 0 4px 15px rgba(255, 0, 0, 0.3);
-            
-            /* Fuentes demoníacas (iniciales) */
             --fuente-titulo: 'Nosifer', cursive;
             --fuente-subtitulo: 'Eater', cursive;
             --fuente-productos: 'Eater', cursive;
             --fuente-descripcion: 'MedievalSharp', cursive;
         }
-
+        
         body.tema-angelical {
-            /* Colores angelicales */
             --color-primario: #4169E1;
             --color-secundario: #1e90ff;
             --color-acento: #00bfff;
             --color-texto: #c0c0c0;
-            --color-fondo: #0a0a0a;
             --color-bordes: #1e90ff;
             --sombra: 0 4px 15px rgba(255, 255, 255, 0.3);
-            
-            /* Fuentes angelicales */
             --fuente-titulo: 'UnifrakturMaguntia', cursive;
             --fuente-subtitulo: 'Cinzel', serif;
             --fuente-productos: 'IM Fell English SC', serif;
-            --fuente-descripcion: 'MedievalSharp', cursive;
         }
 
-        {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -60,7 +52,6 @@
             transition: all 0.5s ease;
         }
 
-        /* Fondos diferentes para cada tema */
         body.tema-demoniaco {
             background: linear-gradient(to bottom, #0a0a0a, #600000, #8b0000);
         }
@@ -75,7 +66,6 @@
             padding: 20px;
         }
 
-        /* HEADER */
         header {
             text-align: center;
             padding: 20px 0;
@@ -85,26 +75,14 @@
             cursor: pointer;
         }
 
-        /* Header para tema demoníaco */
         body.tema-demoniaco header {
             background: #000000;
             border-bottom: 3px solid #ff2a2a;
         }
 
-        body.tema-demoniaco h1 {
-            color: #ff2a2a;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Header para tema angelical */
         body.tema-angelical header {
             background: #000000;
             border-bottom: 3px solid #ffd700;
-        }
-
-        body.tema-angelical h1 {
-            color: #c0c0c0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         h1 {
@@ -114,7 +92,16 @@
             letter-spacing: 3px;
         }
 
-        /* BOTÓN CARRITO */
+        body.tema-demoniaco h1 {
+            color: #ff2a2a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        body.tema-angelical h1 {
+            color: #c0c0c0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
         .carrito-btn {
             position: fixed;
             bottom: 20px;
@@ -156,7 +143,6 @@
             font-weight: bold;
         }
 
-        /* SECCIONES */
         section {
             margin-bottom: 40px;
             padding: 20px;
@@ -179,11 +165,8 @@
 
         body.tema-angelical h2 {
             font-family: 'Cinzel', serif;
-            color: var(--color-texto);
-            border-bottom: 2px solid var(--color-bordes);
         }
 
-        /* PRODUCTOS */
         .productos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -213,7 +196,6 @@
             pointer-events: none;
         }
 
-        /* Colores específicos para cada producto */
         .producto-card[data-producto="LEVIATÁN"]::before {
             background: linear-gradient(45deg, #0000ff, #1e90ff);
         }
@@ -257,12 +239,10 @@
             margin-bottom: 10px;
         }
 
-        /* Colores para nombres de productos en tema demoníaco */
         body.tema-demoniaco .producto-card h3 {
             color: #ff2a2a;
         }
 
-        /* Colores para nombres de productos en tema angelical */
         body.tema-angelical .producto-card h3 {
             color: #1e90ff;
         }
@@ -297,7 +277,6 @@
             transform: scale(1.05);
         }
 
-        /* COMBOS */
         .combos-container {
             display: flex;
             justify-content: center;
@@ -335,7 +314,6 @@
             font-family: 'MedievalSharp', cursive;
         }
 
-        /* FOOTER */
         footer {
             margin-top: 40px;
             padding: 20px;
@@ -359,11 +337,6 @@
             color: #ccc;
         }
 
-        .info-footer p {
-            margin-bottom: 10px;
-            font-family: 'MedievalSharp', cursive;
-        }
-
         body.tema-angelical footer {
             border-color: #1e90ff;
             background: rgba(65, 105, 225, 0.2);
@@ -374,7 +347,6 @@
             background: rgba(139, 0, 0, 0.3);
         }
 
-        /* MODALES */
         .modal {
             position: fixed;
             top: 0;
@@ -491,7 +463,6 @@
             transform: scale(1.05);
         }
 
-        /* CARRITO */
         .item-carrito {
             display: flex;
             justify-content: space-between;
@@ -550,34 +521,6 @@
             border-top: 2px solid var(--color-texto);
         }
 
-        /* ALERTA */
-        .alerta-minimo {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-secundario);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 1100;
-            box-shadow: var(--sombra);
-            max-width: 90%;
-}
-
-        .cerrar-alerta {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-left: 15px;
-        }
-
-        /* EFECTOS */
         .pulse-effect {
             animation: pulse 0.5s ease-in-out;
         }
@@ -592,26 +535,21 @@
             display: none;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
-            
             .productos-grid {
                 grid-template-columns: 1fr;
             }
-            
             .combos-container {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .combo-card {
                 width: 100%;
                 max-width: 280px;
             }
-            
             .modal-contenido {
                 padding: 20px;
             }
@@ -623,28 +561,22 @@
         <header id="cambiador-tema">
             <h1>SINNER'S</h1>
         </header>
-        <!-- Bebidas del Pecado -->
+        
         <section>
             <h2>BEBIDAS DEL PECADO</h2>
-            <div class="productos-grid" id="bebidas-container">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
+            <div class="productos-grid" id="bebidas-container"></div>
         </section>
-        <!-- Cafés Malditos -->
+
         <section>
             <h2>CAFÉS MALDITOS</h2>
-            <div class="productos-grid" id="cafes-container">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
+            <div class="productos-grid" id="cafes-container"></div>
         </section>
-        <!-- Tés Oscuros -->
+
         <section>
             <h2>TÉS OSCUROS</h2>
-            <div class="productos-grid" id="tes-container">
-                <!-- Los productos se cargarán con JavaScript -->
-            </div>
+            <div class="productos-grid" id="tes-container"></div>
         </section>
-        <!-- Combos -->
+
         <section>
             <h2>PECADOS RECOMENDADOS</h2>
             <div class="combos-container">
@@ -662,7 +594,7 @@
                 </div>
             </div>
         </section>
-        <!-- Footer -->
+
         <footer>
             <div class="info-footer">
                 <p class="eslogan">"Donde los pecados tienen sabor y las virtudes tienen precio"</p>
@@ -670,11 +602,12 @@
             </div>
         </footer>
     </div>
-    <!-- Botón de carrito flotante -->
+
     <button class="carrito-btn" id="carrito-btn">
         <i class="fas fa-shopping-cart"></i>
         <span id="contador">0</span>
     </button>
+
     <!-- Modal de opciones de producto -->
     <div class="modal modal-oculto" id="modal-opciones">
         <div class="modal-contenido">
@@ -688,6 +621,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal de carrito -->
     <div class="modal modal-oculto" id="modal-carrito">
         <div class="modal-contenido">
@@ -701,7 +635,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal de ubicación MODIFICADO CON CHECKBOX -->
+
+    <!-- Modal de ubicación -->
     <div class="modal modal-oculto" id="modal-ubicacion">
         <div class="modal-contenido">
             <button class="cerrar-modal" id="cerrar-ubicacion">&times;</button>
@@ -725,6 +660,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal de combo -->
     <div class="modal modal-oculto" id="modal-combo">
         <div class="modal-contenido">
@@ -737,6 +673,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal de pago -->
     <div class="modal modal-oculto" id="modal-pago">
         <div class="modal-contenido">
@@ -745,7 +682,7 @@
             <p>Para completar tu pedido, realiza una transferencia a:</p>
             <p><strong>Banco:</strong> BBVA</p>
             <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
-            <p><strong>CLABE:</strong> 012 261 01584933343 3</p>
+            <p><strong>CLABE:</strong> 012 261 01584933343 3</p>                                             <p><strong> PAGO: </strong> En el CONCEPTO de la transferencia COLOCA TU NOMBRE o el NOMBRE DE LA PERSONA que realizará la recolección<p>   
             <p>Una vez realizado el pago, haz clic en el botón de abajo para enviar tu pedido por WhatsApp con el comprobante.</p>
             <p id="direccion-confirmacion">📍 Calle Coral 120, colonia Estrella, CDMX</p>
             <div class="botones-modal">
@@ -754,7 +691,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal de verificación de edad MODIFICADO (SOLO BOTÓN ACEPTAR) -->
+
+    <!-- Modal de verificación de edad -->
     <div class="modal modal-oculto" id="modal-verificacion-edad">
         <div class="modal-contenido">
             <button class="cerrar-modal" id="cerrar-verificacion-edad">&times;</button>
@@ -767,6 +705,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal de pedido mínimo -->
     <div class="modal modal-oculto" id="modal-pedido-minimo">
         <div class="modal-contenido">
@@ -781,268 +720,268 @@
             </div>
         </div>
     </div>
-    <script>
-        // Datos de productos con toppings corregidos
-        const productos = {
-            bebidas: [
-                { 
-                    id: 1, 
-                    nombre: "LEVIATÁN", 
-                    descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. (475ml)",
-                    sabor: "Mora azul", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Vodka 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 2, 
-                    nombre: "INFIERNO", 
-                    descripcion: "Pasión ardiente con sabor a frutos rojos. (475ml)",
-                    sabor: "Frutos rojos", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Ron Blanco 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 3, 
-                    nombre: "JALURIA", 
-                    descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde. (475ml)",
-                    sabor: "Manzana verde", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Ron Blanco 2.5 oz)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 4, 
-                    nombre: "ASMODEO", 
-                    descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque. (475ml)",
-                    sabor: "Frutos del bosque", 
-                    precio: 50, 
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
-                        { nombre: "Elixir Prohibido (Vodka 1.5 oz/Ron Blanco 1 oz)", precio: 15 }
-                    ]
-                }
-            ],
-            cafes: [
-                { 
-                    id: 5, 
-                    nombre: "IRA DIVINA", 
-                    descripcion: "Energía Divina toma un Café Cold Brew. (475ml)",
-                    sabor: "Café", 
-                    precio: 40, 
-                    opciones: {
-                        "LECHE": ["Normal", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 6, 
-                    nombre: "PACTUM", 
-                    descripcion: "Pacto divino, tranquil@ solo es un suave Cold Brew descafeinado. (475ml)",
-                    sabor: "Café descafeinado", 
-                    precio: 40, 
-                    opciones: {
-                        "LECHE": ["Normal", "Deslactosada (+$10)"],
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
-                    ]
-                }
-            ],
-            tes: [
-                { 
-                    id: 7, 
-                    nombre: "REDENCIÓN", 
-                    descripcion: "Todos la buscamos, y todos la necesitamos. Cold Brew Tea. (475ml)",
-                    sabor: "Té negro, Té verde, Té de frutos del bosque, Té de Jamaica (pregunta por la disponibilidad de tu selección)", 
-                    precio: 35, 
-                    opciones: {
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
-                    ]
-                },
-                { 
-                    id: 8, 
-                    nombre: "REVELACIÓN", 
-                    descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto. Bebida refrescante del día. (475ml)",
-                    sabor: "Bebida sorpresa del día", 
-                    precio: 35, 
-                    opciones: {
-                        "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
-                    },
-                    toppings: [
-                        { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
-                    ]
-                }
-            ]
-        };
-
-        // Datos de combos
-        const combos = {
-            demonios: {
-                nombre: "TRINIDAD DEL INFIERNO",
-                productos: ["INFIERNO", "ASMODEO", "REVELACIÓN"],
-                precioBase: 120,
-                descripcion: "INFERNO + ASMODEO + REVELACIÓN"
+<script>
+    // Datos de productos con toppings corregidos
+    const productos = {
+        bebidas: [
+            { 
+                id: 1, 
+                nombre: "LEVIATÁN", 
+                descripcion: "Sumérgete en las profundidades de la tentación azul oscura. Sabor a mora azul que te arrastrará al abismo. (475ml)",
+                sabor: "Mora azul", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Vodka 2.5 oz)", precio: 15 }
+                ]
             },
-            angeles: {
-                nombre: "SANTÍSIMA TRINIDAD",
-                productos: ["LEVIATÁN", "JALURIA", "REDENCIÓN"],
-                precioBase: 120,
-                descripcion: "LEVIATÁN + JALURIA + REDENCIÓN"
+            { 
+                id: 2, 
+                nombre: "INFIERNO", 
+                descripcion: "Pasión ardiente con sabor a frutos rojos. (475ml)",
+                sabor: "Frutos rojos", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Ron Blanco 2.5 oz)", precio: 15 }
+                ]
+            },
+            { 
+                id: 3, 
+                nombre: "JALURIA", 
+                descripcion: "Entre más lo resistes más deseas probar su sabor a manzana verde. (475ml)",
+                sabor: "Manzana verde", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Ron Blanco 2.5 oz)", precio: 15 }
+                ]
+            },
+            { 
+                id: 4, 
+                nombre: "ASMODEO", 
+                descripcion: "Te hará sentir la lujuria en un sorbo por su sabor a frutos del bosque. (475ml)",
+                sabor: "Frutos del bosque", 
+                precio: 50, 
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 },
+                    { nombre: "Elixir Prohibido (Vodka 1.5 oz/Ron Blanco 1 oz)", precio: 15 }
+                ]
             }
-        };
-
-        // Variables globales
-        let carrito = [];
-        let productoSeleccionado = null;
-        let opcionesSeleccionadas = {};
-        let comboSeleccionado = null;
-        let opcionesComboSeleccionadas = {};
-        let direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
-
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            cargarProductos();
-            cargarCarritoDesdeLocalStorage();
-            actualizarCarrito();
-            configurarEventos();
-        });
-
-        // Configurar eventos
-        function configurarEventos() {
-            // Cambio de tema al hacer clic en el título
-            document.getElementById('cambiador-tema').addEventListener('click', cambiarTema);
-            
-            // Botón carrito
-            document.getElementById('carrito-btn').addEventListener('click', abrirModalCarrito);
-            
-            // Cerrar modales
-            document.getElementById('cerrar-opciones').addEventListener('click', cerrarModalOpciones);
-            document.getElementById('cerrar-carrito').addEventListener('click', cerrarModalCarrito);
-            document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
-            document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
-            document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
-            document.getElementById('cerrar-verificacion-edad').addEventListener('click', cerrarVerificacionEdad);
-            document.getElementById('cerrar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
-            
-            // Botones de modales
-            document.getElementById('regresar-modal').addEventListener('click', cerrarModalOpciones);
-            document.getElementById('confirmar-opciones').addEventListener('click', confirmarSeleccion);
-            document.getElementById('seguir-pidiendo').addEventListener('click', cerrarModalCarrito);
-            document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
-            document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
-            document.getElementById('confirmar-ubicacion').addEventListener('click', mostrarInstruccionesPago);
-            document.getElementById('regresar-combo').addEventListener('click', cerrarModalCombo);
-            document.getElementById('confirmar-combo').addEventListener('click', confirmarCombo);
-            document.getElementById('abrir-maps').addEventListener('click', abrirGoogleMaps);
-            document.getElementById('regresar-direccion').addEventListener('click', regresarADireccion);
-            document.getElementById('confirmar-pedido').addEventListener('click', enviarPedidoWhatsApp);
-            document.getElementById('aceptar-verificacion').addEventListener('click', cerrarVerificacionEdad);
-            document.getElementById('aceptar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
-
-            // Evento para selección de ubicación
-            document.querySelectorAll('input[name="ubicacion"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (this.checked) {
-                        direccionSeleccionada = this.value;
-                    }
-                });
-            });
-            
-            // Cerrar modales al hacer clic fuera
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.add('modal-oculto');
-                    }
-                });
-            });
-        }
-
-        // Cambiar entre temas
-        function cambiarTema() {
-            const body = document.body;
-            
-            if (body.classList.contains('tema-demoniaco')) {
-                body.classList.remove('tema-demoniaco');
-                body.classList.add('tema-angelical');
-                document.getElementById('combo-demoniaco').style.display = 'none';
-                document.getElementById('combo-angelical').style.display = 'block';
-            } else {
-                body.classList.remove('tema-angelical');
-                body.classList.add('tema-demoniaco');
-                document.getElementById('combo-demoniaco').style.display = 'block';
-                document.getElementById('combo-angelical').style.display = 'none';
+        ],
+        cafes: [
+            { 
+                id: 5, 
+                nombre: "IRA DIVINA", 
+                descripcion: "Energía Divina toma un Café Cold Brew. (475ml)",
+                sabor: "Café", 
+                precio: 40, 
+                opciones: {
+                    "LECHE": ["Normal (+$10)", "Deslactosada (+$10)", "Sin leche"],
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
+                ]
+            },
+            { 
+                id: 6, 
+                nombre: "PACTUM", 
+                descripcion: "Pacto divino, tranquil@ solo es un suave Cold Brew descafeinado. (475ml)",
+                sabor: "Café descafeinado", 
+                precio: 40, 
+                opciones: {
+                    "LECHE": ["Normal (+$10)", "Deslactosada (+$10)", "Sin leche"],
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
+                ]
             }
-        }
+        ],
+        tes: [
+            { 
+                id: 7, 
+                nombre: "REDENCIÓN", 
+                descripcion: "Todos la buscamos, y todos la necesitamos. Cold Brew Tea. (475ml)",
+                sabor: "Té negro, Té verde, Té de frutos del bosque, Té de Jamaica (pregunta por la disponibilidad de tu selección)", 
+                precio: 35, 
+                opciones: {
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
+                ]
+            },
+            { 
+                id: 8, 
+                nombre: "REVELACIÓN", 
+                descripcion: "El misterio se devela hoy. ¿Será tu salvación o tu perdición? Atrévete a conocer el veredicto. Bebida refrescante del día. (475ml)",
+                sabor: "Bebida sorpresa del día", 
+                precio: 35, 
+                opciones: {
+                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                },
+                toppings: [
+                    { nombre: "Lágrimas de Demonio (Bubble Jelly)", precio: 15 }
+                ]
+            }
+        ]
+    };
 
-        // Cargar productos en la interfaz
-        function cargarProductos() {
-            for (const categoria in productos) {
-                const contenedor = document.getElementById(`${categoria}-container`);
-                if (contenedor) {
-                    productos[categoria].forEach(producto => {
-                        const elementoProducto = crearElementoProducto(producto);
-                        contenedor.appendChild(elementoProducto);
-                    });
+    // Datos de combos
+    const combos = {
+        demonios: {
+            nombre: "TRINIDAD DEL INFIERNO",
+            productos: ["INFIERNO", "ASMODEO", "REVELACIÓN"],
+            precioBase: 120,
+            descripcion: "INFERNO + ASMODEO + REVELACIÓN"
+        },
+        angeles: {
+            nombre: "SANTÍSIMA TRINIDAD",
+            productos: ["LEVIATÁN", "JALURIA", "REDENCIÓN"],
+            precioBase: 120,
+            descripcion: "LEVIATÁN + JALURIA + REDENCIÓN"
+        }
+    };
+
+    // Variables globales
+    let carrito = [];
+    let productoSeleccionado = null;
+    let opcionesSeleccionadas = {};
+    let comboSeleccionado = null;
+    let opcionesComboSeleccionadas = {};
+    let direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', function() {
+    cargarProductos();
+        cargarCarritoDesdeLocalStorage();
+        actualizarCarrito();
+        configurarEventos();
+    });
+
+    // Configurar eventos
+    function configurarEventos() {
+        // Cambio de tema al hacer clic en el título
+        document.getElementById('cambiador-tema').addEventListener('click', cambiarTema);
+        
+        // Botón carrito
+        document.getElementById('carrito-btn').addEventListener('click', abrirModalCarrito);
+        
+        // Cerrar modales
+        document.getElementById('cerrar-opciones').addEventListener('click', cerrarModalOpciones);
+        document.getElementById('cerrar-carrito').addEventListener('click', cerrarModalCarrito);
+        document.getElementById('cerrar-ubicacion').addEventListener('click', cerrarModalUbicacion);
+        document.getElementById('cerrar-combo').addEventListener('click', cerrarModalCombo);
+        document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
+        document.getElementById('cerrar-verificacion-edad').addEventListener('click', cerrarVerificacionEdad);
+        document.getElementById('cerrar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
+        
+        // Botones de modales
+        document.getElementById('regresar-modal').addEventListener('click', cerrarModalOpciones);
+        document.getElementById('confirmar-opciones').addEventListener('click', confirmarSeleccion);
+        document.getElementById('seguir-pidiendo').addEventListener('click', cerrarModalCarrito);
+        document.getElementById('whatsapp-btn').addEventListener('click', mostrarSeleccionUbicacion);
+        document.getElementById('regresar-carrito').addEventListener('click', cerrarModalUbicacion);
+        document.getElementById('confirmar-ubicacion').addEventListener('click', mostrarInstruccionesPago);
+        document.getElementById('regresar-combo').addEventListener('click', cerrarModalCombo);
+        document.getElementById('confirmar-combo').addEventListener('click', confirmarCombo);
+        document.getElementById('abrir-maps').addEventListener('click', abrirGoogleMaps);
+        document.getElementById('regresar-direccion').addEventListener('click', regresarADireccion);
+        document.getElementById('confirmar-pedido').addEventListener('click', enviarPedidoWhatsApp);
+        document.getElementById('aceptar-verificacion').addEventListener('click', cerrarVerificacionEdad);
+        document.getElementById('aceptar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
+
+        // Evento para selección de ubicación
+        document.querySelectorAll('input[name="ubicacion"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    direccionSeleccionada = this.value;
                 }
+            });
+        });
+        
+        // Cerrar modales al hacer clic fuera
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('modal-oculto');
+                }
+            });
+        });
+    }
+
+    // Cambiar entre temas
+    function cambiarTema() {
+        const body = document.body;
+        
+        if (body.classList.contains('tema-demoniaco')) {
+            body.classList.remove('tema-demoniaco');
+            body.classList.add('tema-angelical');
+            document.getElementById('combo-demoniaco').style.display = 'none';
+            document.getElementById('combo-angelical').style.display = 'block';
+        } else {
+            body.classList.remove('tema-angelical');
+            body.classList.add('tema-demoniaco');
+            document.getElementById('combo-demoniaco').style.display = 'block';
+            document.getElementById('combo-angelical').style.display = 'none';
+        }
+    }
+
+    // Cargar productos en la interfaz
+    function cargarProductos() {
+        for (const categoria in productos) {
+            const contenedor = document.getElementById(`${categoria}-container`);
+            if (contenedor) {
+                productos[categoria].forEach(producto => {
+                    const elementoProducto = crearElementoProducto(producto);
+                    contenedor.appendChild(elementoProducto);
+                });
             }
         }
+    }
 
-        // Crear elemento de producto
-        function crearElementoProducto(producto) {
-            const div = document.createElement('div');
-            div.className = 'producto-card';
-            div.setAttribute('data-producto', producto.nombre);
-            div.innerHTML = `
-                <h3 data-producto="${producto.nombre}">${producto.nombre}</h3>
-                <p>${producto.descripcion}</p>
-                <p class="precio">$${producto.precio}.00 MXN</p>
-                <button class="btn-seleccionar">SELECCIONAR PECADO</button>
-            `;
-            
-            // Asignar evento al botón
-            const boton = div.querySelector('.btn-seleccionar');
-            boton.addEventListener('click', () => seleccionarProducto(producto));
-            
-            return div;
-        }
+    // Crear elemento de producto
+    function crearElementoProducto(producto) {
+        const div = document.createElement('div');
+        div.className = 'producto-card';
+        div.setAttribute('data-producto', producto.nombre);
+        div.innerHTML = `
+            <h3 data-producto="${producto.nombre}">${producto.nombre}</h3>
+            <p>${producto.descripcion}</p>
+            <p class="precio">$${producto.precio}.00 MXN</p>
+            <button class="btn-seleccionar">SELECCIONAR PECADO</button>
+        `;
+        
+        // Asignar evento al botón
+        const boton = div.querySelector('.btn-seleccionar');
+        boton.addEventListener('click', () => seleccionarProducto(producto));
+        
+        return div;
+    }
 
-        // Seleccionar producto para personalizar
-        function seleccionarProducto(producto) {
-            productoSeleccionado = producto;
-            opcionesSeleccionadas = {};
-            
-            // Mostrar directamente las opciones (sin verificación inicial)
-            mostrarModalOpciones();
-        }
+    // Seleccionar producto para personalizar
+    function seleccionarProducto(producto) {
+        productoSeleccionado = producto;
+        opcionesSeleccionadas = {};
+        
+        // Mostrar directamente las opciones (sin verificación inicial)
+        mostrarModalOpciones();
+    }
 
-        // Mostrar modal de verificación de edad
-        function mostrarVerificacionEdad() {
-            const modal = document.getElementById('modal-verificacion-edad');
-            modal.classList.remove('modal-oculto');
-        }
+    // Mostrar modal de verificación de edad
+    function mostrarVerificacionEdad() {
+        const modal = document.getElementById('modal-verificacion-edad');
+        modal.classList.remove('modal-oculto');
+    }
 
-        // Cerrar modal de verificación de edad
-        function cerrarVerificacionEdad() {
-            document.getElementById('modal-verificacion-edad').classList.add('modal-oculto');
-        }
+    // Cerrar modal de verificación de edad
+    function cerrarVerificacionEdad() {
+        document.getElementById('modal-verificacion-edad').classList.add('modal-oculto');
+    }
 
-        // Mostrar modal de pedido mínimo
+            // Mostrar modal de pedido mínimo
         function mostrarPedidoMinimo() {
             document.getElementById('modal-pedido-minimo').classList.remove('modal-oculto');
         }
@@ -1233,10 +1172,12 @@
             // Procesar opciones de cafés y tés
             for (const [opcion, valor] of Object.entries(opcionesSeleccionadas)) {
                 if (opcion !== 'toppings') {
-                    if (valor.includes('Deslactosada')) precioAdicional += 10;
+                    if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)')) {
+                        precioAdicional += 10;
+                    }
                     
                     // Guardar detalles para mostrar en carrito
-                    if (valor.includes('Deslactosada')) {
+                    if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)') || valor.includes('Sin leche')) {
                         detallesVariables.push(`${opcion}: ${valor}`);
                     }
                 }
@@ -1337,7 +1278,7 @@
                     
                     itemElement.innerHTML = `
                         <div class="item-info">
-                            <h4>${item.nombre</h4>
+                            <h4>${item.nombre}</h4>
                             ${detallesHTML}
                             <p class="precio-item">$${item.precioTotal}.00 MXN</p>
                         </div>
@@ -1560,10 +1501,12 @@
                 // Procesar opciones regulares
                 for (const [opcion, valor] of Object.entries(opciones)) {
                     if (opcion !== 'toppings') {
-                        if (valor.includes('Deslactosada')) precioAdicional += 10;
+                        if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)')) {
+                            precioAdicional += 10;
+                        }
                         
                         // Guardar detalles para mostrar en carrito
-                        if (valor.includes('Deslactosada')) {
+                        if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)') || valor.includes('Sin leche')) {
                             detallesCombo.push(`${nombreProducto}: ${valor}`);
                         }
                     }
@@ -1658,71 +1601,71 @@
         }
 
         function regresarADireccion() {
-    document.getElementById('modal-pago').classList.add('modal-oculto');
-    document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
-}
-
-function enviarPedidoWhatsApp() {
-    if (carrito.length === 0) {
-        mostrarPedidoMinimo();
-        return;
-    }
-    
-    // Verificar pedido mínimo de 3 productos
-    const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
-    if (totalProductos < 3) {
-        mostrarPedidoMinimo();
-        return;
-    }
-    
-    let mensaje = "¡Hola! Quiero realizar el siguiente pedido:%0A%0A";
-    
-    carrito.forEach(item => {
-        if (item.esCombo) {
-            // Formato para combos
-            mensaje += `- COMBO: ${item.nombre}%0A`;
-            mensaje += ` ${item.descripcion}%0A`;
-            
-            // Agregar detalles de variables para combos
-            if (item.detallesVariables && item.detallesVariables.length > 0) {
-                item.detallesVariables.forEach(detalle => {
-                    mensaje += ` • ${detalle}%0A`;
-                });
-            }
-            
-            mensaje += ` x${item.cantidad} - $${item.precioTotal}%0A%0A`;
-        } else {
-            // Formato para productos individuales
-            mensaje += `- ${item.nombre}`;
-            
-            // Agregar detalles de variables
-            if (item.detallesVariables && item.detallesVariables.length > 0) {
-                item.detallesVariables.forEach(detalle => {
-                    mensaje += `%0A • ${detalle}`;
-                });
-            }
-            
-            mensaje += `%0A x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+            document.getElementById('modal-pago').classList.add('modal-oculto');
+            document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
         }
-    });
-    
-    const total = carrito.reduce((sum, item) => sum + item.precioTotal, 0);
-    mensaje += `%0ATotal: $${total} MXN%0A%0A`;
-    mensaje += `Dirección: ${direccionSeleccionada}%0A%0A`;
-    mensaje += "Datos bancarios:%0A";
-    mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
-    mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
-    mensaje += "Al momento de realizar el pedido se confirmará la preparación del mismo una vez que se adjunte el comprobante de pago"
-    mensaje += "¡Gracias!";
-    
-    window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
-    
-    // Limpiar carrito después de enviar
-    carrito = [];
-    guardarCarritoEnLocalStorage();
-    actualizarCarrito();
-    cerrarModalPago();
-}
-</script>
+
+        function enviarPedidoWhatsApp() {
+            if (carrito.length === 0) {
+                mostrarPedidoMinimo();
+                return;
+            }
+            
+            // Verificar pedido mínimo de 3 productos
+            const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
+            if (totalProductos < 3) {
+                mostrarPedidoMinimo();
+                return;
+            }
+            
+            let mensaje = "¡Hola! Quiero realizar el siguiente pedido:%0A%0A";
+            
+            carrito.forEach(item => {
+                if (item.esCombo) {
+                    // Formato para combos
+                    mensaje += `- COMBO: ${item.nombre}%0A`;
+                    mensaje += ` ${item.descripcion}%0A`;
+                    
+                    // Agregar detalles de variables para combos
+                    if (item.detallesVariables && item.detallesVariables.length > 0) {
+                        item.detallesVariables.forEach(detalle => {
+                            mensaje += ` • ${detalle}%0A`;
+                        });
+                    }
+                    
+                    mensaje += ` x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                } else {
+                    // Formato para productos individuales
+                    mensaje += `- ${item.nombre}`;
+                    
+                    // Agregar detalles de variables
+                    if (item.detallesVariables && item.detallesVariables.length > 0) {
+                        item.detallesVariables.forEach(detalle => {
+                            mensaje += `%0A • ${detalle}`;
+                        });
+                    }
+                    
+                    mensaje += `%0A x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                }
+            });
+            
+            const total = carrito.reduce((sum, item) => sum + item.precioTotal, 0);
+            mensaje += `%0ATotal: $${total} MXN%0A%0A`;
+            mensaje += `Dirección: ${direccionSeleccionada}%0A%0A`;
+            mensaje += "Datos bancarios:%0A";
+            mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
+            mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
+            mensaje += "Al momento de realizar el pedido se confirmará la preparación del mismo una vez que se adjunte el comprobante de pago";
+            mensaje += "¡Gracias!";
+            
+            window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
+            
+            // Limpiar carrito después de enviar
+            carrito = [];
+            guardarCarritoEnLocalStorage();
+            actualizarCarrito();
+            cerrarModalPago();
+        }
+    </script>
 </body>
 </html>
