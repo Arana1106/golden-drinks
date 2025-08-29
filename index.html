@@ -607,119 +607,148 @@
         <i class="fas fa-shopping-cart"></i>
         <span id="contador">0</span>
     </button>
-
-    <!-- Modal de opciones de producto -->
-    <div class="modal modal-oculto" id="modal-opciones">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-opciones">&times;</button>
-            <h2 class="modal-titulo" id="titulo-modal">Personalizar Producto</h2>
-            <p><strong>Sabor:</strong> <span id="sabor-destacado"></span></p>
-            <div id="formulario-opciones"></div>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-modal">CANCELAR</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-opciones">CONFIRMAR</button>
-            </div>
+<!-- Modal de opciones de producto -->
+<div class="modal modal-oculto" id="modal-opciones">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-opciones">&times;</button>
+        <h2 class="modal-titulo" id="titulo-modal">Personalizar Producto</h2>
+        <p><strong>Sabor:</strong> <span id="sabor-destacado"></span></p>
+        <div id="formulario-opciones"></div>
+        <div class="botones-modal">
+            <button class="btn-modal btn-cancelar" id="regresar-modal">CANCELAR</button>
+            <button class="btn-modal btn-confirmar" id="confirmar-opciones">CONFIRMAR</button>
         </div>
     </div>
+</div>
 
-    <!-- Modal de carrito -->
-    <div class="modal modal-oculto" id="modal-carrito">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-carrito">&times;</button>
-            <h2 class="modal-titulo">TU CARRITO DE PECADOS</h2>
-            <div id="lista-carrito"></div>
-            <p class="total-carrito" id="total-carrito">Total: $0.00 MXN</p>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="seguir-pidiendo">SEGUIR PIDIENDO</button>
-                <button class="btn-modal btn-confirmar" id="whatsapp-btn">FINALIZAR PEDIDO</button>
-            </div>
+<!-- Modal de carrito -->
+<div class="modal modal-oculto" id="modal-carrito">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-carrito">&times;</button>
+        <h2 class="modal-titulo">TU CARRITO DE PECADOS</h2>
+        <div id="lista-carrito"></div>
+        <p class="total-carrito" id="total-carrito">Total: $0.00 MXN</p>
+        <div class="botones-modal">
+            <button class="btn-modal btn-cancelar" id="seguir-pidiendo">SEGUIR PIDIENDO</button>
+            <button class="btn-modal btn-confirmar" id="whatsapp-btn">FINALIZAR PEDIDO</button>
         </div>
     </div>
+</div>
 
-    <!-- Modal de ubicación -->
-    <div class="modal modal-oculto" id="modal-ubicacion">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-ubicacion">&times;</button>
-            <h2 class="modal-titulo">SELECCIONAR UBICACIÓN</h2>
-            <p>Selecciona tu ubicación de entrega:</p>
-            <div class="opcion-group">
-                <div class="topping-checkbox">
-                    <input type="radio" name="ubicacion" value="Calle Coral 120, colonia Estrella, CDMX" id="ubicacion-principal" checked>
-                    <label for="ubicacion-principal">
-                        <div class="topping-info">
-                            <span class="topping-name">Calle Coral 120, colonia Estrella, CDMX</span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <p>Si necesitas ver la ubicación en Google Maps, haz clic abajo:</p>
-            <button class="btn-modal btn-confirmar" id="abrir-maps" style="width:100%; margin:10px 0;">ABRIR GOOGLE MAPS</button>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-carrito">REGRESAR</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-ubicacion">CONFIRMAR UBICACIÓN</button>
+<!-- Modal de ubicación -->
+<div class="modal modal-oculto" id="modal-ubicacion">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-ubicacion">&times;</button>
+        <h2 class="modal-titulo">SELECCIONAR UBICACIÓN</h2>
+        <p>Selecciona tu ubicación de entrega:</p>
+        <div class="opcion-group">
+            <div class="topping-checkbox">
+                <input type="radio" name="ubicacion" value="Calle Coral 120, colonia Estrella, CDMX" id="ubicacion-principal" checked>
+                <label for="ubicacion-principal">
+                    <div class="topping-info">
+                        <span class="topping-name">Calle Coral 120, colonia Estrella, CDMX</span>
+                    </div>
+                </label>
             </div>
         </div>
-    </div>
-
-    <!-- Modal de combo -->
-    <div class="modal modal-oculto" id="modal-combo">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-combo">&times;</button>
-            <h2 class="modal-titulo" id="titulo-combo">Personalizar Combo</h2>
-            <div id="opciones-combo"></div>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-combo">CANCELAR</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-combo">CONFIRMAR COMBO</button>
-            </div>
+        
+        <!-- Información de horarios -->
+        <div id="info-horarios" style="margin: 15px 0; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 5px; border-left: 3px solid var(--color-texto);">
+            <h4 style="color: var(--color-texto); margin-bottom: 8px;">🕒 Horarios de entrega:</h4>
+            <p style="margin: 3px 0; font-size: 0.9rem;">Lunes a Jueves: 16:00 - 22:00 hrs</p>
+            <p style="margin: 3px 0; font-size: 0.9rem;">Viernes: 16:00 - 2:00 hrs</p>
+            <p style="margin: 3px 0; font-size: 0.9rem;">Sábado: 12:00 - 2:30 hrs</p>
+            <p style="margin: 3px 0; font-size: 0.9rem;">Domingo: 12:00 - 18:00 hrs</p>
+            <p style="margin: 5px 0 0 0; font-size: 0.8rem; color: #ccc;">* Horarios en tiempo de CDMX</p>
+        </div>
+        
+        <p>Si necesitas ver la ubicación en Google Maps, haz clic abajo:</p>
+        <button class="btn-modal btn-confirmar" id="abrir-maps" style="width:100%; margin:10px 0;">ABRIR GOOGLE MAPS</button>
+        <div class="botones-modal">
+            <button class="btn-modal btn-cancelar" id="regresar-carrito">REGRESAR</button>
+            <button class="btn-modal btn-confirmar" id="confirmar-ubicacion">CONFIRMAR UBICACIÓN</button>
         </div>
     </div>
+</div>
 
-    <!-- Modal de pago -->
-    <div class="modal modal-oculto" id="modal-pago">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-pago">&times;</button>
-            <h2 class="modal-titulo">INSTRUCCIONES DE PAGO</h2>
-            <p>Para completar tu pedido, realiza una transferencia a:</p>
-            <p><strong>Banco:</strong> BBVA</p>
-            <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
-            <p><strong>CLABE:</strong> 012 261 01584933343 3</p>                                             <p><strong> PAGO: </strong> En el CONCEPTO de la transferencia COLOCA TU NOMBRE o el NOMBRE DE LA PERSONA que realizará la recolección<p>   
-            <p>Una vez realizado el pago, haz clic en el botón de abajo para enviar tu pedido por WhatsApp con el comprobante.</p>
-            <p id="direccion-confirmacion">📍 Calle Coral 120, colonia Estrella, CDMX</p>
-            <div class="botones-modal">
-                <button class="btn-modal btn-cancelar" id="regresar-direccion">CAMBIAR DIRECCIÓN</button>
-                <button class="btn-modal btn-confirmar" id="confirmar-pedido">ENVIAR POR WHATSAPP</button>
-            </div>
+<!-- Modal de combo -->
+<div class="modal modal-oculto" id="modal-combo">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-combo">&times;</button>
+        <h2 class="modal-titulo" id="titulo-combo">Personalizar Combo</h2>
+        <div id="opciones-combo"></div>
+        <div class="botones-modal">
+            <button class="btn-modal btn-cancelar" id="regresar-combo">CANCELAR</button>
+            <button class="btn-modal btn-confirmar" id="confirmar-combo">CONFIRMAR COMBO</button>
         </div>
     </div>
+</div>
 
-    <!-- Modal de verificación de edad -->
-    <div class="modal modal-oculto" id="modal-verificacion-edad">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-verificacion-edad">&times;</button>
-            <h2 class="modal-titulo">VERIFICACIÓN DE EDAD</h2>
-            <div style="text-align: center; font-size: 1.5rem; margin: 20px 0; color: #ff2a2a;">
-                <p>🔞 SE SOLICITARÁ INE PARA BEBIDAS ALCOHÓLICAS</p>
-            </div>
-            <div class="botones-modal" style="justify-content: center;">
-                <button class="btn-modal btn-confirmar" id="aceptar-verificacion">ACEPTAR</button>
-            </div>
+<!-- Modal de pago -->
+<div class="modal modal-oculto" id="modal-pago">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-pago">&times;</button>
+        <h2 class="modal-titulo">INSTRUCCIONES DE PAGO</h2>
+        <p>Para completar tu pedido, realiza una transferencia a:</p>
+        <p><strong>Banco:</strong> BBVA</p>
+        <p><strong>Titular:</strong> Eric Daniel Gutiérrez Arana</p>
+        <p><strong>CLABE:</strong> 012 261 01584933343 3</p>
+        <p><strong>PAGO:</strong> En el CONCEPTO de la transferencia COLOCA TU NOMBRE o el NOMBRE DE LA PERSONA que realizará la recolección</p>
+        <p>Una vez realizado el pago, haz clic en el botón de abajo para enviar tu pedido por WhatsApp con el comprobante.</p>
+        <p id="direccion-confirmacion">📍 </p>
+        <div class="botones-modal">
+            <button class="btn-modal btn-cancelar" id="regresar-direccion">CAMBIAR DIRECCIÓN</button>
+            <button class="btn-modal btn-confirmar" id="confirmar-pedido">ENVIAR POR WHATSAPP</button>
         </div>
     </div>
+</div>
 
-    <!-- Modal de pedido mínimo -->
-    <div class="modal modal-oculto" id="modal-pedido-minimo">
-        <div class="modal-contenido">
-            <button class="cerrar-modal" id="cerrar-pedido-minimo">&times;</button>
-            <h2 class="modal-titulo">PEDIDO MÍNIMO</h2>
-            <div style="text-align: center; font-size: 1.2rem; margin: 20px 0;">
-                <p>No se pueden realizar pedidos con menos de 3 productos.</p>
-                <p>Agrega más items para continuar.</p>
-            </div>
-            <div class="botones-modal" style="justify-content: center;">
-                <button class="btn-modal btn-confirmar" id="aceptar-pedido-minimo">ACEPTAR</button>
-            </div>
+<!-- Modal de verificación de edad -->
+<div class="modal modal-oculto" id="modal-verificacion-edad">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-verificacion-edad">&times;</button>
+        <h2 class="modal-titulo">VERIFICACIÓN DE EDAD</h2>
+        <div style="text-align: center; font-size: 1.5rem; margin: 20px 0; color: #ff2a2a;">
+            <p>🔞 SE SOLICITARÁ INE PARA BEBIDAS ALCOHÓLICAS</p>
+        </div>
+        <div class="botones-modal" style="justify-content: center;">
+            <button class="btn-modal btn-confirmar" id="aceptar-verificacion">ACEPTAR</button>
         </div>
     </div>
+</div>
+
+<!-- Modal de pedido mínimo -->
+<div class="modal modal-oculto" id="modal-pedido-minimo">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-pedido-minimo">&times;</button>
+        <h2 class="modal-titulo">PEDIDO MÍNIMO</h2>
+        <div style="text-align: center; font-size: 1.2rem; margin: 20px 0;">
+            <p>No se pueden realizar pedidos con menos de 3 productos.</p>
+            <p>Agrega más items para continuar.</p>
+        </div>
+        <div class="botones-modal" style="justify-content: center;">
+            <button class="btn-modal btn-confirmar" id="aceptar-pedido-minimo">ACEPTAR</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de horario fuera de servicio -->
+<div class="modal modal-oculto" id="modal-horario-fuera">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" id="cerrar-horario-fuera">&times;</button>
+        <h2 class="modal-titulo">HORARIO NO DISPONIBLE</h2>
+        <div style="text-align: center; font-size: 1.2rem; margin: 20px 0; color: #ff2a2a;">
+            <p>🚫 LO SENTIMOS</p>
+            <p>UBICACIÓN SELECCIONADA FUERA DE HORARIO</p>
+        </div>
+        <p style="text-align: center; margin-bottom: 20px;">
+            La ubicación seleccionada no se encuentra disponible en este momento.
+        </p>
+        <div class="botones-modal" style="justify-content: center;">
+            <button class="btn-modal btn-confirmar" id="aceptar-horario-fuera">ENTENDIDO</button>
+        </div>
+    </div>
+</div>
 <script>
     // Datos de productos con toppings corregidos
     const productos = {
@@ -792,7 +821,7 @@
                 precio: 40, 
                 opciones: {
                     "LECHE": ["Normal (+$10)", "Deslactosada (+$10)", "Sin leche"],
-                    "ENDULZANTE": ["Azúcar", "Sustituto", "Sin endulzante"]
+                    "ENDULZANTe": ["Azúcar", "Sustituto", "Sin endulzante"]
                 },
                 toppings: [
                     { nombre: "Gemas del Infierno (Coffee Jelly)", precio: 15 }
@@ -851,11 +880,10 @@
     let opcionesSeleccionadas = {};
     let comboSeleccionado = null;
     let opcionesComboSeleccionadas = {};
-    let direccionSeleccionada = "Calle Coral 120, colonia Estrella, CDMX";
 
     // Inicialización
     document.addEventListener('DOMContentLoaded', function() {
-    cargarProductos();
+        cargarProductos();
         cargarCarritoDesdeLocalStorage();
         actualizarCarrito();
         configurarEventos();
@@ -877,6 +905,7 @@
         document.getElementById('cerrar-pago').addEventListener('click', cerrarModalPago);
         document.getElementById('cerrar-verificacion-edad').addEventListener('click', cerrarVerificacionEdad);
         document.getElementById('cerrar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
+        document.getElementById('cerrar-horario-fuera').addEventListener('click', cerrarModalHorarioFuera);
         
         // Botones de modales
         document.getElementById('regresar-modal').addEventListener('click', cerrarModalOpciones);
@@ -892,13 +921,12 @@
         document.getElementById('confirmar-pedido').addEventListener('click', enviarPedidoWhatsApp);
         document.getElementById('aceptar-verificacion').addEventListener('click', cerrarVerificacionEdad);
         document.getElementById('aceptar-pedido-minimo').addEventListener('click', cerrarPedidoMinimo);
+        document.getElementById('aceptar-horario-fuera').addEventListener('click', cerrarModalHorarioFuera);
 
         // Evento para selección de ubicación
         document.querySelectorAll('input[name="ubicacion"]').forEach(radio => {
             radio.addEventListener('change', function() {
-                if (this.checked) {
-                    direccionSeleccionada = this.value;
-                }
+                // La dirección se obtendrá directamente del checkbox cuando se necesite
             });
         });
         
@@ -910,6 +938,40 @@
                 }
             });
         });
+    }
+
+    // Función para verificar si está dentro del horario de la ubicación
+    function validarHorarioUbicacion(ubicacion) {
+        if (ubicacion === "Calle Coral 120, colonia Estrella, CDMX") {
+            const ahora = new Date();
+            const horaCDMX = ahora.toLocaleString("es-MX", { timeZone: "America/Mexico_City", hour: "2-digit", minute: "2-digit", hour12: false });
+            const [horas, minutos] = horaCDMX.split(":").map(Number);
+            const horaActual = horas + (minutos / 60);
+            
+            const diaSemana = ahora.toLocaleString("es-MX", { timeZone: "America/Mexico_City", weekday: "long" });
+            
+            // Validar horarios según el día
+            switch (diaSemana.toLowerCase()) {
+                case "lunes":
+                case "martes":
+                case "miércoles":
+                case "jueves":
+                    return horaActual >= 16 && horaActual < 22;
+                
+                case "viernes":
+                    return (horaActual >= 16 && horaActual < 24) || (horaActual >= 0 && horaActual < 2);
+                
+                case "sábado":
+                    return (horaActual >= 12 && horaActual < 24) || (horaActual >= 0 && horaActual < 2.5);
+                
+                case "domingo":
+                    return horaActual >= 12 && horaActual < 18;
+                
+                default:
+                    return false;
+            }
+        }
+        return true; // Para otras ubicaciones (futuras) no hay restricción de horario
     }
 
     // Cambiar entre temas
@@ -981,196 +1043,530 @@
         document.getElementById('modal-verificacion-edad').classList.add('modal-oculto');
     }
 
-            // Mostrar modal de pedido mínimo
-        function mostrarPedidoMinimo() {
-            document.getElementById('modal-pedido-minimo').classList.remove('modal-oculto');
-        }
+    // Mostrar modal de pedido mínimo
+    function mostrarPedidoMinimo() {
+        document.getElementById('modal-pedido-minimo').classList.remove('modal-oculto');
+    }
 
-        // Cerrar modal de pedido mínimo
-        function cerrarPedidoMinimo() {
-            document.getElementById('modal-pedido-minimo').classList.add('modal-oculto');
-        }
+    // Cerrar modal de pedido mínimo
+    function cerrarPedidoMinimo() {
+        document.getElementById('modal-pedido-minimo').classList.add('modal-oculto');
+    }
 
-        // Mostrar modal de opciones
-        function mostrarModalOpciones() {
-            const modal = document.getElementById('modal-opciones');
-            const tituloModal = document.getElementById('titulo-modal');
-            const saborDestacado = document.getElementById('sabor-destacado');
-            const formulario = document.getElementById('formulario-opciones');
-            
-            tituloModal.textContent = `Personalizar ${productoSeleccionado.nombre}`;
-            saborDestacado.textContent = productoSeleccionado.sabor;
-            formulario.innerHTML = '';
-            
-            // Crear opciones personalizables (para cafés y tés)
-            if (productoSeleccionado.opciones) {
-                for (const [opcion, valores] of Object.entries(productoSeleccionado.opciones)) {
-                    const opcionGroup = document.createElement('div');
-                    opcionGroup.className = 'opcion-group';
-                    opcionGroup.innerHTML = `<h3>${opcion}</h3>`;
+    // Cerrar modal de horario fuera de servicio
+    function cerrarModalHorarioFuera() {
+        document.getElementById('modal-horario-fuera').classList.add('modal-oculto');
+        document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+    }
+    // Mostrar modal de opciones
+    function mostrarModalOpciones() {
+        const modal = document.getElementById('modal-opciones');
+        const tituloModal = document.getElementById('titulo-modal');
+        const saborDestacado = document.getElementById('sabor-destacado');
+        const formulario = document.getElementById('formulario-opciones');
+        
+        tituloModal.textContent = `Personalizar ${productoSeleccionado.nombre}`;
+        saborDestacado.textContent = productoSeleccionado.sabor;
+        formulario.innerHTML = '';
+        
+        // Crear opciones personalizables (para cafés y tés)
+        if (productoSeleccionado.opciones) {
+            for (const [opcion, valores] of Object.entries(productoSeleccionado.opciones)) {
+                const opcionGroup = document.createElement('div');
+                opcionGroup.className = 'opcion-group';
+                opcionGroup.innerHTML = `<h3>${opcion}</h3>`;
+                
+                valores.forEach((valor, index) => {
+                    const inputId = `opcion-${opcion}-${index}`;
                     
-                    valores.forEach((valor, index) => {
-                        const inputId = `opcion-${opcion}-${index}`;
-                        
-                        const div = document.createElement('div');
-                        div.className = 'topping-checkbox';
-                        
-                        const radio = document.createElement('input');
-                        radio.type = 'radio';
-                        radio.name = opcion;
-                        radio.value = valor;
-                        radio.id = inputId;
-                        radio.checked = index === 0;
-                        
-                        radio.addEventListener('change', function() {
-                            opcionesSeleccionadas[opcion] = valor;
-                        });
-                        
-                        const label = document.createElement('label');
-                        label.htmlFor = inputId;
-                        label.textContent = valor.replace('(+$10)', '').trim();
-                        
-                        // Mostrar precio si existe
-                        if (valor.includes('+$10')) {
-                            const priceSpan = document.createElement('span');
-                            priceSpan.className = 'topping-price';
-                            priceSpan.textContent = '+$10';
-                            label.appendChild(priceSpan);
-                        }
-                        
-                        div.appendChild(radio);
-                        div.appendChild(label);
-                        opcionGroup.appendChild(div);
-                    });
+                    const div = document.createElement('div');
+                    div.className = 'topping-checkbox';
                     
-                    formulario.appendChild(opcionGroup);
-                    // Establecer valor por defecto
-                    opcionesSeleccionadas[opcion] = valores[0].replace('(+$10)', '').trim();
-                }
-            }
-            
-            // Crear checkboxes para toppings (para todas las bebidas)
-            if (productoSeleccionado.toppings && productoSeleccionado.toppings.length > 0) {
-                const toppingsGroup = document.createElement('div');
-                toppingsGroup.className = 'opcion-group';
-                toppingsGroup.innerHTML = `<h3>TOPPINGS</h3>`;
-                
-                // Opción sin topping
-                const sinToppingDiv = document.createElement('div');
-                sinToppingDiv.className = 'topping-checkbox';
-                
-                const radioSin = document.createElement('input');
-                radioSin.type = 'radio';
-                radioSin.name = 'topping';
-                radioSin.value = 'sin';
-                radioSin.id = 'topping-sin';
-                radioSin.checked = true;
-                
-                radioSin.addEventListener('change', function() {
-                    if (this.checked) {
-                        // Desmarcar todos los checkboxes de toppings
-                        document.querySelectorAll('input[type="checkbox"][name="toppings"]').forEach(cb => {
-                            cb.checked = false;
-                        });
-                        opcionesSeleccionadas.toppings = [];
-                    }
-                });
-                
-                const labelSin = document.createElement('label');
-                labelSin.htmlFor = 'topping-sin';
-                labelSin.textContent = 'Sin topping';
-                
-                sinToppingDiv.appendChild(radioSin);
-                sinToppingDiv.appendChild(labelSin);
-                toppingsGroup.appendChild(sinToppingDiv);
-                
-                // Opciones de toppings
-                productoSeleccionado.toppings.forEach((topping, index) => {
-                    const toppingDiv = document.createElement('div');
-                    toppingDiv.className = 'topping-checkbox';
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = opcion;
+                    radio.value = valor;
+                    radio.id = inputId;
+                    radio.checked = index === 0;
                     
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.name = 'toppings';
-                    checkbox.value = topping.nombre;
-                    checkbox.id = `topping-${index}`;
-                    
-                    checkbox.addEventListener('change', function() {
-                        if (this.checked) {
-                            // Desmarcar "Sin topping"
-                            document.getElementById('topping-sin').checked = false;
-                            
-                            // Agregar topping a las opciones seleccionadas
-                            if (!opcionesSeleccionadas.toppings) {
-                                opcionesSeleccionadas.toppings = [];
-                            }
-                            opcionesSeleccionadas.toppings.push(topping.nombre);
-                            
-                            // MOSTRAR VERIFICACIÓN DE EDAD SOLO SI SELECCIONAN ELIXIR PROHIBIDO
-                            if (topping.nombre.includes("Elixir Prohibido")) {
-                                mostrarVerificacionEdad();
-                            }
-                            
-                        } else {
-                            // Remover topping de las opciones seleccionadas
-                            if (opcionesSeleccionadas.toppings) {
-                                const index = opcionesSeleccionadas.toppings.indexOf(topping.nombre);
-                                if (index > -1) {
-                                    opcionesSeleccionadas.toppings.splice(index, 1);
-                                }
-                                
-                                // Si no hay toppings seleccionados, marcar "Sin topping"
-                                if (opcionesSeleccionadas.toppings.length === 0) {
-                                    document.getElementById('topping-sin').checked = true;
-                                }
-                            }
-                        }
+                    radio.addEventListener('change', function() {
+                        opcionesSeleccionadas[opcion] = valor;
                     });
                     
                     const label = document.createElement('label');
-                    label.htmlFor = `topping-${index}`;
+                    label.htmlFor = inputId;
+                    label.textContent = valor.replace('(+$10)', '').trim();
                     
-                    const toppingInfo = document.createElement('div');
-                    toppingInfo.className = 'topping-info';
+                    // Mostrar precio si existe
+                    if (valor.includes('+$10')) {
+                        const priceSpan = document.createElement('span');
+                        priceSpan.className = 'topping-price';
+                        priceSpan.textContent = '+$10';
+                        label.appendChild(priceSpan);
+                    }
                     
-                    const toppingName = document.createElement('span');
-                    toppingName.className = 'topping-name';
-                    toppingName.textContent = topping.nombre;
-                    
-                    const toppingPrice = document.createElement('span');
-                    toppingPrice.className = 'topping-price';
-                    toppingPrice.textContent = `+$${topping.precio}`;
-                    
-                    toppingInfo.appendChild(toppingName);
-                    toppingInfo.appendChild(toppingPrice);
-                    label.appendChild(toppingInfo);
-                    
-                    toppingDiv.appendChild(checkbox);
-                    toppingDiv.appendChild(label);
-                    toppingsGroup.appendChild(toppingDiv);
+                    div.appendChild(radio);
+                    div.appendChild(label);
+                    opcionGroup.appendChild(div);
                 });
                 
-                formulario.appendChild(toppingsGroup);
+                formulario.appendChild(opcionGroup);
                 // Establecer valor por defecto
-                opcionesSeleccionadas.toppings = [];
+                opcionesSeleccionadas[opcion] = valores[0].replace('(+$10)', '').trim();
+            }
+        }
+        
+        // Crear checkboxes para toppings (para todas las bebidas)
+        if (productoSeleccionado.toppings && productoSeleccionado.toppings.length > 0) {
+            const toppingsGroup = document.createElement('div');
+            toppingsGroup.className = 'opcion-group';
+            toppingsGroup.innerHTML = `<h3>TOPPINGS</h3>`;
+            
+            // Opción sin topping
+            const sinToppingDiv = document.createElement('div');
+            sinToppingDiv.className = 'topping-checkbox';
+            
+            const radioSin = document.createElement('input');
+            radioSin.type = 'radio';
+            radioSin.name = 'topping';
+            radioSin.value = 'sin';
+            radioSin.id = 'topping-sin';
+            radioSin.checked = true;
+            
+            radioSin.addEventListener('change', function() {
+                if (this.checked) {
+                    // Desmarcar todos los checkboxes de toppings
+                    document.querySelectorAll('input[type="checkbox"][name="toppings"]').forEach(cb => {
+                        cb.checked = false;
+                    });
+                    opcionesSeleccionadas.toppings = [];
+                }
+            });
+            
+            const labelSin = document.createElement('label');
+            labelSin.htmlFor = 'topping-sin';
+            labelSin.textContent = 'Sin topping';
+            
+            sinToppingDiv.appendChild(radioSin);
+            sinToppingDiv.appendChild(labelSin);
+            toppingsGroup.appendChild(sinToppingDiv);
+            
+            // Opciones de toppings
+            productoSeleccionado.toppings.forEach((topping, index) => {
+                const toppingDiv = document.createElement('div');
+                toppingDiv.className = 'topping-checkbox';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'toppings';
+                checkbox.value = topping.nombre;
+                checkbox.id = `topping-${index}`;
+                
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Desmarcar "Sin topping"
+                        document.getElementById('topping-sin').checked = false;
+                        
+                        // Agregar topping a las opciones seleccionadas
+                        if (!opcionesSeleccionadas.toppings) {
+                            opcionesSeleccionadas.toppings = [];
+                        }
+                        opcionesSeleccionadas.toppings.push(topping.nombre);
+                        
+                        // MOSTRAR VERIFICACIÓN DE EDAD SOLO SI SELECCIONAN ELIXIR PROHIBIDO
+                        if (topping.nombre.includes("Elixir Prohibido")) {
+                            mostrarVerificacionEdad();
+                        }
+                        
+                    } else {
+                        // Remover topping de las opciones seleccionadas
+                        if (opcionesSeleccionadas.toppings) {
+                            const index = opcionesSeleccionadas.toppings.indexOf(topping.nombre);
+                            if (index > -1) {
+                                opcionesSeleccionadas.toppings.splice(index, 1);
+                            }
+                            
+                            // Si no hay toppings seleccionados, marcar "Sin topping"
+                            if (opcionesSeleccionadas.toppings.length === 0) {
+                                document.getElementById('topping-sin').checked = true;
+                            }
+                        }
+                    }
+                });
+                
+                const label = document.createElement('label');
+                label.htmlFor = `topping-${index}`;
+                
+                const toppingInfo = document.createElement('div');
+                toppingInfo.className = 'topping-info';
+                
+                const toppingName = document.createElement('span');
+                toppingName.className = 'topping-name';
+                toppingName.textContent = topping.nombre;
+                
+                const toppingPrice = document.createElement('span');
+                toppingPrice.className = 'topping-price';
+                toppingPrice.textContent = `+$${topping.precio}`;
+                
+                toppingInfo.appendChild(toppingName);
+                toppingInfo.appendChild(toppingPrice);
+                label.appendChild(toppingInfo);
+                
+                toppingDiv.appendChild(checkbox);
+                toppingDiv.appendChild(label);
+                toppingsGroup.appendChild(toppingDiv);
+            });
+            
+            formulario.appendChild(toppingsGroup);
+            // Establecer valor por defecto
+            opcionesSeleccionadas.toppings = [];
+        }
+        
+        modal.classList.remove('modal-oculto');
+    }
+
+    // Cerrar modal de opciones
+    function cerrarModalOpciones() {
+        document.getElementById('modal-opciones').classList.add('modal-oculto');
+    }
+
+    // Confirmar selección y agregar al carrito
+    function confirmarSeleccion() {
+        // Calcular precio adicional por opciones
+        let precioAdicional = 0;
+        let detallesVariables = [];
+        
+        // Procesar opciones de cafés y tés
+        for (const [opcion, valor] of Object.entries(opcionesSeleccionadas)) {
+            if (opcion !== 'toppings') {
+                if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)')) {
+                    precioAdicional += 10;
+                }
+                
+                // Guardar detalles para mostrar en carrito
+                if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)') || valor.includes('Sin leche')) {
+                    detallesVariables.push(`${opcion}: ${valor}`);
+                }
+            }
+        }
+        
+        // Procesar toppings
+        if (opcionesSeleccionadas.toppings && opcionesSeleccionadas.toppings.length > 0) {
+            opcionesSeleccionadas.toppings.forEach(toppingNombre => {
+                // Encontrar el topping para obtener su precio
+                const topping = productoSeleccionado.toppings.find(t => t.nombre === toppingNombre);
+                if (topping) {
+                    precioAdicional += topping.precio;
+                    detallesVariables.push(`Topping: ${topping.nombre}`);
+                }
+            });
+        }
+        
+        const precioTotal = productoSeleccionado.precio + precioAdicional;
+        
+        const itemCarrito = {
+            ...productoSeleccionado,
+            opciones: {...opcionesSeleccionadas},
+            cantidad: 1,
+            precioTotal: precioTotal,
+            detallesVariables: detallesVariables
+        };
+        
+        // Verificar si ya existe en el carrito
+        const indexExistente = carrito.findIndex(item => 
+            item.id === itemCarrito.id && 
+            JSON.stringify(item.opciones) === JSON.stringify(itemCarrito.opciones)
+        );
+        
+        if (indexExistente !== -1) {
+            carrito[indexExistente].cantidad++;
+            carrito[indexExistente].precioTotal += precioTotal;
+        } else {
+            carrito.push(itemCarrito);
+        }
+        
+        guardarCarritoEnLocalStorage();
+        actualizarCarrito();
+        cerrarModalOpciones();
+        
+        // Efecto visual de confirmación
+        const carritoBtn = document.getElementById('carrito-btn');
+        carritoBtn.classList.add('pulse-effect');
+        setTimeout(() => {
+            carritoBtn.classList.remove('pulse-effect');
+        }, 500);
+    }
+
+    // Guardar carrito en localStorage
+    function guardarCarritoEnLocalStorage() {
+        localStorage.setItem('sinnerCart', JSON.stringify(carrito));
+    }
+
+    // Cargar carrito desde localStorage
+    function cargarCarritoDesdeLocalStorage() {
+        const carritoGuardado = localStorage.getItem('sinnerCart');
+        if (carritoGuardado) {
+            carrito = JSON.parse(carritoGuardado);
+        }
+    }
+
+    // Actualizar carrito
+    function actualizarCarrito() {
+        const contador = document.getElementById('contador');
+        contador.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
+    }
+
+    // Abrir modal de carrito
+    function abrirModalCarrito() {
+        const modal = document.getElementById('modal-carrito');
+        const listaCarrito = document.getElementById('lista-carrito');
+        const totalCarrito = document.getElementById('total-carrito');
+        
+        listaCarrito.innerHTML = '';
+        
+        if (carrito.length === 0) {
+            listaCarrito.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
+            totalCarrito.textContent = 'Total: $0.00 MXN';
+        } else {
+            let total = 0;
+            
+            carrito.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'item-carrito';
+                
+                let detallesHTML = '';
+                if (item.detallesVariables && item.detallesVariables.length > 0) {
+                    detallesHTML = `<div class="detalles-variables">`;
+                    item.detallesVariables.forEach(detalle => {
+                        detallesHTML += `<div>${detalle}</div>`;
+                    });
+                    detallesHTML += `</div>`;
+                }
+                
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <h4>${item.nombre}</h4>
+                        ${detallesHTML}
+                        <p class="precio-item">$${item.precioTotal}.00 MXN</p>
+                    </div>
+                    <div class="item-controles">
+                        <button onclick="modificarCantidad(${index}, -1)">-</button>
+                        <span>${item.cantidad}</span>
+                        <button onclick="modificarCantidad(${index}, 1)">+</button>
+                        <button onclick="eliminarItem(${index})">🗑️</button>
+                    </div>
+                `;
+                listaCarrito.appendChild(itemElement);
+                total += item.precioTotal;
+            });
+            
+            totalCarrito.textContent = `Total: $${total}.00 MXN`;
+        }
+        
+        modal.classList.remove('modal-oculto');
+    }
+
+    // Cerrar modal de carrito
+    function cerrarModalCarrito() {
+        document.getElementById('modal-carrito').classList.add('modal-oculto');
+    }
+
+    // Modificar cantidad de items en carrito
+    function modificarCantidad(index, cambio) {
+        const item = carrito[index];
+        const precioUnitario = item.precioTotal / item.cantidad;
+        
+        if (cambio === 1) {
+            item.cantidad++;
+            item.precioTotal += precioUnitario;
+        } else if (cambio === -1 && item.cantidad > 1) {
+            item.cantidad--;
+            item.precioTotal -= precioUnitario;
+        }
+        
+        guardarCarritoEnLocalStorage();
+        actualizarCarrito();
+        abrirModalCarrito(); // Refrescar vista
+    }
+
+    // Eliminar item del carrito
+    function eliminarItem(index) {
+        carrito.splice(index, 1);
+        guardarCarritoEnLocalStorage();
+        actualizarCarrito();
+        
+        if (carrito.length === 0) {
+            cerrarModalCarrito();
+        } else {
+            abrirModalCarrito(); // Refrescar vista
+        }
+    }
+
+    // Seleccionar combo
+    function seleccionarCombo(tipo) {
+        comboSeleccionado = combos[tipo];
+        opcionesComboSeleccionadas = {};
+        mostrarModalCombo();
+    }
+
+    // Mostrar modal de combo
+    function mostrarModalCombo() {
+        const modal = document.getElementById('modal-combo');
+        const tituloCombo = document.getElementById('titulo-combo');
+        const opcionesCombo = document.getElementById('opciones-combo');
+        
+        tituloCombo.textContent = `Personalizar ${comboSeleccionado.nombre}`;
+        opcionesCombo.innerHTML = '';
+        
+        // Crear opciones para cada producto del combo
+        comboSeleccionado.productos.forEach(nombreProducto => {
+            // Buscar el producto en los datos
+            let producto = null;
+            for (const categoria in productos) {
+                producto = productos[categoria].find(p => p.nombre === nombreProducto);
+                if (producto) break;
             }
             
-            modal.classList.remove('modal-oculto');
-        }
+            if (producto) {
+                const productoGroup = document.createElement('div');
+                productoGroup.className = 'opcion-group';
+                productoGroup.innerHTML = `<h3>${producto.nombre} (${producto.sabor})</h3>`;
+                
+                // Mostrar opciones para cafés and tés
+                if (producto.opciones) {
+                    for (const [opcion, valores] of Object.entries(producto.opciones)) {
+                        valores.forEach((valor, index) => {
+                            const inputId = `combo-${producto.nombre}-${opcion}-${index}`;
+                            
+                            const div = document.createElement('div');
+                            div.className = 'topping-checkbox';
+                            
+                            const radio = document.createElement('input');
+                            radio.type = 'radio';
+                            radio.name = `${producto.nombre}-${opcion}`;
+                            radio.value = valor;
+                            radio.id = inputId;
+                            radio.checked = index === 0;
+                            
+                            radio.addEventListener('change', function() {
+                                if (!opcionesComboSeleccionadas[producto.nombre]) {
+                                    opcionesComboSeleccionadas[producto.nombre] = {};
+                                }
+                                opcionesComboSeleccionadas[producto.nombre][opcion] = valor;
+                            });
+                            
+                            const label = document.createElement('label');
+                            label.htmlFor = inputId;
+                            label.textContent = valor.replace('(+$10)', '').trim();
+                            
+                            // Mostrar precio si existe
+                            if (valor.includes('+$10')) {
+                                const priceSpan = document.createElement('span');
+                                priceSpan.className = 'topping-price';
+                                priceSpan.textContent = '+$10';
+                                label.appendChild(priceSpan);
+                            }
+                            
+                            div.appendChild(radio);
+                            div.appendChild(label);
+                            productoGroup.appendChild(div);
+                        });
+                        
+                        // Establecer valor por defecto
+                        if (!opcionesComboSeleccionadas[producto.nombre]) {
+                            opcionesComboSeleccionadas[producto.nombre] = {};
+                        }
+                        opcionesComboSeleccionadas[producto.nombre][opcion] = valores[0].replace('(+$10)', '').trim();
+                    }
+                }
+                
+                // Mostrar toppings para todos los productos
+                if (producto.toppings && producto.toppings.length > 0) {
+                    const toppingsTitle = document.createElement('h4');
+                    toppingsTitle.textContent = 'Toppings:';
+                    toppingsTitle.style.marginTop = '10px';
+                    toppingsTitle.style.color = '#ffd700';
+                    productoGroup.appendChild(toppingsTitle);
+                    
+                    producto.toppings.forEach((topping, toppingIndex) => {
+                        const toppingDiv = document.createElement('div');
+                        toppingDiv.className = 'topping-checkbox';
+                        
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = `${producto.nombre}-toppings`;
+                        checkbox.value = topping.nombre;
+                        checkbox.id = `combo-${producto.nombre}-topping-${toppingIndex}`;
+                        
+                        checkbox.addEventListener('change', function() {
+                            if (!opcionesComboSeleccionadas[producto.nombre]) {
+                                opcionesComboSeleccionadas[producto.nombre] = {};
+                            }
+                            if (!opcionesComboSeleccionadas[producto.nombre].toppings) {
+                                opcionesComboSeleccionadas[producto.nombre].toppings = [];
+                            }
+                            
+                            if (this.checked) {
+                                opcionesComboSeleccionadas[producto.nombre].toppings.push(topping.nombre);
+                                
+                                // MOSTRAR VERIFICACIÓN DE EDAD SOLO SI SELECCIONAN ELIXIR PROHIBIDO
+                                if (topping.nombre.includes("Elixir Prohibido")) {
+                                    mostrarVerificacionEdad();
+                                }
+                                
+                            } else {
+                                const index = opcionesComboSeleccionadas[producto.nombre].toppings.indexOf(topping.nombre);
+                                if (index > -1) {
+                                    opcionesComboSeleccionadas[producto.nombre].toppings.splice(index, 1);
+                                }
+                            }
+                        });
+                        
+                        const label = document.createElement('label');
+                        label.htmlFor = `combo-${producto.nombre}-topping-${toppingIndex}`;
+                        
+                        const toppingInfo = document.createElement('div');
+                        toppingInfo.className = 'topping-info';
+                        
+                        const toppingName = document.createElement('span');
+                        toppingName.className = 'topping-name';
+                        toppingName.textContent = topping.nombre;
+                        
+                        const toppingPrice = document.createElement('span');
+                        toppingPrice.className = 'topping-price';
+                        toppingPrice.textContent = `+$${topping.precio}`;
+                        
+                        toppingInfo.appendChild(toppingName);
+                        toppingInfo.appendChild(toppingPrice);
+                        label.appendChild(toppingInfo);
+                        
+                        toppingDiv.appendChild(checkbox);
+                        toppingDiv.appendChild(label);
+                        productoGroup.appendChild(toppingDiv);
+                    });
+                }
+                
+                opcionesCombo.appendChild(productoGroup);
+            }
+        });
+        
+        modal.classList.remove('modal-oculto');
+    }
 
-        // Cerrar modal de opciones
-        function cerrarModalOpciones() {
-            document.getElementById('modal-opciones').classList.add('modal-oculto');
-        }
+    // Cerrar modal de combo
+    function cerrarModalCombo() {
+        document.getElementById('modal-combo').classList.add('modal-oculto');
+    }
 
-        // Confirmar selección y agregar al carrito
-        function confirmarSeleccion() {
-            // Calcular precio adicional por opciones
-            let precioAdicional = 0;
-            let detallesVariables = [];
-            
-            // Procesar opciones de cafés y tés
-            for (const [opcion, valor] of Object.entries(opcionesSeleccionadas)) {
+    // Confirmar combo y agregar al carrito
+    function confirmarCombo() {
+        // Calcular precio adicional por opciones
+        let precioAdicional = 0;
+        let detallesCombo = [];
+        
+        for (const [nombreProducto, opciones] of Object.entries(opcionesComboSeleccionadas)) {
+            // Procesar opciones regulares
+            for (const [opcion, valor] of Object.entries(opciones)) {
                 if (opcion !== 'toppings') {
                     if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)')) {
                         precioAdicional += 10;
@@ -1178,494 +1574,174 @@
                     
                     // Guardar detalles para mostrar en carrito
                     if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)') || valor.includes('Sin leche')) {
-                        detallesVariables.push(`${opcion}: ${valor}`);
+                        detallesCombo.push(`${nombreProducto}: ${valor}`);
                     }
                 }
             }
             
             // Procesar toppings
-            if (opcionesSeleccionadas.toppings && opcionesSeleccionadas.toppings.length > 0) {
-                opcionesSeleccionadas.toppings.forEach(toppingNombre => {
-                    // Encontrar el topping para obtener su precio
-                    const topping = productoSeleccionado.toppings.find(t => t.nombre === toppingNombre);
-                    if (topping) {
-                        precioAdicional += topping.precio;
-                        detallesVariables.push(`Topping: ${topping.nombre}`);
+            if (opciones.toppings && opciones.toppings.length > 0) {
+                opciones.toppings.forEach(toppingNombre => {
+                    // Buscar el producto para encontrar el topping
+                    let producto = null;
+                    for (const categoria in productos) {
+                        producto = productos[categoria].find(p => p.nombre === nombreProducto);
+                        if (producto) break;
+                    }
+                    
+                    if (producto && producto.toppings) {
+                        const topping = producto.toppings.find(t => t.nombre === toppingNombre);
+                        if (topping) {
+                            precioAdicional += topping.precio;
+                            detallesCombo.push(`${nombreProducto}: ${topping.nombre}`);
+                        }
                     }
                 });
             }
-            
-            const precioTotal = productoSeleccionado.precio + precioAdicional;
-            
-            const itemCarrito = {
-                ...productoSeleccionado,
-                opciones: {...opcionesSeleccionadas},
-                cantidad: 1,
-                precioTotal: precioTotal,
-                detallesVariables: detallesVariables
-            };
-            
-            // Verificar si ya existe en el carrito
-            const indexExistente = carrito.findIndex(item => 
-                item.id === itemCarrito.id && 
-                JSON.stringify(item.opciones) === JSON.stringify(itemCarrito.opciones)
-            );
-            
-            if (indexExistente !== -1) {
-                carrito[indexExistente].cantidad++;
-                carrito[indexExistente].precioTotal += precioTotal;
-            } else {
-                carrito.push(itemCarrito);
-            }
-            
-            guardarCarritoEnLocalStorage();
-            actualizarCarrito();
-            cerrarModalOpciones();
-            
-            // Efecto visual de confirmación
-            const carritoBtn = document.getElementById('carrito-btn');
-            carritoBtn.classList.add('pulse-effect');
-            setTimeout(() => {
-                carritoBtn.classList.remove('pulse-effect');
-            }, 500);
         }
+        
+        const precioTotal = comboSeleccionado.precioBase + precioAdicional;
+        
+        const itemCarrito = {
+            id: `combo-${comboSeleccionado.nombre}`,
+            nombre: comboSeleccionado.nombre,
+            descripcion: comboSeleccionado.descripcion,
+            opciones: {...opcionesComboSeleccionadas},
+            cantidad: 1,
+            precioTotal: precioTotal,
+            detallesVariables: detallesCombo,
+            esCombo: true,
+            cuentaComoTres: true // Marcar que cuenta como 3 productos
+        };
+        
+        carrito.push(itemCarrito);
+        guardarCarritoEnLocalStorage();
+        actualizarCarrito();
+        cerrarModalCombo();
+        
+        // Efecto visual de confirmación
+        const carritoBtn = document.getElementById('carrito-btn');
+        carritoBtn.classList.add('pulse-effect');
+        setTimeout(() => {
+            carritoBtn.classList.remove('pulse-effect');
+        }, 500);
+    }
 
-        // Guardar carrito en localStorage
-        function guardarCarritoEnLocalStorage() {
-            localStorage.setItem('sinnerCart', JSON.stringify(carrito));
+    // Funciones para los modales de ubicación
+    function mostrarSeleccionUbicacion() {
+        if (carrito.length === 0) {
+            mostrarPedidoMinimo();
+            return;
         }
-
-        // Cargar carrito desde localStorage
-        function cargarCarritoDesdeLocalStorage() {
-            const carritoGuardado = localStorage.getItem('sinnerCart');
-            if (carritoGuardado) {
-                carrito = JSON.parse(carritoGuardado);
-            }
+        
+        // Verificar pedido mínimo de 3 productos
+        const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
+        if (totalProductos < 3) {
+            mostrarPedidoMinimo();
+            return;
         }
+        
+        document.getElementById('modal-carrito').classList.add('modal-oculto');
+        document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+    }
 
-        // Actualizar carrito
-        function actualizarCarrito() {
-            const contador = document.getElementById('contador');
-            contador.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
+    function cerrarModalUbicacion() {
+        document.getElementById('modal-ubicacion').classList.add('modal-oculto');
+    }
+
+    function abrirGoogleMaps() {
+        const address = "Calle Coral 120, colonia Estrella, CDMX";
+        window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+    }
+
+    function mostrarInstruccionesPago() {
+        const ubicacionSeleccionada = document.querySelector('input[name="ubicacion"]:checked').value;
+        
+        // Validar horario para Coral 120
+        if (ubicacionSeleccionada === "Calle Coral 120, colonia Estrella, CDMX" && !validarHorarioUbicacion(ubicacionSeleccionada)) {
+            document.getElementById('modal-ubicacion').classList.add('modal-oculto');
+            document.getElementById('modal-horario-fuera').classList.remove('modal-oculto');
+            return;
         }
+        
+        document.getElementById('modal-ubicacion').classList.add('modal-oculto');
+        document.getElementById('direccion-confirmacion').textContent = `📍 ${ubicacionSeleccionada}`;
+        document.getElementById('modal-pago').classList.remove('modal-oculto');
+    }
 
-        // Abrir modal de carrito
-        function abrirModalCarrito() {
-            const modal = document.getElementById('modal-carrito');
-            const listaCarrito = document.getElementById('lista-carrito');
-            const totalCarrito = document.getElementById('total-carrito');
-            
-            listaCarrito.innerHTML = '';
-            
-            if (carrito.length === 0) {
-                listaCarrito.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío</p>';
-                totalCarrito.textContent = 'Total: $0.00 MXN';
-            } else {
-                let total = 0;
+    function cerrarModalPago() {
+        document.getElementById('modal-pago').classList.add('modal-oculto');
+    }
+
+    function regresarADireccion() {
+        document.getElementById('modal-pago').classList.add('modal-oculto');
+        document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
+    }
+
+    function enviarPedidoWhatsApp() {
+        if (carrito.length === 0) {
+            mostrarPedidoMinimo();
+            return;
+        }
+        
+        // Verificar pedido mínimo de 3 productos
+        const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
+        if (totalProductos < 3) {
+            mostrarPedidoMinimo();
+            return;
+        }
+        
+        const ubicacionSeleccionada = document.querySelector('input[name="ubicacion"]:checked').value;
+        
+        // Validar horario para Coral 120
+        if (ubicacionSeleccionada === "Calle Coral 120, colonia Estrella, CDMX" && !validarHorarioUbicacion(ubicacionSeleccionada)) {
+            document.getElementById('modal-pago').classList.add('modal-oculto');
+            document.getElementById('modal-horario-fuera').classList.remove('modal-oculto');
+            return;
+        }
+        
+        let mensaje = "¡Hola! Quiero realizar el siguiente pedido:%0A%0A";
+        
+        carrito.forEach(item => {
+            if (item.esCombo) {
+                mensaje += `- COMBO: ${item.nombre}%0A`;
+                mensaje += ` ${item.descripcion}%0A`;
                 
-                carrito.forEach((item, index) => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'item-carrito';
-                    
-                    let detallesHTML = '';
-                    if (item.detallesVariables && item.detallesVariables.length > 0) {
-                        detallesHTML = `<div class="detalles-variables">`;
-                        item.detallesVariables.forEach(detalle => {
-                            detallesHTML += `<div>${detalle}</div>`;
-                        });
-                        detallesHTML += `</div>`;
-                    }
-                    
-                    itemElement.innerHTML = `
-                        <div class="item-info">
-                            <h4>${item.nombre}</h4>
-                            ${detallesHTML}
-                            <p class="precio-item">$${item.precioTotal}.00 MXN</p>
-                        </div>
-                        <div class="item-controles">
-                            <button onclick="modificarCantidad(${index}, -1)">-</button>
-                            <span>${item.cantidad}</span>
-                            <button onclick="modificarCantidad(${index}, 1)">+</button>
-                            <button onclick="eliminarItem(${index})">🗑️</button>
-                        </div>
-                    `;
-                    listaCarrito.appendChild(itemElement);
-                    total += item.precioTotal;
-                });
-                
-                totalCarrito.textContent = `Total: $${total}.00 MXN`;
-            }
-            
-            modal.classList.remove('modal-oculto');
-        }
-
-        // Cerrar modal de carrito
-        function cerrarModalCarrito() {
-            document.getElementById('modal-carrito').classList.add('modal-oculto');
-        }
-
-        // Modificar cantidad de items en carrito
-        function modificarCantidad(index, cambio) {
-            const item = carrito[index];
-            const precioUnitario = item.precioTotal / item.cantidad;
-            
-            if (cambio === 1) {
-                item.cantidad++;
-                item.precioTotal += precioUnitario;
-            } else if (cambio === -1 && item.cantidad > 1) {
-                item.cantidad--;
-                item.precioTotal -= precioUnitario;
-            }
-            
-            guardarCarritoEnLocalStorage();
-            actualizarCarrito();
-            abrirModalCarrito(); // Refrescar vista
-        }
-
-        // Eliminar item del carrito
-        function eliminarItem(index) {
-            carrito.splice(index, 1);
-            guardarCarritoEnLocalStorage();
-            actualizarCarrito();
-            
-            if (carrito.length === 0) {
-                cerrarModalCarrito();
-            } else {
-                abrirModalCarrito(); // Refrescar vista
-            }
-        }
-
-        // Seleccionar combo
-        function seleccionarCombo(tipo) {
-            comboSeleccionado = combos[tipo];
-            opcionesComboSeleccionadas = {};
-            mostrarModalCombo();
-        }
-
-        // Mostrar modal de combo
-        function mostrarModalCombo() {
-            const modal = document.getElementById('modal-combo');
-            const tituloCombo = document.getElementById('titulo-combo');
-            const opcionesCombo = document.getElementById('opciones-combo');
-            
-            tituloCombo.textContent = `Personalizar ${comboSeleccionado.nombre}`;
-            opcionesCombo.innerHTML = '';
-            
-            // Crear opciones para cada producto del combo
-            comboSeleccionado.productos.forEach(nombreProducto => {
-                // Buscar el producto en los datos
-                let producto = null;
-                for (const categoria in productos) {
-                    producto = productos[categoria].find(p => p.nombre === nombreProducto);
-                    if (producto) break;
-                }
-                
-                if (producto) {
-                    const productoGroup = document.createElement('div');
-                    productoGroup.className = 'opcion-group';
-                    productoGroup.innerHTML = `<h3>${producto.nombre} (${producto.sabor})</h3>`;
-                    
-                    // Mostrar opciones para cafés and tés
-                    if (producto.opciones) {
-                        for (const [opcion, valores] of Object.entries(producto.opciones)) {
-                            valores.forEach((valor, index) => {
-                                const inputId = `combo-${producto.nombre}-${opcion}-${index}`;
-                                
-                                const div = document.createElement('div');
-                                div.className = 'topping-checkbox';
-                                
-                                const radio = document.createElement('input');
-                                radio.type = 'radio';
-                                radio.name = `${producto.nombre}-${opcion}`;
-                                radio.value = valor;
-                                radio.id = inputId;
-                                radio.checked = index === 0;
-                                
-                                radio.addEventListener('change', function() {
-                                    if (!opcionesComboSeleccionadas[producto.nombre]) {
-                                        opcionesComboSeleccionadas[producto.nombre] = {};
-                                    }
-                                    opcionesComboSeleccionadas[producto.nombre][opcion] = valor;
-                                });
-                                
-                                const label = document.createElement('label');
-                                label.htmlFor = inputId;
-                                label.textContent = valor.replace('(+$10)', '').trim();
-                                
-                                // Mostrar precio si existe
-                                if (valor.includes('+$10')) {
-                                    const priceSpan = document.createElement('span');
-                                    priceSpan.className = 'topping-price';
-                                    priceSpan.textContent = '+$10';
-                                    label.appendChild(priceSpan);
-                                }
-                                
-                                div.appendChild(radio);
-                                div.appendChild(label);
-                                productoGroup.appendChild(div);
-                            });
-                            
-                            // Establecer valor por defecto
-                            if (!opcionesComboSeleccionadas[producto.nombre]) {
-                                opcionesComboSeleccionadas[producto.nombre] = {};
-                            }
-                            opcionesComboSeleccionadas[producto.nombre][opcion] = valores[0].replace('(+$10)', '').trim();
-                        }
-                    }
-                    
-                    // Mostrar toppings para todos los productos
-                    if (producto.toppings && producto.toppings.length > 0) {
-                        const toppingsTitle = document.createElement('h4');
-                        toppingsTitle.textContent = 'Toppings:';
-                        toppingsTitle.style.marginTop = '10px';
-                        toppingsTitle.style.color = '#ffd700';
-                        productoGroup.appendChild(toppingsTitle);
-                        
-                        producto.toppings.forEach((topping, toppingIndex) => {
-                            const toppingDiv = document.createElement('div');
-                            toppingDiv.className = 'topping-checkbox';
-                            
-                            const checkbox = document.createElement('input');
-                            checkbox.type = 'checkbox';
-                            checkbox.name = `${producto.nombre}-toppings`;
-                            checkbox.value = topping.nombre;
-                            checkbox.id = `combo-${producto.nombre}-topping-${toppingIndex}`;
-                            
-                            checkbox.addEventListener('change', function() {
-                                if (!opcionesComboSeleccionadas[producto.nombre]) {
-                                    opcionesComboSeleccionadas[producto.nombre] = {};
-                                }
-                                if (!opcionesComboSeleccionadas[producto.nombre].toppings) {
-                                    opcionesComboSeleccionadas[producto.nombre].toppings = [];
-                                }
-                                
-                                if (this.checked) {
-                                    opcionesComboSeleccionadas[producto.nombre].toppings.push(topping.nombre);
-                                    
-                                    // MOSTRAR VERIFICACIÓN DE EDAD SOLO SI SELECCIONAN ELIXIR PROHIBIDO
-                                    if (topping.nombre.includes("Elixir Prohibido")) {
-                                        mostrarVerificacionEdad();
-                                    }
-                                    
-                                } else {
-                                    const index = opcionesComboSeleccionadas[producto.nombre].toppings.indexOf(topping.nombre);
-                                    if (index > -1) {
-                                        opcionesComboSeleccionadas[producto.nombre].toppings.splice(index, 1);
-                                    }
-                                }
-                            });
-                            
-                            const label = document.createElement('label');
-                            label.htmlFor = `combo-${producto.nombre}-topping-${toppingIndex}`;
-                            
-                            const toppingInfo = document.createElement('div');
-                            toppingInfo.className = 'topping-info';
-                            
-                            const toppingName = document.createElement('span');
-                            toppingName.className = 'topping-name';
-                            toppingName.textContent = topping.nombre;
-                            
-                            const toppingPrice = document.createElement('span');
-                            toppingPrice.className = 'topping-price';
-                            toppingPrice.textContent = `+$${topping.precio}`;
-                            
-                            toppingInfo.appendChild(toppingName);
-                            toppingInfo.appendChild(toppingPrice);
-                            label.appendChild(toppingInfo);
-                            
-                            toppingDiv.appendChild(checkbox);
-                            toppingDiv.appendChild(label);
-                            productoGroup.appendChild(toppingDiv);
-                        });
-                    }
-                    
-                    opcionesCombo.appendChild(productoGroup);
-                }
-            });
-            
-            modal.classList.remove('modal-oculto');
-        }
-
-        // Cerrar modal de combo
-        function cerrarModalCombo() {
-            document.getElementById('modal-combo').classList.add('modal-oculto');
-        }
-
-        // Confirmar combo y agregar al carrito
-        function confirmarCombo() {
-            // Calcular precio adicional por opciones
-            let precioAdicional = 0;
-            let detallesCombo = [];
-            
-            for (const [nombreProducto, opciones] of Object.entries(opcionesComboSeleccionadas)) {
-                // Procesar opciones regulares
-                for (const [opcion, valor] of Object.entries(opciones)) {
-                    if (opcion !== 'toppings') {
-                        if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)')) {
-                            precioAdicional += 10;
-                        }
-                        
-                        // Guardar detalles para mostrar en carrito
-                        if (valor.includes('Normal (+$10)') || valor.includes('Deslactosada (+$10)') || valor.includes('Sin leche')) {
-                            detallesCombo.push(`${nombreProducto}: ${valor}`);
-                        }
-                    }
-                }
-                
-                // Procesar toppings
-                if (opciones.toppings && opciones.toppings.length > 0) {
-                    opciones.toppings.forEach(toppingNombre => {
-                        // Buscar el producto para encontrar el topping
-                        let producto = null;
-                        for (const categoria in productos) {
-                            producto = productos[categoria].find(p => p.nombre === nombreProducto);
-                            if (producto) break;
-                        }
-                        
-                        if (producto && producto.toppings) {
-                            const topping = producto.toppings.find(t => t.nombre === toppingNombre);
-                            if (topping) {
-                                precioAdicional += topping.precio;
-                                detallesCombo.push(`${nombreProducto}: ${topping.nombre}`);
-                            }
-                        }
+                if (item.detallesVariables && item.detallesVariables.length > 0) {
+                    item.detallesVariables.forEach(detalle => {
+                        mensaje += ` • ${detalle}%0A`;
                     });
                 }
-            }
-            
-            const precioTotal = comboSeleccionado.precioBase + precioAdicional;
-            
-            const itemCarrito = {
-                id: `combo-${comboSeleccionado.nombre}`,
-                nombre: comboSeleccionado.nombre,
-                descripcion: comboSeleccionado.descripcion,
-                opciones: {...opcionesComboSeleccionadas},
-                cantidad: 1,
-                precioTotal: precioTotal,
-                detallesVariables: detallesCombo,
-                esCombo: true,
-                cuentaComoTres: true // Marcar que cuenta como 3 productos
-            };
-            
-            carrito.push(itemCarrito);
-            guardarCarritoEnLocalStorage();
-            actualizarCarrito();
-            cerrarModalCombo();
-            
-            // Efecto visual de confirmación
-            const carritoBtn = document.getElementById('carrito-btn');
-            carritoBtn.classList.add('pulse-effect');
-            setTimeout(() => {
-                carritoBtn.classList.remove('pulse-effect');
-            }, 500);
-        }
-
-        // Funciones para los modales de ubicación
-        function mostrarSeleccionUbicacion() {
-            if (carrito.length === 0) {
-                mostrarPedidoMinimo();
-                return;
-            }
-            
-            // Verificar pedido mínimo de 3 productos
-            const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
-            if (totalProductos < 3) {
-                mostrarPedidoMinimo();
-                return;
-            }
-            
-            document.getElementById('modal-carrito').classList.add('modal-oculto');
-            document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
-        }
-
-        function cerrarModalUbicacion() {
-            document.getElementById('modal-ubicacion').classList.add('modal-oculto');
-        }
-
-        function abrirGoogleMaps() {
-            const address = "Calle Coral 120, colonia Estrella, CDMX";
-            window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
-        }
-
-        function mostrarInstruccionesPago() {
-            document.getElementById('modal-ubicacion').classList.add('modal-oculto');
-            
-            // Mostrar la dirección seleccionada en el modal de pago
-            document.getElementById('direccion-confirmacion').textContent = `📍 ${direccionSeleccionada}`;
-            
-            document.getElementById('modal-pago').classList.remove('modal-oculto');
-        }
-
-        function cerrarModalPago() {
-            document.getElementById('modal-pago').classList.add('modal-oculto');
-        }
-
-        function regresarADireccion() {
-            document.getElementById('modal-pago').classList.add('modal-oculto');
-            document.getElementById('modal-ubicacion').classList.remove('modal-oculto');
-        }
-
-        function enviarPedidoWhatsApp() {
-            if (carrito.length === 0) {
-                mostrarPedidoMinimo();
-                return;
-            }
-            
-            // Verificar pedido mínimo de 3 productos
-            const totalProductos = carrito.reduce((total, item) => total + (item.cuentaComoTres ? 3 : item.cantidad), 0);
-            if (totalProductos < 3) {
-                mostrarPedidoMinimo();
-                return;
-            }
-            
-            let mensaje = "¡Hola! Quiero realizar el siguiente pedido:%0A%0A";
-            
-            carrito.forEach(item => {
-                if (item.esCombo) {
-                    // Formato para combos
-                    mensaje += `- COMBO: ${item.nombre}%0A`;
-                    mensaje += ` ${item.descripcion}%0A`;
-                    
-                    // Agregar detalles de variables para combos
-                    if (item.detallesVariables && item.detallesVariables.length > 0) {
-                        item.detallesVariables.forEach(detalle => {
-                            mensaje += ` • ${detalle}%0A`;
-                        });
-                    }
-                    
-                    mensaje += ` x${item.cantidad} - $${item.precioTotal}%0A%0A`;
-                } else {
-                    // Formato para productos individuales
-                    mensaje += `- ${item.nombre}`;
-                    
-                    // Agregar detalles de variables
-                    if (item.detallesVariables && item.detallesVariables.length > 0) {
-                        item.detallesVariables.forEach(detalle => {
-                            mensaje += `%0A • ${detalle}`;
-                        });
-                    }
-                    
-                    mensaje += `%0A x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+                
+                mensaje += ` x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+            } else {
+                mensaje += `- ${item.nombre}`;
+                
+                if (item.detallesVariables && item.detallesVariables.length > 0) {
+                    item.detallesVariables.forEach(detalle => {
+                        mensaje += `%0A • ${detalle}`;
+                    });
                 }
-            });
-            
-            const total = carrito.reduce((sum, item) => sum + item.precioTotal, 0);
-            mensaje += `%0ATotal: $${total} MXN%0A%0A`;
-            mensaje += `Dirección: ${direccionSeleccionada}%0A%0A`;
-            mensaje += "Datos bancarios:%0A";
-            mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
-            mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
-            mensaje += "Al momento de realizar el pedido se confirmará la preparación del mismo una vez que se adjunte el comprobante de pago";
-            mensaje += "¡Gracias!";
-            
-            window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
-            
-            // Limpiar carrito después de enviar
-            carrito = [];
-            guardarCarritoEnLocalStorage();
-            actualizarCarrito();
-            cerrarModalPago();
-        }
-    </script>
+                
+                mensaje += `%0A x${item.cantidad} - $${item.precioTotal}%0A%0A`;
+            }
+        });
+        
+        const total = carrito.reduce((sum, item) => sum + item.precioTotal, 0);
+        mensaje += `%0ATotal: $${total} MXN%0A%0A`;
+        mensaje += `Dirección: ${ubicacionSeleccionada}%0A%0A`;
+        mensaje += "Datos bancarios:%0A";
+        mensaje += "Titular: Eric Daniel Gutiérrez Arana%0A";
+        mensaje += "CLABE: 012 261 01584933343 3 (BBVA)%0A%0A";
+        mensaje += "¡Gracias!";
+        
+        window.open(`https://wa.me/5215611649344?text=${mensaje}`, '_blank');
+        
+        carrito = [];
+        guardarCarritoEnLocalStorage();
+        actualizarCarrito();
+        cerrarModalPago();
+    }
+</script>
 </body>
 </html>
